@@ -1,0 +1,193 @@
+﻿
+
+@model COE.Common.Model.Survey
+
+@{
+    ViewBag.Title = "Edit Survey";
+}
+
+<title>Use options to customize the Survey Editor, Survey Builder Example</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+<script src="~/Content/surveyjs/survey.ko.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+<!-- Uncomment to enable Select2 <script src="https://unpkg.com/jquery"></script> <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" /> <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script> -->
+<link href="~/Content/surveyjs/surveyeditor.min.css" rel="stylesheet" />
+<script src="~/Content/surveyjs/surveyeditor.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+
+<style>
+    .container {
+        width: 95% !important;
+    }
+
+    .svd_container.sv_default_css #surveyjs .sv_row .svd_question {
+        margin-top: 0px !important;
+    }
+
+    .svd_container.sv_default_css .svd_properties {
+        width: 25% !important;
+    }
+
+    .svd_container.sv_default_css .svd_editors {
+        width: 60% !important;
+    }
+
+    #divUpload {
+        text-align: right;
+        margin-top: 15px;
+    }
+
+        #divUpload button {
+            height: 45px;
+        }
+
+    .svd_container .svd_content {
+        padding-bottom: 70px;
+        padding-top: 10px;
+    }
+
+    .svd_container .svd_content {
+        padding: 0px;
+    }
+
+    .svd_container .svd_properties {
+        margin-top: 18px;
+    }
+
+    .svd_q_selected .svda-add-new-rating-item {
+        display: none !important;
+    }
+
+    .modal-dialog {
+        left: auto !important;
+    }
+
+    .sv_body {
+        padding: 25px;
+    }
+</style>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <form style="margin-top: 25px;">
+
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" id="sTitle" placeholder="Enter Survey Title" value="@Model.SurveyTitle">
+            </div>
+
+            <div id="surveyContainer">
+                <div id="editorElement"></div>
+            </div>
+
+            <div id="divUpload" class="col-md-12">
+                <button type="submit" class="btn btn-primary float-right" onclick="return UploadTemplate()">Save Changes</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+@*<script type="text/javascript" src="./index.js"></script>*@
+
+
+<span tabindex="0" class="svd_action" id="svd-upload" style="display:none;"><button type="button" class="btn btn-primary" onclick="return UploadTemplate()"><span>Update</span></button></span>
+
+<script type="text/javascript">
+    var editorOptions = {};
+    editorOptions.questionTypes = ["text", "checkbox", "radiogroup", "dropdown", "rating", "html"];
+    editorOptions.showJSONEditorTab = false;
+    editorOptions.showTestSurveyTab = true;
+    editorOptions.showEmbededSurveyTab = false;
+    editorOptions.showTranslationTab = false;
+
+    var editor = new SurveyEditor.SurveyEditor("editorElement", editorOptions);
+
+    var mainColor = "#337ab7";
+    var mainHoverColor = "#232f58";
+    var textColor = "#232f58";
+
+    var defaultThemeColorsEditor = SurveyEditor.StylesManager.ThemeColors["default"];
+    defaultThemeColorsEditor["$primary-color"] = mainColor;
+    defaultThemeColorsEditor["$secondary-color"] = mainColor;
+    defaultThemeColorsEditor["$primary-hover-color"] = mainHoverColor;
+    defaultThemeColorsEditor["$primary-text-color"] = textColor;
+    defaultThemeColorsEditor["$selection-border-color"] = mainColor;
+
+    SurveyEditor.StylesManager.applyTheme();
+
+
+    var surveySettingsAction = editor.toolbarItems().filter(function (item) {
+        return item.id === "svd-survey-settings";
+    })[0];
+
+    editor.toolbarItems.remove(surveySettingsAction);
+    
+    debugger;
+    var text = '@Model.SurveyText';
+    text = text.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "");
+    text = text.replace(/&amp;amp;#39;/g, '\\\\\'').replace(/\\/g, "");
+    text = text.replace(/&#39;/g, '\\\\\'').replace(/\\/g, "");
+    editor.text = text.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "")
+
+
+    editor.survey.onSelectedElementChanged
+    .add(function (editor, options) {
+
+        if (options.newElement) {
+
+            debugger;
+
+            if (options.newElement.getType() != 'html')
+            {
+                options.newElement.isRequired = true;
+            }
+
+            if (options.newElement.getType() != 'rating')
+                return;
+
+            setTimeout(function myfunction() {
+                $(".sv_q_rating_item_text").removeClass("item_editable");
+            }, 200)
+
+            options.newElement.rateValuesChangedCallback = function myfunction(e, x) {
+
+            }
+        }
+    });
+
+
+    $(window).load(function () {
+        $('.svd_commercial_container').remove();
+        $(".svd_content").append($("#divUpload"));
+    });
+
+    function UploadTemplate() {
+
+        $.ajax({
+            url: "@Url.Action("UploadTemplate", "Surveys")",
+            type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ SurveyTitle: $('#sTitle').val(), SurveyText: JSON.stringify(editor.getSurveyJSON()) }),
+        success: function (response) {
+            if (response.success) {
+                window.location.href = '@Url.Action("Index","Surveys")';
+            }
+            else {
+                swal("Oops", response.errorMessage, "error")
+            }
+
+        }
+    });
+
+    return false;
+    }
+
+</script>

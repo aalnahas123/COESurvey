@@ -1,0 +1,195 @@
+﻿@using COE.Common.Localization
+@using COE.Common.BLL
+@using Commons.Framework.Globalization
+
+@{
+    Layout = null;
+    ViewBag.Title = UsersMgmtResources.TermsOfService;
+    var userRoles = UsersFacade.CurrentUserRoles;
+}
+<!DOCTYPE html>
+
+<html lang="@CultureHelper.CurrentLanguage" dir="@CultureHelper.CurrentDirection">
+<!--<![endif]--><!-- BEGIN HEAD -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Preview page of Metronic Admin Theme #2 for blank page layout" name="description">
+    <meta content="" name="author">
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css">
+    @if (CultureHelper.IsRightToLeft)
+    {
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+        <link href="~/Content/theme_rtl/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/theme_rtl/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/theme_rtl/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/theme_rtl/assets/global/plugins/bootstrap-switch/css/bootstrap-switch-rtl.min.css" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href="~/Content/theme_rtl/assets/global/css/components-rtl.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="~/Content/theme_rtl/assets/global/css/plugins-rtl.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <link href="~/Content/theme_rtl/assets/layouts/layout2/css/layout-rtl.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/theme_rtl/assets/layouts/layout2/css/themes/blue-rtl.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="~/Content/theme_rtl/assets/layouts/layout2/css/custom-rtl.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME LAYOUT STYLES -->
+    }
+    else
+    {
+        @Styles.Render("~/bundles/global/plugins/css")
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS STYLES -->
+        @Styles.Render("~/bundles/PageLevelPlugin/css")
+    <!-- END PAGE LEVEL PLUGINS STYLES -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+        @Styles.Render("~/bundles/global/css")
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+        @Styles.Render("~/bundles/layout/css")
+    <!-- END THEME LAYOUT STYLES -->
+    }
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+<!-- END HEAD -->
+
+<body class="page-sidebar-closed-hide-logo page-container-bg-solid page-boxed page-header-fixed">
+    <!-- BEGIN HEADER -->
+    <div class="page-header navbar navbar-fixed-top">
+        <!-- BEGIN HEADER INNER -->
+        <div class="page-header-inner container">
+            <!-- BEGIN LOGO -->
+            <div class="page-logo">
+                <img src="~/Content/theme/assets/pages/img/ITC_Horizontal_Logo.png" alt="" style="width:300px;height:68px;margin-right:-20px;background-color:aliceblue" />
+            </div>
+            <!-- END LOGO -->
+            <!-- BEGIN PAGE TOP -->
+            <div class="page-top">
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                        <li>
+                            <a href="@Url.Action("Terms","Account")" class="btn btn-primary btn-lg mt-ladda-btn ladda-button btn-circle" style="margin-top:9px;">
+                                متقدم جديد
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Login","Account")" class="btn btn-primary btn-lg mt-ladda-btn ladda-button btn-circle" style="margin-top:9px;">
+                                تسجيل الدخول
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Terms","Account")" class="btn btn-primary btn-lg mt-ladda-btn ladda-button btn-circle" style="margin-top:9px;">
+                                شروط التقديم
+                            </a>
+                        </li>
+                        <li><a></a></li>
+                        <li>
+                            <a>
+                                <img alt="" src="~/Content/theme/assets/pages/img/logo-left.jpg" style="width:80px;height:60px;margin-right:-20px;background-color:aliceblue;margin-top: -16px;">
+                            </a>
+                        </li>
+                        <!-- END USER LOGIN DROPDOWN -->
+                    </ul>
+                </div>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END PAGE TOP -->
+        </div>
+        <!-- END HEADER INNER -->
+
+    </div>
+    <div class="page-header navbar container" style="width:1240px; background-color:#26344B;margin-right: 139px;margin-top: 69px; padding-top: 22px;">
+    </div>
+
+    <!-- BEGIN HEADER & CONTENT DIVIDER -->
+    <div class="clearfix"> </div>
+    <div class="w3-display-container" style="margin-right: 139px;width:1240px;">
+        <img class="mySlides" src="http://www.ic.edu.sa/PublishingImages/option3.png" style="width:1240px;" />
+    </div>
+    <!-- END HEADER -->
+
+    <div class="container" style="margin-top:-93px;">
+
+        <div class="page-container">
+            <!-- BEGIN CONTENT -->
+            <div class="page-content">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content" style="min-height: 930px;">
+                    <div class="panel panel-default">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="portlet box">
+                                    @Html.Partial("_Header")
+                                    @RenderBody()
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+        </div>
+
+    </div>
+    <div class="page-footer">
+
+        <div class="page-footer-inner">
+
+            <div class="copyright"> <a target="_blank" href="http://www.coe.com.sa">@string.Format(@SharedResources.Copyright, DateTime.Now.Year)</a> </div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+        <!-- END FOOTER -->
+        <!-- BEGIN QUICK NAV -->
+        <div class="page-footer-inner" style="width:1240px; background-color:#26344B ;margin-right: 139px;margin-top: -33px; padding-top: 55px;">
+
+        </div>
+
+    </div>
+    <!-- BEGIN CORE PLUGINS -->
+    @Scripts.Render("~/bundles/globalPlugins")
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    @Scripts.Render("~/bundles/globalScripts")
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    @Scripts.Render("~/bundles/layoutScripts")
+    <script src="~/Scripts/common.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+
+
+    @RenderSection("scripts", false)
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
+    </script>
+</body>
+</html>

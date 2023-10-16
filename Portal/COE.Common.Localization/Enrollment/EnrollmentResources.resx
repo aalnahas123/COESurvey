@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>Advanced Search</value>
+  </data>
+  <data name="AnnouncementsAllLinkText" xml:space="preserve">
+    <value>All Announcements</value>
+  </data>
+  <data name="AnnouncementsHeader" xml:space="preserve">
+    <value>Announcements</value>
+  </data>
+  <data name="AnnouncementsMoreLinkText" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="ApplicationList" xml:space="preserve">
+    <value>Applications List</value>
+  </data>
+  <data name="ApplicationsTitle" xml:space="preserve">
+    <value>Applications</value>
+  </data>
+  <data name="Calender" xml:space="preserve">
+    <value>Calender</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CanNotSendEnrollmentRequest" xml:space="preserve">
+    <value>Sorry, you can not register because the registration has not been opened yet</value>
+  </data>
+  <data name="ChangeContactInfo" xml:space="preserve">
+    <value>Change contacts</value>
+  </data>
+  <data name="ChangeSpecialization" xml:space="preserve">
+    <value>Change Specialization</value>
+  </data>
+  <data name="College" xml:space="preserve">
+    <value>College</value>
+  </data>
+  <data name="CollegeDashboard" xml:space="preserve">
+    <value>College Dashboard</value>
+  </data>
+  <data name="DashboardApplicationReceived" xml:space="preserve">
+    <value>Received</value>
+  </data>
+  <data name="DashboardCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="DashboardConditionalAcceptance" xml:space="preserve">
+    <value>Conditional</value>
+  </data>
+  <data name="DashboardEnrolled" xml:space="preserve">
+    <value>Enrolled</value>
+  </data>
+  <data name="DashboardRejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="DashboardWaitingList" xml:space="preserve">
+    <value>Waiting</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="EnrollmentHistoryAndExams" xml:space="preserve">
+    <value>Enrollment history</value>
+  </data>
+  <data name="EnrollmentInfo" xml:space="preserve">
+    <value>Enrollment information</value>
+  </data>
+  <data name="EnrollmentList" xml:space="preserve">
+    <value>Enrollments List</value>
+  </data>
+  <data name="EnrollmentModuleTitle" xml:space="preserve">
+    <value>Enrollment</value>
+  </data>
+  <data name="EnrollmentTiltle" xml:space="preserve">
+    <value>Enrollment</value>
+  </data>
+  <data name="ErrorModuleTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Student Name</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="Msg_UnauthorizedErrorMessage" xml:space="preserve">
+    <value>You are unauthorized to view this page , please contact system admin.</value>
+  </data>
+  <data name="Msg_UnauthorizedHeader" xml:space="preserve">
+    <value>Unauthorized</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="NationalId" xml:space="preserve">
+    <value>NationalId</value>
+  </data>
+  <data name="NewSpecialization" xml:space="preserve">
+    <value>New Specialization</value>
+  </data>
+  <data name="NoDataToDisplay" xml:space="preserve">
+    <value>No data to display</value>
+  </data>
+  <data name="SchoolInfo" xml:space="preserve">
+    <value>School information</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Specialization" xml:space="preserve">
+    <value>Specialization</value>
+  </data>
+  <data name="SpecializationChangedFaild" xml:space="preserve">
+    <value>Sorry , the student specialization has not changed . Please try again .</value>
+  </data>
+  <data name="SpecializationChangedSuccessfully" xml:space="preserve">
+    <value>The student specialization has been changed successfully .</value>
+  </data>
+  <data name="Stage" xml:space="preserve">
+    <value>Current Status</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="StatusActive" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="StatusInActive" xml:space="preserve">
+    <value>InActive</value>
+  </data>
+  <data name="StudenInfo" xml:space="preserve">
+    <value>Student Information</value>
+  </data>
+  <data name="StudentAttendence" xml:space="preserve">
+    <value>Student attendence</value>
+  </data>
+  <data name="StudentProfile" xml:space="preserve">
+    <value>Student Profile</value>
+  </data>
+  <data name="Url_AnnouncementsAllLink" xml:space="preserve">
+    <value>/Enrollment/Applicants/Announcements</value>
+  </data>
+  <data name="Url_AnnouncementsMoreLink" xml:space="preserve">
+    <value>/Enrollment/Applicants/Announcement/</value>
+  </data>
+  <data name="ChangeCurrentEnrollmentStatus" xml:space="preserve">
+    <value>Change Current Status</value>
+  </data>
+  <data name="CurrentStatus" xml:space="preserve">
+    <value>Cuurent Status</value>
+  </data>
+  <data name="NewStatus" xml:space="preserve">
+    <value>New Status</value>
+  </data>
+  <data name="StageChangedFaild" xml:space="preserve">
+    <value>Sorry, the student enrollment status has not changed please try again.</value>
+  </data>
+  <data name="StageChangedSuccessfully" xml:space="preserve">
+    <value>The student  enrollment status has been changed successfully .</value>
+  </data>
+  <data name="AcademicYear" xml:space="preserve">
+    <value>Academic year</value>
+  </data>
+  <data name="AcademicYearTerm" xml:space="preserve">
+    <value>Term</value>
+  </data>
+  <data name="Deferral" xml:space="preserve">
+    <value>Deferred</value>
+  </data>
+  <data name="Dismissed" xml:space="preserve">
+    <value>Dismissed</value>
+  </data>
+  <data name="Enrolled" xml:space="preserve">
+    <value>Enrolled</value>
+  </data>
+  <data name="Graduated" xml:space="preserve">
+    <value>Graduated</value>
+  </data>
+  <data name="GraduatedAssociateDiploma" xml:space="preserve">
+    <value>Graduated Associate Diploma</value>
+  </data>
+  <data name="GraduatedDiploma" xml:space="preserve">
+    <value>Graduated Diploma</value>
+  </data>
+  <data name="GraduatedFoundation" xml:space="preserve">
+    <value>Graduated Foundation</value>
+  </data>
+  <data name="NoShow" xml:space="preserve">
+    <value>No Show</value>
+  </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Transferred</value>
+  </data>
+  <data name="Withdrawal" xml:space="preserve">
+    <value>Withdrawn</value>
+  </data>
+  <data name="SponserChangedFaild" xml:space="preserve">
+    <value>Sorry, the student sponsor  has not changed please try again.</value>
+  </data>
+  <data name="SponserSavedSuccessfully" xml:space="preserve">
+    <value>The student sponsor has been added successfully .</value>
+  </data>
+  <data name="SponserupdatedSuccessfully" xml:space="preserve">
+    <value>The student sponsor has been changed successfully .</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="AcademicYearTermName" xml:space="preserve">
+    <value>Academic Year Term</value>
+  </data>
+  <data name="HaveOldEnrollmentRequest" xml:space="preserve">
+    <value>Sorry, this student has already an enrollment request .</value>
+  </data>
+  <data name="CreateNewApplication" xml:space="preserve">
+    <value>New Application</value>
+  </data>
+  <data name="Sponser" xml:space="preserve">
+    <value>Sponser</value>
+  </data>
+  <data name="ApplicationHasBeenReceived" xml:space="preserve">
+    <value>Has been received</value>
+  </data>
+  <data name="ConditionalAcceptance" xml:space="preserve">
+    <value>Conditional acceptance</value>
+  </data>
+  <data name="WaitingList" xml:space="preserve">
+    <value>Waiting list</value>
+  </data>
+  <data name="CurrentStage" xml:space="preserve">
+    <value>Current Stage</value>
+  </data>
+  <data name="PreviousStage" xml:space="preserve">
+    <value>Previous Stage</value>
+  </data>
+  <data name="System_Header" xml:space="preserve">
+    <value>Enrollment</value>
+  </data>
+  <data name="EnrollmentRequestCanNotUpdate" xml:space="preserve">
+    <value>Sorry , Request status not allow you to update the request .</value>
+  </data>
+  <data name="Admitted" xml:space="preserve">
+    <value>Admitted</value>
+  </data>
+  <data name="ExpiredOffer" xml:space="preserve">
+    <value>Expired Offer</value>
+  </data>
+  <data name="HasActiveEnrollmentRequest" xml:space="preserve">
+    <value>Sorry , This student already has an active enrollment request .</value>
+  </data>
+  <data name="AdmissionByStauts" xml:space="preserve">
+    <value>Admission By Stauts</value>
+  </data>
+  <data name="AdmissionByStautsHint" xml:space="preserve">
+    <value>Labels hidden if value is less than (10%) of the pie .</value>
+  </data>
+  <data name="EnrollmentSponsor" xml:space="preserve">
+    <value>Enrollment Sponsor</value>
+  </data>
+  <data name="EnrollStudent" xml:space="preserve">
+    <value>Enroll Student</value>
+  </data>
+  <data name="Sponsor" xml:space="preserve">
+    <value>Sponsor</value>
+  </data>
+  <data name="PrintCertification" xml:space="preserve">
+    <value>Print Certification</value>
+  </data>
+  <data name="NoShowPopupConfirmation" xml:space="preserve">
+    <value>Are you sure to change the student status to No Show ?</value>
+  </data>
+  <data name="NoShowPopupHeader" xml:space="preserve">
+    <value>Change enrollment staus to no show</value>
+  </data>
+  <data name="Achievement" xml:space="preserve">
+    <value>Achievement</value>
+  </data>
+  <data name="Intake" xml:space="preserve">
+    <value>Intake</value>
+  </data>
+  <data name="ActiveStudents" xml:space="preserve">
+    <value>Active Students</value>
+  </data>
+  <data name="GraduatedAssociation" xml:space="preserve">
+    <value>Graduated Association</value>
+  </data>
+  <data name="IntakeTerm" xml:space="preserve">
+    <value>Intake Term</value>
+  </data>
+  <data name="Applicants" xml:space="preserve">
+    <value>Applicants</value>
+  </data>
+  <data name="ResidentStudentsAdmissionPeriodExpired" xml:space="preserve">
+    <value>Sorry, the resident students admission period has expired</value>
+  </data>
+  <data name="ResidentStudentsRegistrationPeriodExpired" xml:space="preserve">
+    <value>Sorry, the enrollment request period for resident students has expired</value>
+  </data>
+  <data name="InTakeStudentsToNoShow" xml:space="preserve">
+    <value>Sorry, it is not possible to change the status of students to (No-Show) unless the student's intake semester is the current semester.</value>
+  </data>
+  <data name="ApplicationStatus" xml:space="preserve">
+    <value>Application status</value>
+  </data>
+  <data name="LastYakeenUpdated" xml:space="preserve">
+    <value>Last automatically update  at</value>
+  </data>
+  <data name="NoCollegeSpecified" xml:space="preserve">
+    <value>{0} is not specified</value>
+  </data>
+  <data name="NoSpecializationSpecified" xml:space="preserve">
+    <value>Specialization is not specified</value>
+  </data>
+  <data name="ArgumentException_BirthDate" xml:space="preserve">
+    <value>Sorry , Student birth date cannot be Null Or Empty</value>
+  </data>
+  <data name="ArgumentException_BirthDate_IsValid" xml:space="preserve">
+    <value>Sorry , Invalid student birth date</value>
+  </data>
+  <data name="ArgumentException_NationalID" xml:space="preserve">
+    <value>Sorry , Student nationalId cannot be Null Or Empty</value>
+  </data>
+  <data name="ArgumentNullException_YakeenStudent" xml:space="preserve">
+    <value>Sorry, the trainee information has not been retrieved from the National Information Center. Please check the trainee Hijri  birth date and try again later</value>
+  </data>
+  <data name="ChangeSpecializationFoundationLevelInfo" xml:space="preserve">
+    <value>There is no other specialization for foundation level</value>
+  </data>
+  <data name="StudentHasAnEnrollmentRequest" xml:space="preserve">
+    <value>The student {0} national ID No {1} already have an application with status {2}</value>
+  </data>
+  <data name="StudentIsAlreadyEnrollment" xml:space="preserve">
+    <value>The student {0} national identity number {1} already enrolled in {2}</value>
+  </data>
+  <data name="FilterApplicantsBeforeBatchEditing" xml:space="preserve">
+    <value>Please try to filter applicants before batch editing .</value>
+  </data>
+  <data name="BatchEditingModalPopupHeaderFilter" xml:space="preserve">
+    <value>Filter the applications list for batch editing</value>
+  </data>
+  <data name="NoAvailableColleges" xml:space="preserve">
+    <value>Sorry, there are no available colleges or institutes for registration .</value>
+  </data>
+  <data name="CanNotSendOrEditEnrollmentRequest" xml:space="preserve">
+    <value>You cannot modify the enrollment request due to the expiration of the  the modification period  of enrollment requests .</value>
+  </data>
+  <data name="ExamResult_AssessmentCode" xml:space="preserve">
+    <value>Assessment Code</value>
+  </data>
+  <data name="ExamResult_Percentage" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+  <data name="ExamResult_Qualification" xml:space="preserve">
+    <value>Qualification</value>
+  </data>
+  <data name="ExamResult_ResultDate" xml:space="preserve">
+    <value>Exam Date</value>
+  </data>
+  <data name="ExamResult_ResultStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ExamResult_TestDate" xml:space="preserve">
+    <value>Test Date</value>
+  </data>
+  <data name="ExamResult_TotalScore" xml:space="preserve">
+    <value>Total Score</value>
+  </data>
+  <data name="ExamResult_DateTo" xml:space="preserve">
+    <value>To Date</value>
+  </data>
+  <data name="ExamResult_FromDate" xml:space="preserve">
+    <value>From Date </value>
+  </data>
+  <data name="ExamResult_OrganizationCode" xml:space="preserve">
+    <value>Organization Code</value>
+  </data>
+  <data name="EnrolledBefore" xml:space="preserve">
+    <value>Dear trainee your current enrollment status is {0} . You contact the administration of {1} or the administration of the College Of Excellence (COE) - Student Affairs department in order to update the status of your file in the admission and registration system</value>
+  </data>
+  <data name="ExamResult_AssessmentSubType" xml:space="preserve">
+    <value>Assessment SubType</value>
+  </data>
+  <data name="ExamResult_AssessmentType" xml:space="preserve">
+    <value>Assessment Type</value>
+  </data>
+  <data name="ExamResult_Grade" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="ExamResult_ScheduleCode" xml:space="preserve">
+    <value>Assessment Period Code</value>
+  </data>
+  <data name="AcademicTerm" xml:space="preserve">
+    <value>Academic Term</value>
+  </data>
+  <data name="ExamResult_ComponentName" xml:space="preserve">
+    <value>Component</value>
+  </data>
+  <data name="ExamResult_AssessmentComponent" xml:space="preserve">
+    <value>Assessment Component</value>
+  </data>
+  <data name="ExamResult_Program" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="ExamResult_ExamBookingCode" xml:space="preserve">
+    <value>Exam Booking Code</value>
+  </data>
+  <data name="ExpectedGraduation" xml:space="preserve">
+    <value>Expected Graduation</value>
+  </data>
+  <data name="ExamResult_QualificationIDs" xml:space="preserve">
+    <value>Qualifications</value>
+  </data>
+  <data name="UpdateAutomatically" xml:space="preserve">
+    <value>Automatically update</value>
+  </data>
+  <data name="RegistrationNotOpenForColleges" xml:space="preserve">
+    <value>Sorry, You cannot submit the application because of the registration for {0} colleges has not yet been opened</value>
+  </data>
+  <data name="ExamResult_TestCenterCode" xml:space="preserve">
+    <value>Test center code</value>
+  </data>
+  <data name="ExamResults" xml:space="preserve">
+    <value>Exam Results</value>
+  </data>
+  <data name="CanNotSendGenderEnrollmentRequest" xml:space="preserve">
+    <value>Sorry, you can not register new application because the registration has not been opened yet for {0}</value>
+  </data>
+  <data name="Angle" xml:space="preserve">
+    <value>Angle</value>
+  </data>
+  <data name="ApplicationsByStatus" xml:space="preserve">
+    <value>Applications By Status</value>
+  </data>
+  <data name="Depth" xml:space="preserve">
+    <value>Depth</value>
+  </data>
+  <data name="EnrollmentsByStages" xml:space="preserve">
+    <value>Enrollments By Stages</value>
+  </data>
+  <data name="EnrollmentsByStatus" xml:space="preserve">
+    <value>Enrollments By Status</value>
+  </data>
+  <data name="TopRadius" xml:space="preserve">
+    <value>Top Radius</value>
+  </data>
+  <data name="TraineeInformation" xml:space="preserve">
+    <value>Trainee Information</value>
+  </data>
+  <data name="TraineeName" xml:space="preserve">
+    <value>Trainee Name</value>
+  </data>
+  <data name="Trainees" xml:space="preserve">
+    <value>Trainees</value>
+  </data>
+  <data name="ErrorOccured" xml:space="preserve">
+    <value>Sorry, an error has been occurred ,please try again later</value>
+  </data>
+  <data name="Certificate" xml:space="preserve">
+    <value>Certificate</value>
+  </data>
+  <data name="CertificateNotIssued" xml:space="preserve">
+    <value>The trainee is under studying and there is no certificate has been issued to him</value>
+  </data>
+  <data name="TrainingProgram" xml:space="preserve">
+    <value>Training Program</value>
+  </data>
+</root>

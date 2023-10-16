@@ -1,0 +1,846 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="College" xml:space="preserve">
+    <value>المركز</value>
+  </data>
+  <data name="CourseCode" xml:space="preserve">
+    <value>كود الدورة</value>
+  </data>
+  <data name="CourseCreditHours" xml:space="preserve">
+    <value>الساعات المعتمدة</value>
+  </data>
+  <data name="CourseLevel" xml:space="preserve">
+    <value>مستوى الدورة</value>
+  </data>
+  <data name="CourseModuleTitle" xml:space="preserve">
+    <value>الدورات</value>
+  </data>
+  <data name="CourseName" xml:space="preserve">
+    <value>اسم الدورة التدريبية</value>
+  </data>
+  <data name="CoursesTiltle" xml:space="preserve">
+    <value>الدورات</value>
+  </data>
+  <data name="CourseType" xml:space="preserve">
+    <value>نوع الدورة</value>
+  </data>
+  <data name="DefaultSelect" xml:space="preserve">
+    <value>تحديد</value>
+  </data>
+  <data name="NewCourseTiltle" xml:space="preserve">
+    <value>دورة جديدة</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Specialization" xml:space="preserve">
+    <value>تخصص</value>
+  </data>
+  <data name="AcademicYear" xml:space="preserve">
+    <value>السنة الأكاديمية</value>
+  </data>
+  <data name="ActionDelete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="ActionEdit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="ActionOpenCourse" xml:space="preserve">
+    <value>دورة مفتوحة في الفصل الدراسي</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>أجراءات</value>
+  </data>
+  <data name="ActionView" xml:space="preserve">
+    <value>عرض</value>
+  </data>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>البحث المتقدم</value>
+  </data>
+  <data name="BtnBack" xml:space="preserve">
+    <value>عودة</value>
+  </data>
+  <data name="CourseClosedSuccessMessage" xml:space="preserve">
+    <value>تم إغلاق الدورة بنجاح</value>
+  </data>
+  <data name="CourseCreatedOn" xml:space="preserve">
+    <value>تم إنشاؤها على</value>
+  </data>
+  <data name="CourseCreditHoursValidation" xml:space="preserve">
+    <value>الرجاء إدخال قيمة رقمية أكبر من 0</value>
+  </data>
+  <data name="CourseDeletedSuccessMessage" xml:space="preserve">
+    <value>تم حذف الدورة بنجاح</value>
+  </data>
+  <data name="CourseOpennedSuccessMessage" xml:space="preserve">
+    <value>تم فتح الدورة بنجاح</value>
+  </data>
+  <data name="CourseOpenTerms" xml:space="preserve">
+    <value>فتح الفصل الدراسي</value>
+  </data>
+  <data name="CourseSavedSuccessMessage" xml:space="preserve">
+    <value>تم حفظ الدورة بنجاح</value>
+  </data>
+  <data name="CourseUpdatedOn" xml:space="preserve">
+    <value>تحديث في</value>
+  </data>
+  <data name="CourseUpdatedSuccessMessage" xml:space="preserve">
+    <value>تم تحديث الدورة بنجاح</value>
+  </data>
+  <data name="DetailsCourseTitle" xml:space="preserve">
+    <value>تفاصيل الدورة</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="ErrorCourseDuplicatedBody" xml:space="preserve">
+    <value>بالطبع مع نفس رمز الدورة والكلية موجودة بالفعل</value>
+  </data>
+  <data name="ErrorCourseDuplicatedHeader" xml:space="preserve">
+    <value>دورة مكررة!</value>
+  </data>
+  <data name="ErrorCourseHasSections" xml:space="preserve">
+    <value>معذرة ، لا يمكننا حذف هذه الدورة ، تم العثور على أقسام متعلقة بهذه الدورة</value>
+  </data>
+  <data name="ErrorCourseTermDuplicatedBody" xml:space="preserve">
+    <value>الدورة مفتوحة بالفعل في هذه الفترة</value>
+  </data>
+  <data name="ErrorCourseTermDuplicatedHeader" xml:space="preserve">
+    <value>فتح بالفعل !</value>
+  </data>
+  <data name="ErrorSave" xml:space="preserve">
+    <value>حدث خطأ أثناء الحفظ ، يرجى المحاولة مرة أخرى لاحقًا</value>
+  </data>
+  <data name="ErrorTermCourseHasSections" xml:space="preserve">
+    <value>عذرًا ، لا يمكننا حذف هذا المصطلح ، يجب حذف جميع الأقسام الموجودة في هذا المصطلح من قبل</value>
+  </data>
+  <data name="FileUploadAttachment" xml:space="preserve">
+    <value>المرفق</value>
+  </data>
+  <data name="NoDataToDisplay" xml:space="preserve">
+    <value>لا توجد عناصر</value>
+  </data>
+  <data name="OpenCourseTitle" xml:space="preserve">
+    <value>افتح الدورة</value>
+  </data>
+  <data name="Provider" xml:space="preserve">
+    <value>مزود</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
+  <data name="Term" xml:space="preserve">
+    <value>الفصل الدراسي</value>
+  </data>
+  <data name="UpdateCourseTitle" xml:space="preserve">
+    <value>تحرير الدورة</value>
+  </data>
+  <data name="ActionUpload" xml:space="preserve">
+    <value>رفع</value>
+  </data>
+  <data name="SectionModuleTitle" xml:space="preserve">
+    <value>الشعب</value>
+  </data>
+  <data name="UploadRequestsTiltle" xml:space="preserve">
+    <value>الطلبات التي تم تحميلها</value>
+  </data>
+  <data name="FileUploadValidExtensions" xml:space="preserve">
+    <value>يرجى تحميل تنسيق صالح (.csv)</value>
+  </data>
+  <data name="btnAllRequests" xml:space="preserve">
+    <value>عرض كل التحميلات</value>
+  </data>
+  <data name="btnViewInvalidRecords" xml:space="preserve">
+    <value>عرض أخطاء التحقق من الصحة</value>
+  </data>
+  <data name="ErrorAttachmentIsEmpty" xml:space="preserve">
+    <value>ملف المرفق فارغ ، يرجى تحديد ملف آخر</value>
+  </data>
+  <data name="SectionUploadInfo" xml:space="preserve">
+    <value>برجاء التأكد من إضافة جميع الدورات إلى النظام قبل تحميل الأقسام</value>
+  </data>
+  <data name="SectionEnrollmentModuleTitle" xml:space="preserve">
+    <value>تسجيل طلاب الشعبة</value>
+  </data>
+  <data name="UploadSectionEnrollmentTiltle" xml:space="preserve">
+    <value>تسجيل الطلاب بالشعب</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>فترة</value>
+  </data>
+  <data name="AttendanceModuleTitle" xml:space="preserve">
+    <value>الحضور</value>
+  </data>
+  <data name="UploadAttendanceTiltle" xml:space="preserve">
+    <value>رفع الحضور</value>
+  </data>
+  <data name="SectionUploadDetailsTitle" xml:space="preserve">
+    <value>تفاصيل تحميل الشعبة</value>
+  </data>
+  <data name="InvalidRecords" xml:space="preserve">
+    <value>سجلات غير صالحة</value>
+  </data>
+  <data name="MD_TermType_Name" xml:space="preserve">
+    <value>نوع المصطلح</value>
+  </data>
+  <data name="MD_UploadRejectionReason_Name" xml:space="preserve">
+    <value>تفاصيل التحقق</value>
+  </data>
+  <data name="UploadDetailsTitle" xml:space="preserve">
+    <value>تفاصيل التحميل</value>
+  </data>
+  <data name="MD_AcademicYear_Name" xml:space="preserve">
+    <value>السنة الأكاديمية</value>
+  </data>
+  <data name="MD_College_Name" xml:space="preserve">
+    <value>المركز</value>
+  </data>
+  <data name="MD_SectionValidation_CourseCode" xml:space="preserve">
+    <value>كود الدورة</value>
+  </data>
+  <data name="MD_SectionValidation_FirstMonth" xml:space="preserve">
+    <value>الشهر الأول</value>
+  </data>
+  <data name="MD_SectionValidation_FourthMonth" xml:space="preserve">
+    <value>الشهر الرابع</value>
+  </data>
+  <data name="MD_SectionValidation_SecondMonth" xml:space="preserve">
+    <value>الشهر الثاني</value>
+  </data>
+  <data name="MD_SectionValidation_SectionCode" xml:space="preserve">
+    <value>كود القسم</value>
+  </data>
+  <data name="MD_SectionValidation_ThirdMonth" xml:space="preserve">
+    <value>الشهر الثالث</value>
+  </data>
+  <data name="MD_UploadRequest_CreatedBy" xml:space="preserve">
+    <value>تم الرفع بواسطة</value>
+  </data>
+  <data name="MD_UploadRequest_CreatedOn" xml:space="preserve">
+    <value>تم الرفع في</value>
+  </data>
+  <data name="MD_UploadRequest_NoOfInValidRecords" xml:space="preserve">
+    <value>عدد الأخطاء</value>
+  </data>
+  <data name="MD_UploadRequest_NoOfRecords" xml:space="preserve">
+    <value>عدد السجلات</value>
+  </data>
+  <data name="MD_UploadRequest_UploadedFileURL" xml:space="preserve">
+    <value>URL الملف</value>
+  </data>
+  <data name="MD_SectionEnrollmentAttendanceValidation_AttendedHours" xml:space="preserve">
+    <value>ساعات الحضور</value>
+  </data>
+  <data name="MD_SectionEnrollmentAttendanceValidation_ExcusedHours" xml:space="preserve">
+    <value>ساعات معذور</value>
+  </data>
+  <data name="MD_SectionEnrollmentAttendanceValidation_ExtraHours" xml:space="preserve">
+    <value>ساعات إضافية</value>
+  </data>
+  <data name="MD_SectionEnrollmentValidation_EnrollmentStatus" xml:space="preserve">
+    <value>حالة التسجيل</value>
+  </data>
+  <data name="MD_SectionEnrollmentValidation_NationalID" xml:space="preserve">
+    <value>الهوية الوطنية</value>
+  </data>
+  <data name="CourseCodeLengthValidation" xml:space="preserve">
+    <value>الحد الأقصى لطول رمز الدورة التدريبية هو 20 حرفًا</value>
+  </data>
+  <data name="UploadFileProcessingCompleted" xml:space="preserve">
+    <value>اكتملت معالجة الملف</value>
+  </data>
+  <data name="UploadFileUnderProcessing" xml:space="preserve">
+    <value>الملف قيد المعالجة ...</value>
+  </data>
+  <data name="UploadValidAndInvalidRecordsChecking" xml:space="preserve">
+    <value>التحقق من السجلات الصالحة وغير الصالحة ...</value>
+  </data>
+  <data name="AttendanceUploadInfo" xml:space="preserve">
+    <value>يرجى التأكد من أن جميع الدورات والأقسام والتسجيل مضافة إلى النظام قبل تحميل الحضور</value>
+  </data>
+  <data name="EnrollmentUploadInfo" xml:space="preserve">
+    <value>يرجى التأكد من إضافة جميع الأقسام والدورات إلى النظام قبل تحميل التسجيل</value>
+  </data>
+  <data name="ActionDownload" xml:space="preserve">
+    <value>تحميل</value>
+  </data>
+  <data name="Msg_OnDeleteCourse" xml:space="preserve">
+    <value>أنت على وشك حذف الدورة بشكل دائم. هل أنت متأكد أنك تريد حذف هذه الدورة؟</value>
+  </data>
+  <data name="Msg_OnDeleteCourseError" xml:space="preserve">
+    <value>عذرا حدث خطأ أثناء حذف هذه الدورة ، يرجى المحاولة مرة أخرى في وقت لاحق.</value>
+  </data>
+  <data name="Msg_OnTermCourseDelete" xml:space="preserve">
+    <value>أنت على وشك حذف هذه الدورة في [AcademicYear] [Term] نهائيًا. هل أنت واثق؟</value>
+  </data>
+  <data name="Msg_OnTermCourseDeleteError" xml:space="preserve">
+    <value>عذرا حدث خطأ أثناء حذف هذه الدورة في هذا الفصل الدراسي ، يرجى المحاولة مرة أخرى في وقت لاحق.</value>
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>تم إنشاؤها على</value>
+  </data>
+  <data name="DetailsSectionTitle" xml:space="preserve">
+    <value>تفاصيل الشعبة</value>
+  </data>
+  <data name="OfferedHours" xml:space="preserve">
+    <value>الساعات المعروضة</value>
+  </data>
+  <data name="SectionAttendancePeriods" xml:space="preserve">
+    <value>فترات حضور الشعبة</value>
+  </data>
+  <data name="SectionCode" xml:space="preserve">
+    <value>كود الشعبة</value>
+  </data>
+  <data name="SectionEndDate" xml:space="preserve">
+    <value>تاريخ انتهاء الدورة</value>
+  </data>
+  <data name="SectionStartDate" xml:space="preserve">
+    <value>تاريخ بدء الدورة</value>
+  </data>
+  <data name="SectionsTitle" xml:space="preserve">
+    <value>الشعب</value>
+  </data>
+  <data name="TotalHours" xml:space="preserve">
+    <value>مجموع الساعات</value>
+  </data>
+  <data name="UpdatedOn" xml:space="preserve">
+    <value>تحديث في</value>
+  </data>
+  <data name="DetailsSectionEnrollmentTitle" xml:space="preserve">
+    <value>تفاصيل تسجيل الشعبة</value>
+  </data>
+  <data name="NationalId" xml:space="preserve">
+    <value>الهوية الوطنية</value>
+  </data>
+  <data name="DetailsAttendanceTitle" xml:space="preserve">
+    <value>تفاصيل الحضور</value>
+  </data>
+  <data name="AttendedHours" xml:space="preserve">
+    <value>ساعات الحضور</value>
+  </data>
+  <data name="ExcusedHours" xml:space="preserve">
+    <value>ساعات معذور</value>
+  </data>
+  <data name="ExtraHours" xml:space="preserve">
+    <value>ساعات إضافية</value>
+  </data>
+  <data name="OJT" xml:space="preserve">
+    <value>OJT</value>
+  </data>
+  <data name="UploadRequestsTitle" xml:space="preserve">
+    <value>الطلبات التي تم تحميلها</value>
+  </data>
+  <data name="UploadRequestDeletedSuccessMessage" xml:space="preserve">
+    <value>تم حذف طلب التحميل بنجاح</value>
+  </data>
+  <data name="UploadSectionTiltle" xml:space="preserve">
+    <value>انشاء شعبة</value>
+  </data>
+  <data name="MD_UploadRequestStatus_Name" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="DateFrom" xml:space="preserve">
+    <value>التاريخ من</value>
+  </data>
+  <data name="DateTo" xml:space="preserve">
+    <value>التاريخ الى</value>
+  </data>
+  <data name="ErrorUploadRequestHasSections" xml:space="preserve">
+    <value>عذرًا ، لا يمكننا حذف طلب التحميل هذا ، يجب حذف جميع الأقسام ذات الصلة من قبل</value>
+  </data>
+  <data name="ErrorUploadRequestHasAttendance" xml:space="preserve">
+    <value>عذرًا ، لا يمكننا حذف طلب التحميل هذا ، تم العثور على تسجيل حضور</value>
+  </data>
+  <data name="Msg_OnUploadRequestdelete" xml:space="preserve">
+    <value>هل أنت متأكد أنك تريد حذف طلب التحميل هذا؟</value>
+  </data>
+  <data name="Msg_OnUploadRequestdeleteError" xml:space="preserve">
+    <value>عذرا حدث خطأ أثناء حذف طلب التحميل هذا</value>
+  </data>
+  <data name="Msg_UnauthorizedErrorMessage" xml:space="preserve">
+    <value>أنت غير مصرح لك بمشاهدة هذه الصفحة ، يرجى الاتصال بمسؤول النظام.</value>
+  </data>
+  <data name="Msg_UnauthorizedHeader" xml:space="preserve">
+    <value>غير مصرح</value>
+  </data>
+  <data name="ErrorModuleTitle" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="ActionDownloadTemplate" xml:space="preserve">
+    <value>تحميل النموذج</value>
+  </data>
+  <data name="SectionEnrollment_Enrolled" xml:space="preserve">
+    <value>المقيدين</value>
+  </data>
+  <data name="SectionEnrollment_Repeated" xml:space="preserve">
+    <value>معاد</value>
+  </data>
+  <data name="MD_UploadRequest_UploadRequestStatusID" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="System_Header" xml:space="preserve">
+    <value>نظام تسجيل الحضور</value>
+  </data>
+  <data name="Breadcrum_Title_All" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Breadcrum_Title_New" xml:space="preserve">
+    <value>جديد</value>
+  </data>
+  <data name="Breadcrum_Title_Upload" xml:space="preserve">
+    <value>رفع</value>
+  </data>
+  <data name="Breadcrum_Title_UploadRequests" xml:space="preserve">
+    <value>الطلبات التي تم تحميلها</value>
+  </data>
+  <data name="ErrorUploadRequestHasEnrollments" xml:space="preserve">
+    <value>عذرًا ، لا يمكننا حذف طلب التحميل هذا ، يجب حذف جميع عمليات التسجيل ذات الصلة أولاً</value>
+  </data>
+  <data name="Actived" xml:space="preserve">
+    <value>نشط</value>
+  </data>
+  <data name="AttendenceStatus" xml:space="preserve">
+    <value>حالة الحضور</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+  </data>
+  <data name="Branches" xml:space="preserve">
+    <value>الفروع</value>
+  </data>
+  <data name="Centers" xml:space="preserve">
+    <value>المراكز</value>
+  </data>
+  <data name="Cities" xml:space="preserve">
+    <value>مدن</value>
+  </data>
+  <data name="ClassEndDate" xml:space="preserve">
+    <value>تاريخ انتهاء الحصة</value>
+  </data>
+  <data name="ClassEndTime" xml:space="preserve">
+    <value>وقت انتهاء الحصة</value>
+  </data>
+  <data name="ClassOfDays" xml:space="preserve">
+    <value>فئة الأيام</value>
+  </data>
+  <data name="ClassStartDate" xml:space="preserve">
+    <value>تاريخ بدء الحصة</value>
+  </data>
+  <data name="ClassStartTime" xml:space="preserve">
+    <value>وقت بدء الحصة</value>
+  </data>
+  <data name="ClassType" xml:space="preserve">
+    <value>نوع الفصل</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>الدورات</value>
+  </data>
+  <data name="FullNameEn" xml:space="preserve">
+    <value>الاسم الكامل بالإنجليزية</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>جنس</value>
+  </data>
+  <data name="IBan" xml:space="preserve">
+    <value>آيبان</value>
+  </data>
+  <data name="JobRole" xml:space="preserve">
+    <value>الدور الوظيفي</value>
+  </data>
+  <data name="NumberSeats" xml:space="preserve">
+    <value>عدد المقاعد</value>
+  </data>
+  <data name="Programme" xml:space="preserve">
+    <value>برنامج</value>
+  </data>
+  <data name="Programs" xml:space="preserve">
+    <value>البرامج</value>
+  </data>
+  <data name="SpecializationID" xml:space="preserve">
+    <value>تخصص</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="TraineeName" xml:space="preserve">
+    <value>اسم المتدرب</value>
+  </data>
+  <data name="TraineeStatus" xml:space="preserve">
+    <value>حالة المتدرب</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="UserRole" xml:space="preserve">
+    <value>دور المستخدم</value>
+  </data>
+  <data name="day" xml:space="preserve">
+    <value>يوم</value>
+  </data>
+  <data name="ToSection" xml:space="preserve">
+    <value>إلى الشعبة</value>
+  </data>
+  <data name="SessionsModuleTitle" xml:space="preserve">
+    <value>المحاضرات</value>
+  </data>
+  <data name="Url_ActionDownloadTemplateAttendanceFile" xml:space="preserve">
+    <value>/Templates/Attendance.csv</value>
+  </data>
+  <data name="Url_ActionDownloadTemplateEnrollmentFile" xml:space="preserve">
+    <value>/Templates/SectionEnrollment.csv</value>
+  </data>
+  <data name="Url_ActionDownloadTemplateSectionFile" xml:space="preserve">
+    <value>/Templates/Sections.csv</value>
+  </data>
+  <data name="Url_AttendaceDetails" xml:space="preserve">
+    <value>/DCS/Attendance/Details/</value>
+  </data>
+  <data name="Url_Attendance" xml:space="preserve">
+    <value>/DCS/Attendance</value>
+  </data>
+  <data name="Url_AttendanceUploadRequests" xml:space="preserve">
+    <value>/DCS/Attendance/UploadRequests</value>
+  </data>
+  <data name="Url_AttendanceUploadRequestsDelete" xml:space="preserve">
+    <value>/DCS/Attendance/DeleteUploadRequest</value>
+  </data>
+  <data name="Url_Course" xml:space="preserve">
+    <value>/DCS/Course</value>
+  </data>
+  <data name="Url_CourseDelete" xml:space="preserve">
+    <value>/DCS/Course/Delete</value>
+  </data>
+  <data name="Url_CourseDeleteSuccess" xml:space="preserve">
+    <value>/DCS/Course?success=3</value>
+  </data>
+  <data name="Url_CourseDeleteTermCourse" xml:space="preserve">
+    <value>/DCS/Course/DeleteTermCourse</value>
+  </data>
+  <data name="Url_CourseDetails" xml:space="preserve">
+    <value>/DCS/Course/Details/</value>
+  </data>
+  <data name="Url_CourseNew" xml:space="preserve">
+    <value>/DCS/Course/New</value>
+  </data>
+  <data name="Url_CourseOpen" xml:space="preserve">
+    <value>/DCS/Course/Open/</value>
+  </data>
+  <data name="Url_CourseUpdate" xml:space="preserve">
+    <value>/DCS/Course/Update/</value>
+  </data>
+  <data name="Url_EnrollmentUploadRequests" xml:space="preserve">
+    <value>/DCS/SectionEnrollment/UploadRequests</value>
+  </data>
+  <data name="Url_EnrollmentUploadRequestsDelete" xml:space="preserve">
+    <value>/DCS/SectionEnrollment/DeleteUploadRequest</value>
+  </data>
+  <data name="Url_GetAcademicYearsByCollegeId" xml:space="preserve">
+    <value>/DCS/Lookup/GetAcademicYearsByCollegeId</value>
+  </data>
+  <data name="Url_GetAcademicYearTerms" xml:space="preserve">
+    <value>/DCS/Lookup/GetAcademicYearTerms</value>
+  </data>
+  <data name="Url_GetAttendanceSettingPeriods" xml:space="preserve">
+    <value>/DCS/Lookup/GetAttendanceSettingPeriods</value>
+  </data>
+  <data name="Url_GetCollegeAcademicYearsByCollegeId" xml:space="preserve">
+    <value>/DCS/Lookup/GetCollegeAcademicYearsByCollegeId</value>
+  </data>
+  <data name="Url_GetCollegesByProviderId" xml:space="preserve">
+    <value>/DCS/Lookup/GetCollegesByProviderId</value>
+  </data>
+  <data name="Url_GetSpecializationsByCollegeIdAndLevelId" xml:space="preserve">
+    <value>/DCS/Lookup/GetSpecializationsByCollegeIdAndLevelId</value>
+  </data>
+  <data name="Url_GetTermsByCollegeAcademicYearId" xml:space="preserve">
+    <value>/DCS/Lookup/GetTermsByCollegeAcademicYearId</value>
+  </data>
+  <data name="Url_Section" xml:space="preserve">
+    <value>/DCS/Section</value>
+  </data>
+  <data name="Url_SectionDetails" xml:space="preserve">
+    <value>/DCS/Section/Details/</value>
+  </data>
+  <data name="Url_SectionEnrollment" xml:space="preserve">
+    <value>/DCS/SectionEnrollment</value>
+  </data>
+  <data name="Url_SectionEnrollmentDetails" xml:space="preserve">
+    <value>/DCS/SectionEnrollment/Details/</value>
+  </data>
+  <data name="Url_SectionUploadRequests" xml:space="preserve">
+    <value>/DCS/Section/UploadRequests</value>
+  </data>
+  <data name="Url_SectionUploadRequestsDelete" xml:space="preserve">
+    <value>/DCS/Section/DeleteUploadRequest</value>
+  </data>
+  <data name="Url_UploadRequestsAttendanceDetails" xml:space="preserve">
+    <value>/DCS/Attendance/UploadDetails/</value>
+  </data>
+  <data name="Url_UploadRequestsEnrollmentDetails" xml:space="preserve">
+    <value>/DCS/SectionEnrollment/UploadDetails/</value>
+  </data>
+  <data name="Url_UploadRequestsSectionDetails" xml:space="preserve">
+    <value>/DCS/Section/UploadDetails/</value>
+  </data>
+  <data name="Url_UploadRequestsSessionDetails" xml:space="preserve">
+    <value>/DCS/Session/UploadDetails/</value>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>الشعبة</value>
+  </data>
+  <data name="SectionAttendance" xml:space="preserve">
+    <value>حضور الشعبة</value>
+  </data>
+  <data name="ExcusedAbsence" xml:space="preserve">
+    <value>غياب بعذر</value>
+  </data>
+  <data name="DailyAttendance" xml:space="preserve">
+    <value>الحضور اليومي</value>
+  </data>
+  <data name="AttendanceInfo" xml:space="preserve">
+    <value>معلومات الحضور</value>
+  </data>
+  <data name="StudentsList" xml:space="preserve">
+    <value>قائمة الطلاب</value>
+  </data>
+  <data name="StudentName" xml:space="preserve">
+    <value>أسم الطالب</value>
+  </data>
+  <data name="AttendanceStatus" xml:space="preserve">
+    <value>حالة الحضور</value>
+  </data>
+  <data name="Scheduler" xml:space="preserve">
+    <value>جدولة الحضور</value>
+  </data>
+  <data name="SchedulerManagement" xml:space="preserve">
+    <value>إدارة جدولة الحضور</value>
+  </data>
+  <data name="SectionDetails" xml:space="preserve">
+    <value>بيانات الشعبة</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>احفظ التغييرات</value>
+  </data>
+  <data name="CancelChanges" xml:space="preserve">
+    <value>إلغاء التغييرات</value>
+  </data>
+  <data name="PreviewChanges" xml:space="preserve">
+    <value>معاينة التغييرات</value>
+  </data>
+  <data name="SessionTime" xml:space="preserve">
+    <value>وقت المحاضرة</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>الى</value>
+  </data>
+  <data name="NumberOfAttendees" xml:space="preserve">
+    <value>عدد الحضور</value>
+  </data>
+  <data name="NumberOfAbsentees" xml:space="preserve">
+    <value>عدد الغائبين</value>
+  </data>
+  <data name="NumberOfExcused" xml:space="preserve">
+    <value>عدد المعتذرين</value>
+  </data>
+  <data name="Instructor" xml:space="preserve">
+    <value>المحاضر</value>
+  </data>
+  <data name="InstructorSessions" xml:space="preserve">
+    <value>جلسات المحاضر</value>
+  </data>
+  <data name="SectionSessions" xml:space="preserve">
+    <value>محاضرات الشعبة</value>
+  </data>
+  <data name="CourseSessions" xml:space="preserve">
+    <value>جلسات الدورة</value>
+  </data>
+  <data name="DelegateSession" xml:space="preserve">
+    <value>تفويض الجلسة</value>
+  </data>
+  <data name="AttendanceReports" xml:space="preserve">
+    <value>تقارير الحضور</value>
+  </data>
+  <data name="DivisionCode" xml:space="preserve">
+    <value>كود الشعبة</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>وقت بدء المحاضرة</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>وقت انتهاء المحاضرة</value>
+  </data>
+  <data name="NewSchedule" xml:space="preserve">
+    <value>جدولة جديدة</value>
+  </data>
+  <data name="DownloadTemplate" xml:space="preserve">
+    <value>تحميل النموذج</value>
+  </data>
+  <data name="UploadAttendance" xml:space="preserve">
+    <value>رفع الحضور</value>
+  </data>
+  <data name="NewSessionSchedule" xml:space="preserve">
+    <value>جدولة الجلسة الجديدة</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>عنوان</value>
+  </data>
+  <data name="UploadSessionTiltle" xml:space="preserve">
+    <value>انشاء محاضرة</value>
+  </data>
+  <data name="Url_ActionDownloadTemplateSessionFile" xml:space="preserve">
+    <value>/Templates/Sessions.csv</value>
+  </data>
+  <data name="ErrorFileContainsInvalidRecords" xml:space="preserve">
+    <value>يحتوي الملف على سجلات بها اخطاء</value>
+  </data>
+  <data name="Msg_SessionsUploadedSuccessfully" xml:space="preserve">
+    <value>تم جدولة المحاضرات بنجاح</value>
+  </data>
+  <data name="IsRecurring" xml:space="preserve">
+    <value>متكرر</value>
+  </data>
+  <data name="TransferData" xml:space="preserve">
+    <value>بيانات التحويل</value>
+  </data>
+  <data name="TransferTrainees" xml:space="preserve">
+    <value>تحويل المتدربين</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>إيقاف</value>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>تفعيل</value>
+  </data>
+  <data name="Msg_AttendanceRecordedBefore" xml:space="preserve">
+    <value>تم تسجيل حضور هذه المحاضرة من قبل.</value>
+  </data>
+  <data name="Msg_NoAttendanceToday" xml:space="preserve">
+    <value>لا يوجد حضور لهذه المحاضرة اليوم.</value>
+  </data>
+  <data name="Url_ActionDownloadTemplateSectionSixMonthsFile" xml:space="preserve">
+    <value>/Templates/Sections6M.csv</value>
+  </data>
+</root>

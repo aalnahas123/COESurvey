@@ -1,0 +1,15 @@
+﻿@using COE.Common.Localization.Security;
+@using COE.Common.Localization;
+@model List<COE.Common.Model.AspNetRoles>
+@{
+    ViewBag.Title = SecurityResources.SecurityManagment;
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+ }
+@using (Html.BeginForm("Index", "Security", FormMethod.Post, new { @class = "", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="panel-body">
+     Security
+    </div>
+}
+ 

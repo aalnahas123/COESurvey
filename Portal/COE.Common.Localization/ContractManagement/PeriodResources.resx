@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcademicYear" xml:space="preserve">
+    <value>Academic Year</value>
+  </data>
+  <data name="AcademicYearTerm" xml:space="preserve">
+    <value>Academic Year Term</value>
+  </data>
+  <data name="AcademicYearTermEndDate" xml:space="preserve">
+    <value>Academic Year Term End Date</value>
+  </data>
+  <data name="AcademicYearTermStartDate" xml:space="preserve">
+    <value>Academic Year Term Start Date</value>
+  </data>
+  <data name="AdmissionEndDate" xml:space="preserve">
+    <value>Admission End Date</value>
+  </data>
+  <data name="AdmissionEndDateMustBeGreaterThanAdmissionStartDate" xml:space="preserve">
+    <value>Admission end date must be greater than admission start date</value>
+  </data>
+  <data name="AdmissionStartDate" xml:space="preserve">
+    <value>Admission Start Date</value>
+  </data>
+  <data name="College" xml:space="preserve">
+    <value>College</value>
+  </data>
+  <data name="Colleges" xml:space="preserve">
+    <value>Colleges</value>
+  </data>
+  <data name="CollegeType" xml:space="preserve">
+    <value>College Type</value>
+  </data>
+  <data name="DateMustBeLessThanAcademicYearTermEndDate" xml:space="preserve">
+    <value>Date must be less than the end date of the academic year term .</value>
+  </data>
+  <data name="DeferralEndDate" xml:space="preserve">
+    <value>Deferral End Date</value>
+  </data>
+  <data name="DeferralEndDateMustBeGreaterThanDeferralStartDate" xml:space="preserve">
+    <value>Deferral end date must be greater than deferral start date</value>
+  </data>
+  <data name="DeferralStartDate" xml:space="preserve">
+    <value>Deferral Start Date</value>
+  </data>
+  <data name="DissmisEndDate" xml:space="preserve">
+    <value>Dissmis End Date</value>
+  </data>
+  <data name="DissmisEndDateMustBeGreaterThanDissmisStartDate" xml:space="preserve">
+    <value>Dissmis end date must be greater than dissmis start date</value>
+  </data>
+  <data name="DissmisStartDate" xml:space="preserve">
+    <value>Dissmis Start Date</value>
+  </data>
+  <data name="EditPeriod" xml:space="preserve">
+    <value>Edit Period</value>
+  </data>
+  <data name="ExamEndDate" xml:space="preserve">
+    <value>Exam End Date</value>
+  </data>
+  <data name="ExamEndDateMustBeGreaterThanExamStartDate" xml:space="preserve">
+    <value>Exam end date must be greater than exam start date</value>
+  </data>
+  <data name="ExamStartDate" xml:space="preserve">
+    <value>Exam Start Date</value>
+  </data>
+  <data name="NewPeriod" xml:space="preserve">
+    <value>New Period</value>
+  </data>
+  <data name="PeriodCode" xml:space="preserve">
+    <value>Period Code</value>
+  </data>
+  <data name="PeriodCodeMaxLength" xml:space="preserve">
+    <value>Maximum length {0} should not exceed 10 digits</value>
+  </data>
+  <data name="PeriodDetails" xml:space="preserve">
+    <value>Period Details</value>
+  </data>
+  <data name="PeriodList" xml:space="preserve">
+    <value>Period List</value>
+  </data>
+  <data name="RegistrationEndDate" xml:space="preserve">
+    <value>Registration End Date</value>
+  </data>
+  <data name="RegistrationStartDate" xml:space="preserve">
+    <value>Registration Start Date</value>
+  </data>
+  <data name="RegistrationStartDateMustBeGreaterThanRegistrationStartDate" xml:space="preserve">
+    <value>Registration end date must be greater than registration start date</value>
+  </data>
+  <data name="TransferEndDate" xml:space="preserve">
+    <value>Transfer End Date</value>
+  </data>
+  <data name="TransferEndDateMustBeGreaterThanTransferStartDate" xml:space="preserve">
+    <value>Transfer end date must be greater than transfer start date</value>
+  </data>
+  <data name="TransferStartDate" xml:space="preserve">
+    <value>Transfer Start Date</value>
+  </data>
+  <data name="WithDrawEndDate" xml:space="preserve">
+    <value>WithDraw End Date</value>
+  </data>
+  <data name="WithDrawEndDateMustBeGreaterThanWithDrawStartDate" xml:space="preserve">
+    <value>Withdraw end date must be greater than withdraw start date</value>
+  </data>
+  <data name="WithDrawStartDate" xml:space="preserve">
+    <value>WithDraw Start Date</value>
+  </data>
+  <data name="AcademicYearTermPeriod" xml:space="preserve">
+    <value>Academic Year Term Period</value>
+  </data>
+  <data name="AdmissionStartDateMustBeGreaterThanRegistrationStartDate" xml:space="preserve">
+    <value>Date must be greater than registration start date .</value>
+  </data>
+  <data name="DateMustBeGreaterThanAcademicYearTermStartDate" xml:space="preserve">
+    <value>Date must be greater than academic year term start date .</value>
+  </data>
+  <data name="DateMustBeNotExceedTwoWeeksOfAcademicYearTermStartDate" xml:space="preserve">
+    <value>The date must not exceed two weeks from the academic year term start date</value>
+  </data>
+  <data name="ChangeStatusEndDate" xml:space="preserve">
+    <value>Change Status End Date</value>
+  </data>
+  <data name="ChangeStatusEndDateMustBeGreaterThanChangeStatusStartDate" xml:space="preserve">
+    <value>Change status end date end date must be greater than Change status start date</value>
+  </data>
+  <data name="ChangeStatusStartDate" xml:space="preserve">
+    <value>Change Status Start Date</value>
+  </data>
+  <data name="NoShowEndDate" xml:space="preserve">
+    <value>No-Show End Date</value>
+  </data>
+  <data name="NoShowEndDateMustBeGreaterThanNoShowStartDate" xml:space="preserve">
+    <value>No-Show end date must be greater than no-show start date</value>
+  </data>
+  <data name="NoShowStartDate" xml:space="preserve">
+    <value>No-Show Start Date</value>
+  </data>
+  <data name="RenistateEndDate" xml:space="preserve">
+    <value>Renistate End Date</value>
+  </data>
+  <data name="RenistateEndDateMustBeGreaterThanRenistateStartDate" xml:space="preserve">
+    <value>Renistate end date must be greater than renistate start date</value>
+  </data>
+  <data name="RenistateStartDate" xml:space="preserve">
+    <value>Renistate Start Date</value>
+  </data>
+</root>

@@ -1,0 +1,846 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="College" xml:space="preserve">
+    <value>College</value>
+  </data>
+  <data name="CourseCode" xml:space="preserve">
+    <value>Course Code</value>
+  </data>
+  <data name="CourseCreditHours" xml:space="preserve">
+    <value>Credit Hours</value>
+  </data>
+  <data name="CourseLevel" xml:space="preserve">
+    <value>Course Level</value>
+  </data>
+  <data name="CourseModuleTitle" xml:space="preserve">
+    <value>Courses</value>
+  </data>
+  <data name="CourseName" xml:space="preserve">
+    <value>Course Name</value>
+  </data>
+  <data name="CoursesTiltle" xml:space="preserve">
+    <value>Courses</value>
+  </data>
+  <data name="CourseType" xml:space="preserve">
+    <value>Course Type</value>
+  </data>
+  <data name="DefaultSelect" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="NewCourseTiltle" xml:space="preserve">
+    <value>New Course</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Specialization" xml:space="preserve">
+    <value>Specialization</value>
+  </data>
+  <data name="AcademicYear" xml:space="preserve">
+    <value>Academic Year</value>
+  </data>
+  <data name="ActionDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ActionEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ActionOpenCourse" xml:space="preserve">
+    <value>Open Course On Academic Term</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="ActionView" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>Advanced Search</value>
+  </data>
+  <data name="BtnBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="CourseClosedSuccessMessage" xml:space="preserve">
+    <value>Course closed successfully</value>
+  </data>
+  <data name="CourseCreatedOn" xml:space="preserve">
+    <value>Created On</value>
+  </data>
+  <data name="CourseCreditHoursValidation" xml:space="preserve">
+    <value>Please enter numeric value more than 0</value>
+  </data>
+  <data name="CourseDeletedSuccessMessage" xml:space="preserve">
+    <value>Course deleted successfully</value>
+  </data>
+  <data name="CourseOpennedSuccessMessage" xml:space="preserve">
+    <value>Course opened successfully</value>
+  </data>
+  <data name="CourseOpenTerms" xml:space="preserve">
+    <value>Open Academic Term</value>
+  </data>
+  <data name="CourseSavedSuccessMessage" xml:space="preserve">
+    <value>Course saved successfully</value>
+  </data>
+  <data name="CourseUpdatedOn" xml:space="preserve">
+    <value>Updated On</value>
+  </data>
+  <data name="CourseUpdatedSuccessMessage" xml:space="preserve">
+    <value>Course updated successfully</value>
+  </data>
+  <data name="DetailsCourseTitle" xml:space="preserve">
+    <value>Course Details</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="ErrorCourseDuplicatedBody" xml:space="preserve">
+    <value>course with the same course code and college is already existed</value>
+  </data>
+  <data name="ErrorCourseDuplicatedHeader" xml:space="preserve">
+    <value>Duplicate Course!</value>
+  </data>
+  <data name="ErrorCourseHasSections" xml:space="preserve">
+    <value>Sorry we cannot delete this course , sections related to this course found</value>
+  </data>
+  <data name="ErrorCourseTermDuplicatedBody" xml:space="preserve">
+    <value>course is already opened in this period</value>
+  </data>
+  <data name="ErrorCourseTermDuplicatedHeader" xml:space="preserve">
+    <value>Already Opened !</value>
+  </data>
+  <data name="ErrorSave" xml:space="preserve">
+    <value>Error happened while saving , please try again later</value>
+  </data>
+  <data name="ErrorTermCourseHasSections" xml:space="preserve">
+    <value>Sorry we cannot delete this term,You must delete all sections on this term before</value>
+  </data>
+  <data name="FileUploadAttachment" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="NoDataToDisplay" xml:space="preserve">
+    <value>no items</value>
+  </data>
+  <data name="OpenCourseTitle" xml:space="preserve">
+    <value>Open Course</value>
+  </data>
+  <data name="Provider" xml:space="preserve">
+    <value>Provider</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="Term" xml:space="preserve">
+    <value>Academic Term</value>
+  </data>
+  <data name="UpdateCourseTitle" xml:space="preserve">
+    <value>Edit Course</value>
+  </data>
+  <data name="ActionUpload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="SectionModuleTitle" xml:space="preserve">
+    <value>Sections</value>
+  </data>
+  <data name="UploadRequestsTiltle" xml:space="preserve">
+    <value>Uploaded Requests</value>
+  </data>
+  <data name="FileUploadValidExtensions" xml:space="preserve">
+    <value>please upload valid format (.csv)</value>
+  </data>
+  <data name="btnAllRequests" xml:space="preserve">
+    <value>View all uploads</value>
+  </data>
+  <data name="btnViewInvalidRecords" xml:space="preserve">
+    <value>View validation errors</value>
+  </data>
+  <data name="ErrorAttachmentIsEmpty" xml:space="preserve">
+    <value>Attachment file is empty , please select another file</value>
+  </data>
+  <data name="SectionUploadInfo" xml:space="preserve">
+    <value>Please make sure that all courses added to the system before uploading sections</value>
+  </data>
+  <data name="Url_UploadRequestsSectionDetails" xml:space="preserve">
+    <value>/DCS/Section/UploadDetails/</value>
+  </data>
+  <data name="SectionEnrollmentModuleTitle" xml:space="preserve">
+    <value>Section Enrollment</value>
+  </data>
+  <data name="UploadSectionEnrollmentTiltle" xml:space="preserve">
+    <value>Upload Enrollment</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="AttendanceModuleTitle" xml:space="preserve">
+    <value>Attendance</value>
+  </data>
+  <data name="UploadAttendanceTiltle" xml:space="preserve">
+    <value>Upload Attendance</value>
+  </data>
+  <data name="SectionUploadDetailsTitle" xml:space="preserve">
+    <value>Section Upload Details</value>
+  </data>
+  <data name="InvalidRecords" xml:space="preserve">
+    <value>Invalid Records</value>
+  </data>
+  <data name="MD_TermType_Name" xml:space="preserve">
+    <value>Term Type</value>
+  </data>
+  <data name="MD_UploadRejectionReason_Name" xml:space="preserve">
+    <value>Validation Details</value>
+  </data>
+  <data name="UploadDetailsTitle" xml:space="preserve">
+    <value>Upload Details</value>
+  </data>
+  <data name="MD_AcademicYear_Name" xml:space="preserve">
+    <value>Academic Year</value>
+  </data>
+  <data name="MD_College_Name" xml:space="preserve">
+    <value>College</value>
+  </data>
+  <data name="MD_SectionValidation_CourseCode" xml:space="preserve">
+    <value>Course Code</value>
+  </data>
+  <data name="MD_SectionValidation_FirstMonth" xml:space="preserve">
+    <value>First Month</value>
+  </data>
+  <data name="MD_SectionValidation_FourthMonth" xml:space="preserve">
+    <value>Fourth Month</value>
+  </data>
+  <data name="MD_SectionValidation_SecondMonth" xml:space="preserve">
+    <value>Second Month</value>
+  </data>
+  <data name="MD_SectionValidation_SectionCode" xml:space="preserve">
+    <value>Section Code</value>
+  </data>
+  <data name="MD_SectionValidation_ThirdMonth" xml:space="preserve">
+    <value>Third Month</value>
+  </data>
+  <data name="MD_UploadRequest_CreatedBy" xml:space="preserve">
+    <value>Uploaded by</value>
+  </data>
+  <data name="MD_UploadRequest_CreatedOn" xml:space="preserve">
+    <value>Uploaded on</value>
+  </data>
+  <data name="MD_UploadRequest_NoOfInValidRecords" xml:space="preserve">
+    <value>Number of Errors</value>
+  </data>
+  <data name="MD_UploadRequest_NoOfRecords" xml:space="preserve">
+    <value>Number of Records</value>
+  </data>
+  <data name="MD_UploadRequest_UploadedFileURL" xml:space="preserve">
+    <value>File URL</value>
+  </data>
+  <data name="MD_SectionEnrollmentAttendanceValidation_AttendedHours" xml:space="preserve">
+    <value>Attended Hours</value>
+  </data>
+  <data name="MD_SectionEnrollmentAttendanceValidation_ExcusedHours" xml:space="preserve">
+    <value>Excused Hours</value>
+  </data>
+  <data name="MD_SectionEnrollmentAttendanceValidation_ExtraHours" xml:space="preserve">
+    <value>Extra Hours</value>
+  </data>
+  <data name="MD_SectionEnrollmentValidation_EnrollmentStatus" xml:space="preserve">
+    <value>Enrollment Status</value>
+  </data>
+  <data name="MD_SectionEnrollmentValidation_NationalID" xml:space="preserve">
+    <value>National ID</value>
+  </data>
+  <data name="CourseCodeLengthValidation" xml:space="preserve">
+    <value>Course Code max-length is 20 characters</value>
+  </data>
+  <data name="Url_AttendanceUploadRequests" xml:space="preserve">
+    <value>/DCS/Attendance/UploadRequests</value>
+  </data>
+  <data name="Url_EnrollmentUploadRequests" xml:space="preserve">
+    <value>/DCS/SectionEnrollment/UploadRequests</value>
+  </data>
+  <data name="Url_SectionUploadRequests" xml:space="preserve">
+    <value>/DCS/Section/UploadRequests</value>
+  </data>
+  <data name="UploadFileProcessingCompleted" xml:space="preserve">
+    <value>File Processing Completed</value>
+  </data>
+  <data name="UploadFileUnderProcessing" xml:space="preserve">
+    <value>File Under Processing...</value>
+  </data>
+  <data name="Url_UploadRequestsAttendanceDetails" xml:space="preserve">
+    <value>/DCS/Attendance/UploadDetails/</value>
+  </data>
+  <data name="Url_UploadRequestsEnrollmentDetails" xml:space="preserve">
+    <value>/DCS/SectionEnrollment/UploadDetails/</value>
+  </data>
+  <data name="UploadValidAndInvalidRecordsChecking" xml:space="preserve">
+    <value>Valid &amp; Invalid Records Checking...</value>
+  </data>
+  <data name="AttendanceUploadInfo" xml:space="preserve">
+    <value>Please make sure that all courses, sections , and enrollment added to the system before uploading attendance</value>
+  </data>
+  <data name="EnrollmentUploadInfo" xml:space="preserve">
+    <value>Please make sure that all sections and courses added to the system before uploading enrollment</value>
+  </data>
+  <data name="ActionDownload" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="Msg_OnDeleteCourse" xml:space="preserve">
+    <value>You are about to delete course permanently. Are you sure you want to delete this course?</value>
+  </data>
+  <data name="Msg_OnDeleteCourseError" xml:space="preserve">
+    <value>Sorry error happened while deleting this course , please try again later.</value>
+  </data>
+  <data name="Msg_OnTermCourseDelete" xml:space="preserve">
+    <value>You are about to delete this course on [AcademicYear]  [Term] permanently. Are you sure?</value>
+  </data>
+  <data name="Msg_OnTermCourseDeleteError" xml:space="preserve">
+    <value>Sorry error happened while deleting this course on this academic term , please try again later.</value>
+  </data>
+  <data name="Url_Attendance" xml:space="preserve">
+    <value>/DCS/Attendance</value>
+  </data>
+  <data name="Url_Course" xml:space="preserve">
+    <value>/DCS/Course</value>
+  </data>
+  <data name="Url_CourseDelete" xml:space="preserve">
+    <value>/DCS/Course/Delete</value>
+  </data>
+  <data name="Url_CourseDeleteSuccess" xml:space="preserve">
+    <value>/DCS/Course?success=3</value>
+  </data>
+  <data name="Url_CourseDeleteTermCourse" xml:space="preserve">
+    <value>/DCS/Course/DeleteTermCourse</value>
+  </data>
+  <data name="Url_CourseDetails" xml:space="preserve">
+    <value>/DCS/Course/Details/</value>
+  </data>
+  <data name="Url_CourseNew" xml:space="preserve">
+    <value>/DCS/Course/New</value>
+  </data>
+  <data name="Url_CourseOpen" xml:space="preserve">
+    <value>/DCS/Course/Open/</value>
+  </data>
+  <data name="Url_CourseUpdate" xml:space="preserve">
+    <value>/DCS/Course/Update/</value>
+  </data>
+  <data name="Url_GetAcademicYearsByCollegeId" xml:space="preserve">
+    <value>/DCS/Lookup/GetAcademicYearsByCollegeId</value>
+  </data>
+  <data name="Url_GetAcademicYearTerms" xml:space="preserve">
+    <value>/DCS/Lookup/GetAcademicYearTerms</value>
+  </data>
+  <data name="Url_GetAttendanceSettingPeriods" xml:space="preserve">
+    <value>/DCS/Lookup/GetAttendanceSettingPeriods</value>
+  </data>
+  <data name="Url_GetCollegesByProviderId" xml:space="preserve">
+    <value>/DCS/Lookup/GetCollegesByProviderId</value>
+  </data>
+  <data name="Url_GetSpecializationsByCollegeIdAndLevelId" xml:space="preserve">
+    <value>/DCS/Lookup/GetSpecializationsByCollegeIdAndLevelId</value>
+  </data>
+  <data name="Url_GetTermsByCollegeAcademicYearId" xml:space="preserve">
+    <value>/DCS/Lookup/GetTermsByCollegeAcademicYearId</value>
+  </data>
+  <data name="Url_Section" xml:space="preserve">
+    <value>/DCS/Section</value>
+  </data>
+  <data name="Url_SectionEnrollment" xml:space="preserve">
+    <value>/DCS/SectionEnrollment</value>
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>Created On</value>
+  </data>
+  <data name="DetailsSectionTitle" xml:space="preserve">
+    <value>Section Details</value>
+  </data>
+  <data name="OfferedHours" xml:space="preserve">
+    <value>Offered Hours</value>
+  </data>
+  <data name="SectionAttendancePeriods" xml:space="preserve">
+    <value>Section Attendance Periods</value>
+  </data>
+  <data name="SectionCode" xml:space="preserve">
+    <value>Section Code</value>
+  </data>
+  <data name="SectionEndDate" xml:space="preserve">
+    <value>Section End Date</value>
+  </data>
+  <data name="SectionStartDate" xml:space="preserve">
+    <value>Section Start Date</value>
+  </data>
+  <data name="SectionsTitle" xml:space="preserve">
+    <value>Sections</value>
+  </data>
+  <data name="TotalHours" xml:space="preserve">
+    <value>Total Hours</value>
+  </data>
+  <data name="UpdatedOn" xml:space="preserve">
+    <value>Updated On</value>
+  </data>
+  <data name="Url_SectionDetails" xml:space="preserve">
+    <value>/DCS/Section/Details/</value>
+  </data>
+  <data name="DetailsSectionEnrollmentTitle" xml:space="preserve">
+    <value>Section Enrollment Details</value>
+  </data>
+  <data name="NationalId" xml:space="preserve">
+    <value>National ID</value>
+  </data>
+  <data name="Url_SectionEnrollmentDetails" xml:space="preserve">
+    <value>/DCS/SectionEnrollment/Details/</value>
+  </data>
+  <data name="DetailsAttendanceTitle" xml:space="preserve">
+    <value>Attendance Details</value>
+  </data>
+  <data name="Url_AttendaceDetails" xml:space="preserve">
+    <value>/DCS/Attendance/Details/</value>
+  </data>
+  <data name="AttendedHours" xml:space="preserve">
+    <value>Attended Hours</value>
+  </data>
+  <data name="ExcusedHours" xml:space="preserve">
+    <value>Excused Hours</value>
+  </data>
+  <data name="ExtraHours" xml:space="preserve">
+    <value>Extra Hours</value>
+  </data>
+  <data name="OJT" xml:space="preserve">
+    <value>OJT</value>
+  </data>
+  <data name="UploadRequestsTitle" xml:space="preserve">
+    <value>Uploaded Requests</value>
+  </data>
+  <data name="UploadRequestDeletedSuccessMessage" xml:space="preserve">
+    <value>Upload request deleted successfully</value>
+  </data>
+  <data name="UploadSectionTiltle" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="MD_UploadRequestStatus_Name" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="DateFrom" xml:space="preserve">
+    <value>Date From</value>
+  </data>
+  <data name="DateTo" xml:space="preserve">
+    <value>Date To</value>
+  </data>
+  <data name="ErrorUploadRequestHasSections" xml:space="preserve">
+    <value>Sorry we cannot delete this upload request, you must delete all related sections before</value>
+  </data>
+  <data name="ErrorUploadRequestHasAttendance" xml:space="preserve">
+    <value>Sorry we cannot delete this upload request, enrollment attendance is found </value>
+  </data>
+  <data name="Msg_OnUploadRequestdelete" xml:space="preserve">
+    <value>Are you sure you want to delete this upload request?</value>
+  </data>
+  <data name="Msg_OnUploadRequestdeleteError" xml:space="preserve">
+    <value>Sorry error happened while deleting this upload request</value>
+  </data>
+  <data name="Url_AttendanceUploadRequestsDelete" xml:space="preserve">
+    <value>/DCS/Attendance/DeleteUploadRequest</value>
+  </data>
+  <data name="Url_EnrollmentUploadRequestsDelete" xml:space="preserve">
+    <value>/DCS/SectionEnrollment/DeleteUploadRequest</value>
+  </data>
+  <data name="Url_GetCollegeAcademicYearsByCollegeId" xml:space="preserve">
+    <value>/DCS/Lookup/GetCollegeAcademicYearsByCollegeId</value>
+  </data>
+  <data name="Url_SectionUploadRequestsDelete" xml:space="preserve">
+    <value>/DCS/Section/DeleteUploadRequest</value>
+  </data>
+  <data name="Msg_UnauthorizedErrorMessage" xml:space="preserve">
+    <value>You are unauthorized to view this page , please contact system admin.</value>
+  </data>
+  <data name="Msg_UnauthorizedHeader" xml:space="preserve">
+    <value>Unauthorized</value>
+  </data>
+  <data name="ErrorModuleTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ActionDownloadTemplate" xml:space="preserve">
+    <value>Download Template</value>
+  </data>
+  <data name="Url_ActionDownloadTemplateAttendanceFile" xml:space="preserve">
+    <value>/Templates/Attendance.csv</value>
+  </data>
+  <data name="Url_ActionDownloadTemplateEnrollmentFile" xml:space="preserve">
+    <value>/Templates/SectionEnrollment.csv</value>
+  </data>
+  <data name="Url_ActionDownloadTemplateSectionFile" xml:space="preserve">
+    <value>/Templates/Sections.csv</value>
+  </data>
+  <data name="SectionEnrollment_Enrolled" xml:space="preserve">
+    <value>Enrolled</value>
+  </data>
+  <data name="SectionEnrollment_Repeated" xml:space="preserve">
+    <value>Repeated</value>
+  </data>
+  <data name="MD_UploadRequest_UploadRequestStatusID" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="System_Header" xml:space="preserve">
+    <value>DCS</value>
+  </data>
+  <data name="Breadcrum_Title_All" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Breadcrum_Title_New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Breadcrum_Title_Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="Breadcrum_Title_UploadRequests" xml:space="preserve">
+    <value>Uploaded Requests</value>
+  </data>
+  <data name="ErrorUploadRequestHasEnrollments" xml:space="preserve">
+    <value>Sorry we cannot delete this upload request,  you must delete all related enrollments first</value>
+  </data>
+  <data name="Actived" xml:space="preserve">
+    <value>Actived</value>
+  </data>
+  <data name="AttendenceStatus" xml:space="preserve">
+    <value>Attendence Status</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Birth Date</value>
+  </data>
+  <data name="Branches" xml:space="preserve">
+    <value>Branches</value>
+  </data>
+  <data name="Centers" xml:space="preserve">
+    <value>Centers</value>
+  </data>
+  <data name="Cities" xml:space="preserve">
+    <value>Cities</value>
+  </data>
+  <data name="ClassEndDate" xml:space="preserve">
+    <value>Class End Date</value>
+  </data>
+  <data name="ClassEndTime" xml:space="preserve">
+    <value>Class End Time</value>
+  </data>
+  <data name="ClassOfDays" xml:space="preserve">
+    <value>Class Of Days</value>
+  </data>
+  <data name="ClassStartDate" xml:space="preserve">
+    <value>Class Start Date</value>
+  </data>
+  <data name="ClassStartTime" xml:space="preserve">
+    <value>Class Start Time</value>
+  </data>
+  <data name="ClassType" xml:space="preserve">
+    <value>Class Type</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>Courses</value>
+  </data>
+  <data name="FullNameEn" xml:space="preserve">
+    <value>Full Name English</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="IBan" xml:space="preserve">
+    <value>IBan</value>
+  </data>
+  <data name="JobRole" xml:space="preserve">
+    <value>Job Role</value>
+  </data>
+  <data name="NumberSeats" xml:space="preserve">
+    <value>Number Seats</value>
+  </data>
+  <data name="Programme" xml:space="preserve">
+    <value>Programme</value>
+  </data>
+  <data name="Programs" xml:space="preserve">
+    <value>Programs</value>
+  </data>
+  <data name="SpecializationID" xml:space="preserve">
+    <value>Specialization</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="TraineeName" xml:space="preserve">
+    <value>Trainee Name</value>
+  </data>
+  <data name="TraineeStatus" xml:space="preserve">
+    <value>Trainee Status</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="UserRole" xml:space="preserve">
+    <value>User Role</value>
+  </data>
+  <data name="day" xml:space="preserve">
+    <value>day</value>
+  </data>
+  <data name="Url_UploadRequestsSessionDetails" xml:space="preserve">
+    <value>/DCS/Session/UploadDetails/</value>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="ToSection" xml:space="preserve">
+    <value>To Section</value>
+  </data>
+  <data name="SessionsModuleTitle" xml:space="preserve">
+    <value>Sessions</value>
+  </data>
+  <data name="SectionAttendance" xml:space="preserve">
+    <value>Section Attendance</value>
+  </data>
+  <data name="ExcusedAbsence" xml:space="preserve">
+    <value>Excused Absence</value>
+  </data>
+  <data name="DailyAttendance" xml:space="preserve">
+    <value>Daily Attendance</value>
+  </data>
+  <data name="AttendanceInfo" xml:space="preserve">
+    <value>Attendance Info</value>
+  </data>
+  <data name="StudentsList" xml:space="preserve">
+    <value>Students List</value>
+  </data>
+  <data name="StudentName" xml:space="preserve">
+    <value>Student Name</value>
+  </data>
+  <data name="AttendanceStatus" xml:space="preserve">
+    <value>Attendance Status</value>
+  </data>
+  <data name="Scheduler" xml:space="preserve">
+    <value>Scheduler</value>
+  </data>
+  <data name="SchedulerManagement" xml:space="preserve">
+    <value>Scheduler Management</value>
+  </data>
+  <data name="SectionDetails" xml:space="preserve">
+    <value>Section Details</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="CancelChanges" xml:space="preserve">
+    <value>Cancel Changes</value>
+  </data>
+  <data name="PreviewChanges" xml:space="preserve">
+    <value>Preview Changes</value>
+  </data>
+  <data name="SessionTime" xml:space="preserve">
+    <value>SessionTime</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="NumberOfAttendees" xml:space="preserve">
+    <value>Number Of Attendees</value>
+  </data>
+  <data name="NumberOfAbsentees" xml:space="preserve">
+    <value>Number Of Absentees</value>
+  </data>
+  <data name="NumberOfExcused" xml:space="preserve">
+    <value>Number Of Excused</value>
+  </data>
+  <data name="Instructor" xml:space="preserve">
+    <value>Instructor</value>
+  </data>
+  <data name="InstructorSessions" xml:space="preserve">
+    <value>Instructor Sessions</value>
+  </data>
+  <data name="SectionSessions" xml:space="preserve">
+    <value>Section Sessions</value>
+  </data>
+  <data name="CourseSessions" xml:space="preserve">
+    <value>Course Sessions</value>
+  </data>
+  <data name="DelegateSession" xml:space="preserve">
+    <value>Delegate Session</value>
+  </data>
+  <data name="AttendanceReports" xml:space="preserve">
+    <value>Attendance Reports</value>
+  </data>
+  <data name="DivisionCode" xml:space="preserve">
+    <value>Division Code</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>End Time</value>
+  </data>
+  <data name="NewSchedule" xml:space="preserve">
+    <value>New Schedule</value>
+  </data>
+  <data name="DownloadTemplate" xml:space="preserve">
+    <value>Download Template</value>
+  </data>
+  <data name="UploadAttendance" xml:space="preserve">
+    <value>Upload Attendance</value>
+  </data>
+  <data name="NewSessionSchedule" xml:space="preserve">
+    <value>New Session Schedule</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="UploadSessionTiltle" xml:space="preserve">
+    <value>Upload Session</value>
+  </data>
+  <data name="Url_ActionDownloadTemplateSessionFile" xml:space="preserve">
+    <value>/Templates/Sessions.csv</value>
+  </data>
+  <data name="ErrorFileContainsInvalidRecords" xml:space="preserve">
+    <value>CSV File Contains Invalid Records</value>
+  </data>
+  <data name="Msg_SessionsUploadedSuccessfully" xml:space="preserve">
+    <value>Sessions Uploaded Successfully</value>
+  </data>
+  <data name="IsRecurring" xml:space="preserve">
+    <value>Is Recurring</value>
+  </data>
+  <data name="TransferData" xml:space="preserve">
+    <value>Transfer Data</value>
+  </data>
+  <data name="TransferTrainees" xml:space="preserve">
+    <value>Transfer Trainees</value>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Msg_AttendanceRecordedBefore" xml:space="preserve">
+    <value>The attendance of this session has been recorded before.</value>
+  </data>
+  <data name="Msg_NoAttendanceToday" xml:space="preserve">
+    <value>There is no attendance for this session today.</value>
+  </data>
+  <data name="Url_ActionDownloadTemplateSectionSixMonthsFile" xml:space="preserve">
+    <value>/Templates/Sections6M.csv</value>
+  </data>
+</root>

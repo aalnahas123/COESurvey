@@ -1,0 +1,120 @@
+﻿@using Commons.Framework.Web.Mvc.Helpers
+@using COE.Enrollment.Helpers
+@using COE.Common.Localization
+@using COE.Common.Model.ViewModels
+
+@model AccountViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.Title = UsersMgmtResources.RegisterNewUser;
+}
+
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "register-form", role = "form", defaultbutton = "SubmitButton", id = "loginForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger help-block" })
+
+    <div class="panel panel-default">
+        <div class="panel-heading">@UsersMgmtResources.RegisterNewUser</div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FullName, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FullName, string.Empty, new { @class = "text-danger help-block" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label" })
+                    @Html.TelInputFor(model => model.PhoneNumber, null, new { @class = "form-control", MaxLength = "15" })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, string.Empty, new { @class = "text-danger help-block" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control text-left ltr" })
+                    @Html.ValidationMessageFor(model => model.Email, string.Empty, new { @class = "text-danger help-block" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmailConfirm, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.EmailConfirm, new { @class = "form-control text-left ltr" })
+                    @Html.ValidationMessageFor(model => model.EmailConfirm, string.Empty, new { @class = "text-danger help-block" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">@UsersMgmtResources.NationalId</label>
+                    @*@Html.LabelFor(model => model.UserName, new { @class = "control-label" })*@
+                    @Html.TextBoxFor(model => model.NationalId, new { @class = "form-control placeholder-no-fix", @maxlength = 10, @autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.NationalId, string.Empty, new { @class = "text-danger help-block" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, new { @class = "control-label" })
+                    <div class="input-group">@*@UsersMgmtResources.PasswordValidator*@
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control text-left ltr" })
+                        <div class="input-group-btn">
+                            <a href="#" class="btn default" data-toggle="tooltip" 
+                               >
+                                <i class="fa fa-question-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    @Html.ValidationMessageFor(model => model.Password, string.Empty, new { @class = "text-danger help-block" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label" })
+                    @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control text-left ltr" })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, string.Empty, new { @class = "text-danger help-block" })
+                </div>
+            </div>
+            @*<div class="col-md-12">
+                <label class="form-group">
+                    @Html.CaptchaFor(model => model.Captcha)
+                </label>
+            </div>*@
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="g-recaptcha" data-sitekey="@System.Configuration.ConfigurationManager.AppSettings["RecaptchaPublicKey"]" data-theme="light"
+                         data-callback="recaptchaCallback"></div>
+                    @Html.HiddenFor(model => model.RecaptchaResponse)
+                    @Html.ValidationMessageFor(model => model.RecaptchaResponse, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-left">
+            <input type="submit" value="@UsersMgmtResources.RegisterNewUser" class="btn btn-success" />
+            <a href="@Url.Action("Login","Account")" class="btn btn-primary">@SharedResources.BackToMainPage</a>
+        </div>
+    </div>
+
+}
+
+@section scripts {
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip({
+                placement: "bottom",
+                template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+                html: true,
+                animation: true,
+                title: '<div><ul><li>at least 8 characters</li><li>at least 1 numeric character</li><li>at least 1 lowercase letter </li><li>at least 1 uppercase letter </li><li>at least 1 special character</li></ul></div>'
+            });
+        })
+    </script>
+}

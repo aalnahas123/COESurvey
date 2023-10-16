@@ -1,0 +1,168 @@
+﻿@using COE.Common.Model
+
+@model SurveyAnswer
+
+@{
+    ViewBag.Title = "Survey";
+}
+
+<title>Use options to customize the Survey Editor, Survey Builder Example</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+@*<script src="https://unpkg.com/jquery"></script>*@
+
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+
+<style>
+    .caption {
+        font-weight: bold;
+        font-size: 20px !important;
+    }
+
+    .sv_q_matrix:first-child tr td:first-child {
+        font-weight: bold;
+        direction: rtl;
+        text-align: right !important;
+        width: 100% !important;
+    }
+
+    .sv_q_matrix tr td {
+        width: 50px;
+        min-width: 8em !important;
+        text-align: center;
+    }
+
+    .sv_q_matrix tr th {
+        width: 50px;
+        min-width: 8em !important;
+        text-align: center;
+    }
+
+    .sv_q_matrix tr td .sv_q_m_cell_label {
+        display: none !important;
+    }
+
+    .sv_q_matrix tr td {
+        width: 50px;
+        min-width: 8em !important;
+    }
+
+    .sv_q_m_cell_label {
+        width: 40px;
+    }
+
+
+    .portlet > .portlet-title > .caption {
+        float: right;
+    }
+
+    .sv_q_title, .sv_page_title {
+        font-size: 1.4em !important;
+        color: #0b79b8;
+        direction: rtl;
+        font-weight: bold !important;
+    }
+
+    .sv_page_title {
+        display: list-item;
+    }
+
+    .msgText {
+        font-size: 13px;
+        color: green;
+        font-weight: bold;
+        background-color: #f4f4f4;
+        margin: 10px 0px 0 0;
+        padding: 10px;
+    }
+
+    .sv_body {
+        border: 0px !important;
+    }
+
+    .modal-dialog {
+        left: auto !important;
+    }
+
+    .sv_select_wrapper {
+        width: 200px !important;
+    }
+
+    .sv_q_rating_item_text {
+        padding: 0 2em !important;
+    }
+
+    .sv_main .sv_container .sv_body .sv_p_root > .sv_row {
+        background-color: initial !important;
+        border-bottom: 0px !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    @Model.Survey.SurveyTitle
+                </div>
+            </div>
+            <form class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="surveyElement" style="direction:rtl"></div>
+                            <div id="surveyResult" style="direction:rtl"></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<span tabindex="0" class="svd_action" id="svd-upload" style="display:none;"><button type="button" class="btn btn-primary" onclick="return UploadTemplate()"><span>Update</span></button></span>
+@section scripts{
+    <script src="https://surveyjs.azureedge.net/1.0.53/survey.jquery.js"></script>
+    <script type="text/javascript">
+
+        $(window).on('load', function () {
+
+
+
+            var Surveyjson = '@Model.SurveyText'.replace(/\n/g, '\'').replace(/&#39;/g, '\'').replace(/&quot;/g, '\\"').replace(/\\/g, "");
+            var Answerjson = '@Model.AnswerText'.replace(/\n/g, '\'').replace(/&#39;/g, '\'').replace(/&quot;/g, '\\"').replace(/\\/g, "");
+
+            Survey.StylesManager.applyTheme("bootstrap");
+            Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+
+            window.survey = new Survey.Model(Surveyjson);
+
+            survey
+            .onComplete
+            .add(function (result) {
+                document
+                    .querySelector('#surveyResult')
+                    .innerHTML = "result: " + JSON.stringify(result.data);
+            });
+
+
+            survey.data = JSON.parse(Answerjson);
+            survey.mode = 'display';
+
+            $("#surveyElement").Survey({ model: survey });
+
+            setInterval(updatetext, 300);
+
+        });
+
+        function updatetext() {
+            $('input[value="Next"]').val('التالي');
+            $('input[value="Previous"]').val('السابق');
+            $('input[value="Complete"]').val('إتمام');
+            $("div").find("[data-bind='html: question.locHtml.koRenderedHtml']").addClass('msgText');
+        }
+
+    </script>
+}
+
+

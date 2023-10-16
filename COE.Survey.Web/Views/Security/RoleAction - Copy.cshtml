@@ -1,0 +1,380 @@
+﻿@model  List<COE.Common.Model.ModuleCategory>
+@using COE.Common.Localization.Security;
+@using COE.Common.Localization;
+@using COE.Security.Web.Helpers;
+
+@{
+    ViewBag.Title = "Role Action";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Role Action</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        @if (ViewBag.SuccessMessage != null && !string.IsNullOrEmpty(ViewBag.SuccessMessage))
+            {
+            <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>@ViewBag.SuccessMessage</strong>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-th-list" aria-hidden="true"></i>@SecurityResources.Categories
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                @Html.DropDownList("ModuleCategory", new SelectList(LookupsHelper.GetModuleCategoryList(), "Value", "Text"), SecurityResources.DefaultSelect, new { @class = "form-control college-ddl", @onchange = "fillModeuleAndActions(value)" })
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" id="divModules" style="display:none">
+    <div class="col-md-12">
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-th-list" aria-hidden="true"></i>@SecurityResources.Modules
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <ul class="tree">
+
+
+                    @*@for (int i = 0; i < Model.Count; i++)
+                        {
+                            <li class="has">
+                                <span class="sign expand"><i class="fa fa-plus"></i></span>
+                                <span class="sign collabse" style="display:none"><i class="fa fa-minus"></i></span>
+                                @Html.HiddenFor(m => Model[i].ID)
+                                @Html.HiddenFor(m => Model[i].Name)
+
+                                <input type="checkbox" />
+                                <span>@Model[i].Name</span>
+                                @if (Model[i].College.Count > 0)
+                                {
+                                    <ul>
+                                        @for (int x = 0; x < Model[i].College.Count; x++)
+                                        {
+                                            <li class="">
+                                                @Html.HiddenFor(m => Model[i].College[x].ID)
+                                                @Html.HiddenFor(m => Model[i].College[x].Name)
+                                                @Html.CheckBoxFor(m => Model[i].College[x].IsSelected)
+                                                @Html.DisplayFor(m => Model[i].College[x].Name)
+                                            </li>
+
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                        }*@
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-actions right">
+    <button type="button" class="btn green" onclick="saveModuleActions()">Save</button>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+        outline: none;
+        font: 16px "Calibri";
+        font-weight: lighter;
+        list-style-type: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: #e39900;
+        overflow: hidden;
+        overflow-y: auto;
+        color: #bbb;
+    }
+
+    .controls {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        z-index: 1;
+        padding: 6px 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    button {
+        border: 0px;
+        color: #e13300;
+        margin: 4px;
+        padding: 4px 12px;
+        cursor: pointer;
+        background: transparent;
+    }
+
+        button.active,
+        button.active:hover {
+            background: #e13300;
+            color: #fff;
+        }
+
+        button:hover {
+            background: #efefef;
+        }
+
+    input[type=checkbox] {
+        vertical-align: middle !important;
+    }
+
+    h1 {
+        font-size: 3em;
+        font-weight: lighter;
+        color: #fff;
+        text-align: center;
+        display: block;
+        padding: 40px 0px;
+        margin-top: 40px;
+    }
+
+    .tree {
+        margin: 2% auto;
+        width: 80%;
+    }
+
+        .tree ul {
+            display: none;
+            margin: 4px auto;
+            margin-right: 6px;
+            border-right: 1px dashed #dfdfdf;
+        }
+
+
+        .tree li {
+            padding: 12px 18px;
+            cursor: pointer;
+            vertical-align: middle;
+            background: #fff;
+        }
+
+            .tree li:first-child {
+                border-radius: 3px 3px 0 0;
+            }
+
+            .tree li:last-child {
+                border-radius: 0 0 3px 3px;
+            }
+
+        .tree .active,
+        .active li {
+            background: #efefef;
+        }
+
+        .tree label {
+            cursor: pointer;
+        }
+
+        .tree input[type=checkbox] {
+            margin: -2px 6px 0 0px;
+        }
+
+    .has > label {
+        color: #000;
+    }
+
+    .tree .total {
+        color: #e13300;
+    }
+</style>
+
+<script>
+    function fillModeuleAndActions(categoryId) {
+
+        //Get All Modules And Related Module Actions
+        $.ajax({
+            url: '/Security/GetModuleActions',
+            type: "POST",
+            dataType: "JSON",
+            data: { CategoryId: categoryId },
+            success: function (result) {
+                //Draw Tree View For Modules And sub module Actions
+                $('#divModules').fadeIn();
+                var data = result.Result;
+                var html = '';
+                if (data != null) {
+                    $.each(data, function (key, value) {
+
+                        html += '<li class="has">' +
+                            '<span class="sign expand"><i class="fa fa-plus"></i></span>' +
+                            '<span class="sign collabse" style="display:none"><i class="fa fa-minus"></i></span>' +
+                             '<input type="checkbox" />' +
+                            '<span>' + value.Name + '</span>';
+
+                        //sub list
+                        if (value.ModuleAction != null) {
+
+                            html += '<ul>';
+                            $.each(value.ModuleAction, function (ckey, cvalue) {
+                                console.log(cvalue);
+                                html += '<li>' +
+                                         '<input type="checkbox" value="' + cvalue.ID + '">' +
+                                         '<span>' + cvalue.Name + '<span></li>';
+                            });
+                            html += '</ul>';
+                        }
+                        html += '</li>';
+
+                    });
+                    $('.tree').html(html);
+                }
+
+                initializeTree();
+            }
+        });
+
+    }
+    function initializeTree() {
+        $(document).on('click', '.tree label', function (e) {
+            $(this).next('ul').fadeToggle();
+
+            e.stopPropagation();
+        });
+
+        $(document).on('change', '.tree input[type=checkbox]', function (e) {
+
+            $(this).siblings('ul').find("input[type='checkbox']").prop('checked', this.checked);
+            $(this).parentsUntil('.tree').children("input[type='checkbox']").prop('checked', this.checked);
+
+            $(this).parent().children('ul').toggle();
+            $(this).parent().children('.sign').toggle();
+
+
+            e.stopPropagation();
+        });
+
+        $("li .sign").on("click", function (e) {
+            e.stopPropagation();
+            $(this).parent().children('ul').toggle();
+            $(this).parent().children('.sign').toggle();
+
+        });
+        $.extend($.expr[':'], {
+            unchecked: function (obj) {
+                return ((obj.type == 'checkbox' || obj.type == 'radio') && !$(obj).is(':checked'));
+            }
+        });
+
+        $("#tree input:checkbox").bind('change', function () {
+            $(this).next('ul').find('input:checkbox').prop('checked', $(this).prop("checked"));
+
+            for (var i = $('#tree').find('ul').length - 1; i >= 0; i--) {
+                $('#tree').find('ul:eq(' + i + ')').prev('input:checkbox').prop('checked', function () {
+                    return $(this).next('ul').find('input:unchecked').length === 0 ? true : false;
+                });
+            }
+        });
+
+
+    }
+    function saveModuleActions() {
+        //Get All Checked Checkboxes
+        var allVals = [];
+        $('.tree ul :checked').each(function () {
+            allVals.push($(this).val());
+        });
+
+        $.ajax({
+            url: '/Security/SaveModuleActions',
+            type: "POST",
+            dataType: "JSON",
+            data: { ModuleActionlist: allVals },
+            success: function (result) {
+                alert("success");
+            }
+        });
+    }
+</script>
+@*<script>
+
+    //$('li').click(function () {
+    //    $(this).children('.sign').toggle();
+    //});
+
+    $(document).on('click', '.tree label', function (e) {
+        $(this).next('ul').fadeToggle();
+
+        e.stopPropagation();
+    });
+
+    $(document).on('change', '.tree input[type=checkbox]', function (e) {
+
+        $(this).siblings('ul').find("input[type='checkbox']").prop('checked', this.checked);
+        $(this).parentsUntil('.tree').children("input[type='checkbox']").prop('checked', this.checked);
+
+        $(this).parent().children('ul').toggle();
+        $(this).parent().children('.sign').toggle();
+
+        //console.log($(this).parent().children('.collabse').css('display') != 'none');
+        //console.log(!$(this).parentsUntil('.tree').children("input[type='checkbox']").prop('checked'));
+
+        //if ($(this).parent().children('.collabse').css('display') != 'none' && !$(this).parentsUntil('.tree').children("input[type='checkbox']").prop('checked')) {
+
+        //    $(this).siblings('ul').find("input[type='checkbox']").prop('checked', this.checked);
+        //    $(this).parentsUntil('.tree').children("input[type='checkbox']").prop('checked', this.checked);
+        //}
+        //else {
+        //    $(this).siblings('ul').find("input[type='checkbox']").prop('checked', this.checked);
+        //    $(this).parentsUntil('.tree').children("input[type='checkbox']").prop('checked', this.checked);
+
+        //    $(this).parent().children('ul').toggle();
+        //    $(this).parent().children('.sign').toggle();
+        //}
+
+        e.stopPropagation();
+    });
+
+
+
+    $(document).ready(function () {
+        $("li .sign").on("click", function (e) {
+            e.stopPropagation();
+            $(this).parent().children('ul').toggle();
+            $(this).parent().children('.sign').toggle();
+
+        });
+        $.extend($.expr[':'], {
+            unchecked: function (obj) {
+                return ((obj.type == 'checkbox' || obj.type == 'radio') && !$(obj).is(':checked'));
+            }
+        });
+
+        $("#tree input:checkbox").bind('change', function () {
+            $(this).next('ul').find('input:checkbox').prop('checked', $(this).prop("checked"));
+
+            for (var i = $('#tree').find('ul').length - 1; i >= 0; i--) {
+                $('#tree').find('ul:eq(' + i + ')').prev('input:checkbox').prop('checked', function () {
+                    return $(this).next('ul').find('input:unchecked').length === 0 ? true : false;
+                });
+            }
+        });
+    });
+</script>*@

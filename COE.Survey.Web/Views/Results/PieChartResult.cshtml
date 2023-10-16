@@ -1,0 +1,97 @@
+﻿@using COE.Survey.Web.ViewModels
+
+
+@model ChartViewModel
+
+@*background-color: aliceblue;*@
+
+<style>
+    .page-top {
+        margin-top: 0px;
+    }
+
+    .chatContainer {
+        width: 80%;
+        margin: 15px auto;
+        direction: rtl;
+        border-color: lightgray;
+        border-style: groove;
+        padding: 5px 20px 10px 5px;
+    }
+
+    @@media print {
+
+        .chatContainer {
+            width: 100%;
+        }
+
+        .chartjs-render-monitor {
+            height: 270px;
+            width: 500px;
+        }
+    }
+</style>
+
+
+<div class="chatContainer" style="direction: rtl;">
+    <h3>@Model.Title</h3>
+    <div>
+        <canvas id='@string.Format("myChart{0}",Model.Id)'></canvas>
+    </div>
+</div>
+
+
+<script>
+
+    var labels = JSON.parse('@Model.ChartLabels'.replace(/&quot;/g, '\\"').replace(/\\/g, ""));
+
+    var options = {
+        scales: {
+            xAxes: [{
+                display: true,
+                ticks: {
+                    beginAtZero: true,
+                    steps: @Model.Steps,
+                    stepValue: @Model.StepValue,
+                    max: @Model.Max,
+                }
+            }]
+        },
+        animation: {
+            "duration": 1,
+            "onComplete": function() {
+                var chartInstance = this.chart,
+                  ctx = chartInstance.ctx;
+
+                ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'center';
+                ctx.fillStyle = "#ffffff";
+
+                this.data.datasets.forEach(function(dataset, i) {
+                    var meta = chartInstance.controller.getDatasetMeta(i);
+                    meta.data.forEach(function(bar, index) {
+                        var data = dataset.data[index] + "@Model.UnitValue";
+                        ctx.fillText(data, bar._model.x-20, bar._model.y - 5);
+                    });
+                });
+            }
+        }
+    };
+
+    var ctx = document.getElementById('@string.Format("myChart{0}", Model.Id)').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: '@Model.ChartType',
+        data: {
+            labels: labels,
+            datasets:
+                [{
+                    label: "@Model.LabelValue",
+                    data: @Model.ChartData,
+                    backgroundColor: '@Model.ChartType' == 'pie'? ["#91c991","#c4493c","#34495e", "#3498db","#9b59b6","#95a5a6","#f1c40f"] : "#0075be",
+                }]
+        },
+        options: '@Model.ChartType' == 'pie'? []: options
+    });
+
+</script>

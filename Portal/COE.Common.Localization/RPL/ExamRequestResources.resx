@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcademicRecord" xml:space="preserve">
+    <value>Academic Record</value>
+  </data>
+  <data name="AcceptTermOfService" xml:space="preserve">
+    <value>I accept the terms</value>
+  </data>
+  <data name="BirthYear" xml:space="preserve">
+    <value>Birth Year</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="EducationalEquation" xml:space="preserve">
+    <value>Educational Equation</value>
+  </data>
+  <data name="ETrainingAttendance" xml:space="preserve">
+    <value>E-training attendance certificate</value>
+  </data>
+  <data name="GraduationCertificate" xml:space="preserve">
+    <value>Graduation Certificate</value>
+  </data>
+  <data name="GraduationCertificateAttachments" xml:space="preserve">
+    <value>Graduation certificate</value>
+  </data>
+  <data name="IseTrainingCompleted" xml:space="preserve">
+    <value>I acknowledge that I have completed the e-training</value>
+  </data>
+  <data name="IsHealthSpecialist" xml:space="preserve">
+    <value>Do you have a health specialization?</value>
+  </data>
+  <data name="LetterOrexperienceCertificate" xml:space="preserve">
+    <value>Letter of introduction from the employer / experience certificate</value>
+  </data>
+  <data name="QualificationFrom" xml:space="preserve">
+    <value>Obtaining the qualification from</value>
+  </data>
+  <data name="QualificationFromInside" xml:space="preserve">
+    <value>Inside the kingdom</value>
+  </data>
+  <data name="QualificationFromOutside" xml:space="preserve">
+    <value>Outside the kingdom</value>
+  </data>
+  <data name="RequiredAttachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="SaudiCouncilOfEngineersCertificate" xml:space="preserve">
+    <value>Saudi council of engineers certificate</value>
+  </data>
+  <data name="SaudiHealthSpecializationsAuthorityCertificate" xml:space="preserve">
+    <value>health specialties authority certificate</value>
+  </data>
+  <data name="StudentIdentity" xml:space="preserve">
+    <value>Student identity</value>
+  </data>
+  <data name="StudentIdentityAttachment" xml:space="preserve">
+    <value>National ID Attached</value>
+  </data>
+  <data name="StudentInfo" xml:space="preserve">
+    <value>Student Info</value>
+  </data>
+  <data name="SubmitETrainningStudents" xml:space="preserve">
+    <value>Submit a new exam request for e-training students</value>
+  </data>
+  <data name="TermsConditions" xml:space="preserve">
+    <value>Terms and conditions</value>
+  </data>
+  <data name="TrainingTrack" xml:space="preserve">
+    <value>Training Track</value>
+  </data>
+  <data name="TrainingTrackPractitioner" xml:space="preserve">
+    <value>Practitioner</value>
+  </data>
+  <data name="TrainingTrackProfessional" xml:space="preserve">
+    <value>Professional</value>
+  </data>
+  <data name="YearsOfExperience" xml:space="preserve">
+    <value>Years of Experience</value>
+  </data>
+  <data name="ModuleTitle" xml:space="preserve">
+    <value>Exam Request</value>
+  </data>
+  <data name="IndexTitle" xml:space="preserve">
+    <value>Requests list</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="HealthSpecialist" xml:space="preserve">
+    <value>have a health specialization</value>
+  </data>
+  <data name="QualificationFromInsideKSA" xml:space="preserve">
+    <value>Obtaining the qualification from Inside the kingdom</value>
+  </data>
+  <data name="EmailSubjectApproved" xml:space="preserve">
+    <value>Exam request approved</value>
+  </data>
+  <data name="EmailSubjectRejected" xml:space="preserve">
+    <value>Exam request rejected</value>
+  </data>
+  <data name="EmailSubjectResend" xml:space="preserve">
+    <value>Exam request resent</value>
+  </data>
+  <data name="SubmitMsg" xml:space="preserve">
+    <value>The application will be reviewed and the applicant informed of the eligibility to register for the test within a period not exceeding 15 working days.</value>
+  </data>
+  <data name="ApplyExam" xml:space="preserve">
+    <value>Apply Exam</value>
+  </data>
+  <data name="Msg_NotRPL" xml:space="preserve">
+    <value>Sorry, you do not have a certificate of conformity of qualifications and experience from occupational safety and health cadres</value>
+  </data>
+  <data name="Booking" xml:space="preserve">
+    <value>Booking</value>
+  </data>
+</root>

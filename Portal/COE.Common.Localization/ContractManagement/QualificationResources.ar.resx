@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AssessmentComponents" xml:space="preserve">
+    <value>Assessment</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Draft</value>
+  </data>
+  <data name="DublicatedCode" xml:space="preserve">
+    <value>Qualification code is duplicated</value>
+  </data>
+  <data name="DublicatedName" xml:space="preserve">
+    <value>Qualification name is duplicated</value>
+  </data>
+  <data name="EditQualification" xml:space="preserve">
+    <value>Edit Qualification</value>
+  </data>
+  <data name="NewQualification" xml:space="preserve">
+    <value>New Qualification</value>
+  </data>
+  <data name="Publish" xml:space="preserve">
+    <value>Publish</value>
+  </data>
+  <data name="QualificationAssessmentComponents" xml:space="preserve">
+    <value>Qualification Assessment Components</value>
+  </data>
+  <data name="QualificationDetails" xml:space="preserve">
+    <value>Qualification Details</value>
+  </data>
+  <data name="QualificationInformations" xml:space="preserve">
+    <value>Provide qualification information</value>
+  </data>
+  <data name="QualificationName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Qualifications" xml:space="preserve">
+    <value>Qualifications</value>
+  </data>
+  <data name="QualificationSector" xml:space="preserve">
+    <value>Sector</value>
+  </data>
+  <data name="QualificationUnits" xml:space="preserve">
+    <value>Qualification Units</value>
+  </data>
+  <data name="QualificationWizard" xml:space="preserve">
+    <value>Qualification Wizard</value>
+  </data>
+  <data name="SpecializationParentName" xml:space="preserve">
+    <value>Pre-Request</value>
+  </data>
+  <data name="Specialization_Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Specialization_CourseId" xml:space="preserve">
+    <value>Course</value>
+  </data>
+  <data name="Specialization_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Specialization_DescriptionAr" xml:space="preserve">
+    <value>Description Arabic</value>
+  </data>
+  <data name="Specialization_EndorsedBy" xml:space="preserve">
+    <value>Endorsed For</value>
+  </data>
+  <data name="Specialization_IsAssesmentAvailable" xml:space="preserve">
+    <value>Is Assesment Available</value>
+  </data>
+  <data name="Specialization_IsEndorsed" xml:space="preserve">
+    <value>Is Endorsed</value>
+  </data>
+  <data name="Specialization_IsPathway" xml:space="preserve">
+    <value>Is a Pathway</value>
+  </data>
+  <data name="Specialization_IsPublic" xml:space="preserve">
+    <value>Visibility</value>
+  </data>
+  <data name="Specialization_IsTestAvailable" xml:space="preserve">
+    <value>Is Test Available</value>
+  </data>
+  <data name="Specialization_Level" xml:space="preserve">
+    <value>Qualification Level</value>
+  </data>
+  <data name="Specialization_PreRequisiteLevelID" xml:space="preserve">
+    <value>Pre-Requisite</value>
+  </data>
+  <data name="Specialization_Program" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="Specialization_RegulatoryAuthority" xml:space="preserve">
+    <value>Regulatory Authority</value>
+  </data>
+  <data name="Specialization_SAQFLevel" xml:space="preserve">
+    <value>SAQF Level</value>
+  </data>
+  <data name="Specialization_Sector" xml:space="preserve">
+    <value>Sector</value>
+  </data>
+  <data name="Specialization_SpecializationParentID" xml:space="preserve">
+    <value>Master Qualification</value>
+  </data>
+  <data name="Specialization_SpecializationRationle" xml:space="preserve">
+    <value>Rationale</value>
+  </data>
+  <data name="Specialization_StatusID" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Specialization_TotalLearningHours" xml:space="preserve">
+    <value>Total Hours</value>
+  </data>
+  <data name="Specialization_Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="UnitsDetails" xml:space="preserve">
+    <value>Units Details</value>
+  </data>
+  <data name="ViewDetails" xml:space="preserve">
+    <value>View Details</value>
+  </data>
+</root>

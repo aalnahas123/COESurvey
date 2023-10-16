@@ -1,0 +1,52 @@
+﻿@using Commons.Framework.Web.Mvc.Helpers
+@model COE.Common.Model.ViewModels.AccountViewModel
+
+<div class="col-md-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.FullName, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.FullName, string.Empty, new { @class = "text-danger help-block" })
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control text-left ltr" })
+        @Html.ValidationMessageFor(model => model.Email, string.Empty, new { @class = "text-danger help-block" })
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmailConfirm, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.EmailConfirm, new { @class = "form-control text-left ltr" })
+        @Html.ValidationMessageFor(model => model.EmailConfirm, string.Empty, new { @class = "text-danger help-block" })
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label" })
+        @Html.TelInputFor(model => model.PhoneNumber, null, new { @class = "form-control", MaxLength = "15" })
+        @Html.ValidationMessageFor(model => model.PhoneNumber, string.Empty, new { @class = "text-danger help-block" })
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.UserName, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.UserName, string.Empty, new { @class = "text-danger help-block" })
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, new { @class = "control-label" })
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control text-left ltr" })
+        @Html.ValidationMessageFor(model => model.Password, string.Empty, new { @class = "text-danger help-block" })
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label" })
+        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control text-left ltr" })
+        @Html.ValidationMessageFor(model => model.ConfirmPassword, string.Empty, new { @class = "text-danger help-block" })
+    </div>
+</div>

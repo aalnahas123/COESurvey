@@ -1,0 +1,424 @@
+﻿@model  COE.Common.Model.ViewModels.AspNetUsersSearchModel
+@using COE.Common.Localization.Security;
+@using COE.Common.Localization;
+@using PagedList.Mvc
+@using COE.Security.Web.Controllers;
+@using COE.Security.Web.Helpers
+@using COE.Security.Model.LookupValues;
+
+@{
+
+    ViewBag.Title = SecurityResources.SearchUsers;
+    ViewBag.ModuleTitle = SecurityResources.Users;
+
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    bool userRole = ((SecurityController)this.ViewContext.Controller).IsActionAvailable("UserRole");
+    bool userCollege = ((SecurityController)this.ViewContext.Controller).IsActionAvailable("userCollege");
+    bool userDetails = ((SecurityController)this.ViewContext.Controller).IsActionAvailable("Details");
+    bool userUpdate = ((SecurityController)this.ViewContext.Controller).IsActionAvailable("Update");
+    bool Activate = ((SecurityController)this.ViewContext.Controller).IsActionAvailable("Activate/Deactivate");
+}
+
+@using (Html.BeginForm("Users", "Security", FormMethod.Post, new { @class = "", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-search"></i> @SecurityResources.AdvancedSearch
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <div class="mt-radio-inline">
+                                        <label class="mt-radio">
+                                            @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory, new { @name = "uType", @onchange = "changeView(1)" })
+                                            @SecurityResources.ActiveDirectoryUser
+                                            <span></span>
+                                        </label>
+                                        <label class="mt-radio">
+                                            @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.Online, new { @name = "uType", @onchange = "changeView(2)" })
+                                            @SecurityResources.OnlineUser
+                                            <span></span>
+                                        </label>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="ADView" style="@ViewBag.DisplayAD">
+                                <div class="col-md-12">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.UserName, new { @class = "control-label" })
+                                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ADRoleId, new { @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.ADRoleId, new SelectList(LookupsHelpers.GetAllowedRoles(User.Identity.Name), "Value", "Text"), @StipendResources.DDL_DefaultSelect, new { @class = "form-control select2",data_placeholder = @StipendResources.DDL_DefaultSelect  })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ADCollegeId, new { @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.ADCollegeId, new SelectList(LookupsHelpers.GetCollegesByCurrentUser(User.Identity.Name), "Value", "Text"), @StipendResources.DDL_DefaultSelect, new { @class = "form-control select2",data_placeholder = @StipendResources.DDL_DefaultSelect  })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="OnlineView" style="@ViewBag.DisplayOnline">
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Phone, new { @class = "control-label" })
+                                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.NationalId, new { @class = "control-label" })
+                                                @Html.TextBoxFor(model => model.NationalId, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.UserName, new { @class = "control-label" })
+                                            @Html.TextBoxFor(model => model.UserNameOnline, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.RoleId, new { @class = "control-label" })
+                                            @Html.DropDownListFor(model => model.RoleId, new SelectList(LookupsHelpers.GetAllowedRoles(User.Identity.Name), "Value", "Text"), @StipendResources.DDL_DefaultSelect, new { @class = "form-control select2",data_placeholder = @StipendResources.DDL_DefaultSelect  })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.CollegeId, new { @class = "control-label" })
+                                            @{var isAdmin = (Session["UserRoles"] as List<Guid>).Contains(Guid.Parse(COE.Security.Model.LookupValues.AspNetRoles.Values.SystemAdmin));}
+                                            @Html.DropDownListFor(model => model.CollegeId, new SelectList(isAdmin ? LookupsHelpers.GetColleges() : LookupsHelpers.GetCollegesByCurrentUser(User.Identity.Name), "Value", "Text"), @StipendResources.DDL_DefaultSelect, new { @class = "form-control select2",data_placeholder = @StipendResources.DDL_DefaultSelect  })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions right">
+                        <button type="submit" class="btn green">@SharedResources.Search</button>
+                        <a class="btn default" href="@Url.Action("Users","Security")">@SharedResources.Cancel</a>
+                    </div>
+
+                    <!-- END FORM-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @if (ViewBag.SuccessMessage != null && !string.IsNullOrEmpty(ViewBag.SuccessMessage))
+            {
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>@ViewBag.SuccessMessage</strong>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet caption">
+                <i class="badge badge-info">@SharedResources.SearchResults @SharedResources.ItemsCount <i class="fa search-counter-number">@(Model.AllUsers.TotalItemCount)</i></i>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-th-list" aria-hidden="true"></i>@SecurityResources.Users
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    @*<div class="table-scrollable">*@
+                    <div>
+                        @if (Model.AllUsers != null)
+                        {
+                            if (Model.AllUsers.Count > 0)
+                            {
+                                <table class="table table-striped table-bordered table-advance table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-xs-2"> @SecurityResources.Name </th>
+                                            @if (Model.UserType == ((int)COE.Common.Model.Enums.Enum.UserType.Online).ToString())
+                                            {
+                                                <th class="col-xs-1"> @SecurityResources.Email </th>
+                                            }
+                                            else
+                                            {
+                                                <th class="col-xs-1"> @SecurityResources.LoginName </th>
+                                            }
+                                            <th class="col-xs-1"> @SecurityResources.CreatedBy </th>
+                                           
+                                            <th  class="col-xs-10"> @SecurityResources.Actions </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            int index = 0;
+                                        }
+                                        @foreach (var item in Model.AllUsers)
+                                        {
+                                            <tr id="@item.Id">
+                                                <td> @Html.DisplayFor(model => item.FullName)</td>
+                                                @if (Model.UserType == ((int)COE.Common.Model.Enums.Enum.UserType.Online).ToString())
+                                                {
+                                                    <td style="width:50px;"> @Html.DisplayFor(model => item.Email)</td>
+                                                }
+                                                else
+                                                {
+                                                    <td> @Html.DisplayFor(model => item.UserName)</td>
+                                                }
+                                                <td> @Html.DisplayFor(model => item.CreatedBy)</td>
+                                              
+                                                <td style="padding-left:0;padding-right:0">
+                                                    @*@if (!LookupsHelpers.GetCurrentUserRoles(User.Identity.Name).Contains(Guid.Parse(AspNetRoles.Values.SystemAdmin)))
+                                                        {
+                                                            if (item.Id != LookupsHelpers.UserId)
+                                                            {
+                                                                if (userCollege)
+                                                                {
+                                                                    <button class="btn green" value="@item.UserName" onclick="CheckUser('@item.UserName','@item.Id','@item.Type','@item.Email','addCollege','Security');" data-toggle="tooltip" title="@SecurityResources.Action_UserColleges">
+                                                                        <i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i>
+                                                                        @SecurityResources.College
+                                                                    </button>
+                                                                }
+                                                                if (userRole)
+                                                                {
+                                                                    <button class="btn green" value="@item.UserName" onclick="CheckUser('@item.UserName','@item.Id','@item.Type','@item.Email','UserRole','Security');" data-toggle="tooltip" title="@SecurityResources.Action_UserRoles">
+                                                                        <i class="fa fa-gear fa-fw" aria-hidden="true"></i>
+                                                                        @SecurityResources.Roles
+                                                                    </button>
+                                                                }
+                                                            }
+                                                        }
+                                                        else
+                                                        {*@
+                                                    @if (userCollege)
+                                                    {
+                                                        <a class="btn green" value="@item.UserName" href='@Url.Action("AddCollege", "Security", new { id = item.DisplayId, type = item.Type })' data-toggle="tooltip" title="@SecurityResources.Action_UserColleges">
+                                                            <i class="fa fa-university fa-fw" aria-hidden="true"></i>
+                                                            @SecurityResources.College <b>(@item.Colleges)</b>
+
+                                                        </a>
+                                                        <a class="btn green" value="@item.UserName" href='@Url.Action("AddQualification", "Security", new { id = item.DisplayId, type = item.Type })' data-toggle="tooltip" title="@SecurityResources.Action_UserQualifications">
+                                                            <i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i>
+                                                            @SecurityResources.Qualifications <b>(@item.QualificationsCount)</b>
+
+                                                        </a>
+
+                                                    }
+                                                    @if (userRole)
+                                                    {
+                                                        <a class="btn green" value="@item.UserName" href='@Url.Action("UserRole", "Security", new { id = item.DisplayId, type = item.Type })' data-toggle="tooltip" title="@SecurityResources.Roles">
+                                                            <i class="fa fa-users fa-fw" aria-hidden="true"></i>                                                            
+                                                        </a>
+                                                        @*<button class="btn green" value="@item.UserName" onclick="CheckUser('@item.UserName','@item.Id','@item.Type','@item.Email','UserRole','Security');" data-toggle="tooltip" title="@SecurityResources.Action_UserRoles">
+                                                                <i class="fa fa-gear fa-fw" aria-hidden="true"></i>
+                                                                @SecurityResources.Roles
+                                                            </button>*@
+                                                    }
+                                                    @*}*@
+                                                    @if (userDetails)
+                                                    {
+                                                        <button class="btn green" value="@item.UserName" onclick="CheckUser('@item.UserName','@item.Id','@item.Type','@item.Email','UserDetails','Security');" data-toggle="tooltip" title="@SecurityResources.Action_UserDetails">
+                                                            <i class="fa fa-info fa-fw" aria-hidden="true"></i>
+                                                            @*@SecurityResources.UserDetails*@
+                                                        </button>
+                                                    }
+                                                    @if (userUpdate)
+                                                    {
+                                                        <button class="btn green" value="@item.UserName" onclick="CheckUser('@item.UserName','@item.Id','@item.Type','@item.Email','Edit','Users');" data-toggle="tooltip" title="@SecurityResources.EditUser">
+                                                            <i class="fa fa-edit fa-fw" aria-hidden="true"></i>
+                                                            @*@SecurityResources.EditUser*@
+                                                        </button>
+                                                    }
+
+                                                    @if (Activate)
+                                                    {
+                                                        if (item.IsActive)
+                                                        {
+                                                            <button type="button"
+                                                                    class="btn btn-success deactivate btnUser"
+                                                                    style="color:red !important"
+                                                                    data-uid="@item.Id"
+                                                                    id="btn_@index"
+                                                                    title="Deactivate"
+                                                                    data-state="0">
+                                                                <i class="fa fa-ban" aria-hidden="true"></i>
+                                                            </button>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <button type="button"
+                                                                    class="btn btn-success activate btnUser" style="color:forestgreen !important"
+                                                                    data-uid="@item.Id"
+                                                                    id="btn_@index"
+                                                                    title="Activate"
+                                                                    data-state="1">
+                                                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+
+                                                            </button>
+                                                        }
+                                                    }
+                                                </td>
+                                               
+                                            </tr>
+                                            { index = index + 1; }
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    @if (Model.AllUsers.PageCount > 1)
+                                    {
+                                        <div class="col-md-5 col-sm-5">
+                                            @SharedResources.Page @Model.AllUsers.PageNumber @SharedResources.Of @Model.AllUsers.PageCount
+                                        </div>
+                                        <div class="col-md-7 col-sm-7">
+                                            <div class="dataTables_paginate paging_bootstrap_number">
+                                                @Html.PagedListPager(Model.AllUsers, page => Url.Action("Users", new { PageNumber = page, Model.NationalId, Model.CollegeId, Model.ADCollegeId, Model.UserName, Model.UserType, Model.Email, Model.RoleId, Model.ADRoleId }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="noResults">
+                                                    @SharedResources.NoDataToDisplay
+                                                </div>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <div class="noResults">
+                                                    @SharedResources.NoDataToDisplay
+                                                </div>
+                                            }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                                            }
+
+
+@section scripts
+{
+    <script>
+        $('.btnUser').click(function () {
+            // if state =0 then the clicked button is tactive and want to deactivate
+            var elementId = $(this).attr("id");
+            var datastate = $(this).attr("data-state");
+            var headerMessage = datastate == 0 ? '@SharedResources.Deactivate' : '@SharedResources.Activate';
+            var confirmMessage = datastate == 0 ? '@SharedResources.DeactivateConfirm' : '@SharedResources.ActivateConfirm';
+            var activeState = datastate == 0 ? false : true;
+            var _userId = $(this).attr("data-uid");
+
+            $util.confirm(headerMessage, confirmMessage, function () {
+
+            $('#' + elementId).append('<i class="fa fa-spinner fa-spin fa-1x fa-fw blue"></i>');
+
+            $.ajax({
+                url: '@Url.Action("ActiveDeActiveUser", "Security")',
+                type: "POST",
+                dataType: "JSON",
+                data: { stateParam: activeState, userID: _userId },
+                success: function (result) {
+
+                    if (result.success) {
+                        if (datastate == 0) {
+                            $('#' + elementId).html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>');
+                            $('#' + elementId).attr('title', 'Activate');
+                            $('#' + elementId).attr('data-original-title', 'Activate');
+                            $('#' + elementId).attr('style', 'color:forestgreen !important');
+                            $('#' + elementId).attr('data-state', '1');
+                            toastr.success('@SecurityResources.DeactivateSuccess');
+                        }
+                        else {
+                            $('#' + elementId).html('<i class="fa fa-ban" aria-hidden="true"></i>');
+                            $('#' + elementId).attr('title', 'Deactivate');
+                            $('#' + elementId).attr('data-original-title', 'Deactivate');
+                            $('#' + elementId).attr('style', 'color:red !important');
+                            $('#' + elementId).attr('data-state', '0');
+                            toastr.success('@SharedResources.ActivateSuccess');
+                        }
+                    }
+                    else {
+                        toastr.error('@SharedResources.UnexpectedError');
+                    }
+                },
+                error: function (data) {
+                    toastr.error('@SharedResources.UnexpectedError');
+                }
+            });
+            });
+        });
+
+        function CheckUser(name, userId, userType, email, action, controller) {
+            $.ajax({
+                url: '@Url.Action("CheckUserExist", "Security")',
+                type: "POST",
+                dataType: "JSON",
+                data: { userName: name, userId: userId, userType: userType, email: email, controller: controller, action: action },
+                success: function (result) {
+                    window.location.href = result.Result;
+                }
+            });
+        }
+        function changeView(type) {
+            if (type == 1) {
+                $('.ADView').show();
+                $('.OnlineView').hide();
+            }
+            else {
+                $('.ADView').hide();
+                $('.OnlineView').show();
+            }
+        }
+    </script>
+}

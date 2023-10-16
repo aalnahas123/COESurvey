@@ -1,0 +1,127 @@
+﻿@using COE.Common.Localization.Security;
+@using COE.Common.Localization;
+
+@model COE.Common.Model.ViewModels.AccountViewModel
+
+@if (Model != null)
+{
+    if (Model.Providers?.Count > 0)
+    {
+        <ul class="tree">
+
+            @for (int i = 0; i < Model.Providers.Count; i++)
+            {
+                <li class="has">
+                    <span class="sign expand"><i class="fa fa-plus"></i></span>
+                    <span class="sign collabse" style="display:none"><i class="fa fa-minus"></i></span>
+                    @Html.HiddenFor(m => Model.Providers[i].ID)
+                    @Html.HiddenFor(m => Model.Providers[i].Name)
+                    @Html.HiddenFor(m => Model.Providers[i].NameAr)
+                    @Html.HiddenFor(m => Model.Providers[i].Description)
+                    @Html.HiddenFor(m => Model.Providers[i].DescriptionAr)
+
+
+                    @Html.CheckBoxFor(m => Model.Providers[i].IsSelected)
+                    <span>@Model.Providers[i].Name</span>
+                    @if (Model.Providers[i].CollegeList.Count > 0)
+                    {
+                        <ul>
+                            @for (int x = 0; x < Model.Providers[i].CollegeList.Count; x++)
+                            {
+                                <li>
+                                    @Html.HiddenFor(m => Model.Providers[i].CollegeList[x].ID)
+                                    @Html.HiddenFor(m => Model.Providers[i].CollegeList[x].Name)
+                                    @Html.HiddenFor(m => Model.Providers[i].CollegeList[x].NameAr)
+                                    @Html.CheckBoxFor(m => Model.Providers[i].CollegeList[x].IsSelected)
+                                    @Html.DisplayFor(m => Model.Providers[i].CollegeList[x].Name)
+                                </li>
+
+                            }
+                        </ul>
+                    }
+                </li>
+            }
+
+        </ul>
+    }
+}
+else
+{
+    <div class="noResults">
+        @SharedResources.NoDataToDisplay
+    </div>
+}
+
+<style>
+    .controls {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        z-index: 1;
+        padding: 6px 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    input[type=checkbox] {
+        vertical-align: middle !important;
+    }
+
+    .tree input[type=checkbox] {
+        width: 16px;
+        height: 16px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .tree {
+        line-height: 24px;
+    }
+
+        .tree ul {
+            display: none;
+            margin: 4px auto;
+            margin-right: 6px;
+            border-right: 1px dashed #dfdfdf;
+        }
+
+        .tree li {
+            cursor: pointer;
+            vertical-align: middle;
+            background: #fff;
+            list-style: none;
+        }
+
+            .tree li:first-child {
+                border-radius: 3px 3px 0 0;
+            }
+
+            .tree li:last-child {
+                border-radius: 0 0 3px 3px;
+            }
+
+        .tree .active,
+        .active li {
+            background: #efefef;
+        }
+
+        .tree label {
+            cursor: pointer;
+        }
+
+        .tree input[type=checkbox] {
+            margin: -2px 6px 0 0px;
+        }
+
+    .has > label {
+        color: #000;
+    }
+
+    .tree .total {
+        color: #e13300;
+    }
+
+    
+</style>
+ 

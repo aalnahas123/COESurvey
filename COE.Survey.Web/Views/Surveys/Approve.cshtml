@@ -1,0 +1,140 @@
+﻿@using COE.Common.Model;
+
+@model Survey
+
+@{
+    ViewBag.Title = "Approve Survey";
+}
+
+<title>Use options to customize the Survey Editor, Survey Builder Example</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://unpkg.com/jquery"></script>
+<script src="~/Content/surveyjs/survey.jquery.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+
+<style>
+    .svd_q_selected .svda-add-new-rating-item {
+        display: none !important;
+    }
+
+    .modal-dialog {
+        left: auto !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-question-circle"></i> @Model.SurveyTitle
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                </div>
+            </div>
+            <form class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Survey Data</h4>
+                            <div class="form-group">
+                                <label for="sel1">Module</label>
+                                <input type="text" class="form-control" value="@Model.ModuleText" readonly="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" class="form-control" placeholder="Enter Survey Title" value="@Model.SurveyTitle" readonly="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" id="txtDesc" placeholder="Enter Survey Description" readonly="readonly">@Model.Description</textarea>
+                            </div>
+                            <div class="form-group" style="width: 285px;">
+                                <label>Duration</label>
+                                <div class="input-group input-daterange">
+                                    <input type="text" class="form-control" id="txtStartDate" value="@Model.StartDate.Value.ToString("dd/MM/yyyy")" readonly="readonly">
+                                    <div class="input-group-addon">to</div>
+                                    <input type="text" class="form-control" id="txtEndDate" value="@Model.EndDate.Value.ToString("dd/MM/yyyy")" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Survey Review</h4>
+                            <div id="surveyContainer">
+                                <div id="surveyElement"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions right">
+                    <button type="submit" class="btn btn-primary" onclick="return UploadTemplate()">Approve</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*<div class="container">
+    <div class="row">
+        <form style="margin-top: 25px;">
+            
+            
+        </form>
+    </div>
+</div>*@
+
+<script type="text/javascript">
+
+    var text = '@Model.SurveyText';
+    text = text.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "");
+    text = text.replace(/&amp;amp;#39;/g, '\\\\\'').replace(/\\/g, "");
+    text = text.replace(/&#39;/g, '\\\\\'').replace(/\\/g, "");
+    var Surveyjson = text.replace(/&#39;/g, '\'').replace(/&quot;/g, '\\"').replace(/\\/g, "");
+    Survey.StylesManager.applyTheme("bootstrap");
+    Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+    window.survey = new Survey.Model(Surveyjson);
+    //survey.mode = 'display';
+    $("#surveyElement").Survey({ model: survey });
+
+    $(window).on('load', function () {
+        $('.svd_commercial_container').remove();
+        $("#svd-upload").show();
+
+        //$('.input-daterange input').each(function () {
+        //    $(this).datepicker({
+        //        format: 'dd/mm/yyyy',
+        //        startDate: '0d'
+        //    }).on('changeDate', function (e) {
+        //        $('#txtEndDate').datepicker('setStartDate', $('#txtStartDate').val());
+        //    });
+        //});
+
+    });
+
+
+
+    function UploadTemplate() {
+
+        $.ajax({
+            url: '@Url.Action("ApproveSurvey", "Surveys")'+ '?idstr=@Model.ID&status=2',
+            type: 'POST',
+            dataType: 'JSON',
+            success: function (data) {
+                if (data.success == true) {
+                    window.location.href = '@Url.Action("Index", "Surveys")';
+                }
+                else {
+                    alert(data.errorMessage)
+                }
+            },
+            error: function (data) {
+                alert('Error Occured');
+            }
+        });
+
+        return false;
+    }
+
+</script>

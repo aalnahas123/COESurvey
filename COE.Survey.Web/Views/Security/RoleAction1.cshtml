@@ -1,0 +1,47 @@
+﻿@model List<RolePermissionTreeModel>
+@using COE.Common.Localization.Security;
+@using COE.Common.Localization;
+@using COE.Security.Web.Helpers;
+@using COE.Common.Model.ViewModels;
+
+@{
+    ViewBag.Title = SecurityResources.MenuItem_RoleActions;
+    ViewBag.ModuleTitle = SecurityResources.Users;
+
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="row">
+
+        <div class="col-md-12">
+            @if (ViewBag.SuccessMessage != null && !string.IsNullOrEmpty(ViewBag.SuccessMessage))
+            {
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>@ViewBag.SuccessMessage</strong>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet box green">
+                <div class="portlet-body form">
+                    <div class="form-body">
+                        @Html.Action("_RoleAction")
+                    </div>
+                    <div class="form-actions right">
+                        <button type="submit" class="btn green"><i class="fa fa-save fa-fw" aria-hidden="true"></i>@SharedResources.Save</button>
+                        @Html.Hidden("selectedIDsHF");
+                         
+                        <button type="button" class="btn red" onclick="history.go(-1); return false;">@SharedResources.Back</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+}

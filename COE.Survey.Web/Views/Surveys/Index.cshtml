@@ -1,0 +1,266 @@
+﻿@using COE.Survey.Web.ViewModels;
+@using COE.Common.Localization
+@using COE.Common.Model.ViewModels
+@using COE.Survey.Web;
+
+@model SurveysViewModel
+
+@{
+    ViewBag.Title = "Surveys";
+    var rowIndex = 0;
+    List<LookupViewModel> modules = ViewBag.Modules;
+    List<LookupViewModel> AllStatus = ViewBag.AllStatus;
+
+    bool canCreate = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("CreateSurvey");
+    bool canPublish = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("PublishSurvey");
+    bool canApprove = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("ApproveSurvey");
+}
+
+<link href="~/Content/theme/assets/global/plugins/bootstrap-toggle-master/css/bootstrap-toggle.min.css" rel="stylesheet" />
+<script src="~/Content/theme/assets/global/plugins/bootstrap-toggle-master/js/bootstrap-toggle.min.js"></script>
+
+
+
+@using (Html.BeginForm("Index", "Surveys", FormMethod.Post, new { @class = "", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    if (canCreate)
+    {
+        
+                <a class="btn top-btn" style="float:right" href="@Url.Action("Add", "Surveys")">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon points="0 0 24 0 24 24 0 24"/>
+                            <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                            <path d="M11,14 L9,14 C8.44771525,14 8,13.5522847 8,13 C8,12.4477153 8.44771525,12 9,12 L11,12 L11,10 C11,9.44771525 11.4477153,9 12,9 C12.5522847,9 13,9.44771525 13,10 L13,12 L15,12 C15.5522847,12 16,12.4477153 16,13 C16,13.5522847 15.5522847,14 15,14 L13,14 L13,16 C13,16.5522847 12.5522847,17 12,17 C11.4477153,17 11,16.5522847 11,16 L11,14 Z" fill="#000000"/>
+                        </g>
+                    </svg>
+                    New Survey 
+                </a>
+           
+    } 
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-search"></i> Advanced Search
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                    </div>
+                    <div class="actions">
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+                    <form action="#">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Survey Module</label>
+                                            @Html.DropDownListFor(model => model.ModuleId, new SelectList(modules, "Value", "Text"), @SharedResources.DefaultSelect, new { @class = "form-control college-ddl select2" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Survey Status</label>
+                                            @Html.DropDownListFor(model => model.StatusId, new SelectList(AllStatus, "Value", "Text"), @SharedResources.DefaultSelect, new { @class = "form-control select2" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions right">
+                            <button type="submit" class="btn green">@SharedResources.Search</button>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        @*<div class="row">
+            <a href="@Url.Action("Add", "Surveys")" class="btn btn-primary pull-right"> New Survey</a>
+            <div class="col-md-12">
+                <div class="col-md-6 pull-left">
+                    <div class="portlet caption">
+                        <i class="badge badge-info">@SharedResources.ItemsCount @(Model?.SurviesList?.Count ?? 0)</i>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-list"></i> Surveys
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <div class="form-body">
+                            
+                                <div class="col-md-12">
+                                    <p class="result-counter">@SharedResources.ItemsCount <span>@(Model?.SurviesList?.Count ?? 0)</span></p>
+                                    <div class="table-scrollable">
+                                        <div>
+                                            @if (Model?.SurviesList != null && Model.SurviesList.Any())
+                                            {
+                                                <table class="table table-striped table-bordered table-advance table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="col-xs-1"># </th>
+                                                            <th class="col-xs-2"> Survey Name</th>
+                                                            <th class="col-xs-2"> Module</th>
+                                                            <th class="col-xs-2"> Status</th>
+                                                            <th class="col-xs-1"> Created By</th>
+                                                            <th class="col-xs-2"> Active </th>
+                                                            <th class="col-xs-2"> Actions </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        @foreach (var item in Model.SurviesList)
+                                                        {
+                                                            <tr id="@item.ID">
+                                                                <td>@(rowIndex += 1) </td>
+                                                                <td>@item.SurveyTitle</td>
+                                                                <td>@item.ModuleText</td>
+                                                                <td> @(((SurveyStatusEnum)@item.StatusId).ToString())</td>
+                                                                <td>@item.CreatedBy</td>
+                                                                <td><input class="surveyStatus" id="@item.ID" type="checkbox" checked="@item.IsActive" data-toggle="toggle" data-on="Activated" data-off="Deactivated"></td>
+                                                                <td>
+                                                                    @if (item.StatusId == (int)SurveyStatusEnum.Draft)
+                                                                    {
+                                                                        if (canCreate)
+                                                                        {
+                                                                            <a href="@Url.Action("edit", "Surveys", new { Id = @item.ID })" class="btn btn-icon-only blue" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
+                                                                        }
+
+                                                                        if (canPublish)
+                                                                        {
+                                                                            <a href="@Url.Action("publish", "Surveys", new { Id = @item.ID })" class="btn btn-icon-only blue" data-toggle="tooltip" title="Publish"><i class="fa fa-paper-plane"></i></a>
+                                                                        }
+                                                                    }
+                                                                    else if (item.StatusId == (int)SurveyStatusEnum.Published)
+                                                                    {
+                                                                        if (canApprove)
+                                                                        {
+                                                                            <a href="@Url.Action("Approve", "Surveys", new { Id = @item.ID })" class="btn btn-icon-only blue" data-toggle="tooltip" title="Approve"><i class="fa fa-check"></i></a>
+                                                                        }
+                                                                    }
+                                                                    else if (item.StatusId == (int)SurveyStatusEnum.Approved)
+                                                                    {
+                                                                        /*/Surveys/Surveys/answer/@item.ID*/
+                                                                        <a href="@Url.Action("answer", "Surveys", new { Id = @item.ID })" class="btn btn-icon-only blue" data-toggle="tooltip" title="Answer"><i class="fa fa-send-o"></i></a>
+
+                                                                        <button class="btn btn-icon-only blue" title="Copy Survey Url" onclick="CopyTextToClipboard(this,'@item.SurveyLink')"><i class="fa fa-copy"></i></button>
+                                                                    }
+                                                                    <a href="@Url.Action("Index", "Results", new { Id = @item.ID })" class="btn btn-icon-only blue" data-toggle="tooltip" title="Results"><i class="fa fa-users"></i></a>
+
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            }
+                                            else
+                                            {
+                                                <div class="noResults">
+                                                    No Surveys to display
+                                                </div>
+                                            }
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+
+        /*      padding-left: 9px;
+        padding-top: 6px !important;*/
+
+
+        $(function () {
+            $('.toggle-on').attr("style", "padding-left: 9px !important; padding-top:6px !important;")
+            $('.toggle-off').attr("style", "padding-left: 9px !important; padding-top:6px !important;")
+        });
+
+        //$('#toggle-two').bootstrapToggle({
+        //    on: 'Activated',
+        //    off: 'Deactivated'
+        //});
+
+        $('.surveyStatus').change(function () {
+            UpdateSurveyStatus($(this).prop('id'), $(this).prop('checked'));
+        })
+
+        function CopyTextToClipboard(element, surveyUrl) {
+
+
+
+            var textArea = document.createElement("textarea");
+            textArea.value = window.location.origin + surveyUrl;
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                if (successful) {
+                    $(element).children().first().removeClass().addClass('fa fa-clipboard');
+                }
+                else {
+                    alert("Error Occured");
+                }
+            }
+            catch (err) {
+                alert("Error Occured");
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+
+        function UpdateSurveyStatus(id, status) {
+
+            $.ajax({
+                url: '@Url.Action("UpdateSurveyStatus", "Surveys")' + '?id=' + id + '&isActive=' + status,
+                type: 'POST',
+                dataType: 'JSON',
+                success: function (data) {
+                    if (data.success == true) {
+                        window.location.href = '@Url.Action("Index", "Surveys")';
+                    }
+                    else {
+                        alert('Error Occured');
+                    }
+                },
+                error: function (data) {
+                    alert('Error Occured');
+                }
+            });
+
+            return false;
+        }
+    </script>
+}

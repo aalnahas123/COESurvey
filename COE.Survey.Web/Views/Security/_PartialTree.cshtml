@@ -1,0 +1,80 @@
+﻿@using System.Web.UI.WebControls
+@using DevExpress.Web.ASPxTreeList;
+
+@Html.DevExpress().TreeList(settings =>
+{
+    settings.Name = "treeList";
+    settings.CallbackRouteValues = new { Controller = "Security", Action = "_RoleAction" };
+
+    settings.CustomJSProperties = (s, e) =>
+    {
+        if (ViewData["SelectedNodesIDs"] != null)
+        {
+            e.Properties["cpValuesFromController"] = ViewData["SelectedNodesIDs"].ToString();
+        }
+    };
+    settings.Width = Unit.Percentage(100);
+    settings.Theme = "Material";
+
+    settings.AutoGenerateColumns = false;
+    settings.KeyFieldName = "ID";
+    settings.ParentFieldName = "ParentID";
+
+    settings.Columns.Add("Name");
+    settings.Columns.Add("Desc");
+
+    settings.SettingsBehavior.AutoExpandAllNodes = true;
+    settings.SettingsBehavior.ExpandCollapseAction = TreeListExpandCollapseAction.NodeClick;
+
+    settings.SettingsCookies.Enabled = true;
+    settings.SettingsCookies.StoreExpandedNodes = true;
+    //settings.SettingsCookies.StoreSelection = true;
+
+    settings.SettingsSelection.Enabled = true;
+    settings.SettingsSelection.Recursive = true;
+    settings.SettingsSelection.AllowSelectAll = true;
+
+    //settings.ClientSideEvents.SelectionChanged = "function(s, e) { s.PerformCallback(); }";
+     settings.ClientSideEvents.SelectionChanged = "SelectionChanged";
+
+    List<int> selectedIds = (List<int>)TempData.Peek("currentUserRoleIds");
+    settings.DataBound = (s, e) =>
+    {
+        MVCxTreeList treeList = (MVCxTreeList)s;
+        TreeListNodeIterator iterator = treeList.CreateNodeIterator();
+        TreeListNode node = iterator.Current;
+
+        while (node != null)
+        {
+            foreach (var itemID in selectedIds)
+            {
+                if (node["ID"]!=null)
+                {
+                    if (node["ID"].ToString() == itemID.ToString())
+                    {
+                        node.Selected = true;
+                    }
+                }
+            }
+            if (node != treeList.RootNode)
+            {
+                node.AllowSelect = true;
+            }
+            node = iterator.GetNext();
+        }
+    };
+
+
+}).Bind(Model).GetHtml()
+ 
+ <script type="text/javascript">
+
+    var selectedIDs;
+    function SelectionChangedA(s, e) {
+        s.GetSelectedFieldValues("ID", GetSelectedFieldValuesCallback);
+    }
+    function GetSelectedFieldValuesCallback(values) {
+        selectedIDs = values.join(',');
+        console.log(selectedIDs);
+     }
+</script>

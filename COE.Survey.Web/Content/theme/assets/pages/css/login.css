@@ -1,0 +1,256 @@
+@import url(//fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap");
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  font-family: "Poppins", "Droid Arabic Kufi", sans-serif !important;
+}
+
+.login {
+  font-family: "Poppins", sans-serif;
+  background: url("../img/login-bg.jpg") no-repeat top center;
+  background-size: cover;
+  height: 100vh;
+  padding: 0;
+}
+
+.login a {
+  text-decoration: none !important;
+  position: relative;
+}
+
+.login a:after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  top: 1rem;
+  left: 0;
+  width: 0%;
+  -webkit-transition: width 0.3s ease;
+  transition: width 0.3s ease;
+}
+
+.login a:hover:after {
+  width: 100%;
+}
+
+.coe-info {
+  padding: 3em;
+  height: 100vh;
+  position: relative;
+}
+.logo {
+  max-width: 275px;
+  margin: 0 auto 20px;
+}
+
+.system-logo {
+  height: 35px;
+  width: auto;
+  margin: 0 auto 20px;
+}
+.login-form {
+  background: #fff;
+  padding: 30px 40px;
+  overflow: hidden;
+}
+.coe-info h3 {
+  position: absolute;
+  top: 45%;
+  line-height: 1.8;
+  color: #fff;
+}
+.coe-info .info-footer {
+  position: absolute;
+  bottom: 3em;
+  color: rgba(255, 255, 255, 0.48);
+  width: 87%;
+  font-size: 12px;
+}
+
+.coe-info .info-footer a {
+  color: rgba(255, 255, 255, 0.48);
+  margin-left: 20px;
+}
+
+.coe-info .info-footer a:hover {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.coe-info .info-footer a:after {
+  border-bottom: 1px solid #fff;
+  opacity: 0.3;
+}
+
+.login-container {
+  height: 100vh;
+  z-index: 1;
+  position: relative;
+}
+
+.login:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  position: absolute;
+  background: -moz-linear-gradient(-45deg, rgba(212, 52, 128, 0.95) 0%, rgba(105, 62, 134, 0.95) 50%, rgba(38, 76, 167, 0.95) 100%);
+  background: -webkit-linear-gradient(-45deg, rgba(212, 52, 128, 0.95) 0%, rgba(105, 62, 134, 0.95) 50%, rgba(38, 76, 167, 0.95) 100%);
+  background: linear-gradient(135deg, rgba(212, 52, 128, 0.95) 0%, rgba(105, 62, 134, 0.95) 50%, rgba(38, 76, 167, 0.95) 100%);
+}
+
+.login-container h5 {
+  color: #74788d;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.login-container h5 a {
+  color: #00a4d8;
+  margin-left: 8px;
+}
+
+.login-container h5 a:after {
+  border-bottom: 1px solid #00a4d8;
+  opacity: 0.3;
+}
+
+.login-container .login-form-container {
+  width: 100%;
+  max-width: 568px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 437px;
+}
+
+.login-container .login-form-container h3 {
+  color: #67666e;
+  text-align: center;
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 35px;
+}
+
+.login-container .login-form-container input[type="text"],
+.login-container .login-form-container input[type="password"] {
+  border: 1px solid #ddd;
+  height: 50px;
+  margin-top: 1.25rem;
+  background-color: rgba(247, 247, 249, 0.7);
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  -webkit-border-radius: 4px !important;
+  -moz-border-radius: 4px !important;
+  border-radius: 4px !important;
+  font-family: "Poppins", "Droid Arabic Kufi", sans-serif !important;
+}
+
+.login-container .login-form-container .form-actions {
+  margin-top: 40px;
+}
+
+.login-container .login-form-container .form-actions button {
+  font-weight: 500;
+  font-size: 13px;
+  height: 46px;
+  padding-left: 30px;
+  padding-right: 30px;
+  -webkit-box-shadow: 0 4px 16px 0 rgba(0, 117, 190, 0.18) !important;
+  box-shadow: 0 4px 16px 0 rgba(0, 117, 190, 0.18) !important;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  background-color: #0075be;
+  border-color: #0075be;
+  color: #fff;
+  border-radius: 4px !important;
+  font-family: "Poppins", "Droid Arabic Kufi", sans-serif !important;
+}
+
+.login-container .login-form-container .form-actions button:hover {
+  background-color: #0067a7;
+  border-color: #0067a7;
+  -webkit-box-shadow: 0 4px 16px 0 rgba(0, 117, 190, 0.27) !important;
+  box-shadow: 0 4px 16px 0 rgba(0, 117, 190, 0.27) !important;
+}
+
+.login-container .login-form-container .form-actions .mt-checkbox {
+  margin-top: 13px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #74788d;
+  padding-left: 25px;
+  margin-bottom: 0;
+}
+
+.login-container .login-form-container .form-actions .mt-checkbox > span {
+  border: 1px solid #ddd;
+  background-color: rgba(247, 247, 249, 0.7);
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  -webkit-border-radius: 4px !important;
+  -moz-border-radius: 4px !important;
+  border-radius: 4px !important;
+}
+
+.alert {
+  border-radius: 4px !important;
+}
+
+.alert-dismissable .close,
+.alert-dismissible .close {
+  top: 5px;
+}
+
+.partners {
+  margin-bottom: 15px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  padding-bottom: 15px;
+}
+
+.partners div {
+  padding-left: 0;
+}
+
+.copyright {
+  clear: both;
+}
+
+@media (max-width: 991px) {
+  .login,
+  .coe-info,
+  .login-container {
+    height: auto;
+  }
+  .coe-info h3 {
+    position: relative;
+  }
+  .coe-info .info-footer {
+    position: relative;
+    width: 100%;
+    bottom: auto;
+  }
+  .login-container .login-form-container {
+    position: relative;
+    clear: both;
+    margin-top: 50px;
+    overflow: hidden;
+    height: auto;
+  }
+}

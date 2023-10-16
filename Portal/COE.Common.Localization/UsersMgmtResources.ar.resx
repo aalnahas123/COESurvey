@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDetails" xml:space="preserve">
+    <value>ادخل بيانات الحساب</value>
+  </data>
+  <data name="ActiveStatus" xml:space="preserve">
+    <value>حالة التفعيل</value>
+  </data>
+  <data name="Captcha" xml:space="preserve">
+    <value>رمز التحقق</value>
+  </data>
+  <data name="CodeExpiredDate" xml:space="preserve">
+    <value>رابط التفعيل انتهت صلاحيته</value>
+  </data>
+  <data name="ConfirmEmail" xml:space="preserve">
+    <value>تأكيد البريد الالكترونى</value>
+  </data>
+  <data name="ConfirmEmailCodeExpired" xml:space="preserve">
+    <value>انتهت صلاحية رابط تفعيل حساب. يجب إرسال رابط جديد لاستكمال عميلة تفعيل حسابك</value>
+  </data>
+  <data name="ConfirmEmailInvalidCode" xml:space="preserve">
+    <value>رابط تفعيل الحساب غير صحيح. تأكد من البريد المرسل إليكم. يمكنك إعادة إرسال رابط جديد لتفعيل حسابك حال لم يعمل الرابط المرسل</value>
+  </data>
+  <data name="ConfirmEmailMsg" xml:space="preserve">
+    <value>تم تأكيد بريدكم الالكترونى و تفعيل الحساب</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>تأكيد كلمة المرور</value>
+  </data>
+  <data name="ConfirmPasswordNotMatchValidator" xml:space="preserve">
+    <value>تأكيد كلمة المرور لا يطابق كلمة المرور</value>
+  </data>
+  <data name="Contry" xml:space="preserve">
+    <value>الدولة</value>
+  </data>
+  <data name="CreateAnAccount" xml:space="preserve">
+    <value>انشاء حساب جديد</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>كلمة المرور الحالية</value>
+  </data>
+  <data name="DataRecover" xml:space="preserve">
+    <value>لاستعادة الملف الشخصى انقر هنا</value>
+  </data>
+  <data name="DataRecoverConfirmMsg" xml:space="preserve">
+    <value>فضلا تحقق من الرابط المرسل الى بريدك الإكتروني {0} أو الجوال رقم : xxxxxxx{1} لاعادة تعيين البيانات الشخصية </value>
+  </data>
+  <data name="DefaultLanguage" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="EditMyProfile" xml:space="preserve">
+    <value>تعديل بياناتي</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="EmailConfirm" xml:space="preserve">
+    <value>تأكيد البريد الإلكتروني</value>
+  </data>
+  <data name="EmailConfirmNotMatchValidator" xml:space="preserve">
+    <value>تأكيد البريد الإلكتروني لا يطابق البريد الإلكتروني</value>
+  </data>
+  <data name="EmailNotConfirmed" xml:space="preserve">
+    <value>لم يتم تفعيل المستخدم بعد</value>
+  </data>
+  <data name="EmailPasswordLink" xml:space="preserve">
+    <value>ارسال رابط كلمة المرور</value>
+  </data>
+  <data name="EmailValidator" xml:space="preserve">
+    <value>البريد الالكترونى غير صحيح</value>
+  </data>
+  <data name="EnterCredentials" xml:space="preserve">
+    <value>ادخل اسم المسخدم او الهوية الوطنية للطالب وكلمة المرور</value>
+  </data>
+  <data name="EnterEmailNationalId" xml:space="preserve">
+    <value>ادخل البريد الإلكتروني والهوية الوطنية لإستعادة كلمة المرور .</value>
+  </data>
+  <data name="ExistingEmail" xml:space="preserve">
+    <value>البريد الالكتروني موجود بالفعل</value>
+  </data>
+  <data name="ExistingPhoneNumber" xml:space="preserve">
+    <value>رقم الهاتف موجود بالفعل</value>
+  </data>
+  <data name="ExistsingNationalID" xml:space="preserve">
+    <value>رقم الهوية الوطنية موجود بالفعل</value>
+  </data>
+  <data name="FacebookLogin" xml:space="preserve">
+    <value>تسجيل الدخول&lt;br /&gt;بحساب فيسبوك</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>نسيت كلمة المرور ?</value>
+  </data>
+  <data name="ForgetPasswordConfirmMsg" xml:space="preserve">
+    <value>فضلا تحقق من الرابط المرسل الى بريدك الإكتروني {0} أو الجوال رقم : xxxxxxx{1} لاعادة تعيين البيانات الشخصية</value>
+  </data>
+  <data name="ForgetPasswordError" xml:space="preserve">
+    <value>عذراً , فشل فى ارسال رابط اعادة تعيين كلمة المرور . حاول مرة اخرى</value>
+  </data>
+  <data name="ForgetPasswordSuccess" xml:space="preserve">
+    <value>تم ارسال رابط اعادة تعيين كلمة المرور بنجاح .</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>نسيت كلمة المرور</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>الإسم الكامل</value>
+  </data>
+  <data name="IAgree" xml:space="preserve">
+    <value>أوافق على</value>
+  </data>
+  <data name="InvalidCaptcha" xml:space="preserve">
+    <value>قيمة الرمز المدخل غير صحيحة</value>
+  </data>
+  <data name="InvalidLogin" xml:space="preserve">
+    <value>عملية دخول غير صحيحة ، فضلا أعد المحاولة</value>
+  </data>
+  <data name="InvalidMobileNumber" xml:space="preserve">
+    <value>رقم الجوال غير صحيح</value>
+  </data>
+  <data name="InvalidNationalID" xml:space="preserve">
+    <value>الرجاء ادخال رقم هوية صحيح</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>تسجيل دخول</value>
+  </data>
+  <data name="LoginWith" xml:space="preserve">
+    <value>او سجل الدخول بحسابات </value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>تسجيل خروج</value>
+  </data>
+  <data name="MustAcceptAgreement" xml:space="preserve">
+    <value>يجب الموافقة على الشروط والأحكـام</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>بياناتي</value>
+  </data>
+  <data name="NationalId" xml:space="preserve">
+    <value>الهوية الوطنية / الإقامة</value>
+  </data>
+  <data name="NationalIDValidity" xml:space="preserve">
+    <value>تحقق من صحة الهوية الوطنية السعودية</value>
+  </data>
+  <data name="NewUserJoinUs" xml:space="preserve">
+    <value>مستخدم جديد&lt;br /&gt;انضم إلينا</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="PasswordValidator" xml:space="preserve">
+    <value>كلمة المرور غير صالحة  . يجب أن تكون كلمة المرور بين 6 و 25 حرفا</value>
+  </data>
+  <data name="PasswordValidatorTemplate" xml:space="preserve">
+    <value>&lt;div dir="rtl" class="tooltip" role="tooltip"&gt;&lt;div class="tooltip-arrow"&gt;&lt;/div&gt;&lt;div class="tooltip-inner" style="width:500px"&gt;&lt;/div&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="PasswordValidatorTitle" xml:space="preserve">
+    <value>&lt;ul&gt;&lt;li&gt;يجب الا تقل عن 6 احرف &lt;/li&gt;&lt;/ul&gt;</value>
+  </data>
+  <data name="PersonalDetails" xml:space="preserve">
+    <value>ادخل البيانات الشخصية</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>الجوال</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>و سياسة الخصوصية</value>
+  </data>
+  <data name="RegisterNewUser" xml:space="preserve">
+    <value>إنشاء حساب</value>
+  </data>
+  <data name="RegistrationFailed" xml:space="preserve">
+    <value>عذراً ، فشل في تسجيل الحساب الخاص بك ، يرجى المحاولة مرة أخرى</value>
+  </data>
+  <data name="RegistrationFailedWithlinkRecover" xml:space="preserve">
+    <value>عذرًا ، فشل تسجيل حسابك. يرجى التحقق من الرابط لاستعادة وإعادة تعيين معلوماتك الشخصية</value>
+  </data>
+  <data name="RegistrationSuccess" xml:space="preserve">
+    <value>تم تسجيل الحساب بنجاح قم بالدخول لاستكمال طلبكم</value>
+  </data>
+  <data name="Remember" xml:space="preserve">
+    <value>تذكرنى</value>
+  </data>
+  <data name="ResendConfirmEmailLink" xml:space="preserve">
+    <value>اعادة ارسال رابط التفعيل</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>اعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="ResetPasswordConfirm" xml:space="preserve">
+    <value>تأكيد اعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="ResetPasswordConfirmMsg" xml:space="preserve">
+    <value>تم اعادة تعيين كلمة المرور بنجاح فضلا إضغط على الرابط لاعادة الدخول</value>
+  </data>
+  <data name="ResetPasswordErrorMsg" xml:space="preserve">
+    <value>عذرا، لم تتم إعادة تعيين كلمة المرور حتى الآن.</value>
+  </data>
+  <data name="ResetPasswordInvalidCode" xml:space="preserve">
+    <value>رابط إعادة كلمة مرور غير صحيح. تأكد من البريد المرسل إليكم. يمكنك إعادة إرسال رابط جديد لإعادة تعيين كلمة المرور حال لم يعمل الرابط المرسل</value>
+  </data>
+  <data name="ResetPasswordSuccessMsg" xml:space="preserve">
+    <value>تم إعادة تعيين كلمة المرور الخاصة بك بنجاح.</value>
+  </data>
+  <data name="ResetYourPassword" xml:space="preserve">
+    <value>ادخل البريد الإلكترونى ادناه حتى تتمكن من اعادة كلة المرور</value>
+  </data>
+  <data name="SendedActivationLink" xml:space="preserve">
+    <value>تم ارسال رابط التفعيل</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>تسجيل دخول</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>انشاء حساب</value>
+  </data>
+  <data name="Terms" xml:space="preserve">
+    <value>&lt;div class="body_wrap container"&gt;
+    &lt;div class="col-md-12 centered-wrap"&gt;
+            &lt;h4 class="head"&gt;
+                متقدم جديد&lt;/h4&gt;
+            &lt;div class="wraper"&gt;
+                
+                    &lt;h4&gt;
+                        &lt;span&gt;هذا الجدول يبين الشروط المطلوبه قبل الالتحاق بالكلية :&lt;/span&gt;&lt;/h4&gt;
+                    &lt;ul class="blue_b"&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;أن يكون المتقدم سعودي أو من ام سعودية.&lt;/span&gt;&lt;/li&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;أن يكون المتقدم خريج مرحلة الثانوية العامة خلال الخمس سنوات الماضية.&lt;/span&gt;&lt;/li&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;اكمال المتقدم اختبار القدرات العامة الذي يقدمه المركز الوطني للقياس والتقويم.&lt;/span&gt;&lt;/li&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;اكمال المتقدم الاختبار التحصيلي الذي يقدمه المركز الوطني للقياس والتقويم في التعليم العالي.&lt;/span&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;p&gt;
+                        أتعهد وأقر بأن جميع البيانات المدخلة في استمارة التسجيل هذه صحيحة ودقيقة، وفي حال اتضح خلاف ذلك فسوف يتم إلغاء عملية التسجيل حتى لو تم اكتشاف ذلك عند أو بعد إصدار القرار النهائي، كما أوافق على قيام المؤسسة العامة للتدريب التقني والمهني بالتحقق من البيانات الخاصة بـي والحصول على أي بيانات أخرى (للغرض المخصص من أجله هذا التسجيل) ترى المؤسسة العامة للتدريب التقني والمهني ضرورة الحصول عليها من الجهات المختصة، وذلك لخدمتي بصورة أكثر فاعلية
+                    &lt;/p&gt;
+                    &lt;span class="lblApprove"&gt;
+					&lt;input id="cbApprove" type="checkbox" name="cbApprove"&gt;
+					&lt;label for="cbApprove"&gt;قبول&lt;/label&gt;
+					&lt;/span&gt;
+					&lt;span id="cfApprove" class="evalidator" style="color:Red;visibility:hidden;"&gt;الرجاء الموافقة على الشروط لمتابعة عملية التسجيل&lt;/span&gt;                
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;</value>
+  </data>
+  <data name="TermsAgreement" xml:space="preserve">
+    <value>الموافقة على الشروط والأحكـام</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>الشروط والأحكـام</value>
+  </data>
+  <data name="TermsOfServices" xml:space="preserve">
+    <value>شروط الخدمة</value>
+  </data>
+  <data name="TwitterLogin" xml:space="preserve">
+    <value>تسجيل الدخول&lt;br /&gt;بحساب تويتر</value>
+  </data>
+  <data name="UrlActivationTitle" xml:space="preserve">
+    <value>لإعادة إرسال رابط التفعيل لبريدك الإلكتروني إضغط هنا</value>
+  </data>
+  <data name="UserAlreadyActivated" xml:space="preserve">
+    <value>تم تفعيل حساب المستخدم من قبل</value>
+  </data>
+  <data name="UserHasNotProfile" xml:space="preserve">
+    <value>عذرا , لا يمكنك استعادة كلمة المرور . ارجوا التاكد من صحة البريد الالكتروني ورقم الجوال المسجل فى النظام</value>
+  </data>
+  <data name="UserIsLocked" xml:space="preserve">
+    <value>تم إيقاف المستخدم مؤقتاً، رجاء تسجيل الدخول بعد قليل أو التواصل مع مدير النظام</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>اسم المستخدم او الهوية الوطنية للطالب</value>
+  </data>
+  <data name="UserNotActivated" xml:space="preserve">
+    <value>تم ايقاف المستخدم من قبل مدير النظام</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>المستخدم غير مسجل بالنظام</value>
+  </data>
+  <data name="UsersManagment" xml:space="preserve">
+    <value>إدارة المستخدمين</value>
+  </data>
+</root>

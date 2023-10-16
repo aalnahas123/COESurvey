@@ -1,0 +1,59 @@
+﻿@using DevExpress.Data
+@using DevExpress.Data.Linq
+@using DevExpress.Data.Linq.Helpers
+@using DevExpress.Data.Filtering
+@using System.Web.UI.WebControls
+
+@Html.DevExpress().TreeList(settings =>
+{
+    settings.Name = "treeList";
+    settings.CallbackRouteValues = new { Controller = "Selection", Action = "MultipleNodeSelectionPartial" };
+    settings.Width = Unit.Percentage(100);
+
+    settings.AutoGenerateColumns = false;
+    settings.KeyFieldName = "ID";
+    settings.ParentFieldName = "ParentID";
+
+    settings.Columns.Add("DepartmentName", "Department");
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = "Budget";
+        c.PropertiesEdit.DisplayFormatString = "{0:C}";
+    });
+    settings.Columns.Add("Location");
+
+    settings.SettingsBehavior.AutoExpandAllNodes = true;
+    //settings.SettingsBehavior.ExpandCollapseAction = TreeListExpandCollapseAction.NodeDblClick;
+
+    settings.SettingsCookies.Enabled = true;
+    settings.SettingsCookies.StoreExpandedNodes = true;
+    settings.SettingsCookies.StoreSelection = true;
+
+    settings.SettingsSelection.Enabled = true;
+    settings.SettingsSelection.Recursive = true;
+    settings.SettingsSelection.AllowSelectAll = true;
+
+    settings.ClientSideEvents.SelectionChanged = "function(s, e) { s.PerformCallback(); }";
+    settings.ClientSideEvents.BeginCallback = "OnBeginCallback";
+
+    //settings.DataBound = (s, e) =>
+    //{
+    //    MVCxTreeList treeList = (MVCxTreeList)s;
+    //    TreeListNodeIterator iterator = treeList.CreateNodeIterator();
+    //    TreeListNode node = iterator.Current;
+    //    while (node != null)
+    //    {
+    //        if (node != treeList.RootNode)
+    //        {
+    //            node.AllowSelect = true;
+    //        }
+    //        node = iterator.GetNext();
+    //    }
+    //};
+
+    //settings.PreRender = (s, e) =>
+    //{
+    //    if (options.SelectMode != "All")
+    //        ((MVCxTreeList)s).UnselectAll();
+    //};
+}).Bind(Model).GetHtml() 

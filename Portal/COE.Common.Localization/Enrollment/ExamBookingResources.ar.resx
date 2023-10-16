@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppointmentBooking" xml:space="preserve">
+    <value>حجز موعد الإختبار</value>
+  </data>
+  <data name="AvailableExamTimes" xml:space="preserve">
+    <value>الأوقات المتاحة للإختبار</value>
+  </data>
+  <data name="BookNow" xml:space="preserve">
+    <value>احجز الآن</value>
+  </data>
+  <data name="BookTheFee" xml:space="preserve">
+    <value>ادفع الرسوم</value>
+  </data>
+  <data name="CardExpiryDate" xml:space="preserve">
+    <value>تاريخ انتهاء صلاحية البطاقة (MM / YY)</value>
+  </data>
+  <data name="CardHolderName" xml:space="preserve">
+    <value>اسم حامل البطاقة</value>
+  </data>
+  <data name="CardNumber" xml:space="preserve">
+    <value>رقم البطاقة</value>
+  </data>
+  <data name="CardVerificationCode" xml:space="preserve">
+    <value>رمز التحقق من البطاقة (CVC)</value>
+  </data>
+  <data name="Center" xml:space="preserve">
+    <value>مركز التدريب</value>
+  </data>
+  <data name="ExamCode" xml:space="preserve">
+    <value>رمز الإختبار</value>
+  </data>
+  <data name="ExamDate" xml:space="preserve">
+    <value>تاريخ الإختبار</value>
+  </data>
+  <data name="ExamDetail" xml:space="preserve">
+    <value>بيانات الإختبار</value>
+  </data>
+  <data name="ExameCenterLocationUrl" xml:space="preserve">
+    <value>رابط مقر المركز</value>
+  </data>
+  <data name="ExameCenterName" xml:space="preserve">
+    <value>اسم المركز</value>
+  </data>
+  <data name="ExamEndAt" xml:space="preserve">
+    <value>توقيت نهاية الإختبار</value>
+  </data>
+  <data name="ExamFees" xml:space="preserve">
+    <value>دفع رسوم الإختبار</value>
+  </data>
+  <data name="ExamName" xml:space="preserve">
+    <value>اسم الإختبار</value>
+  </data>
+  <data name="ExamStartAt" xml:space="preserve">
+    <value>توقيت بداية الإختبار</value>
+  </data>
+  <data name="NoDataToDisplay" xml:space="preserve">
+    <value>لا توجد مواعيد متاحة للاختبار في الوقت الحالي</value>
+  </data>
+  <data name="PaymentInformation" xml:space="preserve">
+    <value>بيانات الدفع</value>
+  </data>
+  <data name="Qualification" xml:space="preserve">
+    <value>المستوى</value>
+  </data>
+  <data name="TraineeInformation" xml:space="preserve">
+    <value>بيانات الطالب</value>
+  </data>
+  <data name="TraineeName" xml:space="preserve">
+    <value>اسم الطالب</value>
+  </data>
+  <data name="TraineeNationalID" xml:space="preserve">
+    <value>الهوية الوطنية</value>
+  </data>
+  <data name="ExamCity" xml:space="preserve">
+    <value>مدينة الاختبار</value>
+  </data>
+  <data name="PaidAmount" xml:space="preserve">
+    <value>المبلغ المدفوع</value>
+  </data>
+  <data name="ExamPaymentDetails" xml:space="preserve">
+    <value>بيانات حجز الاختبار والدفع</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>مؤكد</value>
+  </data>
+  <data name="Canceled" xml:space="preserve">
+    <value>ملغي</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>غير مدفوع</value>
+  </data>
+  <data name="EmailCancelationTitle" xml:space="preserve">
+    <value>تم إلغاء حجز الاختبار الخاص بك</value>
+  </data>
+  <data name="PaymentSuccessful" xml:space="preserve">
+    <value>تم الدفع بنجاح</value>
+  </data>
+  <data name="MsgCanceledWithRefunded" xml:space="preserve">
+    <value>تم إلغاء حجز الاختبار واسترداد رسوم الاختبار</value>
+  </data>
+  <data name="MsgCanceledWithoutRefunded" xml:space="preserve">
+    <value>تم إلغاء حجز الاختبار ولا يتم رد رسوم الاختبار، يرجى الاتصال بالمسؤول</value>
+  </data>
+  <data name="ExamCenterDetails" xml:space="preserve">
+    <value>بيانات مركز الإختبار</value>
+  </data>
+  <data name="ExamBookingDetails" xml:space="preserve">
+    <value>بيانات حجز الإختبار</value>
+  </data>
+  <data name="Reschedual" xml:space="preserve">
+    <value>اعادة جدولة</value>
+  </data>
+  <data name="SlotUnavailable" xml:space="preserve">
+    <value>الفترة المحددة غير متاحة حاليًا ، يرجى تحديد خانة اختبار أخرى.</value>
+  </data>
+  <data name="SlotUnavailableAndfeesRefunded" xml:space="preserve">
+    <value>الفترة المحددة غير متاحة حاليًا ، وتم رد رسوم الاختبار ، يرجى تحديد خانة اختبار أخرى.</value>
+  </data>
+  <data name="EditCurrentBooking" xml:space="preserve">
+    <value>يمكنك تعديل حجزك الحالي</value>
+  </data>
+  <data name="PayAndRefundPolicy" xml:space="preserve">
+    <value>سياسة الدفع والاسترداد</value>
+  </data>
+  <data name="IsAgreeOnPayPolicy" xml:space="preserve">
+    <value>الإقرار بالإطلاع على  &lt;a href="/ExamBooking/PayAndRefundPolicy" target="_blank"&gt;سياسة الدفع والإسترداد&lt;/a&gt;</value>
+  </data>
+  <data name="PayPolicyLink" xml:space="preserve">
+    <value>رابط سياسة الدفع والإسترداد</value>
+  </data>
+  <data name="MustAgreeOnPayPolicy" xml:space="preserve">
+    <value>يجب أن توافق على سياسة الدفع والاسترداد</value>
+  </data>
+  <data name="ExamURL" xml:space="preserve">
+    <value>رابط الاختبار</value>
+  </data>
+  <data name="UnavailableCity" xml:space="preserve">
+    <value>جاري العمل على إضافة مراكز إختبارات في مناطق آخرى</value>
+  </data>
+  <data name="Msg_CannotCancel" xml:space="preserve">
+    <value>لايمكنكم الإلغاء حسب سياسات الدفع والإسترداد</value>
+  </data>
+  <data name="EmailTitle" xml:space="preserve">
+    <value>إختبار برنامج كوادر السلامة والصحة المهنية</value>
+  </data>
+  <data name="ExamLanguage" xml:space="preserve">
+    <value>لغة الإختبار</value>
+  </data>
+  <data name="ExamResult" xml:space="preserve">
+    <value>نتيجة الإختبار</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>النتيجة</value>
+  </data>
+  <data name="PendingResult" xml:space="preserve">
+    <value>النتيجة تحت الاجراء</value>
+  </data>
+  <data name="Pass" xml:space="preserve">
+    <value>تم الإجتياز</value>
+  </data>
+  <data name="Fail" xml:space="preserve">
+    <value>لم يتم الإجتياز</value>
+  </data>
+  <data name="PayAgain" xml:space="preserve">
+    <value>ادفع مرة أخرى واحجز الإختبار</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>مكتمل</value>
+  </data>
+  <data name="PaymentConfirmed" xml:space="preserve">
+    <value>تم استلام مبلغ الحجز، وجدولة الإختبار تحت الاجراء</value>
+  </data>
+  <data name="EmergencyCancelled" xml:space="preserve">
+    <value>الحجز ملغى للطوارئ</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>اعادة الرسوم </value>
+  </data>
+  <data name="SARASConfirmed" xml:space="preserve">
+    <value>مؤكد فى SARAS</value>
+  </data>
+  <data name="ReTakeExam" xml:space="preserve">
+    <value>أعد الامتحان</value>
+  </data>
+  <data name="BookingRetakeSuccessful" xml:space="preserve">
+    <value>تم الحجز بنجاح</value>
+  </data>
+  <data name="RefundedCredits" xml:space="preserve">
+    <value>الرصيد المسترجع</value>
+  </data>
+  <data name="SuccessfulRefund" xml:space="preserve">
+    <value>تم الاسترداد</value>
+  </data>
+  <data name="NotRefunded" xml:space="preserve">
+    <value>لم يتم الاسترداد</value>
+  </data>
+  <data name="RequestedRefund" xml:space="preserve">
+    <value>طلب الاسترداد</value>
+  </data>
+  <data name="IsRequestedRefund" xml:space="preserve">
+    <value>تم الطلب من قبل</value>
+  </data>
+  <data name="NotRequestedRefund" xml:space="preserve">
+    <value>يمكن الطلب</value>
+  </data>
+  <data name="RequestRefund" xml:space="preserve">
+    <value>طلب استرداد الرسوم</value>
+  </data>
+  <data name="Msg_CannotRefund" xml:space="preserve">
+    <value>لايمكنكم إسترداد هذه العملية</value>
+  </data>
+  <data name="MsgRequestedAndRefunded" xml:space="preserve">
+    <value>تم رد الرسوم بنجاح</value>
+  </data>
+  <data name="MsgRequestedWithoutRefund" xml:space="preserve">
+    <value>لا يمكن استرداد الرسوم ، يرجى الاتصال بالمسؤول.</value>
+  </data>
+  <data name="OpenBookings" xml:space="preserve">
+    <value>الحجوزات الحالية</value>
+  </data>
+  <data name="ConfirmedBookings" xml:space="preserve">
+    <value>الحجوزات المؤكدة</value>
+  </data>
+  <data name="UpcomingBookings" xml:space="preserve">
+    <value>الحجوزات القادمة</value>
+  </data>
+  <data name="Invoices" xml:space="preserve">
+    <value>فواتير الدفع و الأسترداد</value>
+  </data>
+  <data name="InvoiceFile" xml:space="preserve">
+    <value>فاتورة الدفع</value>
+  </data>
+  <data name="CreditNoteFile" xml:space="preserve">
+    <value>فاتورة الإلغاء</value>
+  </data>
+  <data name="InvoiceType" xml:space="preserve">
+    <value>نوع الفاتورة</value>
+  </data>
+  <data name="AttendanceRecorded" xml:space="preserve">
+    <value>تم تسجيل حضور جميع الطلاب بالفعل</value>
+  </data>
+  <data name="CommentList" xml:space="preserve">
+    <value>قائمة التعليقات</value>
+  </data>
+  <data name="PaymentServiceIssue" xml:space="preserve">
+    <value>هناك مشكلة في خدمة الدفع، يرجى المحاولة مرة أخرى لاحقًا</value>
+  </data>
+  <data name="CancelationRequestExist" xml:space="preserve">
+    <value>طلب الإلغاء موجود بالفعل</value>
+  </data>
+  <data name="CancelationRequestSubmitted" xml:space="preserve">
+    <value>تم إرسال طلب الإلغاء بنجاح</value>
+  </data>
+</root>

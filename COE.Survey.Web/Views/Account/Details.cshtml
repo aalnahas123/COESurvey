@@ -1,0 +1,57 @@
+﻿@using Commons.Framework.Web.Mvc.Helpers
+@using COE.Enrollment.Helpers
+@using COE.Common.Localization
+
+@model COE.Enrollment.Model.ViewModels.AccountViewModel
+
+@{
+    ViewBag.Title = UsersMgmtResources.MyProfile;
+}
+
+@if (Model != null)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">@ViewBag.Title</div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <div class="form-group form-group-lg">
+                    @Html.LabelFor(model => model.FullName, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FullName, string.Empty, new { @class = "text-danger help-block" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group form-group-lg">
+                    @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label" })
+                    @Html.TelInputFor(model => model.PhoneNumber, null, new { @class = "form-control", MaxLength = "15" })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, string.Empty, new { @class = "text-danger help-block" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group form-group-lg">
+                    @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control text-left ltr" })
+                    @Html.ValidationMessageFor(model => model.Email, string.Empty, new { @class = "text-danger help-block" })
+                </div>
+            </div>
+
+           
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-left">
+            <a href='@Url.Action("Edit")' class="btn btn-nor-primary btn-lg enable-overlay"> @SharedResources.Edit</a>
+            <a href="/" class="btn btn-nor-primary btn-lg enable-overlay">@SharedResources.Back</a>
+        </div>
+    </div>
+}
+@section scripts{
+    <script type="text/javascript">
+        $(function() {
+            $util.disableInputs();
+        });
+       
+    </script>
+}
+

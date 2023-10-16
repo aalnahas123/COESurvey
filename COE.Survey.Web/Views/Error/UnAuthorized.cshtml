@@ -1,0 +1,12 @@
+﻿@using COE.Common.Localization
+@{    
+    ViewBag.Title = DCSResources.Msg_UnauthorizedHeader;
+    ViewBag.ModuleTitle = DCSResources.ErrorModuleTitle;
+    //Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<div class="alert alert-danger">
+    <strong>@DCSResources.Msg_UnauthorizedHeader</strong> @DCSResources.Msg_UnauthorizedErrorMessage
+</div>
+

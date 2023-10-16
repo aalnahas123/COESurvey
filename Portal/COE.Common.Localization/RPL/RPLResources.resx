@@ -1,0 +1,739 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcademicRecord" xml:space="preserve">
+    <value>Academic Record</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="ApplicationChecklistAttachments" xml:space="preserve">
+    <value>Application Checklist Attachments</value>
+  </data>
+  <data name="ApplicationDetails" xml:space="preserve">
+    <value>Application Details</value>
+  </data>
+  <data name="Applications" xml:space="preserve">
+    <value>Applications</value>
+  </data>
+  <data name="Attachment" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="AttachmentIsRequired" xml:space="preserve">
+    <value>Attachment is Required</value>
+  </data>
+  <data name="AttachmentName" xml:space="preserve">
+    <value>Attachment Name</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Birth Date</value>
+  </data>
+  <data name="BtnBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="CandidateIdentity" xml:space="preserve">
+    <value>Candidate Identity</value>
+  </data>
+  <data name="CandidateIdentityAttachment" xml:space="preserve">
+    <value>Candidate Identity Attachment</value>
+  </data>
+  <data name="CandidateInformation" xml:space="preserve">
+    <value>Candidate Information</value>
+  </data>
+  <data name="CardCVC" xml:space="preserve">
+    <value>Card CVC</value>
+  </data>
+  <data name="CardNumber" xml:space="preserve">
+    <value>Card Number</value>
+  </data>
+  <data name="CardType" xml:space="preserve">
+    <value>Card Type</value>
+  </data>
+  <data name="CertificateAttachment" xml:space="preserve">
+    <value>Certificate Attachment</value>
+  </data>
+  <data name="CertificateEquivalenceLetter" xml:space="preserve">
+    <value>Certificate Equivalence Letter</value>
+  </data>
+  <data name="CertificateTitle" xml:space="preserve">
+    <value>Certificate Title</value>
+  </data>
+  <data name="ClickHereToEdit" xml:space="preserve">
+    <value>Click Here To Edit</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="ContinueWizard" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="CreditCardInformation" xml:space="preserve">
+    <value>Credit Card Information</value>
+  </data>
+  <data name="CurriculumVitae" xml:space="preserve">
+    <value>Curriculum Vitae</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="Degree" xml:space="preserve">
+    <value>Degree</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="EducationalQualificationDetails" xml:space="preserve">
+    <value>EducationalQualificationDetails</value>
+  </data>
+  <data name="EducationLevel" xml:space="preserve">
+    <value>Education Level</value>
+  </data>
+  <data name="EmployerLetter" xml:space="preserve">
+    <value>Employer Letter</value>
+  </data>
+  <data name="ExperienceCertificate" xml:space="preserve">
+    <value>Experience Certificate</value>
+  </data>
+  <data name="ExpirationDate" xml:space="preserve">
+    <value>Expiration Date</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="FullNameArabic" xml:space="preserve">
+    <value>Full Name (Arabic)</value>
+  </data>
+  <data name="FullNameEnglish" xml:space="preserve">
+    <value>Full Name (English)</value>
+  </data>
+  <data name="GraduationDate" xml:space="preserve">
+    <value>Graduation Date</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="IAgreeFeesUnrefundable" xml:space="preserve">
+    <value>I Agree, that fees are not refundable.</value>
+  </data>
+  <data name="Incomplete" xml:space="preserve">
+    <value>Incomplete</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="InProgress" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+  <data name="InstitutionAddress" xml:space="preserve">
+    <value>Institution Address</value>
+  </data>
+  <data name="InstitutionName" xml:space="preserve">
+    <value>Institution Name</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="NameOnCard" xml:space="preserve">
+    <value>Name on Card</value>
+  </data>
+  <data name="NewApplication" xml:space="preserve">
+    <value>New Application</value>
+  </data>
+  <data name="NoDataToDisplay" xml:space="preserve">
+    <value>No Data</value>
+  </data>
+  <data name="NoFileUploaded" xml:space="preserve">
+    <value>No File Uploaded</value>
+  </data>
+  <data name="OHSInfo" xml:space="preserve">
+    <value>OH&amp;S Certificates information</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="Payments" xml:space="preserve">
+    <value>Payments</value>
+  </data>
+  <data name="PaymentsInformation" xml:space="preserve">
+    <value>PaymentsInformation</value>
+  </data>
+  <data name="PayNow" xml:space="preserve">
+    <value>Pay Now</value>
+  </data>
+  <data name="ProgramDescription" xml:space="preserve">
+    <value>Program Description</value>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>Requests</value>
+  </data>
+  <data name="RPLApplications" xml:space="preserve">
+    <value>RPL Applications</value>
+  </data>
+  <data name="RPLApprovalRequest" xml:space="preserve">
+    <value>RPL Approval Request</value>
+  </data>
+  <data name="RPLInformation" xml:space="preserve">
+    <value>RPL Information</value>
+  </data>
+  <data name="RplRequestWizard" xml:space="preserve">
+    <value>RPL REQUEST WIZARD</value>
+  </data>
+  <data name="SaveAndContinue" xml:space="preserve">
+    <value>SaveAndContinue</value>
+  </data>
+  <data name="SaveAndSubmit" xml:space="preserve">
+    <value>Save and Submit</value>
+  </data>
+  <data name="SaveAndSubmitConfirm" xml:space="preserve">
+    <value>Do you want to save and submit the request?</value>
+  </data>
+  <data name="StartStudyDate" xml:space="preserve">
+    <value>Start Study Date</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="UpdatedAt" xml:space="preserve">
+    <value>Updated At</value>
+  </data>
+  <data name="UploadYourAttachmentsOptional" xml:space="preserve">
+    <value>Upload your files</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="WaitingForPayment" xml:space="preserve">
+    <value>Waiting For Payment</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="YakeenServicesNoDataRetrived" xml:space="preserve">
+    <value>Sorry, the candidate data was not retrieved from the Yakeen service.</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="FourthName" xml:space="preserve">
+    <value>Fourth Name</value>
+  </data>
+  <data name="SecondName" xml:space="preserve">
+    <value>Second Name</value>
+  </data>
+  <data name="ThirdName" xml:space="preserve">
+    <value>Third Name</value>
+  </data>
+  <data name="CourseName" xml:space="preserve">
+    <value>Course Name</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+  <data name="FileType" xml:space="preserve">
+    <value>File Type</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="UsageAndDisclaimer" xml:space="preserve">
+    <value>Usage and disclaimer</value>
+  </data>
+  <data name="Brief" xml:space="preserve">
+    <value>About the program</value>
+  </data>
+  <data name="CenterAccountRegistration" xml:space="preserve">
+    <value>Center Account Registration</value>
+  </data>
+  <data name="CenterName" xml:space="preserve">
+    <value>Center Name (EN)</value>
+  </data>
+  <data name="YouMustAgree" xml:space="preserve">
+    <value>You must agree</value>
+  </data>
+  <data name="CenterNameAR" xml:space="preserve">
+    <value>Center Name (AR)</value>
+  </data>
+  <data name="CenterDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="IAgree" xml:space="preserve">
+    <value>I Agree to the</value>
+  </data>
+  <data name="TermsOfUse" xml:space="preserve">
+    <value>Terms of Use and Privacy Policy</value>
+  </data>
+  <data name="StatusInvalid" xml:space="preserve">
+    <value>Status is not valid for this operation</value>
+  </data>
+  <data name="CenterRequest" xml:space="preserve">
+    <value>Center Approval Request</value>
+  </data>
+  <data name="SubmitCenterRequest" xml:space="preserve">
+    <value>Submit Center Request</value>
+  </data>
+  <data name="CollegeTypeIsNotCenter" xml:space="preserve">
+    <value>Please verify center type</value>
+  </data>
+  <data name="CenterInformation" xml:space="preserve">
+    <value>Center Information</value>
+  </data>
+  <data name="RPLModuleTitle" xml:space="preserve">
+    <value>MOL</value>
+  </data>
+  <data name="CenterContactDetails" xml:space="preserve">
+    <value>Contact Details</value>
+  </data>
+  <data name="CenterNameEn" xml:space="preserve">
+    <value>Center Name (En)</value>
+  </data>
+  <data name="CenterType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DescriptionAr" xml:space="preserve">
+    <value>Description (Ar)</value>
+  </data>
+  <data name="DescriptionEn" xml:space="preserve">
+    <value>Description (En)</value>
+  </data>
+  <data name="MobileNo" xml:space="preserve">
+    <value>Mobile No</value>
+  </data>
+  <data name="OfficialEmail" xml:space="preserve">
+    <value>Official Email</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="TelNo" xml:space="preserve">
+    <value>Tel No</value>
+  </data>
+  <data name="TVTCNum" xml:space="preserve">
+    <value>TVTCNum</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="FaxNo" xml:space="preserve">
+    <value>Fax No</value>
+  </data>
+  <data name="LoginAccountDetails" xml:space="preserve">
+    <value>Login Account Details</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="SubmitProfile" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="TelNo1" xml:space="preserve">
+    <value>Tel No 1</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+  <data name="PasswordValidator" xml:space="preserve">
+    <value>Invalid password . Password must be between 8 and 25 characters and must contain at least one lowercase letter, one uppercase letter and at least one special character</value>
+  </data>
+  <data name="CenterDuplicateName" xml:space="preserve">
+    <value>The center name duplicated, please choose another name</value>
+  </data>
+  <data name="CenterInvalidCode" xml:space="preserve">
+    <value>Invalid secure code</value>
+  </data>
+  <data name="CenterRegisterSuccess" xml:space="preserve">
+    <value>&lt;b&gt;Will done!&lt;/b&gt; You successfully registered a login account with submitted details</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="CenterSecureCode" xml:space="preserve">
+    <value>Secure Code</value>
+  </data>
+  <data name="Resend" xml:space="preserve">
+    <value>Resend</value>
+  </data>
+  <data name="Seconds" xml:space="preserve">
+    <value>secs</value>
+  </data>
+  <data name="SecureCodeNotification" xml:space="preserve">
+    <value>A Secure code  has been sent to registered mobile NO</value>
+  </data>
+  <data name="Passport" xml:space="preserve">
+    <value>Passport</value>
+  </data>
+  <data name="CenterGender" xml:space="preserve">
+    <value>Center Type</value>
+  </data>
+  <data name="GenderBoth" xml:space="preserve">
+    <value>Male And Female</value>
+  </data>
+  <data name="GenderFemale" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="GenderMale" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="RequestSavedSuccessfully" xml:space="preserve">
+    <value>Certificate matching request has been sent successfully</value>
+  </data>
+  <data name="ApplicationQualificationsCollegeAddressIsRequired" xml:space="preserve">
+    <value>Institution address is required</value>
+  </data>
+  <data name="ApplicationQualificationsCollegeNameIsRequired" xml:space="preserve">
+    <value>Institution name is required</value>
+  </data>
+  <data name="ApplicationQualificationsNameIsRequired" xml:space="preserve">
+    <value>Qualification name is required</value>
+  </data>
+  <data name="CandidateQulifications" xml:space="preserve">
+    <value>Qulifications And Certifications</value>
+  </data>
+  <data name="RPLRequests" xml:space="preserve">
+    <value>Certificate Matching Requests</value>
+  </data>
+  <data name="AttachmenMaxSize" xml:space="preserve">
+    <value>The file is too large. The maximum file size is 1MB</value>
+  </data>
+  <data name="CertificateLevel" xml:space="preserve">
+    <value>Level of conformity</value>
+  </data>
+  <data name="IssuingCertificate" xml:space="preserve">
+    <value>Issuing a certificate</value>
+  </data>
+  <data name="Certificates" xml:space="preserve">
+    <value>Certificates</value>
+  </data>
+  <data name="CertificateSavedFaild" xml:space="preserve">
+    <value>Sorry , Certificate has not been issued</value>
+  </data>
+  <data name="CertificateSavedSuccessfully" xml:space="preserve">
+    <value>Certificate has been issued successfully</value>
+  </data>
+  <data name="HaveTheCertificate" xml:space="preserve">
+    <value>Sorry, this certificate was previously issued to this candidate</value>
+  </data>
+  <data name="SelectCertificatesLevel" xml:space="preserve">
+    <value>Please specify the level of conformity</value>
+  </data>
+  <data name="CenterManager" xml:space="preserve">
+    <value>Center Manager</value>
+  </data>
+  <data name="TermsOfUseBody" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GeneralLicenseThreeMonth" xml:space="preserve">
+    <value>Has the establishment’s general license to provide training was obtained from the General Administration for Private Training in the institution?
+General Technical and Vocational Training. So that the period of implementation of programs in the public license is not less than three months</value>
+  </data>
+  <data name="PrivateLicenseHealthSafety" xml:space="preserve">
+    <value>Has the license to provide training for the targeted program "Occupational Safety and Health" been obtained?</value>
+  </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>Capacity</value>
+  </data>
+  <data name="CenterAddress" xml:space="preserve">
+    <value>Center Address</value>
+  </data>
+  <data name="UrlValidator" xml:space="preserve">
+    <value>Invalid Url</value>
+  </data>
+  <data name="WebAddress" xml:space="preserve">
+    <value>Web Address</value>
+  </data>
+  <data name="CenterTrainingCourseInfo" xml:space="preserve">
+    <value>Center Training Course Information</value>
+  </data>
+  <data name="NumberOfTeachers" xml:space="preserve">
+    <value>Number of Teachers</value>
+  </data>
+  <data name="NumberOfTrainees" xml:space="preserve">
+    <value>Number of Trainees</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="AddNewCourse" xml:space="preserve">
+    <value>Add New Course</value>
+  </data>
+  <data name="Msg_ErrorMustAddTrainingCourseInfo" xml:space="preserve">
+    <value>Must Add Training Course Information</value>
+  </data>
+  <data name="Msg_ErrorMustSelectTrainingCourseGender" xml:space="preserve">
+    <value>Must Select Training Course Gender</value>
+  </data>
+  <data name="CenterTrainingType" xml:space="preserve">
+    <value>Center Training Type</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="RequiredSelectCenterType" xml:space="preserve">
+    <value>Please select at least one Center Type</value>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="GeneralLicenseAttachment" xml:space="preserve">
+    <value>General License Attachment</value>
+  </data>
+  <data name="PrivateLicenseAttachment" xml:space="preserve">
+    <value>Private License Attachment</value>
+  </data>
+  <data name="CertificateType" xml:space="preserve">
+    <value>Certificate Type</value>
+  </data>
+  <data name="QualificationLevel" xml:space="preserve">
+    <value>Qualification Level</value>
+  </data>
+  <data name="TrainerName" xml:space="preserve">
+    <value>Trainer Name</value>
+  </data>
+  <data name="EducationExperience" xml:space="preserve">
+    <value>Education Experience</value>
+  </data>
+  <data name="YearsOfEducationExperience" xml:space="preserve">
+    <value>Years of Education Experience</value>
+  </data>
+  <data name="TeachingExperienceSector" xml:space="preserve">
+    <value>Teaching Experience Sector</value>
+  </data>
+  <data name="ManagedUnits" xml:space="preserve">
+    <value>Managed Units</value>
+  </data>
+  <data name="CV" xml:space="preserve">
+    <value>CV</value>
+  </data>
+  <data name="TrainerLevel" xml:space="preserve">
+    <value>Trainer Level</value>
+  </data>
+  <data name="TrainerQualification" xml:space="preserve">
+    <value>Trainer Qualification</value>
+  </data>
+  <data name="AddNewTrainer" xml:space="preserve">
+    <value>Add New Trainer</value>
+  </data>
+  <data name="TrainerQualificationTerms" xml:space="preserve">
+    <value>&lt;ul&gt;
+                &lt;li&gt;
+                    The trainer must be able to communicate well, read and write in Arabic. The trainer must also be proficient in the English language to be able to explain the terminology of the training program.
+                &lt;/li&gt;
+                &lt;li&gt;
+                    To have:
+                    &lt;ul&gt;
+                        &lt;li&gt;
+                            Bachelor's degree in occupational safety and health from a recognized university. He has 3 years of work experience in the field of occupational safety and health
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                            Or he holds a qualification in occupational safety and health from an internationally recognized authority and a bachelor's degree in one of the technical or engineering fields from a recognized university and has 3 years work experience in the field of occupational safety and health
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    He must have previous educational experience in the post-secondary, technical or vocational sector. Three years experience is minimum.
+                &lt;/li&gt;
+            &lt;/ul&gt;</value>
+  </data>
+  <data name="ForgetPasswordConfirmMsg" xml:space="preserve">
+    <value>Please check the link sent to your email address or your mobile No: xxxxxxx{0} to reset your password</value>
+  </data>
+  <data name="TrainersQualifications" xml:space="preserve">
+    <value>Trainers Qualifications</value>
+  </data>
+  <data name="LicenseAttachments" xml:space="preserve">
+    <value>License Attachments</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>For inquiry, please contact</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="Bachelor" xml:space="preserve">
+    <value>Bachelor</value>
+  </data>
+  <data name="Diploma" xml:space="preserve">
+    <value>Diploma</value>
+  </data>
+  <data name="HigherProfessionalEducation" xml:space="preserve">
+    <value>Higher professional education</value>
+  </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>High School</value>
+  </data>
+  <data name="Master" xml:space="preserve">
+    <value>Master</value>
+  </data>
+  <data name="NotApproved" xml:space="preserve">
+    <value>NotApproved</value>
+  </data>
+  <data name="PhD" xml:space="preserve">
+    <value>PhD</value>
+  </data>
+  <data name="SentBackToCandidate" xml:space="preserve">
+    <value>Sent Back To Candidate</value>
+  </data>
+  <data name="UpdateYearsOfExperience" xml:space="preserve">
+    <value>Update Years Of Experience</value>
+  </data>
+  <data name="ExperienceRequired" xml:space="preserve">
+    <value>The experience is required</value>
+  </data>
+  <data name="OSHExperienceRequired" xml:space="preserve">
+    <value>The OSH experience is required</value>
+  </data>
+  <data name="WarrantAllInformationCorrect" xml:space="preserve">
+    <value>I represent and warrant that all information is correct</value>
+  </data>
+  <data name="MustWarrantAllInformationCorrect" xml:space="preserve">
+    <value>Must represent and warrant that all information is correct</value>
+  </data>
+  <data name="AcknowledgmentDataValidity" xml:space="preserve">
+    <value>Acknowledgment of data validity</value>
+  </data>
+</root>

@@ -1,0 +1,221 @@
+﻿@using COE.Common.Model
+
+@model Survey
+
+@{
+    ViewBag.Title = "Survey";
+}
+
+<title>Use options to customize the Survey Editor, Survey Builder Example</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://unpkg.com/jquery"></script>
+<script src="https://surveyjs.azureedge.net/1.0.53/survey.jquery.js"></script>
+<link href="https://surveyjs.azureedge.net/1.0.53/survey.css" type="text/css" rel="stylesheet" />
+
+<style>
+    .caption {
+        font-weight: bold;
+        font-size: 20px !important;
+    }
+
+    .sv_q_matrix:first-child tr td:first-child {
+        font-weight: bold;
+        direction: rtl;
+        text-align: right !important;
+        width: 100% !important;
+    }
+
+
+    .sv_q_matrix tr td .sv_q_m_cell_label {
+        display: none !important;
+    }
+
+    .sv_q_matrix tr td {
+        width: 50px;
+        min-width: 8em !important;
+    }
+
+    .sv_q_m_cell_label {
+        width: 40px;
+    }
+
+
+    .portlet > .portlet-title > .caption {
+        float: right;
+    }
+
+    .sv_q_title, .sv_page_title {
+        font-size: 1.4em !important;
+        color: #0b79b8;
+        direction: rtl;
+        font-weight: bold !important;
+    }
+
+    .sv_page_title {
+        display: list-item;
+    }
+
+    .msgText {
+        font-size: 13px;
+        color: green;
+        font-weight: bold;
+        background-color: #f4f4f4;
+        margin: 10px 0px 0 0;
+        padding: 10px;
+    }
+
+    .sv_body {
+        border: 0px !important;
+    }
+
+    .modal-dialog {
+        left: auto !important;
+    }
+
+    .sv_select_wrapper {
+        width: 200px !important;
+    }
+
+    .sv_q_rating_item_text {
+        padding: 0 2em !important;
+    }
+
+    .sv_main .sv_container .sv_body .sv_p_root > .sv_row {
+        background-color: initial !important;
+        border-bottom: 0px !important;
+    }
+</style>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    @Model.SurveyTitle
+                </div>
+            </div>
+            <form class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="surveyElement" style="direction:@Model.SurveyDirection"></div>
+                            <div id="surveyResult" style="direction:@Model.SurveyDirection"></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var wantsToContinue = false;
+
+    var surveyValueChanged = function (sender, options) {
+        debugger;
+
+        if (options.name != "ToAddMore")
+            return;
+
+        if ('@Model.ID' == '27' || '@Model.ID' == '28') {
+            wantsToContinue = options.value == 'item1';
+            if (wantsToContinue) {
+                window.survey.completedHtml = "<p></p><p><b>سوف يتم توجيه الصفحة الآن</b></p><p> إذا لم يتم ذلك تلقائياً برجاء الضغط على <a href=\"http://eportal.coe.com.sa/Surveys/Surveys/Answer/28\" style=\"font-size: 16px;color: blue;font-style: italic;\">هذا الرابط</a></p>";
+            }
+            else {
+                window.survey.completedHtml = "<h2 style=\"color:green\"> نشكركم على مشاركتكم في هذا الإستبيان</h2>";
+            }
+        }
+    };
+
+
+
+
+    //var json = '@Model.SurveyText'.replace(/&quot;/g, '\\"').replace(/\\/g, "");
+    var json = '@Model.SurveyText'.replace(/&#39;/g, '\'').replace(/&quot;/g, '\\"').replace(/\\/g, "");
+    //debugger;
+
+
+    // json.completedHtml = "dffff";
+
+
+
+    window.survey = new Survey.Model(json);
+
+    if ('@Model.ID' == '27' || '@Model.ID' == '28') {
+        window.survey.completedHtml = "<h2 style=\"color:green\"> نشكركم على مشاركتكم في هذا الإستبيان</h2>";
+    }
+
+
+
+
+    survey
+        .onComplete
+        .add(function (result) {
+            //
+
+            $.ajax({
+                url: '@Url.Action("UploadAnswer","Surveys")' + '?id=@Model.ID' + '&AnswerText=' + JSON.stringify(result.data),
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+
+                    debugger;
+                    if (wantsToContinue) {
+                        window.location.href = "http://eportal.coe.com.sa/Surveys/Surveys/Answer/28";
+                    }
+
+
+                },
+                error: function (data) {
+                    debugger;
+                }
+            });
+        });
+
+
+
+
+
+    $("#surveyElement").Survey({ model: survey, onValueChanged: surveyValueChanged });
+
+    var mainColor = "#337ab7";
+    var mainHoverColor = "#232f58";
+    var textColor = "#232f58";
+
+    var defaultThemeColorsEditor = Survey.StylesManager.ThemeColors["default"];
+    defaultThemeColorsEditor["$primary-color"] = mainColor;
+    defaultThemeColorsEditor["$main-color"] = mainColor;
+    defaultThemeColorsEditor["$secondary-color"] = mainColor;
+    defaultThemeColorsEditor["$primary-hover-color"] = mainHoverColor;
+    defaultThemeColorsEditor["$primary-text-color"] = textColor;
+    defaultThemeColorsEditor["$selection-border-color"] = mainColor;
+
+    Survey.StylesManager.applyTheme();
+
+
+    $(window).on('load', function () {
+        $('.svd_commercial_container').remove();
+        $(".svd_toolbar").prepend($("#svd-upload"));
+        $("#svd-upload").show();
+        setInterval(updatetext, 300);
+        $('textarea').attr('maxlength', '200')
+    });
+
+
+    //$(window).load(function () {
+
+    //});
+
+    function updatetext() {
+        $('input[value="Next"]').val('التالي');
+        $('input[value="Previous"]').val('السابق');
+        $('input[value="Complete"]').val('إتمام');
+        $("div").find("[data-bind='html: question.locHtml.koRenderedHtml']").addClass('msgText');
+    }
+
+</script>

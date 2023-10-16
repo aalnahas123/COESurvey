@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Actions" xml:space="preserve">
+    <value>خيارات</value>
+  </data>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>البحث المتقدم</value>
+  </data>
+  <data name="AnnouncementsAllLinkText" xml:space="preserve">
+    <value>كل الإعلانات</value>
+  </data>
+  <data name="AnnouncementsHeader" xml:space="preserve">
+    <value>الإعلانات</value>
+  </data>
+  <data name="AnnouncementsMoreLinkText" xml:space="preserve">
+    <value>المزيد</value>
+  </data>
+  <data name="ApplicationList" xml:space="preserve">
+    <value>قائمة المتقدميين</value>
+  </data>
+  <data name="ApplicationsTitle" xml:space="preserve">
+    <value>المتقدميين</value>
+  </data>
+  <data name="Calender" xml:space="preserve">
+    <value>التقويم</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>الغاء</value>
+  </data>
+  <data name="CanNotSendEnrollmentRequest" xml:space="preserve">
+    <value>عذراً, لا يمكنك التسجيل نظرا لأنه لم يتم فتح باب التسجيل حتى الآن</value>
+  </data>
+  <data name="ChangeContactInfo" xml:space="preserve">
+    <value>تغيير بيانات الإتصال</value>
+  </data>
+  <data name="ChangeSpecialization" xml:space="preserve">
+    <value>تغيير التخصص</value>
+  </data>
+  <data name="College" xml:space="preserve">
+    <value>الكلية</value>
+  </data>
+  <data name="CollegeDashboard" xml:space="preserve">
+    <value>الرئيسية </value>
+  </data>
+  <data name="DashboardApplicationReceived" xml:space="preserve">
+    <value>مستلم</value>
+  </data>
+  <data name="DashboardCancel" xml:space="preserve">
+    <value>ملغى</value>
+  </data>
+  <data name="DashboardConditionalAcceptance" xml:space="preserve">
+    <value>مشروط</value>
+  </data>
+  <data name="DashboardEnrolled" xml:space="preserve">
+    <value>مقبول</value>
+  </data>
+  <data name="DashboardRejected" xml:space="preserve">
+    <value>مرفوض</value>
+  </data>
+  <data name="DashboardWaitingList" xml:space="preserve">
+    <value>انتظار</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>تفاصيل</value>
+  </data>
+  <data name="EnrollmentHistoryAndExams" xml:space="preserve">
+    <value>سجل المتدرب والإختبارات</value>
+  </data>
+  <data name="EnrollmentInfo" xml:space="preserve">
+    <value>بيانات الإلتحاق</value>
+  </data>
+  <data name="EnrollmentList" xml:space="preserve">
+    <value>قائمة المقبوليين</value>
+  </data>
+  <data name="EnrollmentModuleTitle" xml:space="preserve">
+    <value>المقبوليين</value>
+  </data>
+  <data name="EnrollmentTiltle" xml:space="preserve">
+    <value>المقبوليين</value>
+  </data>
+  <data name="ErrorModuleTitle" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>انثى</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>اسم الطالب</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>ذكر</value>
+  </data>
+  <data name="Msg_UnauthorizedErrorMessage" xml:space="preserve">
+    <value>غير مصرح لك بالدخول لهذه الصفحة، الرجاء الاتصال بمدير النظام.</value>
+  </data>
+  <data name="Msg_UnauthorizedHeader" xml:space="preserve">
+    <value>غير مصرح</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>البيانات الشخصية</value>
+  </data>
+  <data name="NationalId" xml:space="preserve">
+    <value>الهوية الوطنية</value>
+  </data>
+  <data name="NewSpecialization" xml:space="preserve">
+    <value>التخصص الجديد</value>
+  </data>
+  <data name="NoDataToDisplay" xml:space="preserve">
+    <value>لا توجد بيانات</value>
+  </data>
+  <data name="SchoolInfo" xml:space="preserve">
+    <value>المعلومات الدراسية</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>- اختر -</value>
+  </data>
+  <data name="Specialization" xml:space="preserve">
+    <value>التخصص</value>
+  </data>
+  <data name="SpecializationChangedFaild" xml:space="preserve">
+    <value>عذراً , لم يتم تغيير تخصص الطالب .  رجاء حاول مرة اخرى .</value>
+  </data>
+  <data name="SpecializationChangedSuccessfully" xml:space="preserve">
+    <value>لقد تم تغيير تخصص الطالب بنجاح .</value>
+  </data>
+  <data name="Stage" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="StatusActive" xml:space="preserve">
+    <value>مستمر </value>
+  </data>
+  <data name="StatusInActive" xml:space="preserve">
+    <value>غير مستمر</value>
+  </data>
+  <data name="StudenInfo" xml:space="preserve">
+    <value>المعلومات الشخصية</value>
+  </data>
+  <data name="StudentAttendence" xml:space="preserve">
+    <value>بيانات الحضور</value>
+  </data>
+  <data name="StudentProfile" xml:space="preserve">
+    <value>بيانات الطالب</value>
+  </data>
+  <data name="Url_AnnouncementsAllLink" xml:space="preserve">
+    <value>/Enrollment/Applicants/Announcements</value>
+  </data>
+  <data name="Url_AnnouncementsMoreLink" xml:space="preserve">
+    <value>/Enrollment/Applicants/Announcement/</value>
+  </data>
+  <data name="ChangeCurrentEnrollmentStatus" xml:space="preserve">
+    <value>تغيير الحالة</value>
+  </data>
+  <data name="CurrentStatus" xml:space="preserve">
+    <value>الحالة الحالية</value>
+  </data>
+  <data name="NewStatus" xml:space="preserve">
+    <value>الحالة الجديدة</value>
+  </data>
+  <data name="StageChangedFaild" xml:space="preserve">
+    <value>عذراً , لم يتم تغيير حالة التحاق الطلب رجاء حاول مرة اخرى .</value>
+  </data>
+  <data name="StageChangedSuccessfully" xml:space="preserve">
+    <value>لقد تم تغيير التحاق حالة الطالب بنجاح .</value>
+  </data>
+  <data name="AcademicYear" xml:space="preserve">
+    <value>العام الدراسي</value>
+  </data>
+  <data name="AcademicYearTerm" xml:space="preserve">
+    <value>الفصل الدراسي</value>
+  </data>
+  <data name="Deferral" xml:space="preserve">
+    <value>مؤجل</value>
+  </data>
+  <data name="Dismissed" xml:space="preserve">
+    <value>مفصول</value>
+  </data>
+  <data name="Enrolled" xml:space="preserve">
+    <value>مقبول</value>
+  </data>
+  <data name="Graduated" xml:space="preserve">
+    <value>خريج</value>
+  </data>
+  <data name="GraduatedAssociateDiploma" xml:space="preserve">
+    <value>خريج دبلوم مشارك</value>
+  </data>
+  <data name="GraduatedDiploma" xml:space="preserve">
+    <value>حريج دبلوم</value>
+  </data>
+  <data name="GraduatedFoundation" xml:space="preserve">
+    <value>خريج السنة التحضيرية</value>
+  </data>
+  <data name="NoShow" xml:space="preserve">
+    <value>قبل ولم يحضر</value>
+  </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>النسبة المئوية</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>محول</value>
+  </data>
+  <data name="Withdrawal" xml:space="preserve">
+    <value>منسحب</value>
+  </data>
+  <data name="SponserChangedFaild" xml:space="preserve">
+    <value>عذراً , لم يتم تغيير راعى الطلب رجاء حاول مرة اخرى .</value>
+  </data>
+  <data name="SponserSavedSuccessfully" xml:space="preserve">
+    <value>لقد تم اضافة راعى للطالب بنجاح .</value>
+  </data>
+  <data name="SponserupdatedSuccessfully" xml:space="preserve">
+    <value>لقد تم اضافة راعى الطالب بنجاح .</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>اخرى</value>
+  </data>
+  <data name="AcademicYearTermName" xml:space="preserve">
+    <value>الفصل والعام الدراسي</value>
+  </data>
+  <data name="HaveOldEnrollmentRequest" xml:space="preserve">
+    <value>عذراً , هذا الطالب لديه طلب تسجيل من قبل . </value>
+  </data>
+  <data name="CreateNewApplication" xml:space="preserve">
+    <value>تسجيل طالب جديد</value>
+  </data>
+  <data name="Sponser" xml:space="preserve">
+    <value>الراعي</value>
+  </data>
+  <data name="ApplicationHasBeenReceived" xml:space="preserve">
+    <value>تم استلام الطلب</value>
+  </data>
+  <data name="ConditionalAcceptance" xml:space="preserve">
+    <value>قبول مشروط</value>
+  </data>
+  <data name="WaitingList" xml:space="preserve">
+    <value>قائمة الانتظار</value>
+  </data>
+  <data name="CurrentStage" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="PreviousStage" xml:space="preserve">
+    <value>الحالة السابقة</value>
+  </data>
+  <data name="System_Header" xml:space="preserve">
+    <value>نظام التسجيل</value>
+  </data>
+  <data name="EnrollmentRequestCanNotUpdate" xml:space="preserve">
+    <value>عذرا، لا تسمح حالة الطلب بتحديث الطلب.</value>
+  </data>
+  <data name="Admitted" xml:space="preserve">
+    <value>مقبول مبدئيا</value>
+  </data>
+  <data name="ExpiredOffer" xml:space="preserve">
+    <value>عرض منتهي</value>
+  </data>
+  <data name="HasActiveEnrollmentRequest" xml:space="preserve">
+    <value>عذراً , هذا الطالب لديه بالفعل طلب التسجيل قيد التنفيذ .</value>
+  </data>
+  <data name="AdmissionByStauts" xml:space="preserve">
+    <value>القبول حسب الحالة</value>
+  </data>
+  <data name="AdmissionByStautsHint" xml:space="preserve">
+    <value>يتم إخفاء التصنيفات إذا كانت القيمة أقل من (10٪) من الرسم البيانى.</value>
+  </data>
+  <data name="EnrollmentSponsor" xml:space="preserve">
+    <value>الراعي</value>
+  </data>
+  <data name="EnrollStudent" xml:space="preserve">
+    <value>تسجيل الطالب</value>
+  </data>
+  <data name="Sponsor" xml:space="preserve">
+    <value>الراعي</value>
+  </data>
+  <data name="PrintCertification" xml:space="preserve">
+    <value>طباعة شهادة التخرج</value>
+  </data>
+  <data name="NoShowPopupConfirmation" xml:space="preserve">
+    <value>هل أنت متأكد من تغيير حالة الطالب إلى عدم الحضور؟</value>
+  </data>
+  <data name="NoShowPopupHeader" xml:space="preserve">
+    <value>تغيير حالة الطالب إلى عدم الحضور</value>
+  </data>
+  <data name="Achievement" xml:space="preserve">
+    <value>Achievement</value>
+  </data>
+  <data name="Intake" xml:space="preserve">
+    <value>متدرب جديد</value>
+  </data>
+  <data name="ActiveStudents" xml:space="preserve">
+    <value>الطلاب الحاليين</value>
+  </data>
+  <data name="GraduatedAssociation" xml:space="preserve">
+    <value>خريج دبلومة ملحقة</value>
+  </data>
+  <data name="IntakeTerm" xml:space="preserve">
+    <value>فصل القبول</value>
+  </data>
+  <data name="Applicants" xml:space="preserve">
+    <value>المتقدمين</value>
+  </data>
+  <data name="ResidentStudentsAdmissionPeriodExpired" xml:space="preserve">
+    <value>عذرا ، لقد انتهت فترة قبول الطلاب المقيمين</value>
+  </data>
+  <data name="ResidentStudentsRegistrationPeriodExpired" xml:space="preserve">
+    <value>عذرا ، لقد انتهت فترة تسجيل الطلبات للطلاب المقيمين</value>
+  </data>
+  <data name="InTakeStudentsToNoShow" xml:space="preserve">
+    <value>عذرًا ، لا يمكن تغيير حالة الطلاب إلى (قبل ولم ينتظم في التدريب) ما لم يكن الفصل الدراسي الذى قبل به الطالب هو الفصل الدراسي الحالي.</value>
+  </data>
+  <data name="ApplicationStatus" xml:space="preserve">
+    <value>حالة طلب الإلتحاق</value>
+  </data>
+  <data name="LastYakeenUpdated" xml:space="preserve">
+    <value>آخر تحديث تلقائي في</value>
+  </data>
+  <data name="NoCollegeSpecified" xml:space="preserve">
+    <value>لم يتم تحديد  {0}</value>
+  </data>
+  <data name="NoSpecializationSpecified" xml:space="preserve">
+    <value>لم يتم تحديد التخصص</value>
+  </data>
+  <data name="ArgumentException_BirthDate" xml:space="preserve">
+    <value>عذرًا ، لا يمكن أن يكون تاريخ ميلاد الطالب فارغاً</value>
+  </data>
+  <data name="ArgumentException_BirthDate_IsValid" xml:space="preserve">
+    <value>عذرا ، تاريخ ميلاد الطالب غير صالح</value>
+  </data>
+  <data name="ArgumentException_NationalID" xml:space="preserve">
+    <value>عذرًا ، لا يمكن أن يكون السجل المدنى الطالب فارغاً</value>
+  </data>
+  <data name="ArgumentNullException_YakeenStudent" xml:space="preserve">
+    <value>عذرًا ، لم يتم استرجاع معلومات المتدرب من مركز المعلومات الوطني. يرجى التحقق من تاريخ ميلاد المتدرب الهجري وإعادة المحاولة لاحقًا</value>
+  </data>
+  <data name="ChangeSpecializationFoundationLevelInfo" xml:space="preserve">
+    <value>لا يوجد اى تخصصات اخرى فى السنة التحضيرية</value>
+  </data>
+  <data name="StudentHasAnEnrollmentRequest" xml:space="preserve">
+    <value>الطالب {0} هوية وطنية رقم {1}  لديه بالفعل طلب إلتحاق بالحالة {2}</value>
+  </data>
+  <data name="StudentIsAlreadyEnrollment" xml:space="preserve">
+    <value>الطالب {0} هوية وطنية رقم {1} مقبول  في {2}</value>
+  </data>
+  <data name="FilterApplicantsBeforeBatchEditing" xml:space="preserve">
+    <value>رجاء تصفية حزمة المتقدمين قبل تعديل حالتها</value>
+  </data>
+  <data name="BatchEditingModalPopupHeaderFilter" xml:space="preserve">
+    <value>تصفية قائمة الطلبات للتحرير الدفعي</value>
+  </data>
+  <data name="NoAvailableColleges" xml:space="preserve">
+    <value>عذرًا ، لا توجد كليات أو معاهد متوفرة للتسجيل</value>
+  </data>
+  <data name="CanNotSendOrEditEnrollmentRequest" xml:space="preserve">
+    <value>لا يمكنك تعديل طلب التسجيل بسبب انتهاء فترة التعديل طلبات التسجيل .</value>
+  </data>
+  <data name="ExamResult_AssessmentCode" xml:space="preserve">
+    <value>كود التقييم</value>
+  </data>
+  <data name="ExamResult_Percentage" xml:space="preserve">
+    <value>النسبة المئوية</value>
+  </data>
+  <data name="ExamResult_Qualification" xml:space="preserve">
+    <value>المؤهل</value>
+  </data>
+  <data name="ExamResult_ResultDate" xml:space="preserve">
+    <value>تاريخ الإختبار</value>
+  </data>
+  <data name="ExamResult_ResultStatus" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="ExamResult_TestDate" xml:space="preserve">
+    <value>تاريخ الإختبار</value>
+  </data>
+  <data name="ExamResult_TotalScore" xml:space="preserve">
+    <value>مجموع النقاط</value>
+  </data>
+  <data name="ExamResult_DateTo" xml:space="preserve">
+    <value>حتى تاريخ</value>
+  </data>
+  <data name="ExamResult_FromDate" xml:space="preserve">
+    <value>من تاريخ</value>
+  </data>
+  <data name="ExamResult_OrganizationCode" xml:space="preserve">
+    <value>كود المؤسسة</value>
+  </data>
+  <data name="EnrolledBefore" xml:space="preserve">
+    <value>عزيزي المتدرب ، إن حالة التسجيل الحالية الخاصة بك هي {0} . يمكنك الاتصال بإدارة {1} أو إدارة كلية التميز (COE) - قسم شؤون الطلاب لتحديث حالة ملفك في نظام القبول والتسجيل</value>
+  </data>
+  <data name="ExamResult_AssessmentSubType" xml:space="preserve">
+    <value>نوع التقييم الفرعي</value>
+  </data>
+  <data name="ExamResult_AssessmentType" xml:space="preserve">
+    <value>نوع التقييم</value>
+  </data>
+  <data name="ExamResult_Grade" xml:space="preserve">
+    <value>الدرجة</value>
+  </data>
+  <data name="ExamResult_ScheduleCode" xml:space="preserve">
+    <value>رمز التقييم</value>
+  </data>
+  <data name="ExamResult_AssessmentComponent" xml:space="preserve">
+    <value>نوع الإختبار</value>
+  </data>
+  <data name="ExamResult_Program" xml:space="preserve">
+    <value>البرنامج التديبي</value>
+  </data>
+  <data name="ExamResult_ExamBookingCode" xml:space="preserve">
+    <value>كود حجز الامتحان</value>
+  </data>
+  <data name="ExpectedGraduation" xml:space="preserve">
+    <value>التخرج المتوقع</value>
+  </data>
+  <data name="ExamResult_QualificationIDs" xml:space="preserve">
+    <value>المؤهلات</value>
+  </data>
+  <data name="UpdateAutomatically" xml:space="preserve">
+    <value>التحديث تلقائيًا</value>
+  </data>
+  <data name="RegistrationNotOpenForColleges" xml:space="preserve">
+    <value>عذرًا ، لا يمكنك تقديم طلب التسجيل نظراً لأنه لم يتم فتح باب التسجيل لكليات {0} حتى الآن</value>
+  </data>
+  <data name="ExamResult_TestCenterCode" xml:space="preserve">
+    <value>رمز مركز الاختبار</value>
+  </data>
+  <data name="ExamResults" xml:space="preserve">
+    <value>نتائج الإختبارات</value>
+  </data>
+  <data name="CanNotSendGenderEnrollmentRequest" xml:space="preserve">
+    <value>عذرًا ، لا يمكنك تسجيل طلب التحاق جديد نظرا لأنه لم يتم فتح التسجيل حتى الآن لـ {0}</value>
+  </data>
+  <data name="ApplicationsByStatus" xml:space="preserve">
+    <value>الطلبات بالحالة</value>
+  </data>
+  <data name="EnrollmentsByStages" xml:space="preserve">
+    <value>المتدربين بالحالات</value>
+  </data>
+  <data name="EnrollmentsByStatus" xml:space="preserve">
+    <value>المتدربين بالفاعلية</value>
+  </data>
+  <data name="TraineeInformation" xml:space="preserve">
+    <value>بيانات المتدرب</value>
+  </data>
+  <data name="TraineeName" xml:space="preserve">
+    <value>اسم المتدرب</value>
+  </data>
+  <data name="Trainees" xml:space="preserve">
+    <value>المتدربين</value>
+  </data>
+  <data name="ErrorOccured" xml:space="preserve">
+    <value>عذرا ، لقد حدث خطأ ، يرجى المحاولة مرة أخرى في وقت لاحق</value>
+  </data>
+  <data name="Certificate" xml:space="preserve">
+    <value>الشهادة</value>
+  </data>
+  <data name="CertificateNotIssued" xml:space="preserve">
+    <value>المتدرب قيد الدراسة ولم يصدر له أي شهادة</value>
+  </data>
+  <data name="TrainingProgram" xml:space="preserve">
+    <value>البرنامج التدريبي</value>
+  </data>
+</root>

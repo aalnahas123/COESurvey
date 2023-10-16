@@ -1,0 +1,139 @@
+@model  COE.Common.Model.ViewModels.AspNetUsersSearchModel
+@using DevExpress.Data
+@using DevExpress.Data.Linq
+@using DevExpress.Data.Linq.Helpers
+@using DevExpress.Data.Filtering
+@using System.Web.UI.WebControls
+@using COE.Security.Web.Helpers
+
+@{
+        var grid = Html.DevExpress().GridView<COE.Common.Model.ViewModels.AllUsersModel>(settings =>
+        {
+            GridViewFeaturesHelper.SetupGlobalGridViewBehavior(settings);
+
+            settings.Name = "GridView";
+            settings.Theme = "Material";
+            settings.CallbackRouteValues = new { Controller = "Users", Action = "GetUsersData" };
+            settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Users", Action = "GridViewPartialUpdate" };
+
+            settings.Settings.ShowFooter = true;
+            settings.Settings.ShowGroupPanel = true;
+            settings.Settings.ShowGroupButtons = true;
+            settings.Settings.ShowFilterRow = true;
+            settings.CommandColumn.Visible = false;
+            settings.CommandColumn.ShowEditButton = false;
+
+            settings.SettingsEditing.Mode = GridViewEditingMode.PopupEditForm;
+            settings.SettingsPopup.EditForm.SettingsAdaptivity.Mode = PopupControlAdaptivityMode.OnWindowInnerWidth;
+            settings.SettingsPopup.EditForm.SettingsAdaptivity.SwitchAtWindowInnerWidth = 768;
+            settings.EditFormLayoutProperties.SettingsAdaptivity.AdaptivityMode = FormLayoutAdaptivityMode.SingleColumnWindowLimit;
+            settings.EditFormLayoutProperties.SettingsAdaptivity.SwitchToSingleColumnAtWindowInnerWidth = 700;
+            settings.EditFormLayoutProperties.SettingsItems.VerticalAlign = FormLayoutVerticalAlign.Middle;
+            settings.EditFormLayoutProperties.SettingsItems.HorizontalAlign = FormLayoutHorizontalAlign.Center;
+            //settings.KeyFieldName = "Id";
+            settings.KeyFields(m => m.DisplayId);
+            // Master Detail Settings
+            settings.SettingsDetail.ExportMode = GridViewDetailExportMode.Expanded;
+            settings.SettingsDetail.AllowOnlyOneMasterRowExpanded = false;
+            settings.SettingsDetail.ShowDetailRow = false;
+
+            settings.SetEditFormTemplateContent(c =>
+            {
+
+                var item = c.Grid.GetRow(c.VisibleIndex) as COE.Common.Model.ViewModels.AllUsersModel;
+
+                Html.RenderAction("_UserRole", new
+                {
+                    id = item.DisplayId
+                });
+            });
+
+            settings.SetEditFormTemplateContent(c =>
+            {
+                var item = c.Grid.GetRow(c.VisibleIndex) as COE.Common.Model.ViewModels.AllUsersModel;
+
+                Html.RenderAction("_UserRole", new
+                {
+                    id = item.DisplayId
+                });
+            });
+
+            settings.Columns.Add(col =>
+            {
+                col.Caption = "#";
+                col.SetDataItemTemplateContent(c =>
+                {
+                    Html.DevExpress().Button(b =>
+                    {
+                        b.Name = "hlEdit_" + c.KeyValue.ToString();
+                        b.Text = "Roles";
+                        b.ClientSideEvents.Click = string.Format("function(s, e) {{ {0}.StartEditRow('{1}'); }}", settings.Name, c.VisibleIndex);
+                    }).Render();
+
+                    Html.DevExpress().Button(b =>
+                    {
+                        b.Name = "hlColleges_" + c.KeyValue.ToString();
+                        b.Text = "Colleges";
+                        b.ClientSideEvents.Click = string.Format("function(s, e) {{ {0}.AddNewRow('{1}'); }}", settings.Name, c.VisibleIndex);
+                        //b.ClientSideEvents.Click = string.Format("function(s, e) {{ {0}.StartEditRow('{1}'); }}", settings.Name, c.VisibleIndex);
+                    }).Render();
+                });
+               
+            /*EditItemTemplate*/
+            /*Update Button Only - No Cancel Button*/
+            //col.SetEditItemTemplateContent(c =>
+            //{
+            //    var item = c.Grid.GetRow(c.VisibleIndex) as COE.Common.Model.ViewModels.AllUsersModel;
+
+            //    Html.RenderAction("_UserRole", new
+            //    {
+            //        id = item.Id
+            //    });
+            //});
+            /*EditItemTemplate*/
+        });
+
+
+
+
+
+        if (Model.UserType == "2")
+        {
+            settings.Columns.Add(m => m.Email, column =>
+            {
+                column.Caption = "Email";
+                column.Settings.AllowDragDrop = DefaultBoolean.False;
+                column.Settings.AllowGroup = DefaultBoolean.False;
+                column.Settings.ShowFilterRowMenu = DefaultBoolean.True;
+                column.Settings.AllowHeaderFilter = DefaultBoolean.False;
+                column.AllowTextTruncationInAdaptiveMode = true;
+                //column.Width = Unit.Pixel(175);
+            });
+
+        }
+        settings.Columns.Add(m => m.FullName, column =>
+        {
+            column.Caption = "FullName";
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+            column.Settings.AllowGroup = DefaultBoolean.False;
+            column.Settings.ShowFilterRowMenu = DefaultBoolean.True;
+            column.Settings.AllowHeaderFilter = DefaultBoolean.False;
+            column.AllowTextTruncationInAdaptiveMode = true;
+
+        });
+        settings.Columns.Add(m => m.UserName, column =>
+        {
+            column.Caption = "UserName";
+            column.Settings.AllowDragDrop = DefaultBoolean.False;
+            column.Settings.AllowGroup = DefaultBoolean.False;
+            column.Settings.ShowFilterRowMenu = DefaultBoolean.True;
+            column.Settings.AllowHeaderFilter = DefaultBoolean.False;
+            column.AllowTextTruncationInAdaptiveMode = true;
+            //column.Width = Unit.Pixel(175);
+        });
+    });
+}
+@grid.BindToLINQ(string.Empty, string.Empty, (s, e) =>
+{
+    e.QueryableSource = DataProviderHelper.GetData();
+}).GetHtml()

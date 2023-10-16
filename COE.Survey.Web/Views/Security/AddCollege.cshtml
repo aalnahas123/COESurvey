@@ -1,0 +1,165 @@
+﻿@model List<COE.Common.Model.Provider>
+@using COE.Common.Localization.Security;
+@using COE.Common.Localization;
+
+@{
+    ViewBag.Title = SecurityResources.Action_UserColleges;
+    ViewBag.ModuleTitle = SecurityResources.Users;
+
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+@using (Html.BeginForm("AddCollege", "Security", FormMethod.Post, new { @class = "", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-12">
+            @if (Session["Message"] != null && !string.IsNullOrEmpty(TempData["Message"].ToString()))
+                {
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>@TempData["Message"]</strong>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-th-list" aria-hidden="true"></i>
+                        Colleges
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    @*<div class="table-scrollable">*@
+
+                    @if (Model != null)
+                    {
+                        if (Model.Count > 0)
+                        {
+                            <ul class="tree">
+
+                                @for (int i = 0; i < Model.Count; i++)
+                                {
+                                    <li class="has">
+                                        <span class="sign expand"><i class="fa fa-plus"></i></span>
+                                        <span class="sign collabse" style="display:none"><i class="fa fa-minus"></i></span>
+                                        @Html.HiddenFor(m => Model[i].ID)
+                                        @Html.HiddenFor(m => Model[i].Name)
+
+                                        @Html.CheckBoxFor(m => Model[i].IsSelected)
+                                        <span>@Model[i].Name</span>
+                                        @if (Model[i].CollegeList.Count > 0)
+                                        {
+                                            <ul>
+                                                @for (int x = 0; x < Model[i].CollegeList.Count; x++)
+                                                {
+                                                    <li>
+                                                        @Html.HiddenFor(m => Model[i].CollegeList[x].ID)
+                                                        @Html.HiddenFor(m => Model[i].CollegeList[x].Name)
+                                                        @Html.CheckBoxFor(m => Model[i].CollegeList[x].IsSelected)
+                                                        @Html.DisplayFor(m => Model[i].CollegeList[x].Name)
+                                                    </li>
+
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+
+                            </ul>
+                        }
+                    }
+                    else
+                    {
+                        <div class="noResults">
+                            @SharedResources.NoDataToDisplay
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-actions right">
+        <button type="submit" class="btn green"><i class="fa fa-save fa-fw" aria-hidden="true"></i>@SharedResources.Save</button>
+        <a class="btn red" href="@Url.Action("Users", "security",new { UserType = Request.QueryString["type"],uid= ViewContext.RouteData.Values["id"] })">@SharedResources.Back</a>
+        @*, new { id = ViewContext.RouteData.Values["id"] }*@
+    </div>
+}
+<style>
+    .controls {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        z-index: 1;
+        padding: 6px 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    input[type=checkbox] {
+        vertical-align: middle !important;
+    }
+
+    .tree input[type=checkbox] {
+        width: 16px;
+        height: 16px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .tree {
+        line-height: 24px;
+    }
+
+        .tree ul {
+            display: none;
+            margin: 4px auto;
+            margin-right: 6px;
+            border-right: 1px dashed #dfdfdf;
+        }
+
+        .tree li {
+            cursor: pointer;
+            vertical-align: middle;
+            background: #fff;
+            list-style: none;
+        }
+
+            .tree li:first-child {
+                border-radius: 3px 3px 0 0;
+            }
+
+            .tree li:last-child {
+                border-radius: 0 0 3px 3px;
+            }
+
+        .tree .active,
+        .active li {
+            background: #efefef;
+        }
+
+        .tree label {
+            cursor: pointer;
+        }
+
+        .tree input[type=checkbox] {
+            margin: -2px 6px 0 0px;
+        }
+
+    .has > label {
+        color: #000;
+    }
+
+    .tree .total {
+        color: #e13300;
+    }
+</style>

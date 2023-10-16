@@ -1,0 +1,873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{847E5A71-82C2-4427-8938-BB773748C739}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>COE.Common.Localization</RootNamespace>
+    <AssemblyName>COE.Common.Localization</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppResources.ar.Designer.cs">
+      <DependentUpon>AppResources.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AppResources.en.Designer.cs">
+      <DependentUpon>AppResources.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AssessmentPeriod\AssessmentPeriodResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssessmentPeriodResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Breadcrumb.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Breadcrumb.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Breadcrumb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Breadcrumb.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Breadcrumb.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Breadcrumb.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CertificateResources.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CertificateResources.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CertificateResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CertificateResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CertificateResources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CertificateResources.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ContractManagement\QualificationPeriodResources.Designer.cs">
+      <DependentUpon>QualificationPeriodResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ContractManagement\QualificationResources.ar.Designer.cs">
+      <DependentUpon>QualificationResources.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ContractManagement\QualificationResources.Designer.cs">
+      <DependentUpon>QualificationResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ContractManagement\QualificationResources.en.Designer.cs">
+      <DependentUpon>QualificationResources.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ContractManagement\SubProgramResources.Designer.cs">
+      <DependentUpon>SubProgramResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ContractManagement\PeriodResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PeriodResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ContractManagement\ProviderResources.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProviderResources.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ContractManagement\ProviderResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProviderResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ContractManagement\ProviderResources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProviderResources.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ContractManagement\SponserResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SponserResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ContractManagment\ContractManagmentResources.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContractManagmentResources.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ContractManagment\ContractManagmentResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContractManagmentResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ContractManagment\ContractManagmentResources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContractManagmentResources.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DCS\DCSResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DCSResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Enrollment\ApplicantResources.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApplicantResources.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Enrollment\ApplicantResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApplicantResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Enrollment\ApplicantResources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApplicantResources.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Enrollment\EnrollmentResources.ar.Designer.cs">
+      <DependentUpon>EnrollmentResources.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Enrollment\EnrollmentResources.Designer.cs">
+      <DependentUpon>EnrollmentResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Enrollment\EnrollmentResources.en.Designer.cs">
+      <DependentUpon>EnrollmentResources.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Enrollment\ExamBookingResources.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExamBookingResources.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Enrollment\ExamBookingResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExamBookingResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Enrollment\ExamBookingResources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExamBookingResources.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Enrollment\SpResources.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpResources.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Enrollment\SpResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Enrollment\SpResources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpResources.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ExamBookingAdminResources.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExamBookingAdminResources.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ExamBookingAdminResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExamBookingAdminResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Payment\PaymentResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PortalResources.Designer.cs">
+      <DependentUpon>PortalResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RPL\ExamRequestResources.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExamRequestResources.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RPL\ExamRequestResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExamRequestResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RPL\RPLResources.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPLResources.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RPL\RPLResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPLResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityResources.ar.Designer.cs">
+      <DependentUpon>SecurityResources.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Security\SecurityResources.en.Designer.cs">
+      <DependentUpon>SecurityResources.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Security\SecurityResources.Designer.cs">
+      <DependentUpon>SecurityResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SharedResources.ar.Designer.cs">
+      <DependentUpon>SharedResources.ar.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="SharedResources.Designer.cs">
+      <DependentUpon>SharedResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SharedResources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SharedResources.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MetaData.Designer.cs">
+      <DependentUpon>MetaData.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MetaData.ar.Designer.cs">
+      <DependentUpon>MetaData.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Stipend\StipendMetadataResources.Designer.cs">
+      <DependentUpon>StipendMetadataResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Stipend\StipendResources.Designer.cs">
+      <DependentUpon>StipendResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="UsersMgmtResources.ar.Designer.cs">
+      <DependentUpon>UsersMgmtResources.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="UsersMgmtResources.Designer.cs">
+      <DependentUpon>UsersMgmtResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="UsersMgmtResources.en.Designer.cs">
+      <DependentUpon>UsersMgmtResources.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Workflow\ChangeStatusRequestResource.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangeStatusRequestResource.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\ChangeStatusRequestResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangeStatusRequestResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\ChangeStatusRequestResource.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangeStatusRequestResource.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\ComplaintRequestResource.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComplaintRequestResource.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\ComplaintRequestResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComplaintRequestResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\ComplaintRequestResource.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComplaintRequestResource.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\DismissRequestResources.Designer.cs">
+      <DependentUpon>DismissRequestResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Workflow\DismissRequestResources.ar.Designer.cs">
+      <DependentUpon>DismissRequestResources.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Workflow\DeferralRequestResources.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeferralRequestResources.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\DeferralRequestResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeferralRequestResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\DismissRequestResources.en.Designer.cs">
+      <DependentUpon>DismissRequestResources.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Workflow\DeferralRequestResources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeferralRequestResources.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\InboxResources.ar.Designer.cs">
+      <DependentUpon>InboxResources.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Workflow\InboxResources.Designer.cs">
+      <DependentUpon>InboxResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Workflow\MyRequestsResources.Designer.cs">
+      <DependentUpon>MyRequestsResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Workflow\StudentsDisabilityRequestResource.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentsDisabilityRequestResource.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\StudentsDisabilityRequestResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentsDisabilityRequestResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\StudentsDisabilityRequestResource.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentsDisabilityRequestResource.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\WithdrawRequestResources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WithdrawRequestResources.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\WorkflowSharedResources.ar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkflowSharedResources.ar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\WorkflowSharedResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkflowSharedResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\WorkflowSharedResources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkflowSharedResources.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\WithdrawRequestResources.ar.Designer.cs">
+      <DependentUpon>WithdrawRequestResources.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Workflow\WithdrawRequestResources.Designer.cs">
+      <DependentUpon>WithdrawRequestResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AppResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssessmentPeriod\AssessmentPeriodResources.ar.resx" />
+    <EmbeddedResource Include="AssessmentPeriod\AssessmentPeriodResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AssessmentPeriodResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Breadcrumb.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Breadcrumb.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Breadcrumb.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Breadcrumb.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Breadcrumb.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Breadcrumb.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CertificateResources.ar.resx">
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CertificateResources.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CertificateResources.en.resx">
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CertificateResources.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CertificateResources.resx">
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CertificateResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagement\QualificationPeriodResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>QualificationPeriodResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagement\QualificationResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>QualificationResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagement\QualificationResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>QualificationResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagement\QualificationResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>QualificationResources.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagement\SubProgramResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SubProgramResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagement\PeriodResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PeriodResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagement\ProviderResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProviderResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagement\ProviderResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProviderResources.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagement\ProviderResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProviderResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagement\SponserResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SponserResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagment\ContractManagmentResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContractManagmentResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagment\ContractManagmentResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContractManagmentResources.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractManagment\ContractManagmentResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContractManagmentResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DCS\DCSResources.ar.resx" />
+    <EmbeddedResource Include="DCS\DCSResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DCSResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment\ApplicantResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicantResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment\ApplicantResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicantResources.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment\ApplicantResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicantResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment\EnrollmentResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnrollmentResources.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment\EnrollmentResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnrollmentResources.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment\EnrollmentResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnrollmentResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment\ExamBookingResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExamBookingResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment\ExamBookingResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExamBookingResources.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment\ExamBookingResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExamBookingResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment\SpResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SpResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment\SpResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SpResources.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enrollment\SpResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SpResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExamBookingAdminResources.ar-SA.resx" />
+    <EmbeddedResource Include="ExamBookingAdminResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExamBookingAdminResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExamBookingAdminResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExamBookingAdminResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payment\PaymentResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PaymentResource.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPL\ExamRequestResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExamRequestResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPL\ExamRequestResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExamRequestResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPL\RPLResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RPLResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPL\RPLResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+      <LastGenOutput>RPLResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\SecurityResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SecurityResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization.Security</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\SecurityResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SecurityResources.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization.Security</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Security\SecurityResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SecurityResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization.Security</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Portal\PortalResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PortalResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharedResources.ar.resx">
+      <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharedResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedResources.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharedResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MetaData.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MetaData.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MetaData.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MetaData.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stipend\StipendMetadataResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StipendMetadataResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stipend\StipendResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StipendResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersMgmtResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UsersMgmtResources.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersMgmtResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UsersMgmtResources.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersMgmtResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UsersMgmtResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\ChangeStatusRequestResource.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChangeStatusRequestResource.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\ChangeStatusRequestResource.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChangeStatusRequestResource.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\ChangeStatusRequestResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+      <LastGenOutput>ChangeStatusRequestResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\ComplaintRequestResource.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ComplaintRequestResource.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\ComplaintRequestResource.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ComplaintRequestResource.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\ComplaintRequestResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ComplaintRequestResource.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\DismissRequestResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DismissRequestResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\DismissRequestResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DismissRequestResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\DeferralRequestResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DeferralRequestResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\DismissRequestResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DismissRequestResources.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\DeferralRequestResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DeferralRequestResources.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\DeferralRequestResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DeferralRequestResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\InboxResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InboxResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\InboxResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InboxResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\MyRequestsResources.ar.resx" />
+    <EmbeddedResource Include="Workflow\MyRequestsResources.en.resx" />
+    <EmbeddedResource Include="Workflow\MyRequestsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MyRequestsResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\StudentsDisabilityRequestResource.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StudentsDisabilityRequestResource.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\StudentsDisabilityRequestResource.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StudentsDisabilityRequestResource.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\StudentsDisabilityRequestResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StudentsDisabilityRequestResource.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\WithdrawRequestResources.en.resx">
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WithdrawRequestResources.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\WorkflowSharedResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WorkflowSharedResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\WorkflowSharedResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WorkflowSharedResources.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\WorkflowSharedResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WorkflowSharedResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\WithdrawRequestResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WithdrawRequestResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\WithdrawRequestResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WithdrawRequestResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>RM.Workflow</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

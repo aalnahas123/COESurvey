@@ -1,0 +1,69 @@
+﻿@using Commons.Framework.Web.Mvc.Helpers
+@using COE.Common.Localization
+@model COE.Enrollment.Model.ViewModels.AccountViewModel
+
+@{
+    Layout = null;
+    //ViewBag.Title = UsersMgmtResources.RegisterNewUser;
+}
+
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "register-form", role = "form", defaultbutton = "SubmitButton", id = "loginForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger help-block" })
+
+    <h3 class="font-green">@UsersMgmtResources.SignUp</h3>
+        <p class="hint"> @UsersMgmtResources.PersonalDetails </p><hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.FullName, new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.FullName, new { @class = "form-control form-control-solid placeholder-no-fix" })
+            @Html.ValidationMessageFor(model => model.FullName, string.Empty, new { @class = "text-danger help-block" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label" })
+            @Html.TelInputFor(model => model.PhoneNumber, null, new { @class = "form-control form-control-solid placeholder-no-fix", MaxLength = "15" })
+            @Html.ValidationMessageFor(model => model.PhoneNumber, string.Empty, new { @class = "text-danger help-block" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control placeholder-no-fix" })
+            @Html.ValidationMessageFor(model => model.Email, string.Empty, new { @class = "text-danger help-block" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailConfirm, new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.EmailConfirm, new { @class = "form-control placeholder-no-fix"})
+            @Html.ValidationMessageFor(model => model.EmailConfirm, string.Empty, new { @class = "text-danger help-block" })
+        </div>
+        <p class="hint"> @UsersMgmtResources.AccountDetails </p><hr />
+        <div class="form-group">
+            <label class = "control-label">@UsersMgmtResources.NationalId</label>
+            @*@Html.LabelFor(model => model.UserName, new { @class = "control-label" })*@
+            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control placeholder-no-fix", @type = "number", @maxlength = 10, @autocomplete = "off" })
+            @Html.ValidationMessageFor(model => model.UserName, string.Empty, new { @class = "text-danger help-block" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label" })
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control placeholder-no-fix"})
+            @Html.ValidationMessageFor(model => model.Password, string.Empty, new { @class = "text-danger help-block" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label" })
+            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control placeholder-no-fix" })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, string.Empty, new { @class = "text-danger help-block" })
+        </div>
+        <div class="form-group margin-top-20 margin-bottom-20">
+            <label class="mt-checkbox mt-checkbox-outline">
+                @Html.CheckBoxFor(model => model.IsTermsAccepted) @UsersMgmtResources.IAgree
+                <a href="@Url.Action("Terms","Account")">@UsersMgmtResources.TermsOfServices </a> &
+                <a href="@Url.Action("Terms","Account")">@UsersMgmtResources.PrivacyPolicy </a>
+                @Html.ValidationMessageFor(model => model.IsTermsAccepted, string.Empty, new { @class = "text-danger help-block" })
+            </label>
+            <div id="register_tnc_error"> </div>
+        </div>
+        <div class="form-actions">
+            <button type="button" id="register-back-btn" class="btn green btn-outline">@SharedResources.Back</button>
+            <button type="submit" id="register-submit-btn" class="btn btn-success uppercase pull-right">@SharedResources.Submit</button>
+        </div>
+}

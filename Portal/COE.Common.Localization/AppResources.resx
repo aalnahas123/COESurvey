@@ -1,0 +1,1008 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcademicInformation" xml:space="preserve">
+    <value>School</value>
+  </data>
+  <data name="AcademicInformations" xml:space="preserve">
+    <value>Provide your academic information</value>
+  </data>
+  <data name="AccountDetails" xml:space="preserve">
+    <value>Provide your account details</value>
+  </data>
+  <data name="Achievment" xml:space="preserve">
+    <value>Achievment</value>
+  </data>
+  <data name="AchievmentValidation" xml:space="preserve">
+    <value>Provide your achievment</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Birth Date</value>
+  </data>
+  <data name="BirthDateValidation" xml:space="preserve">
+    <value>Provide Your Birth Date</value>
+  </data>
+  <data name="BirthYear" xml:space="preserve">
+    <value>Birth year</value>
+  </data>
+  <data name="BirthYearValidation" xml:space="preserve">
+    <value>Provide your Birth Year.</value>
+  </data>
+  <data name="CheckStudent" xml:space="preserve">
+    <value>Identity</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="ConfirmApplication" xml:space="preserve">
+    <value>Confirm your application</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="EnrollmentRequestWizard" xml:space="preserve">
+    <value>Enrollment Request Wizard</value>
+  </data>
+  <data name="Errors" xml:space="preserve">
+    <value>You have some form errors. Please check below.</value>
+  </data>
+  <data name="FamilyNameAr" xml:space="preserve">
+    <value>Arabic Family Name</value>
+  </data>
+  <data name="FamilyNameArValidation" xml:space="preserve">
+    <value>Provide Your Arabic Family  Name</value>
+  </data>
+  <data name="FamilyNameEn" xml:space="preserve">
+    <value>English Family Name</value>
+  </data>
+  <data name="FamilyNameEnValidation" xml:space="preserve">
+    <value>Provide Your English Family  Name</value>
+  </data>
+  <data name="FatherNameAr" xml:space="preserve">
+    <value>Arabic Father Name</value>
+  </data>
+  <data name="FatherNameArValidation" xml:space="preserve">
+    <value>Provide Your Arabic Father Name</value>
+  </data>
+  <data name="FatherNameEn" xml:space="preserve">
+    <value>English Father Name</value>
+  </data>
+  <data name="FatherNameEnValidation" xml:space="preserve">
+    <value>Provide Your English Father Name</value>
+  </data>
+  <data name="FirstCollege" xml:space="preserve">
+    <value>First College</value>
+  </data>
+  <data name="FirstCollegeValidation" xml:space="preserve">
+    <value>Provide your first college</value>
+  </data>
+  <data name="FirstNameAr" xml:space="preserve">
+    <value>Arabic First Name</value>
+  </data>
+  <data name="FirstNameArValidation" xml:space="preserve">
+    <value>Provide Your Arabic First Name</value>
+  </data>
+  <data name="FirstNameEn" xml:space="preserve">
+    <value>English First Name</value>
+  </data>
+  <data name="FirstNameEnValidation" xml:space="preserve">
+    <value>Provide Your English First Name</value>
+  </data>
+  <data name="FirstSpecialization" xml:space="preserve">
+    <value>First Specialization</value>
+  </data>
+  <data name="FirstSpecializationValidation" xml:space="preserve">
+    <value>Provide your first specialization</value>
+  </data>
+  <data name="FullNameArabic" xml:space="preserve">
+    <value>Full Name Arabic</value>
+  </data>
+  <data name="FullNameEnglish" xml:space="preserve">
+    <value>Full Name English</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="GenderFemale" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="GenderMale" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="GPA" xml:space="preserve">
+    <value>GPA</value>
+  </data>
+  <data name="GPAValidation" xml:space="preserve">
+    <value>Provide your GPA</value>
+  </data>
+  <data name="GraduationYear" xml:space="preserve">
+    <value>Graduation Year</value>
+  </data>
+  <data name="GraduationYearValidation" xml:space="preserve">
+    <value>Provide your graduation year</value>
+  </data>
+  <data name="GrandFatherNameAr" xml:space="preserve">
+    <value>Arabic Grand Father Name</value>
+  </data>
+  <data name="GrandFatherNameArValidation" xml:space="preserve">
+    <value>Provide Your Arabic Grand Father Name</value>
+  </data>
+  <data name="GrandFatherNameEn" xml:space="preserve">
+    <value>English Grand Father Name</value>
+  </data>
+  <data name="GrandFatherNameEnValidation" xml:space="preserve">
+    <value>Provide Your English Grand Father Name</value>
+  </data>
+  <data name="JoinedBefore" xml:space="preserve">
+    <value>Have you ever been to the Faculty of Excellence?</value>
+  </data>
+  <data name="JoinedBeforeNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="JoinedBeforeYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Motivation" xml:space="preserve">
+    <value>How did you hear about colleges of excellence?</value>
+  </data>
+  <data name="MotivationValidation" xml:space="preserve">
+    <value>Provide your motivation</value>
+  </data>
+  <data name="NationalId" xml:space="preserve">
+    <value>NationalId</value>
+  </data>
+  <data name="NationalIdValidation" xml:space="preserve">
+    <value>Provide Your NationalId</value>
+  </data>
+  <data name="PersonalInformation" xml:space="preserve">
+    <value>Provide Your Personal information</value>
+  </data>
+  <data name="Qiyas" xml:space="preserve">
+    <value>Qiyas</value>
+  </data>
+  <data name="QiyasValidation" xml:space="preserve">
+    <value>Provide your Qiyas</value>
+  </data>
+  <data name="SchoolCity" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="SchoolCityValidation" xml:space="preserve">
+    <value>Provide your city or town</value>
+  </data>
+  <data name="SchoolName" xml:space="preserve">
+    <value>School Name</value>
+  </data>
+  <data name="SchoolNameValidation" xml:space="preserve">
+    <value>Provide your school name</value>
+  </data>
+  <data name="SchoolRegion" xml:space="preserve">
+    <value>School Region</value>
+  </data>
+  <data name="SchoolRegionValidation" xml:space="preserve">
+    <value>Provide your school region</value>
+  </data>
+  <data name="SchoolType" xml:space="preserve">
+    <value>School Type</value>
+  </data>
+  <data name="SchoolTypeValidation" xml:space="preserve">
+    <value>Provide your school type</value>
+  </data>
+  <data name="SecondCollege" xml:space="preserve">
+    <value>Second College</value>
+  </data>
+  <data name="SecondCollegeValidation" xml:space="preserve">
+    <value>Provide your second college</value>
+  </data>
+  <data name="SecondSpecialization" xml:space="preserve">
+    <value>Second Specialization</value>
+  </data>
+  <data name="SecondSpecializationValidation" xml:space="preserve">
+    <value>Provide your second specialization</value>
+  </data>
+  <data name="StepOneOfFive" xml:space="preserve">
+    <value>Step 1 of 5</value>
+  </data>
+  <data name="StudentApplication" xml:space="preserve">
+    <value>Programs</value>
+  </data>
+  <data name="StudentDesires" xml:space="preserve">
+    <value>Provide your desires to choose colleges</value>
+  </data>
+  <data name="StudentInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="SuccessfulValidation" xml:space="preserve">
+    <value>Your form validation is successful!</value>
+  </data>
+  <data name="ThirdCollege" xml:space="preserve">
+    <value>Third College</value>
+  </data>
+  <data name="ThirdCollegeValidation" xml:space="preserve">
+    <value>Provide your  third college</value>
+  </data>
+  <data name="ThirdSpecialization" xml:space="preserve">
+    <value>Third Specialization</value>
+  </data>
+  <data name="ThirdSpecializationValidation" xml:space="preserve">
+    <value>Provide your  third specialization</value>
+  </data>
+  <data name="UniversityGraduated" xml:space="preserve">
+    <value>Are you a university graduate?</value>
+  </data>
+  <data name="UniversityGraduatedNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="UniversityGraduatedYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="WorkStatus" xml:space="preserve">
+    <value>Work Status</value>
+  </data>
+  <data name="WorkStatusValidation" xml:space="preserve">
+    <value>Provide your work status</value>
+  </data>
+  <data name="AcademicYear" xml:space="preserve">
+    <value>Academic Year</value>
+  </data>
+  <data name="AssociateDiploma" xml:space="preserve">
+    <value>Associate Diploma</value>
+  </data>
+  <data name="Attendance" xml:space="preserve">
+    <value>Attendance</value>
+  </data>
+  <data name="ChangeContact" xml:space="preserve">
+    <value>Change Contacts</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="College" xml:space="preserve">
+    <value>College</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Current Password</value>
+  </data>
+  <data name="DeferralRequest" xml:space="preserve">
+    <value>Deferral Request</value>
+  </data>
+  <data name="Diploma" xml:space="preserve">
+    <value>Diploma</value>
+  </data>
+  <data name="DroppedWithdrawRequest" xml:space="preserve">
+    <value>Withdraw Request</value>
+  </data>
+  <data name="EditApplicationDesires" xml:space="preserve">
+    <value>Edit Application Desires</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EnrollmentDetails" xml:space="preserve">
+    <value>Enrollment Details</value>
+  </data>
+  <data name="EnrollmentHistory" xml:space="preserve">
+    <value>Enrollment History</value>
+  </data>
+  <data name="EnrollmentInformation" xml:space="preserve">
+    <value>Enrollment Information</value>
+  </data>
+  <data name="EnrollmentRequestEdit" xml:space="preserve">
+    <value>Edit Enrollment Request</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>Exams</value>
+  </data>
+  <data name="Foundation" xml:space="preserve">
+    <value>Foundation</value>
+  </data>
+  <data name="JoinDate" xml:space="preserve">
+    <value>Join Date</value>
+  </data>
+  <data name="Joining" xml:space="preserve">
+    <value>Joining</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="Personalinfo" xml:space="preserve">
+    <value>Personal info</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="RequestDesiresDetails" xml:space="preserve">
+    <value>Request desires details</value>
+  </data>
+  <data name="RequestDetails" xml:space="preserve">
+    <value>Request Details</value>
+  </data>
+  <data name="RequestInformation" xml:space="preserve">
+    <value>Request Information</value>
+  </data>
+  <data name="RequestNumber" xml:space="preserve">
+    <value>Request Number</value>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>Requests</value>
+  </data>
+  <data name="RequestStatus" xml:space="preserve">
+    <value>Request Status</value>
+  </data>
+  <data name="ReTypeNewPassword" xml:space="preserve">
+    <value>Re-type New Password</value>
+  </data>
+  <data name="Specialization" xml:space="preserve">
+    <value>Specialization</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="StudentName" xml:space="preserve">
+    <value>Student Name</value>
+  </data>
+  <data name="TermEndDate" xml:space="preserve">
+    <value>Term End Date</value>
+  </data>
+  <data name="TermStartDate" xml:space="preserve">
+    <value>Term Start Date</value>
+  </data>
+  <data name="TermType" xml:space="preserve">
+    <value>Term</value>
+  </data>
+  <data name="TransferRequest" xml:space="preserve">
+    <value>Transfer Request</value>
+  </data>
+  <data name="HaveInProgressRequestOrEnrolled" xml:space="preserve">
+    <value>Sorry you can't apply new enrollment request . may be you have inprogress request or you are already enrolled.</value>
+  </data>
+  <data name="Applicants" xml:space="preserve">
+    <value>Applicants</value>
+  </data>
+  <data name="CheckVerificationCode" xml:space="preserve">
+    <value>Sorry , you cannot submit an enrollment request . Please enter your verification code sent at your mobile</value>
+  </data>
+  <data name="ChangeContactFailed" xml:space="preserve">
+    <value>Sorry , Failed to change student contact information . Please try again</value>
+  </data>
+  <data name="ChangeContactSuccessfully" xml:space="preserve">
+    <value>Student contact information was successfully changed</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="EnrollmentFailed" xml:space="preserve">
+    <value>Sorry , Failed in changing student status to {0} . Please try again</value>
+  </data>
+  <data name="EnrollmentRequest" xml:space="preserve">
+    <value>Enrollment Request</value>
+  </data>
+  <data name="Enrollments" xml:space="preserve">
+    <value>Students</value>
+  </data>
+  <data name="EnrollmentSuccessfully" xml:space="preserve">
+    <value>The student status was changed to {0} successfully .</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>Student password successfully changed .</value>
+  </data>
+  <data name="PasswordChangedFailed" xml:space="preserve">
+    <value>Sorry , Failed to change student password , please try again</value>
+  </data>
+  <data name="ActivationCode" xml:space="preserve">
+    <value>Activation Code</value>
+  </data>
+  <data name="CheckYourNationalId" xml:space="preserve">
+    <value>Sorry , you cannot submit an enrollment request . Please check you NationalId</value>
+  </data>
+  <data name="FirstCollegeIsRequired" xml:space="preserve">
+    <value>First College Is Required</value>
+  </data>
+  <data name="FirstSpecializationIsRequired" xml:space="preserve">
+    <value>First Specialization Is Required</value>
+  </data>
+  <data name="SecondSpecializationIsRequired" xml:space="preserve">
+    <value>Second Specialization Is Required</value>
+  </data>
+  <data name="SpecializationNotDuplicated" xml:space="preserve">
+    <value>Please do not repeat the same selection of specialization</value>
+  </data>
+  <data name="ThirdSpecializationIsRequired" xml:space="preserve">
+    <value>Third Specialization Is Required</value>
+  </data>
+  <data name="DeferralRequestReasons" xml:space="preserve">
+    <value>Deferral Reasons</value>
+  </data>
+  <data name="DeferralRequestTrainingTrimester" xml:space="preserve">
+    <value>Aacademic year term</value>
+  </data>
+  <data name="WorkFlows" xml:space="preserve">
+    <value>WorkFlows</value>
+  </data>
+  <data name="RequestHistory" xml:space="preserve">
+    <value>Request History</value>
+  </data>
+  <data name="Decision" xml:space="preserve">
+    <value>Decision</value>
+  </data>
+  <data name="RequestAction" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="RequestActionBy" xml:space="preserve">
+    <value>Action By</value>
+  </data>
+  <data name="RequestActionDate" xml:space="preserve">
+    <value>Action Date</value>
+  </data>
+  <data name="RequestComment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="RequestStage" xml:space="preserve">
+    <value>Stage</value>
+  </data>
+  <data name="DismissRequestReasons" xml:space="preserve">
+    <value>Reasons of Dismiss</value>
+  </data>
+  <data name="AcademicYearTermUnDefined" xml:space="preserve">
+    <value>Un Defined</value>
+  </data>
+  <data name="FirstAcademicYearTerm" xml:space="preserve">
+    <value>First Semester</value>
+  </data>
+  <data name="FourthAcademicYearTerm" xml:space="preserve">
+    <value>Four Semester</value>
+  </data>
+  <data name="SecondAcademicYearTerm" xml:space="preserve">
+    <value>Second Semester</value>
+  </data>
+  <data name="ThirdAcademicYearTerm" xml:space="preserve">
+    <value>Third Semester</value>
+  </data>
+  <data name="WithdrawRequest" xml:space="preserve">
+    <value>Withdraw Request</value>
+  </data>
+  <data name="Inbox" xml:space="preserve">
+    <value>Inbox</value>
+  </data>
+  <data name="MyRequests" xml:space="preserve">
+    <value>Requests</value>
+  </data>
+  <data name="DismissRequest" xml:space="preserve">
+    <value>Dismiss Request</value>
+  </data>
+  <data name="WithdrawRequestDetails" xml:space="preserve">
+    <value>Withdraw Request Details</value>
+  </data>
+  <data name="HaveUnAcceptedEnrolled" xml:space="preserve">
+    <value>The student's enrollment status is not allowed to applay this request.</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NotTermEnrrolledOrTermsDeffered" xml:space="preserve">
+    <value>sorry , you may be not term enrrolled or may be already defere all terms</value>
+  </data>
+  <data name="AttachedFile" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="TermName" xml:space="preserve">
+    <value>Academic Term</value>
+  </data>
+  <data name="PercentageOfAttendance" xml:space="preserve">
+    <value>Percentage of attendance per month on course during the session</value>
+  </data>
+  <data name="CurrentCollege" xml:space="preserve">
+    <value>Current College</value>
+  </data>
+  <data name="NewCollege" xml:space="preserve">
+    <value>New College</value>
+  </data>
+  <data name="NewSpecialization" xml:space="preserve">
+    <value>Specialization</value>
+  </data>
+  <data name="TransferRequestReasons" xml:space="preserve">
+    <value>Reasons Of Transfer</value>
+  </data>
+  <data name="NewCollegeId" xml:space="preserve">
+    <value>New College Identifier</value>
+  </data>
+  <data name="NewSpecializationId" xml:space="preserve">
+    <value>New Specialization Identifier</value>
+  </data>
+  <data name="OtherTransferReasons" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="StudentComment" xml:space="preserve">
+    <value>Student's Comment</value>
+  </data>
+  <data name="FundingLevelID" xml:space="preserve">
+    <value>Funding Level</value>
+  </data>
+  <data name="FundingSpecializationID" xml:space="preserve">
+    <value>Funding Specialization</value>
+  </data>
+  <data name="NumberOfFullFundingTrimester" xml:space="preserve">
+    <value>Number Of Full Funding Trimester</value>
+  </data>
+  <data name="SSSExamID" xml:space="preserve">
+    <value>SSS Exam</value>
+  </data>
+  <data name="SSSExamResult" xml:space="preserve">
+    <value>SSS Exam Result</value>
+  </data>
+  <data name="Capstone" xml:space="preserve">
+    <value>Capstone</value>
+  </data>
+  <data name="CBT" xml:space="preserve">
+    <value>CBT</value>
+  </data>
+  <data name="Eportfolio" xml:space="preserve">
+    <value>Eportfolio</value>
+  </data>
+  <data name="OverAll" xml:space="preserve">
+    <value>OverAll</value>
+  </data>
+  <data name="CandidateNo" xml:space="preserve">
+    <value>Candidate No</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="StudentActualMark" xml:space="preserve">
+    <value>Actual Mark</value>
+  </data>
+  <data name="EnrollmentStatisticRequest" xml:space="preserve">
+    <value>Enrollment Statistic Request</value>
+  </data>
+  <data name="DeanInfo" xml:space="preserve">
+    <value>Dean Information</value>
+  </data>
+  <data name="StaffInfo" xml:space="preserve">
+    <value>Staff Information</value>
+  </data>
+  <data name="StudentsInfo" xml:space="preserve">
+    <value>Students Information</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="BeforeEndDateOfCurrentAcademicTerm" xml:space="preserve">
+    <value>You can not submit transfer request befor {0} days of end-date of current academic term.</value>
+  </data>
+  <data name="JoinedTerm" xml:space="preserve">
+    <value>Joined Term</value>
+  </data>
+  <data name="ChangeContactValidation" xml:space="preserve">
+    <value>Sorry , Failed to change student contact , Please fill in the required fields  .</value>
+  </data>
+  <data name="PasswordChangedValidation" xml:space="preserve">
+    <value>Sorry , Failed to change student password , Please fill in the required fields.</value>
+  </data>
+  <data name="BirthYearMaxLength" xml:space="preserve">
+    <value>Please enter the Hijri year of birth consisting of 4 valid numbers only .</value>
+  </data>
+  <data name="BirthYearMinLength" xml:space="preserve">
+    <value>Please enter the Hijri year of birth consisting of 4 valid numbers only .</value>
+  </data>
+  <data name="BirthYearAndNationalIdValidation" xml:space="preserve">
+    <value>Sorry, please check your national ID number and hijri year of birth .</value>
+  </data>
+  <data name="ChangeSelectedStudentStatus" xml:space="preserve">
+    <value>Change selected student status</value>
+  </data>
+  <data name="ChangeStatus" xml:space="preserve">
+    <value>Change Status</value>
+  </data>
+  <data name="ChangeStatusRequestStudents" xml:space="preserve">
+    <value>Request Students</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="RequestsTypes" xml:space="preserve">
+    <value>Requests Types</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="InProgress" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+  <data name="BirthDateHijri" xml:space="preserve">
+    <value>Hijri Birth Date</value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>Attached File</value>
+  </data>
+  <data name="AttachedFile1" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="AttachedFile2" xml:space="preserve">
+    <value>Attachment (Optional)</value>
+  </data>
+  <data name="MissingInfo" xml:space="preserve">
+    <value>There is some missing information, please contact administrator</value>
+  </data>
+  <data name="ReinstateRequest" xml:space="preserve">
+    <value>Reinstate Request</value>
+  </data>
+  <data name="ReinstateRequestMessage" xml:space="preserve">
+    <value>This request will create a new enrollment for the student on the current term once its approved.</value>
+  </data>
+  <data name="ServiceCurrentlyNotAvailable" xml:space="preserve">
+    <value>Sorry, this service is currently not available.</value>
+  </data>
+  <data name="NameAr" xml:space="preserve">
+    <value>Name Arabic</value>
+  </data>
+  <data name="NameEn" xml:space="preserve">
+    <value>Name English</value>
+  </data>
+  <data name="BirthYearHijri" xml:space="preserve">
+    <value>Birth year hijri</value>
+  </data>
+  <data name="Invalid_Boolean" xml:space="preserve">
+    <value>The inputs must be matched with true or false .</value>
+  </data>
+  <data name="Invalid_DateTime" xml:space="preserve">
+    <value>Invalid DateTime .</value>
+  </data>
+  <data name="Invalid_Decimal" xml:space="preserve">
+    <value>Invalid Decimal number .</value>
+  </data>
+  <data name="Invalid_Domain" xml:space="preserve">
+    <value>Invalid domain name .</value>
+  </data>
+  <data name="Invalid_Email" xml:space="preserve">
+    <value>Invalid Email .</value>
+  </data>
+  <data name="Invalid_FilePath" xml:space="preserve">
+    <value>Invalid file path .</value>
+  </data>
+  <data name="Invalid_FileUploadExtention" xml:space="preserve">
+    <value>The inputs must be matched with (jpg|JPG|jpeg|JPEG|png|PNG|docx|DOCX|doc|DOC|pdf|PDF) file extention .</value>
+  </data>
+  <data name="Invalid_Host" xml:space="preserve">
+    <value>Invalid host url .</value>
+  </data>
+  <data name="Invalid_HTML" xml:space="preserve">
+    <value>Invalid HTML text .</value>
+  </data>
+  <data name="Invalid_Integer" xml:space="preserve">
+    <value>Invalid Integer number .</value>
+  </data>
+  <data name="Invalid_Numeric" xml:space="preserve">
+    <value>Invalid Numeric digits .</value>
+  </data>
+  <data name="Invalid_Url" xml:space="preserve">
+    <value>Invalid URL .</value>
+  </data>
+  <data name="Settings_ApplicationId" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="Settings_IsActive" xml:space="preserve">
+    <value>Activation</value>
+  </data>
+  <data name="Settings_Key" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="Settings_Secure" xml:space="preserve">
+    <value>Secure</value>
+  </data>
+  <data name="Settings_Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Invalid_IpAddress" xml:space="preserve">
+    <value>Invalid IP Address .</value>
+  </data>
+  <data name="Settings_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="StudentDisabilityRequest" xml:space="preserve">
+    <value>Disability Request</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DescriptionAr" xml:space="preserve">
+    <value>Description Arabic</value>
+  </data>
+  <data name="DescriptionEn" xml:space="preserve">
+    <value>Description English</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="InActive" xml:space="preserve">
+    <value>InActive</value>
+  </data>
+  <data name="ApplicationDetails" xml:space="preserve">
+    <value>Application Details</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="OtherInformation" xml:space="preserve">
+    <value>Other Information</value>
+  </data>
+  <data name="RangeValidator" xml:space="preserve">
+    <value>{0} value must be between {1} to {2}</value>
+  </data>
+  <data name="CertificateDonor" xml:space="preserve">
+    <value>College Name</value>
+  </data>
+  <data name="CertificateName" xml:space="preserve">
+    <value>Certificate Title</value>
+  </data>
+  <data name="CourseName" xml:space="preserve">
+    <value>Certificate Title</value>
+  </data>
+  <data name="EducationLevel" xml:space="preserve">
+    <value>Degree</value>
+  </data>
+  <data name="FacultyName" xml:space="preserve">
+    <value>Institution Name</value>
+  </data>
+  <data name="GraduationDate" xml:space="preserve">
+    <value>Graduation Date</value>
+  </data>
+  <data name="StudyStartDate" xml:space="preserve">
+    <value>Study Start Date</value>
+  </data>
+  <data name="CollegeAddress" xml:space="preserve">
+    <value>Institution Address</value>
+  </data>
+  <data name="InstituteAddress" xml:space="preserve">
+    <value>College Address</value>
+  </data>
+  <data name="CandidateAcademicInformation" xml:space="preserve">
+    <value>General Education Qualifications</value>
+  </data>
+  <data name="CandidateAttachments" xml:space="preserve">
+    <value>Application checklist attachments</value>
+  </data>
+  <data name="CandidateInformation" xml:space="preserve">
+    <value>Candidate Information</value>
+  </data>
+  <data name="CheckCandidate" xml:space="preserve">
+    <value>Check Candidate</value>
+  </data>
+  <data name="CandidateQulifications" xml:space="preserve">
+    <value>Occupational Health And Safety Certifications</value>
+  </data>
+  <data name="ActionDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ContinuePayment" xml:space="preserve">
+    <value>الإستمرار والدفع</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="QualificationManagment" xml:space="preserve">
+    <value>ادارة المؤهلات والدورات</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="StipendsWarning" xml:space="preserve">
+    <value>The stipends will not be disbursed if the applicant  is an employee, and the applicant will bear the consequences of any incorrect information about the employment status</value>
+  </data>
+  <data name="EditBatch" xml:space="preserve">
+    <value>Batch Editing</value>
+  </data>
+  <data name="UpdateFromYakeen" xml:space="preserve">
+    <value>Update From Yakeen</value>
+  </data>
+  <data name="Motivation_SP" xml:space="preserve">
+    <value>How did you hear about the institute?</value>
+  </data>
+  <data name="College_SP" xml:space="preserve">
+    <value>Institute</value>
+  </data>
+  <data name="SaveAndContinue" xml:space="preserve">
+    <value>Save &amp; Continue</value>
+  </data>
+  <data name="SaveDraft" xml:space="preserve">
+    <value>Save As Draft</value>
+  </data>
+  <data name="ContinueWizard" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="AttendanceAttachment" xml:space="preserve">
+    <value>Attendance Attachment</value>
+  </data>
+  <data name="CenterBasicDetails" xml:space="preserve">
+    <value>Center Basic Details</value>
+  </data>
+  <data name="LoginAccountDetails" xml:space="preserve">
+    <value>Login Account Details</value>
+  </data>
+  <data name="CenterConfirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="CenterSummary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="JoinedBefore_SP" xml:space="preserve">
+    <value>Have you ever been joined to the institutes?</value>
+  </data>
+  <data name="ApplicationValidationError" xml:space="preserve">
+    <value>Sorry, be sure to fill in the application correctly .</value>
+  </data>
+  <data name="FemaleColleges" xml:space="preserve">
+    <value>Female Colleges</value>
+  </data>
+  <data name="MaleColleges" xml:space="preserve">
+    <value>Male Colleges</value>
+  </data>
+  <data name="HijriBirthDateSample" xml:space="preserve">
+    <value>eg : </value>
+  </data>
+  <data name="College_OSH" xml:space="preserve">
+    <value>Training Center</value>
+  </data>
+  <data name="JoinedBefore_OSH" xml:space="preserve">
+    <value>Have you ever been joined to the training centers ?</value>
+  </data>
+  <data name="Motivation_OSH" xml:space="preserve">
+    <value>How did you hear about training centers ?</value>
+  </data>
+  <data name="AcademicData_OSH" xml:space="preserve">
+    <value>Academic Data</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="NotApproved" xml:space="preserve">
+    <value>Not Approved</value>
+  </data>
+  <data name="QualificationLevel" xml:space="preserve">
+    <value>Qualification Level</value>
+  </data>
+  <data name="SentBackToCandidate" xml:space="preserve">
+    <value>Sent Back</value>
+  </data>
+  <data name="SchoolType_SP" xml:space="preserve">
+    <value>Academic qualification type</value>
+  </data>
+  <data name="SchoolName_SP" xml:space="preserve">
+    <value>Educational organization name</value>
+  </data>
+  <data name="Depth" xml:space="preserve">
+    <value>Depth</value>
+  </data>
+  <data name="SubmitAndPay" xml:space="preserve">
+    <value>Pay and Submit</value>
+  </data>
+</root>

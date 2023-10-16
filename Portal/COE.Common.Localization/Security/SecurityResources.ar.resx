@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="ActionDeleteSuccessMessage" xml:space="preserve">
+    <value>Action Deleted Successfully</value>
+  </data>
+  <data name="ActionName" xml:space="preserve">
+    <value>Action Name</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="ActionSavedSuccessMessage" xml:space="preserve">
+    <value>Action Saved Successfully</value>
+  </data>
+  <data name="ActionsSavedSuccessMessage" xml:space="preserve">
+    <value>Actions  Saved Successfully</value>
+  </data>
+  <data name="ActionUpdatedSuccessMessage" xml:space="preserve">
+    <value>Action Updated Successfully</value>
+  </data>
+  <data name="Action_UserColleges" xml:space="preserve">
+    <value>Colleges</value>
+  </data>
+  <data name="Action_UserDetails" xml:space="preserve">
+    <value>User Details</value>
+  </data>
+  <data name="Action_UserRoles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="ActiveDirectoryUser" xml:space="preserve">
+    <value>Active Directory</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddAction" xml:space="preserve">
+    <value>Add Action</value>
+  </data>
+  <data name="AddActions" xml:space="preserve">
+    <value>Add Actions</value>
+  </data>
+  <data name="AddCollege" xml:space="preserve">
+    <value>Add College</value>
+  </data>
+  <data name="AddCollegeStaff" xml:space="preserve">
+    <value>Add College Staff</value>
+  </data>
+  <data name="AddedSuccessfully" xml:space="preserve">
+    <value>Added Successfully</value>
+  </data>
+  <data name="AddModule" xml:space="preserve">
+    <value>Add Module</value>
+  </data>
+  <data name="AddModuleAction" xml:space="preserve">
+    <value>Add Module Action</value>
+  </data>
+  <data name="AddModuleCategory" xml:space="preserve">
+    <value>Add Module Category</value>
+  </data>
+  <data name="AddRole" xml:space="preserve">
+    <value>Add Role</value>
+  </data>
+  <data name="AdminTitle" xml:space="preserve">
+    <value>Title *</value>
+  </data>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>Advanced Search</value>
+  </data>
+  <data name="AlertHeader" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="Alertsuccess" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Birth Date</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="ChangePasswordInvalidMsg" xml:space="preserve">
+    <value>Error in change password , make sure you entred correct password</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="College" xml:space="preserve">
+    <value>Colleges</value>
+  </data>
+  <data name="CollegeID" xml:space="preserve">
+    <value>College</value>
+  </data>
+  <data name="CollegeName" xml:space="preserve">
+    <value>College Name</value>
+  </data>
+  <data name="CollegeSavedSuccessMessage" xml:space="preserve">
+    <value>Colleges Saved Successfully</value>
+  </data>
+  <data name="CollegeStaff" xml:space="preserve">
+    <value>College Staff</value>
+  </data>
+  <data name="College_Name" xml:space="preserve">
+    <value>College</value>
+  </data>
+  <data name="College_NameAr" xml:space="preserve">
+    <value>College Arabic Name</value>
+  </data>
+  <data name="CreateCollegeStaff" xml:space="preserve">
+    <value>Create Staff</value>
+  </data>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>Created By</value>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Create User</value>
+  </data>
+  <data name="CreateUserConfirm" xml:space="preserve">
+    <value>Are you sure you want to create with this staff member data</value>
+  </data>
+  <data name="DeactivateSuccess" xml:space="preserve">
+    <value>Successfully Deactivated</value>
+  </data>
+  <data name="DefaultSelect" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="DeleteConfirm" xml:space="preserve">
+    <value>You are about to delete item permanently. Are you sure you want to delete this item?</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
+  <data name="EdidAction" xml:space="preserve">
+    <value>Edit Action</value>
+  </data>
+  <data name="EdidModuleAction" xml:space="preserve">
+    <value>Edit  Module Action</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditCollege" xml:space="preserve">
+    <value>Edit College</value>
+  </data>
+  <data name="EditCollegeStaff" xml:space="preserve">
+    <value>Edit Staff</value>
+  </data>
+  <data name="EditModule" xml:space="preserve">
+    <value>Edit Module</value>
+  </data>
+  <data name="EditModuleCategory" xml:space="preserve">
+    <value>Edit Module Category</value>
+  </data>
+  <data name="EditRole" xml:space="preserve">
+    <value>Edit Role</value>
+  </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EffectiveDate" xml:space="preserve">
+    <value>Effective Date</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailAlreadyRegistered" xml:space="preserve">
+    <value>Email Already Registered</value>
+  </data>
+  <data name="EmptyValue" xml:space="preserve">
+    <value>---</value>
+  </data>
+  <data name="ErrorMessageCannotDelete" xml:space="preserve">
+    <value>Error in deleting {0}</value>
+  </data>
+  <data name="ErrorMessageRelatedDataAction" xml:space="preserve">
+    <value>This Action is related to other data</value>
+  </data>
+  <data name="ErrorMessageRelatedDataMCategory" xml:space="preserve">
+    <value>This module category is related to other data</value>
+  </data>
+  <data name="ErrorMessageRelatedDataModule" xml:space="preserve">
+    <value>This module is related to other data</value>
+  </data>
+  <data name="ErrorMessageRelatedDataRole" xml:space="preserve">
+    <value>This role is related to other data</value>
+  </data>
+  <data name="ErrorOccured" xml:space="preserve">
+    <value>Error Occured </value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="ItemActivatedSuccessMessage" xml:space="preserve">
+    <value>Item Activated Successfully</value>
+  </data>
+  <data name="ItemDeactivatedSuccessMessage" xml:space="preserve">
+    <value>Item Deactivated Successfully</value>
+  </data>
+  <data name="JobTypeID" xml:space="preserve">
+    <value>Job Type</value>
+  </data>
+  <data name="LastQualificationDate" xml:space="preserve">
+    <value>Last Qualification Date</value>
+  </data>
+  <data name="LastQualificationDateMustBeLessThanToday" xml:space="preserve">
+    <value>Last qualification date must be less than or equal today</value>
+  </data>
+  <data name="LeaveDate" xml:space="preserve">
+    <value>Leave Date</value>
+  </data>
+  <data name="LeaveDateMustBeGreaterThanEffectiveDate" xml:space="preserve">
+    <value>Leave Date Must Be Greater Than Effective Date</value>
+  </data>
+  <data name="LeaveReasonID" xml:space="preserve">
+    <value>Leave Reason</value>
+  </data>
+  <data name="LevelID" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="LoginName" xml:space="preserve">
+    <value>Login Name</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="MCategoryDeleteSuccessMessage" xml:space="preserve">
+    <value>Module Category Deleted Successfully</value>
+  </data>
+  <data name="MCategorySavedSuccessMessage" xml:space="preserve">
+    <value>Module Category Saved Successfully</value>
+  </data>
+  <data name="MenuItem_RoleActions" xml:space="preserve">
+    <value>Role Permissions</value>
+  </data>
+  <data name="MenuItem_Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="MenuItem_Users" xml:space="preserve">
+    <value>Search Users</value>
+  </data>
+  <data name="Module" xml:space="preserve">
+    <value>Module</value>
+  </data>
+  <data name="ModuleAction" xml:space="preserve">
+    <value>Module Action</value>
+  </data>
+  <data name="ModuleActionDeleteSuccessMessage" xml:space="preserve">
+    <value>Module Action Deleted Successfully</value>
+  </data>
+  <data name="ModuleActions" xml:space="preserve">
+    <value>Module Actions</value>
+  </data>
+  <data name="ModuleActionSavedSuccessMessage" xml:space="preserve">
+    <value>Module Action Saved Successfully</value>
+  </data>
+  <data name="ModuleCategories" xml:space="preserve">
+    <value>Module Categories</value>
+  </data>
+  <data name="ModuleCategory" xml:space="preserve">
+    <value>Module Category</value>
+  </data>
+  <data name="ModuleCategoryID" xml:space="preserve">
+    <value>Module Category</value>
+  </data>
+  <data name="ModuleCategoryName" xml:space="preserve">
+    <value>Module Category Name</value>
+  </data>
+  <data name="ModuleDeleteSuccessMessage" xml:space="preserve">
+    <value>Module Deleted Successfully</value>
+  </data>
+  <data name="ModuleName" xml:space="preserve">
+    <value>Module Name</value>
+  </data>
+  <data name="Modules" xml:space="preserve">
+    <value>Modules</value>
+  </data>
+  <data name="ModuleSavedSuccessMessage" xml:space="preserve">
+    <value>Module Saved Successfully</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NationalId" xml:space="preserve">
+    <value>National ID</value>
+  </data>
+  <data name="Nationality" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="OnlineUser" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="PasswordChangedMsg" xml:space="preserve">
+    <value>Password Changed Successfully</value>
+  </data>
+  <data name="Permissions" xml:space="preserve">
+    <value>Permissions</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="PhoneNumberAlreadyRegistered" xml:space="preserve">
+    <value>Phone Number Already Registered</value>
+  </data>
+  <data name="PowerRoles" xml:space="preserve">
+    <value>Power Roles</value>
+  </data>
+  <data name="QualificationID" xml:space="preserve">
+    <value>Qualification</value>
+  </data>
+  <data name="RoleActionsSavedSuccessMessage" xml:space="preserve">
+    <value>Permissions Saved Successfully</value>
+  </data>
+  <data name="RoleDeleteSuccessMessage" xml:space="preserve">
+    <value>Role Deleted Successfully</value>
+  </data>
+  <data name="RoleDublicateMessage" xml:space="preserve">
+    <value>Dublicate Role Name Or Role Code</value>
+  </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>Role Name</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="RoleSavedSuccessMessage" xml:space="preserve">
+    <value>Role Saved Successfully</value>
+  </data>
+  <data name="RolesManagement" xml:space="preserve">
+    <value>Roles Management</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchUsers" xml:space="preserve">
+    <value>Search Users</value>
+  </data>
+  <data name="SecurityManagment" xml:space="preserve">
+    <value>Security Managment</value>
+  </data>
+  <data name="SelectCollegeMsg" xml:space="preserve">
+    <value>Please select at least 1 college</value>
+  </data>
+  <data name="SpesializationID" xml:space="preserve">
+    <value>Major</value>
+  </data>
+  <data name="Staff" xml:space="preserve">
+    <value>Staff</value>
+  </data>
+  <data name="StaffManagment" xml:space="preserve">
+    <value>Staff Managment</value>
+  </data>
+  <data name="StaffMemberDeletedSuccessMessage" xml:space="preserve">
+    <value>Staff Member Deleted Successfully</value>
+  </data>
+  <data name="StaffMemberSavedSuccessMessage" xml:space="preserve">
+    <value>Staff Member Saved Successfully , Username and password sent by email</value>
+  </data>
+  <data name="StaffMemberUpdatedSuccessMessage" xml:space="preserve">
+    <value>Staff Member Updated Successfully</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="System_Header" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="Title_CreateRole" xml:space="preserve">
+    <value>Create Role</value>
+  </data>
+  <data name="Title_Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="TypeID" xml:space="preserve">
+    <value>Staff Type</value>
+  </data>
+  <data name="UserAlreadyRegistred" xml:space="preserve">
+    <value>User Already Registred</value>
+  </data>
+  <data name="UserCreated" xml:space="preserve">
+    <value>Staff member created as user</value>
+  </data>
+  <data name="UserCreatedWithAddRoleNotification" xml:space="preserve">
+    <value>User created successfully , please assign roles</value>
+  </data>
+  <data name="UserDetails" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="UserNameAlreadyRegistered" xml:space="preserve">
+    <value>User Name Already Registered</value>
+  </data>
+  <data name="UserNotExist" xml:space="preserve">
+    <value>User not exist or locked in active directory</value>
+  </data>
+  <data name="UserRoles" xml:space="preserve">
+    <value>User Roles</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="UserSavedSuccessMessage" xml:space="preserve">
+    <value>User Saved Successfully</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>User Type</value>
+  </data>
+  <data name="VisaType" xml:space="preserve">
+    <value>Visa / Type</value>
+  </data>
+  <data name="Action_UserQualifications" xml:space="preserve">
+    <value>Qualifications</value>
+  </data>
+  <data name="QualificationSavedSuccessMessage" xml:space="preserve">
+    <value>Qualifications Saved Successfully</value>
+  </data>
+  <data name="Qualifications" xml:space="preserve">
+    <value>Qualif</value>
+  </data>
+  <data name="EditQualifications" xml:space="preserve">
+    <value>Edit Qualifications</value>
+  </data>
+  <data name="QualificationName" xml:space="preserve">
+    <value>Qualification Name</value>
+  </data>
+  <data name="PleaseAddCollegesToUser" xml:space="preserve">
+    <value>Please add colleges to user</value>
+  </data>
+</root>

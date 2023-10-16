@@ -1,0 +1,64 @@
+﻿@using COE.Common.Localization
+@using COE.Common.BLL
+
+@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.Title = UsersMgmtResources.TermsOfService;
+    var userRoles = UsersFacade.CurrentUserRoles;
+}
+
+<div class="portlet-body box">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>
+                <span class="caption-subject font-green-sharp sbold">هذا الجدول يبين الشروط المطلوبه قبل الالتحاق بالكلية :</span>
+            </h4>
+            @Html.Raw(COE.Enrollment.BLL.AppSettings.TermsOfService)
+            <span></span>
+
+            <label class="rememberme check mt-checkbox mt-checkbox-outline">
+                <input type="checkbox" id="cbApprove" name="cbApprove" value="true" /> قبول
+                <span></span>
+            </label>
+            <span id="lblApprove" class="evalidator" style="color:Red;display:none;">الرجاء الموافقة على الشروط لمتابعة عملية التسجيل</span>
+
+            <p>
+                <a class="btn green icon-login" id="acceptNext" value="التالى">التالى</a>
+                <a href="@Url.Action("Login","Account")" class="btn default icon-logout" id="backHome"> @SharedResources.BackToMainPage </a>
+            </p>
+
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        
+        $(function () {
+            CheckBoxApproveChange();
+        });
+
+        $('#cbApprove').change(function () {
+            debugger;
+            CheckBoxApproveChange();
+            //$('#lblApprove').toggle($(this).is(':unchecked'));
+            //$('#acceptNext').toggle($(this).is(':checked'));
+        });
+
+        function CheckBoxApproveChange() {
+            debugger;
+            if ($("#cbApprove").is(":checked")) {
+                $("#acceptNext").removeAttr('disabled');
+                $("#acceptNext").attr("href", "/Account/Register");;
+                $("#lblApprove").hide();
+            } else {
+                $("#lblApprove").show();
+                $("#acceptNext").attr('disabled', 'disabled');
+                $("#acceptNext").removeAttr("href");
+
+            }
+        }
+
+    </script>
+
+}

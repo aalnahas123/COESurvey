@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f1f92e2d8ce4e53814fe6eb0ba44e2f" Name="Diagram1" ZoomLevel="52">
+        <EntityTypeShape EntityType="COE.Common.Model.AcademicYear" Width="1.5" PointX="1.5" PointY="20" />
+        <EntityTypeShape EntityType="COE.Common.Model.AcademicYearTerm" Width="1.5" PointX="3.75" PointY="17" />
+        <EntityTypeShape EntityType="COE.Common.Model.Area" Width="1.5" PointX="1.5" PointY="51.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.City" Width="1.5" PointX="9.75" PointY="97.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegeType" Width="1.5" PointX="1.5" PointY="55" />
+        <EntityTypeShape EntityType="COE.Common.Model.Country" Width="1.5" PointX="0.75" PointY="7.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.CourseType" Width="1.5" PointX="1.5" PointY="70.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.Level" Width="1.5" PointX="1.5" PointY="66.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.TermCourse" Width="1.5" PointX="6" PointY="8.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.TermType" Width="1.5" PointX="1.5" PointY="16.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.AttachmentContents" Width="1.5" PointX="5.25" PointY="3.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.Attachments" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.AttachmentTypes" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.EnrollmentStatistic" Width="1.5" PointX="6" PointY="20.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.EnrollmentStatisticType" Width="1.5" PointX="3.75" PointY="14" />
+        <EntityTypeShape EntityType="COE.Common.Model.SpecializationStatistic" Width="1.5" PointX="14.25" PointY="47.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.TermEnrollmentStatisticSetting" Width="1.5" PointX="6" PointY="15.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.AspNetRoles" Width="1.5" PointX="12.75" PointY="85.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.AspNetUserClaims" Width="1.5" PointX="9" PointY="84.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.AspNetUserLogins" Width="1.5" PointX="9" PointY="87.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.AspNetUsers" Width="1.5" PointX="6.75" PointY="48.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.Decision" Width="1.5" PointX="11.875" PointY="3.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.Stage" Width="1.5" PointX="9" PointY="44.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.StageDecision" Width="1.5" PointX="17" PointY="23.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.Status" Width="1.5" PointX="6.75" PointY="45.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.SectionEnrollment" Width="1.5" PointX="13.5" PointY="29.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.SectionEnrollmentAttendance" Width="1.875" PointX="15.75" PointY="26.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.DeferralReason" Width="1.5" PointX="9.75" PointY="90.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.DeferralRequest" Width="1.5" PointX="9.75" PointY="75.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.DeferralRequestAcademicYearTerm" Width="1.5" PointX="12" PointY="16.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.DeferralRequestReason" Width="1.5" PointX="12" PointY="75.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.DismissReason" Width="1.5" PointX="11.75" PointY="7.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.DismissRequestReason" Width="1.5" PointX="14" PointY="7.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.EnrollmentRequestDetail" Width="1.5" PointX="17.25" PointY="56.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.Assessment" Width="1.5" PointX="9" PointY="81" />
+        <EntityTypeShape EntityType="COE.Common.Model.EnglishExamResult" Width="1.5" PointX="13.5" PointY="42.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.EnglishExamScore" Width="1.5" PointX="11.25" PointY="80.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.ExamStatus" Width="1.5" PointX="11.25" PointY="68.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.ExamType" Width="1.5" PointX="9" PointY="68.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.VocationalExamResult" Width="1.5" PointX="16.5" PointY="46.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.VocationalExamResultDetail" Width="1.5" PointX="21.75" PointY="49.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.VocationalExamScore" Width="1.5" PointX="14.25" PointY="52" />
+        <EntityTypeShape EntityType="COE.Common.Model.VocationalExamType" Width="1.5" PointX="19.5" PointY="51.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.Action" Width="1.5" PointX="15.75" PointY="65" />
+        <EntityTypeShape EntityType="COE.Common.Model.FieldVisibilty" Width="1.5" PointX="18" PointY="75.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.Module" Width="1.75" PointX="15.75" PointY="68.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.ModuleAction" Width="1.5" PointX="18" PointY="66.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.ModuleCategory" Width="1.5" PointX="13.5" PointY="68.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.ModuleField" Width="1.5" PointX="18" PointY="71.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.ModuleRole" Width="1.5" PointX="18" PointY="78.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.RolePermission" Width="1.5" PointX="20.25" PointY="73.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.UserCollege" Width="1.5" PointX="23.25" PointY="54.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.UserDisplay" Width="1.5" PointX="15" PointY="55.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.UserPermission" Width="1.5" PointX="20.25" PointY="56" />
+        <EntityTypeShape EntityType="COE.Common.Model.VisibiltyRuleField" Width="2.125" PointX="20.375" PointY="60.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.VisibitlyRule" Width="1.5" PointX="18" PointY="61.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.FileAutoGenerationStatus" Width="1.5" PointX="9" PointY="7.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.GraduationYear" Width="1.5" PointX="9.75" PointY="101.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.SchoolType" Width="1.5" PointX="9.75" PointY="94.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.WorkStatus" Width="1.5" PointX="9.75" PointY="104.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.Reason" Width="1.5" PointX="19.5" PointY="41.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.SSSExam" Width="1.5" PointX="17.25" PointY="52.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.TransferRequest" Width="1.5" PointX="19.5" PointY="44.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.TransferRequestReason" Width="1.5" PointX="21.75" PointY="46.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.CardsFeedbackValidation" Width="1.5" PointX="5.25" PointY="67.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.ProgressType" Width="1.5" PointX="0.75" PointY="27.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.SectionEnrollmentAttendanceValidation" Width="1.5" PointX="8.25" PointY="30.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.SectionEnrollmentValidation" Width="1.5" PointX="11.25" PointY="25" />
+        <EntityTypeShape EntityType="COE.Common.Model.SectionValidation" Width="1.5" PointX="11.25" PointY="37.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.TermCourseValidation" Width="1.5" PointX="5.25" PointY="25.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.UploadRejectionReason" Width="1.5" PointX="9" PointY="16.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.UploadRequest" Width="1.5" PointX="3" PointY="29.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.UploadRequestDetailsAttendance" Width="1.5" PointX="5.25" PointY="35.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.UploadRequestDetailsSection" Width="1.5" PointX="8.25" PointY="40.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.UploadRequestDetailsSectionEnrollment" Width="1.5" PointX="5.25" PointY="31.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.UploadRequestStatus" Width="1.5" PointX="0.75" PointY="31.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.UploadRequestTrackStatus" Width="1.5" PointX="8.25" PointY="36.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.UploadRequestType" Width="1.5" PointX="0.75" PointY="35.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.WithdrawReason" Width="1.5" PointX="19.5" PointY="24.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.WithdrawRequest" Width="1.5" PointX="19.5" PointY="36" />
+        <EntityTypeShape EntityType="COE.Common.Model.WithdrawRequestReason" Width="1.5" PointX="21.75" PointY="36.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.Request" Width="1.5" PointX="7.5" PointY="74.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.RequestAction" Width="1.5" PointX="24" PointY="47.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.RequestAttachment" Width="1.5" PointX="23.75" PointY="31.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.Workflow" Width="1.5" PointX="5.25" PointY="76" />
+        <EntityTypeShape EntityType="COE.Common.Model.SectionEnrollmentAttendanceHistory" Width="2" PointX="0.75" PointY="11.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.SectionEnrollmentHistory" Width="1.5" PointX="13.75" PointY="1.25" />
+        <AssociationConnector Association="COE.Common.Model.FK_AcademicYearTerm_AcademicYear" />
+        <AssociationConnector Association="COE.Common.Model.FK_AcademicYearTerm_TermType" />
+        <AssociationConnector Association="COE.Common.Model.FK_CourseTerm_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_DeferralRequestAcademicYearTerm_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnglishExamResult_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentStatistic_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_TermEnrollmentStatisticSetting_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_TransferRequest_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequestDetailsAttendance_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequestDetailsSection_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequestDetailsSectionEnrollment_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_VocationalExamResult_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_WithdrawRequest_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_City_Area" />
+        <AssociationConnector Association="COE.Common.Model.FK_VocationalExamResult_Level" />
+        <AssociationConnector Association="COE.Common.Model.FK_AttachmentContent_Attachment" />
+        <AssociationConnector Association="COE.Common.Model.FK_Attachment_AttachmentType" />
+        <AssociationConnector Association="COE.Common.Model.FK_RequestAttachment_Attachments" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentStatistic_EnrollmentStatisticType" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentStatistic_Request" />
+        <AssociationConnector Association="COE.Common.Model.FK_SpecializationStatistic_EnrollmentStatistic" />
+        <AssociationConnector Association="COE.Common.Model.FK_TermEnrollmentStatisticSetting_EnrollmentStatisticType" />
+        <AssociationConnector Association="COE.Common.Model.FK_ModuleRole_AspNetRoles" />
+        <AssociationConnector Association="COE.Common.Model.FK_RolePermission_AspNetRoles" />
+        <AssociationConnector Association="COE.Common.Model.FK_AspNetUserClaims_AspNetUsers" />
+        <AssociationConnector Association="COE.Common.Model.FK_AspNetUserLogins_AspNetUsers" />
+        <AssociationConnector Association="COE.Common.Model.FK_UserDisplay_AspNetUsers" />
+        <AssociationConnector Association="COE.Common.Model.FK_RequestAction_DecisionID" />
+        <AssociationConnector Association="COE.Common.Model.FK_StageDecision_Decision" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentRequestDetail_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_Request_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_RequestAction_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_Stage_Status" />
+        <AssociationConnector Association="COE.Common.Model.FK_StageAction_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionEnrollment_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionEnrollmentAttendance_SectionEnrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionEnrollmentAttendance_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_DeferralRequestReason_DeferralReason" />
+        <AssociationConnector Association="COE.Common.Model.FK_DeferralRequest_Request" />
+        <AssociationConnector Association="COE.Common.Model.FK_DeferralRequestAcademicYearTerm_DeferralRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_DeferralRequestReason_DeferralRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_DismissRequestReason_DismissReason" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnglishExamScore_Assessment" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnglishExamResult_EnglishExamScore" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnglishExamResult_ExamStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamStatus_ExamType" />
+        <AssociationConnector Association="COE.Common.Model.FK_VocationalExamResult_ExamStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_VocationalExamResult_VocationalExamScore" />
+        <AssociationConnector Association="COE.Common.Model.FK_VocationalExamResultDetail_VocationalExamResult" />
+        <AssociationConnector Association="COE.Common.Model.FK_VocationalExamResultDetail_VocationalExamScore" />
+        <AssociationConnector Association="COE.Common.Model.FK_VocationalExamResultDetail_VocationalExamType" />
+        <AssociationConnector Association="COE.Common.Model.FK_ModuleAction_Action" />
+        <AssociationConnector Association="COE.Common.Model.FK_VisibiltyRuleField_FieldVisibilty" />
+        <AssociationConnector Association="COE.Common.Model.FK_Module_ModuleCategory" />
+        <AssociationConnector Association="COE.Common.Model.FK_ModuleAction_Module" />
+        <AssociationConnector Association="COE.Common.Model.FK_ModuleField_Module" />
+        <AssociationConnector Association="COE.Common.Model.FK_ModuleRole_Module" />
+        <AssociationConnector Association="COE.Common.Model.FK_RolePermission_ModuleAction" />
+        <AssociationConnector Association="COE.Common.Model.FK_UserPermission_ModuleAction" />
+        <AssociationConnector Association="COE.Common.Model.FK_VisibiltyRuleField_ModuleField" />
+        <AssociationConnector Association="COE.Common.Model.FK_RolePermission_VisibitlyRule" />
+        <AssociationConnector Association="COE.Common.Model.FK_UserCollege_UserDisplay" />
+        <AssociationConnector Association="COE.Common.Model.FK_UserPermission_UserDisplay" />
+        <AssociationConnector Association="COE.Common.Model.FK_UserPermission_VisibitlyRule" />
+        <AssociationConnector Association="COE.Common.Model.FK_VisibiltyRuleField_VisibitlyRule" />
+        <AssociationConnector Association="COE.Common.Model.FK_TransferRequestReason_Reason" />
+        <AssociationConnector Association="COE.Common.Model.FK_TransferRequest_SSSExam" />
+        <AssociationConnector Association="COE.Common.Model.FK_TransferRequest_Request" />
+        <AssociationConnector Association="COE.Common.Model.FK_TransferRequestReason_TransferRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_CardsFeedbackValidation_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequest_ProgressType" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionEnrollmentAttendanceValidation_UploadRejectionReason" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionEnrollmentAttendanceValidation_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionEnrollmentValidation_UploadRejectionReason" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionEnrollmentValidation_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionValidation_UploadRejectionReason" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionValidation_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_TermCourseValidation_UploadRejectionReason" />
+        <AssociationConnector Association="COE.Common.Model.FK_TermCourseValidation_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequest_UploadRequestStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequest_UploadRequestType" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequestDetails_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequestDetailsAttendance_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequestDetailsSectionEnrollment_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequestTrackStatus_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequestTrackStatus_UploadRequestStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_WithdrawRequestReason_WithdrawReason" />
+        <AssociationConnector Association="COE.Common.Model.FK_WithdrawRequest_Request" />
+        <AssociationConnector Association="COE.Common.Model.FK_WithdrawRequestReason_WithdrawRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_Request_Workflow" />
+        <AssociationConnector Association="COE.Common.Model.FK_RequestAction_Request" />
+        <AssociationConnector Association="COE.Common.Model.FK_RequestAttachment_Request" />
+        <AssociationConnector Association="COE.Common.Model.AspNetUserRoles" />
+        <EntityTypeShape EntityType="COE.Common.Model.RequestStatus" Width="1.5" PointX="8.375" PointY="12" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegeStaff" Width="1.5" PointX="20.875" PointY="20.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.Sponser" Width="1.5" PointX="3" PointY="24.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.Wave" Width="1.5" PointX="0.75" PointY="45.5" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeStaff_Level" />
+        <EntityTypeShape EntityType="COE.Common.Model.StaffType" Width="1.5" PointX="14.375" PointY="4.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_Staff_StaffType" />
+        <EntityTypeShape EntityType="COE.Common.Model.Nationality" Width="1.5" PointX="18.875" PointY="19.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.StaffLevel" Width="1.5" PointX="18.875" PointY="16.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.StaffQualification" Width="1.5" PointX="18.875" PointY="11.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.StaffSpecialization" Width="1.5" PointX="18.875" PointY="14.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.VisaType" Width="1.5" PointX="16.625" PointY="0.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeStaff_Nationality" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeStaff_StaffLevel" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeStaff_StaffQualification" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeStaff_StaffSpecialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeStaff_VisaType" />
+        <EntityTypeShape EntityType="COE.Common.Model.EnrollmentChangeStatusRequest" Width="1.5" PointX="25.5" PointY="52.625" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentChangeStatusRequest_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentChangeStatusRequest_Request" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegeAcademicYear" Width="1.5" PointX="3.75" PointY="41" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeAcademicYear_AcademicYear" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeAcademicYear_TermType1" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegePayment" Width="1.5" PointX="26.125" PointY="29.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.CourseLevelPaymentSetting" Width="1.5" PointX="27.5" PointY="50.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.PaymentRequest" Width="1.5" PointX="23.875" PointY="10" />
+        <EntityTypeShape EntityType="COE.Common.Model.PaymentRequestStatus" Width="1.5" PointX="21.625" PointY="10" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentCoursePayment" Width="1.5" PointX="28.375" PointY="30.625" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegePayment_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_CourseLevelPaymentSetting_Level" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentCoursePayment_SectionEnrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegePayment_PaymentRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegePayment_PaymentRequestStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentCoursePayment_CollegePayment" />
+        <AssociationConnector Association="COE.Common.Model.FK_PaymentRequest_PaymentRequestStatus" />
+        <EntityTypeShape EntityType="COE.Common.Model.CardsFeedbackDenialReason" Width="1.5" PointX="23.25" PointY="62.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.CardsFeedbackStatus" Width="1.5" PointX="23.25" PointY="66.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.CardsRequest" Width="1.5" PointX="11.25" PointY="29.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.CardsRequestType" Width="1.5" PointX="9" PointY="4.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.CardType" Width="1.5" PointX="23.25" PointY="27.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.Period" Width="1.5" PointX="20.25" PointY="31" />
+        <EntityTypeShape EntityType="COE.Common.Model.StipendFeedbackStatus" Width="1.5" PointX="14" PointY="33.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.StipendMonth" Width="2.25" PointX="14" PointY="109.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.StipendPaymentMethod" Width="1.5" PointX="20.25" PointY="66.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.StipendsRequest" Width="1.5" PointX="16.25" PointY="31.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentCard" Width="1.5" PointX="25.5" PointY="42.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentStipendsRequest" Width="1.5" PointX="22.5" PointY="40.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentCardHistory" Width="1.5" PointX="10.375" PointY="11.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_Period_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentCard_CardsFeedbackDenialReason" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentCard_CardsFeedbackStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_CardsRequest_CardsRequestType" />
+        <AssociationConnector Association="COE.Common.Model.FK_CardsRequest_FileAutoGenerationStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_CardsRequest_RequestStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_CardsRequest_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentCard_CardType" />
+        <AssociationConnector Association="COE.Common.Model.FK_StipendsRequest_FileAutoGenerationStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_Period_StipendMonth" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentStipendsRequest_Period" />
+        <AssociationConnector Association="COE.Common.Model.FK_StipendsRequest_RequestStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_StipendsRequest_StipendFeedbackStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentStipendsRequest_StipendFeedbackStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_StipendsRequest_StipendMonth" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentStipendsRequest_StipendPaymentMethod" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentStipendsRequest_StipendsRequest" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentCardsRequest" Width="1.5" PointX="28.5" PointY="45.5" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentCardsRequest_CardsFeedbackDenialReason" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentCardsRequest_CardsRejectionFeedback" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentCardsRequest_CardsRequest" />
+        <EntityTypeShape EntityType="COE.Common.Model.PaymentSetting" Width="2.625" PointX="14" PointY="21.125" />
+        <AssociationConnector Association="COE.Common.Model.FK_PaymentSetting_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_CourseLevelPaymentSetting_PaymentSetting" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionEnrollmentAttendanceValidation_SectionEnrollmentAttendanceValidation" />
+        <EntityTypeShape EntityType="COE.Common.Model.SectionHistory" Width="1.5" PointX="16.375" PointY="3.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.ReinstateRequest" Width="1.5" PointX="13.5" PointY="37.625" />
+        <AssociationConnector Association="COE.Common.Model.FK_ReinstateRequest_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_ReinstateRequest_Request" />
+        <EntityTypeShape EntityType="COE.Common.Model.Month" Width="2.125" PointX="11.75" PointY="115.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.Year" Width="1.5" PointX="16.375" PointY="4" />
+        <AssociationConnector Association="COE.Common.Model.FK_StipendMonth_HijriMonth1" />
+        <AssociationConnector Association="COE.Common.Model.FK_StipendMonth_HijriYear1" />
+        <EntityTypeShape EntityType="COE.Common.Model.JobType" Width="1.5" PointX="18.625" PointY="28.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.LeaveReason" Width="1.5" PointX="7.375" PointY="0.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeStaff_JobType" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeStaff_LeaveReason" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentsDisabilityLevel" Width="1.5" PointX="12.375" PointY="11.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentsDisabilityRequest" Width="1.5" PointX="13.5" PointY="64.125" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentsDisabilityRequest_Request" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentsDisabilityRequest_StudentsDisabilityLevel" />
+        <EntityTypeShape EntityType="COE.Common.Model.Bond" Width="1.5" PointX="21.625" PointY="1" />
+        <EntityTypeShape EntityType="COE.Common.Model.BondType" Width="1.5" PointX="19.375" PointY="1.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegeAcademicYearTermPeriod" Width="1.5" PointX="22" PointY="14.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegeRepresentiveDetail" Width="1.5" PointX="14.375" PointY="11.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.ProviderRepresentiveDetail" Width="1.5" PointX="24.375" PointY="13.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.SponserRepresentiveDetail" Width="1.5" PointX="26.375" PointY="0.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.Alert" Width="1.5" PointX="11.25" PointY="44.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.AlertType" Width="1.5" PointX="9" PointY="60.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.UserActivity" Width="1.5" PointX="24.25" PointY="35.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.UserActivityType" Width="1.5" PointX="22" PointY="6" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeAcademicYearTermPeriod_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_Bond_BondType" />
+        <AssociationConnector Association="COE.Common.Model.FK_Sponser_City" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeAcademicYearTermPeriod_CollegeAcademicYear" />
+        <AssociationConnector Association="COE.Common.Model.FK_Sponser_Status" />
+        <AssociationConnector Association="COE.Common.Model.FK_Alert_AlertType" />
+        <AssociationConnector Association="COE.Common.Model.FK_Alert_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_UserActivity_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_UserActivity_UserActivityType" />
+        <EntityTypeShape EntityType="COE.Common.Model.Bank" Width="1.5" PointX="26.375" PointY="5" />
+        <AssociationConnector Association="COE.Common.Model.FK_Bond_Bank" />
+        <EntityTypeShape EntityType="COE.Common.Model.College" Width="1.5" PointX="15" PointY="73.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_College_City" />
+        <AssociationConnector Association="COE.Common.Model.FK_CardsRequest_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_College_CollegeType" />
+        <AssociationConnector Association="COE.Common.Model.FK_College_Wave" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeAcademicYear_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegePayment_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentStatistic_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_PaymentSetting_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_Staff_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_StipendsRequest_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequestDetailsAttendance_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequestDetailsSection_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequestDetailsSectionEnrollment_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_UserCollege_College" />
+        <EntityTypeShape EntityType="COE.Common.Model.Contract" Width="1.5" PointX="6.75" PointY="55.625" />
+        <AssociationConnector Association="COE.Common.Model.FK_Contract_Wave" />
+        <EntityTypeShape EntityType="COE.Common.Model.ContractCollegeAcademicYear" Width="1.5" PointX="26.25" PointY="59" />
+        <EntityTypeShape EntityType="COE.Common.Model.ContractTermPaymentSetting" Width="1.5" PointX="10" PointY="0.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_ContractCollegeAcademicYear_AcademicYear" />
+        <AssociationConnector Association="COE.Common.Model.FK_ContractTermPaymentSetting_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeRepresentiveDetail_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_ContractDetail_College1" />
+        <AssociationConnector Association="COE.Common.Model.FK_Contract_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_ContractDetail_Contract1" />
+        <AssociationConnector Association="COE.Common.Model.FK_ContractTermPaymentSetting_ContractCollegeAcademicYear" />
+        <AssociationConnector Association="COE.Common.Model.FK_SponserRepresentiveDetail_Sponser" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegeContactDetail" Width="1.5" PointX="17.25" PointY="82.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.SponserContactDetail" Width="1.5" PointX="5.25" PointY="61.125" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeContactDetail_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_SponserContactDetail_Sponser" />
+        <EntityTypeShape EntityType="COE.Common.Model.Provider" Width="1.5" PointX="24" PointY="22.125" />
+        <AssociationConnector Association="COE.Common.Model.FK_College_Provider" />
+        <AssociationConnector Association="COE.Common.Model.FK_Contract_Provider" />
+        <AssociationConnector Association="COE.Common.Model.FK_Provider_Country" />
+        <AssociationConnector Association="COE.Common.Model.FK_Provider_Status" />
+        <AssociationConnector Association="COE.Common.Model.FK_ProviderRepresentiveDetail_Provider" />
+        <EntityTypeShape EntityType="COE.Common.Model.ContractAcademicYear" Width="1.5" PointX="27" PointY="35.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.ProviderContactDetail" Width="1.5" PointX="26.25" PointY="21.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_ContractAcademicYear_AcademicYear" />
+        <AssociationConnector Association="COE.Common.Model.FK_ContractAcademicYear_Contract" />
+        <AssociationConnector Association="COE.Common.Model.FK_ProviderContactDetail_Provider" />
+        <EntityTypeShape EntityType="COE.Common.Model.ContractAttachment" Width="1.5" PointX="25" PointY="18" />
+        <AssociationConnector Association="COE.Common.Model.FK_ContractAttachment_Contract" />
+        <AssociationConnector Association="COE.Common.Model.FK_ContractAttachment_Attachments" />
+        <AssociationConnector Association="COE.Common.Model.FK_Contract_TermType" />
+        <EntityTypeShape EntityType="COE.Common.Model.BondAttachment" Width="1.5" PointX="23.875" PointY="2.375" />
+        <AssociationConnector Association="COE.Common.Model.FK_Bond_Contract" />
+        <AssociationConnector Association="COE.Common.Model.FK_BondAttachment_Bond" />
+        <AssociationConnector Association="COE.Common.Model.FK_BondAttachment_Attachments" />
+        <EntityTypeShape EntityType="COE.Common.Model.ContractType" Width="1.5" PointX="16.375" PointY="8" />
+        <AssociationConnector Association="COE.Common.Model.FK_Bond_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_Contract_ContractType" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegeAcademicYearPeriod" Width="1.5" PointX="6" PointY="41.625" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeAcademicYearPeriod_CollegeAcademicYear" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentProfile" Width="1.5" PointX="25.625" PointY="65.375" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentProfile_City" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentProfile_AspNetUsers" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentProfile_StudentsDisabilityLevel" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentProfile_GraduationYear" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentProfile_SchoolType" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentProfile_WorkStatus" />
+        <EntityTypeShape EntityType="COE.Common.Model.AcademicYearTermPeriod" Width="1.5" PointX="6" PointY="81.375" />
+        <AssociationConnector Association="COE.Common.Model.FK_AcademicYearTermPeriod_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeAcademicYearPeriod_AcademicYearTermPeriod" />
+        <EntityTypeShape EntityType="COE.Common.Model.AspNetRolesParent" Width="1.5" PointX="15" PointY="86.125" />
+        <AssociationConnector Association="COE.Common.Model.FK_AspNetRolesParent_AspNetRoles" />
+        <EntityTypeShape EntityType="COE.Common.Model.QuestionAnswer" Width="1.5" PointX="33.125" PointY="13.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.QuestionOption" Width="1.5" PointX="33.125" PointY="9.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.QuestionType" Width="1.5" PointX="28.625" PointY="7.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.Survey" Width="1.5" PointX="28.625" PointY="10.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.SurveyAnswer" Width="1.5" PointX="30.875" PointY="15.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.SurveyModules" Width="1.5" PointX="26.375" PointY="11.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.SurveyQuestion" Width="1.5" PointX="30.875" PointY="10.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_QuestionAnswer_QuestionOption" />
+        <AssociationConnector Association="COE.Common.Model.FK_QuestionAnswer_SurveyAnswer" />
+        <AssociationConnector Association="COE.Common.Model.FK_QuestionAnswer_SurveyQuestion" />
+        <AssociationConnector Association="COE.Common.Model.FK_QuestionOption_SurveyQuestion" />
+        <AssociationConnector Association="COE.Common.Model.FK_SurveyQuestion_QuestionType" />
+        <AssociationConnector Association="COE.Common.Model.FK_Survey_Modules" />
+        <AssociationConnector Association="COE.Common.Model.FK_SurveyAnswer_SurveyAnswer" />
+        <AssociationConnector Association="COE.Common.Model.FK_SurveyQuestion_SurveyQuestion" />
+        <EntityTypeShape EntityType="COE.Common.Model.ExcludedStudent" Width="1.5" PointX="9" PointY="64.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExcludedStudent_AspNetUsers" />
+        <EntityTypeShape EntityType="COE.Common.Model.UploadRequestHistory" Width="1.5" PointX="18.375" PointY="4.75" />
+        <AssociationConnector Association="COE.Common.Model.PaymentRequestSettings" />
+        <EntityTypeShape EntityType="COE.Common.Model.InvoiceRequest" Width="1.5" PointX="28.375" PointY="54.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_InvoiceRequest_CollegePayment" />
+        <AssociationConnector Association="COE.Common.Model.FK_InvoiceRequest_Request" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegePaymentAttachement" Width="1.5" PointX="28.375" PointY="17.5" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegePaymentAttachement_Attachments" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegePaymentAttachement_CollegePayment" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentMonthlyPayment" Width="1.5" PointX="28.375" PointY="39.125" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentMonthlyPayment_CollegePayment" />
+        <EntityTypeShape EntityType="COE.Common.Model.Program" Width="1.5" PointX="1.5" PointY="41.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.ProgramSpecialization" Width="1.5" PointX="3.75" PointY="56.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.SectionType" Width="1.5" PointX="9.75" PointY="108" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentProfileAttachement" Width="1.5" PointX="28.875" PointY="35.625" />
+        <AssociationConnector Association="COE.Common.Model.FK_ProgramSpecialization_Program" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentProfileAttachement_Attachments" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentProfileAttachement_StudentProfile" />
+        <EntityTypeShape EntityType="COE.Common.Model.SubProgram" Width="1.5" PointX="6" PointY="89.5" />
+        <AssociationConnector Association="COE.Common.Model.FK_SubProgram_ProgramSpecialization" />
+        <EntityTypeShape EntityType="COE.Common.Model.EnrollmentRequest" Width="1.5" PointX="11.25" PointY="57.625" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentRequest_Program" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentRequest_AspNetUsers" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentRequest_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentRequestDetail_EnrollmentRequest" />
+        <EntityTypeShape EntityType="COE.Common.Model.TermEnrollment" Width="1.5" PointX="33.75" PointY="44.125" />
+        <AssociationConnector Association="COE.Common.Model.FK_TermEnrollment_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_TermEnrollment_Stage" />
+        <EntityTypeShape EntityType="COE.Common.Model.ProgramLevel" Width="1.5" PointX="15.75" PointY="60.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_ProgramLevel_Level" />
+        <AssociationConnector Association="COE.Common.Model.FK_ProgramLevel_Program" />
+        <EntityTypeShape EntityType="COE.Common.Model.Batch" Width="1.5" PointX="23" PointY="70.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.BatchDetail" Width="1.5" PointX="28.25" PointY="70.25" />
+        <AssociationConnector Association="COE.Common.Model.FK_Batch_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_Batch_AcademicYearTerm1" />
+        <AssociationConnector Association="COE.Common.Model.FK_Batch_SectionType" />
+        <AssociationConnector Association="COE.Common.Model.FK_Batch_SubProgram" />
+        <AssociationConnector Association="COE.Common.Model.FK_BatchDetail_Batch" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentRequestDetail_Batch" />
+        <AssociationConnector Association="COE.Common.Model.FK_TermEnrollment_Batch" />
+        <AssociationConnector Association="COE.Common.Model.FK_BatchDetail_Level" />
+        <AssociationConnector Association="COE.Common.Model.FK_TermEnrollment_BatchDetail" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegePlan" Width="1.5" PointX="18.75" PointY="88.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegePlan_College" />
+        <EntityTypeShape EntityType="COE.Common.Model.GetAllRequestNotStudent" Width="1.5" PointX="28.375" PointY="0.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.GetAllRequestStudent" Width="1.5" PointX="30.375" PointY="0.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.SectionAttendanceSetting" Width="1.5" PointX="10.5" PointY="20.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionEnrollmentAttendance_SectionAttendanceSetting" />
+        <EntityTypeShape EntityType="COE.Common.Model.Section" Width="1.5" PointX="8.25" PointY="20.5" />
+        <AssociationConnector Association="COE.Common.Model.FK_Section_TermCourse" />
+        <AssociationConnector Association="COE.Common.Model.FK_Section_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionAttendanceSetting_Section" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionEnrollment_Section" />
+        <EntityTypeShape EntityType="COE.Common.Model.GetEnrollmentRequestList" Width="1.5" PointX="28.375" PointY="21.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegeSponser" Width="1.5" PointX="29.25" PointY="74.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.Enrollment" Width="1.5" PointX="29.25" PointY="59.625" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentChangeStatusRequest_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_Enrollment_BatchID" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeSponser_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeSponser_Sponser" />
+        <AssociationConnector Association="COE.Common.Model.FK_Enrollment_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionEnrollment_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_DeferralRequest_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentsDisabilityRequest_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnglishExamResult_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_Enrollment_EnrollmentRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_ReinstateRequest_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_ReinstateRequest_Enrollment1" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentCard_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentCardsRequest_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentMonthlyPayment_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentStipendsRequest_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_TermEnrollment_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_TransferRequest_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_VocationalExamResult_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_WithdrawRequest_Enrollment" />
+        <EntityTypeShape EntityType="COE.Common.Model.EnrollmentCollegeSponser" Width="1.5" PointX="31.5" PointY="67.5" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentCollegeSponser_CollegeSponser" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentCollegeSponser_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_Section_SectionType" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionAttendanceSetting_UserDisplay" />
+        <EntityTypeShape EntityType="COE.Common.Model.SectionAttendanceSettingHistory" Width="1.5" PointX="30.375" PointY="25.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.AssessmentComponent" Width="1.5" PointX="3.75" PointY="96.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.BatchServicePeriod" Width="1.5" PointX="31.25" PointY="45.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegeAcademicYearQualificationPeriod" Width="1.5" PointX="9.25" PointY="54.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.EquivalentNOSSCourse" Width="1.5" PointX="25.5" PointY="79" />
+        <EntityTypeShape EntityType="COE.Common.Model.GradingRule" Width="1.5" PointX="3.75" PointY="93.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.NOSSCourse" Width="1.5" PointX="23.25" PointY="89" />
+        <EntityTypeShape EntityType="COE.Common.Model.Sector" Width="1.5" PointX="1.5" PointY="82.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.Service" Width="1.5" PointX="29" PointY="79.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.SpecializationComponentAssessment" Width="1.5" PointX="6" PointY="94.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegeSpecializationRequest" Width="1.5" PointX="31.25" PointY="53.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.AttendenceStatus" Width="1.5" PointX="31.25" PointY="34.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.DaysWeek" Width="1.5" PointX="8.25" PointY="27.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.SessionAttendanceSettingSchedule" Width="1.5" PointX="31.25" PointY="39.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.SessionScheduleDelegation" Width="1.5" PointX="33.5" PointY="50.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.TrainingSectionEnrollmentAttendance" Width="1.5" PointX="33.5" PointY="34.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.ApplicantExperince" Width="1.5" PointX="11.25" PointY="133.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.QualificationLevel" Width="1.5" PointX="13" PointY="90.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLApplicantAttachment" Width="1.5" PointX="11.25" PointY="63.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLCity" Width="1.5" PointX="13" PointY="138.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLCountry" Width="1.5" PointX="10.75" PointY="138.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLQualification" Width="1.5" PointX="11.25" PointY="129.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLQualificationAttachment" Width="1.5" PointX="23.5" PointY="59.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLRequestPayment" Width="1.5" PointX="17.5" PointY="93.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.UserEmployer" Width="1.5" PointX="17.25" PointY="42.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.SessionValidation" Width="1.5" PointX="33.25" PointY="24.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.UploadRequestDetailsSession" Width="1.5" PointX="5.25" PointY="107.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.SessionMonths" Width="1.5" PointX="30.375" PointY="31.25" />
+        <AssociationConnector Association="COE.Common.Model.FK_BatchServicePeriod_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeSpecializationRequest_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeSpecializationRequest_AcademicYearTerm1" />
+        <AssociationConnector Association="COE.Common.Model.FK_SpecializationComponentAssessment_AssessmentComponent" />
+        <AssociationConnector Association="COE.Common.Model.FK_BatchServicePeriod_Batch" />
+        <AssociationConnector Association="COE.Common.Model.FK_BatchServicePeriod_Service" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeSpecializationRequest_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeAcademicYearQualificationPeriod_CollegeAcademicYear" />
+        <AssociationConnector Association="COE.Common.Model.FK_EquivalentNOSSCourse_NOSSCourse" />
+        <AssociationConnector Association="COE.Common.Model.FK_SpecializationComponentAssessment_GradingRule" />
+        <AssociationConnector Association="COE.Common.Model.FK_Sector_Status" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeSpecializationRequest_Request" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeSpecializationRequest_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLApplicantAttachment_Attachments" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLQualificationAttachment_Attachments" />
+        <AssociationConnector Association="COE.Common.Model.FK_TrainingSectionEnrollmentAttendance_AttendenceStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_SectionAttendanceSetting_DaysWeek" />
+        <AssociationConnector Association="COE.Common.Model.FK_SessionAttendanceSettingSchedule_SectionAttendanceSetting" />
+        <AssociationConnector Association="COE.Common.Model.FK_TrainingSectionEnrollmentAttendance_SectionEnrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_SessionAttendanceSettingSchedule_UserDisplay" />
+        <AssociationConnector Association="COE.Common.Model.FK_SessionScheduleDelegation_SessionAttendanceSettingSchedule" />
+        <AssociationConnector Association="COE.Common.Model.FK_TrainingSectionEnrollmentAttendance_SessionAttendanceSettingSchedule" />
+        <AssociationConnector Association="COE.Common.Model.FK_SessionScheduleDelegation_UserDisplay" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLCity_RPLCountry" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLQualificationAttachment_RPLQualification" />
+        <AssociationConnector Association="COE.Common.Model.FK_UserEmployer_UserDisplay" />
+        <AssociationConnector Association="COE.Common.Model.FK_SessionValidation_UploadRejectionReason" />
+        <AssociationConnector Association="COE.Common.Model.FK_SessionValidation_UploadRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_UploadRequestDetailsSession_UploadRequest" />
+        <EntityTypeShape EntityType="COE.Common.Model.Candidate" Width="1.5" PointX="33.5" PointY="54.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.CandidateAttachment" Width="1.5" PointX="35.75" PointY="29.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.CandidateExperinece" Width="1.5" PointX="35.75" PointY="61.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.CandidateSkill" Width="1.5" PointX="35.75" PointY="55.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.CandidateVacancyRequest" Width="1.5" PointX="35.75" PointY="66.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.EmployerAttachment" Width="1.5" PointX="25.5" PointY="83" />
+        <EntityTypeShape EntityType="COE.Common.Model.EmployerContactDetail" Width="1.5" PointX="13.5" PointY="158.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.EmployerRepresentiveDetail" Width="1.5" PointX="13.5" PointY="151.375" />
+        <EntityTypeShape EntityType="COE.Common.Model.EmployerRequest" Width="1.5" PointX="15.5" PointY="115.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.Interview" Width="1.5" PointX="35.75" PointY="95.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.Skill" Width="1.5" PointX="33.5" PointY="60.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.Vacancy" Width="1.5" PointX="13.5" PointY="95.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.VacancySkill" Width="1.5" PointX="15.75" PointY="97" />
+        <AssociationConnector Association="COE.Common.Model.FK_Vacancy_City" />
+        <AssociationConnector Association="COE.Common.Model.FK_CandidateAttachment_Attachments" />
+        <AssociationConnector Association="COE.Common.Model.FK_EmployerAttachment_Attachments" />
+        <AssociationConnector Association="COE.Common.Model.FK_Candidate_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_Vacancy_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_Interview_Status" />
+        <AssociationConnector Association="COE.Common.Model.FK_Candidate_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_CandidateAttachment_Candidate" />
+        <AssociationConnector Association="COE.Common.Model.FK_CandidateExperinece_Candidate" />
+        <AssociationConnector Association="COE.Common.Model.FK_CandidateSkill_Candidate" />
+        <AssociationConnector Association="COE.Common.Model.FK_CandidateVacancyRequest_Candidate" />
+        <AssociationConnector Association="COE.Common.Model.FK_Interview_Candidate" />
+        <AssociationConnector Association="COE.Common.Model.FK_CandidateSkill_Skill" />
+        <AssociationConnector Association="COE.Common.Model.FK_CandidateVacancyRequest_Request" />
+        <AssociationConnector Association="COE.Common.Model.FK_CandidateVacancyRequest_Vacancy" />
+        <AssociationConnector Association="COE.Common.Model.FK_EmployerRequest_Request" />
+        <AssociationConnector Association="COE.Common.Model.FK_Interview_Vacancy" />
+        <AssociationConnector Association="COE.Common.Model.FK_VacancySkill_Skill" />
+        <AssociationConnector Association="COE.Common.Model.FK_VacancySkill_Vacancy" />
+        <EntityTypeShape EntityType="COE.Common.Model.CollegeSpecialization" Width="1.5" PointX="36.25" PointY="49" />
+        <EntityTypeShape EntityType="COE.Common.Model.Course" Width="1.5" PointX="23.25" PointY="77.75" />
+        <AssociationConnector Association="COE.Common.Model.FK__Enrollmen__Curre__4DE1CDBA" />
+        <AssociationConnector Association="COE.Common.Model.FK__Enrollmen__PrevS__4CEDA981" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeSpecialization_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeSpecialization_AcademicYearTerm1" />
+        <AssociationConnector Association="COE.Common.Model.FK__Area__CountryID__31458F0C" />
+        <AssociationConnector Association="COE.Common.Model.FK_Batch_CollegeSpecialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeSpecialization_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_Course_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnglishExamResult_CollegeSpecialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_Enrollment_CollegeSpecialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_EnrollmentRequestDetail_CollegeSpecialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_TermEnrollment_CollegeSpecialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_TransferRequest_CollegeSpecialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_VocationalExamResult_CollegeSpecialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_Course_CourseType" />
+        <AssociationConnector Association="COE.Common.Model.FK_Course_Level" />
+        <AssociationConnector Association="COE.Common.Model.FK_Course_SubProgram" />
+        <AssociationConnector Association="COE.Common.Model.FK_CourseTerm_Course" />
+        <AssociationConnector Association="COE.Common.Model.FK_EquivalentNOSSCourse_Course" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentMonthlyPayment_Course" />
+        <AssociationConnector Association="COE.Common.Model.FK__CardsFeed__Uploa__4B05610F" />
+        <EntityTypeShape EntityType="COE.Common.Model.EmployerIndustry" Width="1.5" PointX="13.5" PointY="147" />
+        <AssociationConnector Association="COE.Common.Model.FK_EmployerIndustry_Employer" />
+        <AssociationConnector Association="COE.Common.Model.FK_EmployerIndustry_Industry" />
+        <EntityTypeShape EntityType="COE.Common.Model.Employer" Width="1.5" PointX="11.25" PointY="118.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.Industry" Width="1.5" PointX="30.375" PointY="18.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_Employer_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_EmployerAttachment_Employer" />
+        <AssociationConnector Association="COE.Common.Model.FK_EmployerContactDetail_Employer" />
+        <AssociationConnector Association="COE.Common.Model.FK_EmployerRepresentiveDetail_Employer" />
+        <AssociationConnector Association="COE.Common.Model.FK_EmployerRequest_Employer" />
+        <AssociationConnector Association="COE.Common.Model.FK_Interview_Employer" />
+        <AssociationConnector Association="COE.Common.Model.FK_UserEmployer_Employer" />
+        <AssociationConnector Association="COE.Common.Model.FK_Vacancy_Employer" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentOJT" Width="1.5" PointX="9" PointY="111.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentOJT_AspNetUsers" />
+        <EntityTypeShape EntityType="COE.Common.Model.EnrollmentOJT" Width="1.5" PointX="32.375" PointY="19.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.ServiceType" Width="1.5" PointX="1.5" PointY="59.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentFailureIntegrationLog" Width="1.5" PointX="11.75" PointY="49.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentSuccessIntegrationLog" Width="1.5" PointX="3.75" PointY="45.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentFailureIntegrationLog_Program" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentSuccessIntegrationLog_Program" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentFailureIntegrationLog_ServiceType" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentSuccessIntegrationLog_ServiceType" />
+        <EntityTypeShape EntityType="COE.Common.Model.TeacherLectures" Width="1.5" PointX="34.375" PointY="1" />
+        <EntityTypeShape EntityType="COE.Common.Model.GradingScheme" Width="1.5" PointX="29.5" PointY="94.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.GradingSchemeSetting" Width="1.5" PointX="31.75" PointY="93.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.GradingType" Width="1.5" PointX="27.25" PointY="94.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.IncomingExamResult" Width="1.5" PointX="31.75" PointY="71.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.IncomingExamResultDetail" Width="1.5" PointX="34" PointY="71.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.IncomingExamResultGradingSetting" Width="1.5" PointX="34" PointY="38.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_IncomingExamResultGradingSetting_Status" />
+        <AssociationConnector Association="COE.Common.Model.FK_GradingScheme_GradingType" />
+        <AssociationConnector Association="COE.Common.Model.FK_GradingSchemeSetting_GradingScheme" />
+        <AssociationConnector Association="COE.Common.Model.FK_IncomingExamResultGradingSetting_GradingSchemeSetting" />
+        <AssociationConnector Association="COE.Common.Model.FK_IncomingExamResultDetail_IncomingExamResult" />
+        <AssociationConnector Association="COE.Common.Model.FK_IncomingExamResultGradingSetting_IncomingExamResult" />
+        <EntityTypeShape EntityType="COE.Common.Model.AssessmentPeriod" Width="1.5" PointX="25.75" PointY="98.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.AssessmentPeriodComponent" Width="1.5" PointX="28" PointY="99.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.AssessmentPeriodStatus" Width="1.5" PointX="23.5" PointY="101.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.ExamBookingType" Width="1.5" PointX="23.5" PointY="98.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.ExamCalendar" Width="1.5" PointX="30.25" PointY="85.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.ExamCalendarDay" Width="1.5" PointX="38.75" PointY="71" />
+        <EntityTypeShape EntityType="COE.Common.Model.ExamCalendarRequest" Width="1.5" PointX="36.5" PointY="70.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.ExamCalendarStatus" Width="1.5" PointX="28" PointY="103.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentExamCalendar" Width="1.5" PointX="31.5" PointY="63.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_AssessmentPeriod_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_AssessmentPeriodComponent_AssessmentComponent" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamCalendarRequest_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_AssessmentPeriod_Program" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamCalendarRequest_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentExamCalendar_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_AssessmentPeriod_AssessmentPeriodStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_AssessmentPeriod_ExamBookingType" />
+        <AssociationConnector Association="COE.Common.Model.FK_AssessmentPeriodComponent_AssessmentPeriod" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamCalendar_AssessmentPeriodComponent" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamCalendar_ExamCalendarStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentExamCalendar_ExamCalendar" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamCalendarDay_ExamCalendarRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamCalendarRequest_Request" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentExamCalendar_ExamCalendarRequest" />
+        <EntityTypeShape EntityType="COE.Common.Model.FinalExamResult" Width="1.5" PointX="34.375" PointY="16.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.StudentGradeBook" Width="1.75" PointX="36.25" PointY="39.5" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentGradeBook_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentGradeBook_Status" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentGradeBook_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentGradeBook_IncomingExamResultGradingSetting" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentGradeBook_IncomingExamResultGradingSetting1" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentGradeBook_IncomingExamResultGradingSetting2" />
+        <EntityTypeShape EntityType="COE.Common.Model.HomePageCategory" Width="1.5" PointX="35.375" PointY="6.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.QualificationPeriod" Width="1.5" PointX="7" PointY="128.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.Specialization" Width="1.5" PointX="21" PointY="81.625" />
+        <AssociationConnector Association="COE.Common.Model.FK_QualificationPeriod_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeAcademicYearQualificationPeriod_QualificationPeriod" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeSpecialization_Specialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_Course_Specialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_Specialization_Level" />
+        <AssociationConnector Association="COE.Common.Model.FK_Specialization_Level1" />
+        <AssociationConnector Association="COE.Common.Model.FK_ProgramSpecialization_Specialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_Specialization_Sector" />
+        <AssociationConnector Association="COE.Common.Model.FK__TransferR__Fundi__15686A6D" />
+        <AssociationConnector Association="COE.Common.Model.FK_CollegeSpecializationRequest_Specialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamCalendar_Specialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_Specialization_Specialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_Specialization_Status" />
+        <AssociationConnector Association="COE.Common.Model.FK_SpecializationComponentAssessment_Specialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_SpecializationStatistic_Specialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_TransferRequest_Specialization" />
+        <EntityTypeShape EntityType="COE.Common.Model.UserSpecialization" Width="1.5" PointX="34.25" PointY="75.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_UserSpecialization_Specialization" />
+        <AssociationConnector Association="COE.Common.Model.FK__UserSpeci__UserD__7CFCAF56" />
+        <AssociationConnector Association="COE.Common.Model.FK_IncomingExamResult_StudentExamCalendar" />
+        <EntityTypeShape EntityType="COE.Common.Model.SpecializationUnit" Width="1.5" PointX="38.25" PointY="61" />
+        <EntityTypeShape EntityType="COE.Common.Model.Unit" Width="1.5" PointX="36" PointY="33.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.UnitType" Width="1.5" PointX="33.75" PointY="80.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_Course_Unit" />
+        <AssociationConnector Association="COE.Common.Model.FK_SpecializationUnit_Specialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_SpecializationUnit_Unit" />
+        <AssociationConnector Association="COE.Common.Model.FK_Unit_Status" />
+        <AssociationConnector Association="COE.Common.Model.FK_Unit_UnitType" />
+        <EntityTypeShape EntityType="COE.Common.Model.HomePageModule" Width="1.5" PointX="37.625" PointY="6.125" />
+        <AssociationConnector Association="COE.Common.Model.FK_HomePageModule_HomePageCategory" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamCalendarRequest_ExamBookingType" />
+        <AssociationConnector Association="COE.Common.Model.FK_College_Status" />
+        <AssociationConnector Association="COE.Common.Model.FK_AspNetUsers_Country" />
+        <EntityTypeShape EntityType="COE.Common.Model.BatchEditingView" Width="1.5" PointX="36.375" PointY="9.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.TransferVistorRequest" Width="1.5" PointX="38.5" PointY="47.5" />
+        <AssociationConnector Association="COE.Common.Model.FK_TransferVistorRequest_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_TransferVistorRequest_CollegeSpecialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_TransferVistorRequest_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_TransferVistorRequest_Request" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLCertificate" Width="1.5" PointX="20.5" PointY="93.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLCertificateType" Width="1.5" PointX="18.25" PointY="97.625" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLCertificate_RPLCertificateType" />
+        <EntityTypeShape EntityType="COE.Common.Model.CenterAttachment" Width="1.5" PointX="30.25" PointY="50.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.CenterTrainingCourse" Width="1.5" PointX="23.25" PointY="92.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.CenterTrainingType" Width="1.5" PointX="24" PointY="105.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_CenterTrainingCourse_City" />
+        <AssociationConnector Association="COE.Common.Model.FK_CenterAttachment_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_CenterTrainingCourse_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_CenterAttachment_Attachments" />
+        <EntityTypeShape EntityType="COE.Common.Model.CenterRequest" Width="1.5" PointX="20.25" PointY="77.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_CenterRequest_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_CenterRequest_Request" />
+        <EntityTypeShape EntityType="COE.Common.Model.CenterDetail" Width="1.5" PointX="17.25" PointY="107.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.CenterDetailTrainingType" Width="1.5" PointX="26.25" PointY="107.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_CenterDetail_College" />
+        <AssociationConnector Association="COE.Common.Model.FK_CenterDetailTrainingType_CenterDetail" />
+        <AssociationConnector Association="COE.Common.Model.FK_CenterDetailTrainingType_CenterTrainingType" />
+        <EntityTypeShape EntityType="COE.Common.Model.CenterStaffDetail" Width="1.5" PointX="23.125" PointY="109.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.CenterStaffDetailAttachment" Width="1.5" PointX="38.375" PointY="56.25" />
+        <AssociationConnector Association="COE.Common.Model.FK_CenterStaffAttachment_Attachments" />
+        <AssociationConnector Association="COE.Common.Model.FK_CenterStaffAttachment_CenterStaff" />
+        <AssociationConnector Association="COE.Common.Model.FK_CenterStaffDetail_CollegeStaff" />
+        <EntityTypeShape EntityType="COE.Common.Model.ComplaintPeriod" Width="1.5" PointX="15" PointY="16.625" />
+        <EntityTypeShape EntityType="COE.Common.Model.ComplaintRequest" Width="1.5" PointX="39.5" PointY="66.125" />
+        <EntityTypeShape EntityType="COE.Common.Model.ComplaintType" Width="1.5" PointX="3.75" PointY="51.5" />
+        <AssociationConnector Association="COE.Common.Model.FK_ComplaintPeriod_AcademicYearTerm" />
+        <AssociationConnector Association="COE.Common.Model.FK_ComplaintPeriod_CollegeAcademicYear" />
+        <AssociationConnector Association="COE.Common.Model.FK_ComplaintRequest_Program" />
+        <AssociationConnector Association="COE.Common.Model.FK_ComplaintType_Program" />
+        <AssociationConnector Association="COE.Common.Model.FK_ComplaintPeriod_ComplaintType" />
+        <AssociationConnector Association="COE.Common.Model.FK_ComplaintRequest_AspNetUsers" />
+        <AssociationConnector Association="COE.Common.Model.FK_ComplaintRequest_ComplaintType" />
+        <AssociationConnector Association="COE.Common.Model.FK_ComplaintRequest_Enrollment" />
+        <AssociationConnector Association="COE.Common.Model.FK_ComplaintRequest_Request" />
+        <AssociationConnector Association="COE.Common.Model.FK_ComplaintType_ComplaintType" />
+        <EntityTypeShape EntityType="COE.Common.Model.GetTermEnrollmentListOSH" Width="1.5" PointX="36.375" PointY="17.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.OSHShortCoursesGraduatesView" Width="1.5" PointX="36.375" PointY="0.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.GetRPLCertificateView" Width="1.5" PointX="38.375" PointY="1" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLExamRequestAttachment" Width="1.5" PointX="38.75" PointY="40.25" />
+        <AssociationConnector Association="COE.Common.Model.FK__RPLEXAMREQUESTATT_ATTID" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLExamRequestAction" Width="1.5" PointX="38.75" PointY="36.25" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamRequestAction_Decision" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamRequestAction_Stage" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLExamBookingCancelationReason" Width="1.5" PointX="34.5" PointY="84.875" />
+        <EntityTypeShape EntityType="COE.Common.Model.SarasLog" Width="1.5" PointX="32.625" PointY="31.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.SarasLogDetail" Width="1.5" PointX="34.875" PointY="88.25" />
+        <AssociationConnector Association="COE.Common.Model.FK_SarasLogDetails_SarasLog" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLExamRequest" Width="1.5" PointX="31.5" PointY="77.25" />
+        <AssociationConnector Association="COE.Common.Model.FK__RPLEXAMREQUEST_USERID" />
+        <AssociationConnector Association="COE.Common.Model.FK__RPLEXAMREQUEST_StageId" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamRequest_QualificationLevel" />
+        <AssociationConnector Association="COE.Common.Model.FK__RPLEXAMREQUEST_LevelId" />
+        <AssociationConnector Association="COE.Common.Model.FK__RPLEXAMREQUEST_WFCR" />
+        <AssociationConnector Association="COE.Common.Model.FK__RPLEXAMREQUESTATT_ID" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamRequestAction_RPLExamRequest" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLExamBookingPayment" Width="1.5" PointX="44.625" PointY="82.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.Qualification" Width="1.5" PointX="38.375" PointY="10" />
+        <AssociationConnector Association="COE.Common.Model.FK_StudentProfile_Qualification" />
+        <EntityTypeShape EntityType="COE.Common.Model.EXAMS_AVAILABLE_SLOTS" Width="1.5" PointX="38.375" PointY="13.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLExamBooking" Width="1.5" PointX="38.75" PointY="74.375" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBooking_AspNetUsers" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBooking_ExamCalendarRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBooking_RPLCertificateType" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBooking_RPLExamBookingCancelationReason" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBooking_RPLExamRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBookingPayment_RPLExamBooking" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLApplicant" Width="1.5" PointX="28" PointY="83.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLApplicant_City" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLApplicant_AspNetUsers" />
+        <AssociationConnector Association="COE.Common.Model.FK_ApplicantExperince_RPLApplicant" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLApplicantAttachment_RPLApplicant" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLQualification_RPLApplicant" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLExamBookingNotification" Width="1.5" PointX="41" PointY="75.5" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLExamBookingNotificationType" Width="1.5" PointX="38.75" PointY="81.125" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBookingNotification_RPLExamBooking" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBookingNotification_RPLExamBookingNotificationType" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLRequest" Width="1.5" PointX="37.25" PointY="88.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLRequest_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLRequest_QualificationLevel" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLRequest_RPLApplicant" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLCertificate_RPLRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLRequest_RPLCity" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBookingPayment_RPLRequest" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLRequest_Request" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLRequestPayment_RPLRequest" />
+        <EntityTypeShape EntityType="COE.Common.Model.NotificationQueue" Width="1.5" PointX="40.625" PointY="22" />
+        <EntityTypeShape EntityType="COE.Common.Model.NotificationSendStatu" Width="1.5" PointX="38.375" PointY="26.25" />
+        <EntityTypeShape EntityType="COE.Common.Model.NotificationType" Width="1.5" PointX="38.375" PointY="23.25" />
+        <AssociationConnector Association="COE.Common.Model.FK_NotificationQueue_NotificationSendStatus" />
+        <AssociationConnector Association="COE.Common.Model.FK_NotificationQueue_NotificationType" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBookingNotification_NotificationQueue" />
+        <EntityTypeShape EntityType="COE.Common.Model.GetTermEnrollmentList" Width="1.5" PointX="40.375" PointY="0.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBooking_RPLExamBooking" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLExamResult" Width="1.5" PointX="42" PointY="70" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamResults_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_rplexamsepcialization" />
+        <AssociationConnector Association="COE.Common.Model.FK_rplresult_exambookingid" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLExamBookingPaymentInvoice" Width="1.5" PointX="46.875" PointY="43.375" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBookingPaymentInvoice_Attachments" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBookingPaymentInvoice_RPLExamBookingPayment" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLExamBookingInvoiceCreditNote" Width="1.5" PointX="49.125" PointY="43.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBookingInvoiceCreditNote_RPLExamBookingPaymentInvoice1" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBookingInvoiceCreditNote_Attachments" />
+        <EntityTypeShape EntityType="COE.Common.Model.ZATCAInvoiceIntegration" Width="1.5" PointX="51.375" PointY="22.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.ZATCAInvoiceIntegrationLog" Width="1.5" PointX="53.625" PointY="23.25" />
+        <AssociationConnector Association="COE.Common.Model.FK_ZATCAInvoiceIntegration_Attachments" />
+        <AssociationConnector Association="COE.Common.Model.FK_ZATCAInvoiceIntegration_RPLExamBookingInvoiceCreditNote" />
+        <AssociationConnector Association="COE.Common.Model.FK_ZATCAInvoiceIntegration_RPLExamBookingPaymentInvoice" />
+        <AssociationConnector Association="COE.Common.Model.FK_ZATCAInvoiceIntegrationLog_ZATCAInvoiceIntegration" />
+        <EntityTypeShape EntityType="COE.Common.Model.RPLExamBookingAttendanceStatus" Width="1.5" PointX="31.375" PointY="5.875" />
+        <AssociationConnector Association="COE.Common.Model.FK_RPLExamBooking_RPLExamBookingAttendanceStatus" />
+        <EntityTypeShape EntityType="COE.Common.Model.ExamCalendarRequestComments" Width="1.5" PointX="38.75" PointY="83.75" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamCalendarRequestComments_ExamCalendarRequest" />
+        <EntityTypeShape EntityType="COE.Common.Model.ExamCalendarRequestCancelation" Width="1.5" PointX="40.75" PointY="58.625" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamCalendarRequestCancelation_Stage" />
+        <AssociationConnector Association="COE.Common.Model.FK_ExamCalendarRequestCancelation_ExamCalendarRequest" />
+        <EntityTypeShape EntityType="COE.Common.Model.OSHRPLGraduatesView" Width="1.5" PointX="38.375" PointY="29.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

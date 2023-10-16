@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppointmentBooking" xml:space="preserve">
+    <value>Exam Appointment Booking</value>
+  </data>
+  <data name="AvailableExamTimes" xml:space="preserve">
+    <value>Available Times For The Exam</value>
+  </data>
+  <data name="BookNow" xml:space="preserve">
+    <value>Book Now</value>
+  </data>
+  <data name="BookTheFee" xml:space="preserve">
+    <value>Pay the fee</value>
+  </data>
+  <data name="CardExpiryDate" xml:space="preserve">
+    <value>Card Expiry Date(MM/YY)</value>
+  </data>
+  <data name="CardHolderName" xml:space="preserve">
+    <value>Card Holder Name</value>
+  </data>
+  <data name="CardNumber" xml:space="preserve">
+    <value>Card Number</value>
+  </data>
+  <data name="CardVerificationCode" xml:space="preserve">
+    <value>Card Verification Code (CVC)</value>
+  </data>
+  <data name="Center" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="ExamCode" xml:space="preserve">
+    <value>Exam Code</value>
+  </data>
+  <data name="ExamDate" xml:space="preserve">
+    <value>Exam Date</value>
+  </data>
+  <data name="ExamDetail" xml:space="preserve">
+    <value>Exam Detail</value>
+  </data>
+  <data name="ExameCenterLocationUrl" xml:space="preserve">
+    <value>Center Location Url</value>
+  </data>
+  <data name="ExameCenterName" xml:space="preserve">
+    <value>Center Name</value>
+  </data>
+  <data name="ExamEndAt" xml:space="preserve">
+    <value>Exam End At</value>
+  </data>
+  <data name="ExamFees" xml:space="preserve">
+    <value>Exam fee payment</value>
+  </data>
+  <data name="ExamName" xml:space="preserve">
+    <value>Exam Name</value>
+  </data>
+  <data name="ExamStartAt" xml:space="preserve">
+    <value>Exam Start At</value>
+  </data>
+  <data name="NoDataToDisplay" xml:space="preserve">
+    <value>There are currently no available dates for the exam</value>
+  </data>
+  <data name="PaymentInformation" xml:space="preserve">
+    <value>Payment Information</value>
+  </data>
+  <data name="Qualification" xml:space="preserve">
+    <value>Qualification</value>
+  </data>
+  <data name="TraineeInformation" xml:space="preserve">
+    <value>Student Information</value>
+  </data>
+  <data name="TraineeName" xml:space="preserve">
+    <value>Student Name</value>
+  </data>
+  <data name="TraineeNationalID" xml:space="preserve">
+    <value>Student NationalID</value>
+  </data>
+  <data name="ExamCity" xml:space="preserve">
+    <value>Exam City</value>
+  </data>
+  <data name="PaidAmount" xml:space="preserve">
+    <value>Paid Amount</value>
+  </data>
+  <data name="ExamPaymentDetails" xml:space="preserve">
+    <value>Exam Payment Details</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+  <data name="Canceled" xml:space="preserve">
+    <value>Canceled</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="EmailCancelationTitle" xml:space="preserve">
+    <value>Your exam booking canceled</value>
+  </data>
+  <data name="PaymentSuccessful" xml:space="preserve">
+    <value>Payment Successful</value>
+  </data>
+  <data name="MsgCanceledWithRefunded" xml:space="preserve">
+    <value>The exam booking is canceled and exam fees refunded</value>
+  </data>
+  <data name="MsgCanceledWithoutRefunded" xml:space="preserve">
+    <value>The exam booking is canceled and the exam fees are not refunded please contact the administrator</value>
+  </data>
+  <data name="ExamCenterDetails" xml:space="preserve">
+    <value>Exam Center Details</value>
+  </data>
+  <data name="ExamBookingDetails" xml:space="preserve">
+    <value>Exam Booking Details</value>
+  </data>
+  <data name="Reschedual" xml:space="preserve">
+    <value>Reschedual</value>
+  </data>
+  <data name="SlotUnavailable" xml:space="preserve">
+    <value>The selected slot is currently unavailable, Please select another exam slot.</value>
+  </data>
+  <data name="SlotUnavailableAndfeesRefunded" xml:space="preserve">
+    <value>The selected slot is currently unavailable, And exam fees was Refunded, Please select another exam slot.</value>
+  </data>
+  <data name="EditCurrentBooking" xml:space="preserve">
+    <value>You can edit your current booking</value>
+  </data>
+  <data name="PayAndRefundPolicy" xml:space="preserve">
+    <value>Pay And Refund Policy</value>
+  </data>
+  <data name="IsAgreeOnPayPolicy" xml:space="preserve">
+    <value>Acknowledgment of &lt;a href="/ExamBooking/PayAndRefundPolicy" target="_blank"&gt;the payment and refund policy &lt;/a&gt;</value>
+  </data>
+  <data name="PayPolicyLink" xml:space="preserve">
+    <value>Payment and refund policy link</value>
+  </data>
+  <data name="MustAgreeOnPayPolicy" xml:space="preserve">
+    <value>You must agree on the Pay And Refund Policy</value>
+  </data>
+  <data name="ExamURL" xml:space="preserve">
+    <value>Exam URL</value>
+  </data>
+  <data name="UnavailableCity" xml:space="preserve">
+    <value>Work is underway to add test centers in other regions</value>
+  </data>
+  <data name="Msg_CannotCancel" xml:space="preserve">
+    <value>You cannot cancel according to the payment and refund policies</value>
+  </data>
+  <data name="EmailTitle" xml:space="preserve">
+    <value>Occupational safety and health cadres program exam</value>
+  </data>
+  <data name="ExamLanguage" xml:space="preserve">
+    <value>Exam Language</value>
+  </data>
+  <data name="ExamResult" xml:space="preserve">
+    <value>Exam Result</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>The result</value>
+  </data>
+  <data name="PendingResult" xml:space="preserve">
+    <value>Pending result</value>
+  </data>
+  <data name="Pass" xml:space="preserve">
+    <value>Pass</value>
+  </data>
+  <data name="Fail" xml:space="preserve">
+    <value>Fail</value>
+  </data>
+  <data name="PayAgain" xml:space="preserve">
+    <value>Pay again and book the exam</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="PaymentConfirmed" xml:space="preserve">
+    <value>The payment received.the schedule is under processing</value>
+  </data>
+  <data name="EmergencyCancelled" xml:space="preserve">
+    <value>Emergency Cancelled</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Refunded</value>
+  </data>
+  <data name="SARASConfirmed" xml:space="preserve">
+    <value>SARAS Confirmed</value>
+  </data>
+  <data name="ReTakeExam" xml:space="preserve">
+    <value>Retake The Exam</value>
+  </data>
+  <data name="BookingRetakeSuccessful" xml:space="preserve">
+    <value>Booking Successful</value>
+  </data>
+  <data name="RefundedCredits" xml:space="preserve">
+    <value>Refunded Credits</value>
+  </data>
+  <data name="SuccessfulRefund" xml:space="preserve">
+    <value>Successful Refund</value>
+  </data>
+  <data name="NotRefunded" xml:space="preserve">
+    <value>Not Refunded</value>
+  </data>
+  <data name="RequestedRefund" xml:space="preserve">
+    <value>Requested Refund</value>
+  </data>
+  <data name="IsRequestedRefund" xml:space="preserve">
+    <value>Requested before</value>
+  </data>
+  <data name="NotRequestedRefund" xml:space="preserve">
+    <value>Can request</value>
+  </data>
+  <data name="RequestRefund" xml:space="preserve">
+    <value>Request a Refund</value>
+  </data>
+  <data name="Msg_CannotRefund" xml:space="preserve">
+    <value>You cannot refund selected payment</value>
+  </data>
+  <data name="MsgRequestedAndRefunded" xml:space="preserve">
+    <value>Fees successfully refunded</value>
+  </data>
+  <data name="MsgRequestedWithoutRefund" xml:space="preserve">
+    <value>Cannot refund the fees, please contact the administrator.</value>
+  </data>
+  <data name="OpenBookings" xml:space="preserve">
+    <value>Current Bookings</value>
+  </data>
+  <data name="ConfirmedBookings" xml:space="preserve">
+    <value>Confirmed Bookings</value>
+  </data>
+  <data name="UpcomingBookings" xml:space="preserve">
+    <value>Upcoming Bookings</value>
+  </data>
+  <data name="Invoices" xml:space="preserve">
+    <value>Payment and refunds invoices </value>
+  </data>
+  <data name="InvoiceFile" xml:space="preserve">
+    <value>Payment Invoice </value>
+  </data>
+  <data name="CreditNoteFile" xml:space="preserve">
+    <value>Cancelation Invoice</value>
+  </data>
+  <data name="InvoiceType" xml:space="preserve">
+    <value>Invoice Type</value>
+  </data>
+  <data name="AttendanceRecorded" xml:space="preserve">
+    <value>All students already have attendance recorded</value>
+  </data>
+  <data name="CommentList" xml:space="preserve">
+    <value>Comment List</value>
+  </data>
+  <data name="PaymentServiceIssue" xml:space="preserve">
+    <value>Payment Service has an Issue, please try again later</value>
+  </data>
+  <data name="CancelationRequestExist" xml:space="preserve">
+    <value>A Cancelation Request already Exist</value>
+  </data>
+  <data name="CancelationRequestSubmitted" xml:space="preserve">
+    <value>The Cancelation Request Submitted successfully</value>
+  </data>
+</root>

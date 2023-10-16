@@ -1,0 +1,180 @@
+﻿@using COE.Survey.Web.ViewModels
+@using COE.Common.Localization
+@using PagedList.Mvc
+
+
+@model SurveysViewModel
+
+@{
+    ViewBag.Title = "Survey Results";
+    int count = Model.AnswersList.Count;
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+
+<style>
+    .table tr td, .table tr th {
+        text-align: center !important;
+    }
+</style>
+
+@*<div class="portlet-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-list"></i>Question: @Model.CurrentQuestion
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div id="resultsTable" class="well">
+                                <h3></h3>
+
+                                <div style="height: 200px">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+@using (@Html.BeginForm("ExportResult", "Surveys", FormMethod.Post, new { @class = "from", role = "form" }))
+{
+    @Html.HiddenFor(m => m.Id)
+
+
+    <div class="row">
+        <div class="col-md-12 margin-bottom-10">
+            <a class="btn green" style="float:right" href="@Url.Action("Index", "Results", new { id = Model.Id })"><i class="fa fa-th-list" aria-hidden="true"></i> Summary </a>
+            <a class="btn green" style="float:right; margin-right:10px" href="javascript:$('form').submit();"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export To Excel </a>
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-list"></i>Total Answers (@(Model?.Items?.TotalItemCount ?? 0))
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div style="overflow-x:scroll">
+
+                                <table style="width:150% !important;" class="table table-striped table-bordered table-advance table-hover">
+                                    <thead>
+                                        <tr>
+
+                                            <th class="col-md-1">#</th>
+                                            <th class="col-md-3"> Answered By </th>
+
+                                            @for (int i = 0; i < Model.NumOfQuestions; i++)
+                                            {
+                                                <th class="col-md-5" scope="col"><a href="@Url.Action("result",ViewBag.SurveyId)?sqid=@Model.SurveyMatrix[i, 0].Key"> @Model.SurveyMatrix[i, 0].Value</a></th>
+                                            }
+                                            <th class="col-md-3"></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+
+
+
+                                        @for (int y = 0; y < count; y++)
+                                        {
+                                            <tr>
+
+                                                <td>@(y + 1)</td>
+                                                <td>@Model.AnswersList[y].CreatedBy</td>
+
+                                                @for (int x = 0; x < Model.NumOfQuestions; x++)
+                                                {
+                                                    <td>@Model.SurveyMatrix[x, y + 1].Value</td>
+                                                }
+
+                                                <td>
+                                                    <a href="@Url.Action("ViewAnswer",new { id = Model.AnswersList[y].ID })">Show Survey Results</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    @if (Model.Items.PageCount > 1)
+                                    {
+                                        <div class="col-md-3 col-sm-3">
+                                            @SharedResources.Page @Model.Items.PageNumber @SharedResources.Of @Model.Items.PageCount
+                                        </div>
+                                        <div class="col-md-9 col-sm-9">
+                                            <div class="dataTables_paginate paging_bootstrap_number">
+                                                @Html.PagedListPager(Model.Items, page => Url.Action("Result", new { sqid = ViewBag.sqid, PageNumber = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                                            </div>
+
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@*<script>
+
+
+        Chart.defaults.global.defaultColor = "#6aabff";
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: JSON.parse('@Model.ChartLabels'.replace(/&quot;/g, '\\"').replace(/\\/g, "")),
+                datasets: [{
+                    label: '% of Votes',
+                    data: @Model.ChartData,
+                    backgroundColor: "#6aabff",
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            steps: 100,
+                            stepValue: 100,
+                            max: 100, //max value for the chart is 60,
+                            callback: function(value, index, values) {
+                                if (Math.floor(value) === value) {
+                                    return value + "%";
+                                }
+                            }
+                        }
+                    }]
+                }
+            }
+        });
+
+
+
+
+    </script>*@

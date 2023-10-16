@@ -1,0 +1,117 @@
+﻿@using COE.Common.Localization.Security
+@using COE.Common.Localization;
+@using Commons.Framework.Web.Mvc.Helpers
+@model COE.Common.Model.ViewModels.AccountViewModelEdit
+
+@{
+    ViewBag.Title = SecurityResources.EditUser;
+    ViewBag.ModuleTitle = SecurityResources.Users;
+
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+@using (Html.BeginForm("Edit", "Users", FormMethod.Post, new { @class = "register-form", role = "form", id = "registerForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-12">
+            @if (ViewBag.SuccessMessage != null && !string.IsNullOrEmpty(ViewBag.SuccessMessage))
+                {
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>@ViewBag.SuccessMessage</strong>
+                </div>
+            }
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-search"></i> @SecurityResources.EditUser
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <div class="form-body">
+                            @Html.ValidationSummary(false, string.Empty, new { @class = "text-danger help-block" })
+                            <div class="OnlineView row" style="@ViewBag.DisplayOnline">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.FullName, new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.FullName, string.Empty, new { @class = "text-danger help-block" })
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control text-left ltr" })
+                                        @Html.ValidationMessageFor(model => model.Email, string.Empty, new { @class = "text-danger help-block" })
+                                    </div>
+                                </div>
+                                @*<div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.NationalId, new { @class = "control-label" })
+                                            @Html.TextBoxFor(model => model.NationalId, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.NationalId, string.Empty, new { @class = "text-danger help-block" })
+                                        </div>
+                                    </div>*@
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label" })
+                                        @Html.TelInputFor(model => model.PhoneNumber, null, new { @class = "form-control", MaxLength = "15" })
+                                        @Html.ValidationMessageFor(model => model.PhoneNumber, string.Empty, new { @class = "text-danger help-block" })
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.UserName, new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.UserName, null, new { @class = "form-control"})
+                                        @Html.ValidationMessageFor(model => model.UserName, string.Empty, new { @class = "text-danger help-block" })
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.IsActive, new { @class = "control-label" })
+                                        @Html.CheckBoxFor(model => model.IsActive)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ADView row" style="@ViewBag.DisplayAD">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.AccountViewModelActiveDirectory.FullName, new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.AccountViewModelActiveDirectory.FullName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.AccountViewModelActiveDirectory.FullName, string.Empty, new { @class = "text-danger help-block" })
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.AccountViewModelActiveDirectory.UserName, new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.AccountViewModelActiveDirectory.UserName, null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.AccountViewModelActiveDirectory.UserName, string.Empty, new { @class = "text-danger help-block" })
+                                    </div>
+                                </div>
+                                @*<div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.AccountViewModelActiveDirectory.IsActive, new { @class = "control-label" })
+                                            @Html.CheckBoxFor(model => model.AccountViewModelActiveDirectory.IsActive)
+                                        </div>
+                                    </div>*@
+                            </div>
+                        </div>
+                        <div class="form-actions right">
+                            <input type="submit" value="@SharedResources.Save" class="btn btn-success" />
+                            <a class="btn red" href="@Url.Action("Users", "security",new { UserType = Request.QueryString["type"],uid= ViewContext.RouteData.Values["id"] })">@SharedResources.Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }

@@ -1,0 +1,88 @@
+﻿@using DevExpress.Web.Mvc.UI;
+
+@{var rowIndex = 0;}
+
+<div class="row" id="gridbranch">
+    <div class="col-md-12">
+        <!-- BEGIN SAMPLE TABLE PORTLET-->
+        <div class="portlet box green">
+            <div class="portlet-body">
+                @*<div class="table-scrollable">*@
+                <div>
+                    @if (Model != null)
+                    {
+                        if (Model.Items.Count > 0)
+                        {
+                            @Html.Action("GridViewPartial")
+                        }
+                        else
+                        {
+                            <div class="noResults">
+
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="hidCenterId" />
+<script src="~/Content/theme/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<script type="text/javascript">
+
+    var issaved = '@ViewBag.success';
+
+    $(function () {
+
+        //show notefactions
+        if (issaved === '1') {
+            $util.shownotefactions("toast-top-full-width", '@TrainingResource.Alertsuccess', '@TrainingResource.AlertHeader', '@TrainingResource.Savesuccessfully');
+        } else if (issaved === '2') {
+            $util.shownotefactions("toast-top-full-width", '@TrainingResource.Alertsuccess', '@TrainingResource.AlertHeader', '@TrainingResource.Updatesuccessfully');
+        } else if (issaved === '3') {
+            $util.shownotefactions("toast-top-full-width", '@TrainingResource.Alertsuccess', '@TrainingResource.AlertHeader', '@TrainingResource.deletesuccessfully');
+        } else if (issaved === '4') {
+            $util.shownotefactions("toast-top-full-width", '@TrainingResource.Alerterror', '@TrainingResource.AlertHeader', '@TrainingResource.ActionError');
+        } else if (issaved === '5') {
+            $util.shownotefactions("toast-top-full-width", '@TrainingResource.Alerterror', '@TrainingResource.AlertHeader', '@TrainingResource.DenyDeletedCenter');
+        } else if (issaved === '6') {
+            $util.shownotefactions("toast-top-full-width", '@TrainingResource.Alertsuccess', '@TrainingResource.AlertHeader', '@TrainingResource.ItemActivated');
+        } else if (issaved === '7') {
+            $util.shownotefactions("toast-top-full-width", '@TrainingResource.Alertsuccess', '@TrainingResource.AlertHeader', '@TrainingResource.ItemDeactivated');
+        } else if (issaved === '9') {
+            $util.shownotefactions("toast-top-full-width", '@TrainingResource.Alerterror', '@TrainingResource.AlertHeader', '@TrainingResource.DenyDeactivateItem');
+        }
+    });
+
+    //set get centerId for add coordinatorid
+    function setCenterIdToHidden(centerid) {
+        $("#hidCenterId").val(centerid);
+    }
+
+
+
+    //delete center by id
+    function deleteUser(userId) {
+        var flag = confirm('@TrainingResource.DeleteConfirm');
+        if (flag) {
+            $.ajax({
+                url: '/Users/Delete',
+                type: "POST",
+                dataType: "JSON",
+                data: { id: userId },
+                success: function (data) {
+                    if (data.success === 3) {
+                        window.location.href = '/Users?success=3';
+                    } else if (data.success === 6) {
+                        window.location.href = '/Users?success=5';
+                    } else {
+                        window.location.href = '/Users?success=4';
+                    }
+                }
+            });
+        }
+    }
+</script>

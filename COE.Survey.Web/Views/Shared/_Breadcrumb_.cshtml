@@ -1,0 +1,49 @@
+﻿@using System.Web.UI.WebControls
+@using Commons.Framework.Extensions
+@using Commons.Framework.Globalization
+@using COE.Common.Localization
+@{
+    var angle = CultureHelper.IsArabic ? "fa-angle-left" : "fa-angle-right";
+    var ctrl = ViewContext.RouteData.Values["controller"].ToString();
+    var area = ViewContext.RouteData.DataTokens["area"] == null ? string.Empty : ViewContext.RouteData.DataTokens["area"];
+
+}
+
+<ul class="page-breadcrumb">
+    <li><i class="icon-home"></i>@Html.ActionLink("Home", "Index", "Surveys")</li>
+    <li>
+       @if (ViewContext.RouteData.Values["controller"].ToString() != "Home")
+       {
+        if (ViewContext.RouteData.Values["controller"].ToString() == "Contract"
+               || ViewContext.RouteData.Values["controller"].ToString() == "Bond"
+               || ViewContext.RouteData.Values["controller"].ToString() == "AcademicYear"
+               || ViewContext.RouteData.Values["controller"].ToString() == "Provider"
+               || ViewContext.RouteData.Values["controller"].ToString() == "Sponser"
+               || ViewContext.RouteData.Values["controller"].ToString() == "Period"
+               )
+        {
+            <i class="fa @angle"></i> @Html.ActionLink(ViewContext.RouteData.Values["controller"].ToString(), "Index", ViewContext.RouteData.Values["controller"].ToString())
+        }
+        else
+        {
+            <i class="fa @angle"></i>@ViewContext.RouteData.Values["controller"].ToString()
+        }
+       }
+    </li>
+    <li>
+
+        @if (ViewContext.RouteData.Values["action"].ToString() != "Index")
+        {
+            <i class="fa @angle"></i> @ViewContext.RouteData.Values["action"].ToString()
+                                     
+        }
+
+    </li>
+    @if (@ViewBag.ExtraTitle != null)
+    {
+        <li>
+            <i class="fa @angle"></i>
+            @ViewBag.ExtraTitle
+        </li>
+    }
+</ul>

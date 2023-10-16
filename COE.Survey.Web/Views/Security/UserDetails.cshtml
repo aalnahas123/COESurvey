@@ -1,0 +1,256 @@
+﻿@using COE.Common.Localization.Security;
+@using COE.Common.Localization;
+@model COE.Common.Model.ViewModels.UserDetails
+@{
+    ViewBag.Title = SecurityResources.UserDetails;
+    ViewBag.ModuleTitle = SecurityResources.Users;
+
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@using (Html.BeginForm("Index", "Security", FormMethod.Post, new { @class = "", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i>@SecurityResources.UserDetails
+                    </div>
+                    <div class="actions">
+
+
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div>
+                        @if (Model != null)
+                        {
+                            if (Model.User.AspNetUsers != null)
+                            {
+                                <table class="table table-striped table-bordered table-advance table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-xs-5"> @SecurityResources.FullName </th>
+                                            <th class="col-xs-3"> @SecurityResources.UserName </th>
+                                            <th class="col-xs-3"> @SecurityResources.Phone </th>
+                                            <th class="col-xs-3"> @SecurityResources.Email </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr id="@Model.User.ID">
+                                            <td>@Model.User.AspNetUsers.FullName</td>
+                                            <td>@Model.User.LoginName</td>
+                                            <td>@Model.User.AspNetUsers.PhoneNumber</td>
+                                            <td>@Model.User.AspNetUsers.Email</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                @*<div style="color:#909090" class="dataTables_info" id="sample_1_info" role="status" aria-live="polite"><b>Last update</b> @Model.User.UpdatedOn.ToShortDateString() <b>By</b> @Model.User.AspNetUsers.UpdatedBy</div>*@
+
+                            }
+                            else
+                            {
+                                <table class="table table-striped table-bordered table-advance table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-xs-5"> @SecurityResources.UserName </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr id="@Model.User.ID">
+                                            <td>@Model.User.DisplayName</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                @*<div style="color:#909090" class="dataTables_info" id="sample_1_info" role="status" aria-live="polite"><b>Last update</b> @Model.User.UpdatedOn.ToShortDateString() <b>By</b> @Model.User.UpdatedBy</div>*@
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-th-list" aria-hidden="true"></i>@SecurityResources.Roles
+                    </div>
+                    <div class="actions">
+                        @if (ViewContext.RouteData.Values["id"].ToString() != ViewBag.UserDisplayForCurrentUser.ToString())
+                        {
+                            <a class="btn btn-default btn-sm" href="@Url.Action("UserRole", "Security", new { id = Model.UserId })" style="color: white">
+                                <i class="fa fa-plus"></i> @SecurityResources.EditRole
+                            </a>
+                        }
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div>
+                        @if (Model != null)
+                        {
+                            if (Model.Roles.Count > 0)
+                            {
+                                <table class="table table-striped table-bordered table-advance table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-xs-5"> @SecurityResources.RoleName </th>
+                                            <th class="col-xs-1"> @SecurityResources.Code </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var item in Model.Roles)
+                                        {
+                                            <tr id="@item.Id">
+
+                                                <td>@Html.DisplayFor(model => item.Name)</td>
+                                                <td>@Html.DisplayFor(model => item.Code)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                                @*<div style="color:#909090" class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">
+                                    <b>Last update</b>  @Model.Roles[0].CreatedOn..ToShortDateString() <b>By</b> @Model.Roles[0].CreatedBy
+                                </div>*@
+
+
+                            }
+                            else
+                            {
+                                <div class="noResults">
+                                    @SharedResources.NoDataToDisplay
+                                </div>
+                            }
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    //Colleges
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-university" aria-hidden="true"></i>@SecurityResources.Action_UserColleges
+                    </div>
+                    <div class="actions">
+                        @if (ViewContext.RouteData.Values["id"].ToString() != ViewBag.UserDisplayForCurrentUser.ToString())
+                        {
+                            <a class="btn btn-default btn-sm" href="@Url.Action("AddCollege", "Security",new { id = Model.UserId })" style="color: white">
+                                <i class="fa fa-plus"></i> @SecurityResources.EditCollege
+                            </a>
+                        }
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div>
+                        @if (Model != null)
+                        {
+                            if (Model.Colleges.Count > 0)
+                            {
+                                <table class="table table-striped table-bordered table-advance table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-xs-5"> @SecurityResources.CollegeName </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var item in Model.Colleges)
+                                        {
+                                            <tr id="@item.ID">
+                                                <td>@Html.DisplayFor(model => item.Name)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                @*<div style="color:#909090" class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">
+                                    <b>Last update</b>  @Model.Colleges[0].CreatedOn.ToShortDateString() <b>By</b> @Model.Colleges[0].CreatedBy
+                                </div>*@
+                            }
+                            else
+                            {
+                                <div class="noResults">
+                                    @SharedResources.NoDataToDisplay
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    //Qualifications
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-university" aria-hidden="true"></i>@SecurityResources.Action_UserQualifications
+                    </div>
+                    <div class="actions">
+                        @if (ViewContext.RouteData.Values["id"].ToString() != ViewBag.UserDisplayForCurrentUser.ToString())
+                        {
+                            <a class="btn btn-default btn-sm" href="@Url.Action("AddQualification", "Security",new { id = Model.UserId })" style="color: white">
+                                <i class="fa fa-plus"></i> @SecurityResources.EditQualifications
+                            </a>
+                        }
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div>
+                        @if (Model != null)
+                        {
+                            if (Model.Qualifications.Count > 0)
+                            {
+                                <table class="table table-striped table-bordered table-advance table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-xs-5"> @SecurityResources.QualificationName </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var qualification in Model.Qualifications)
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(model => qualification.Name)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                @*<div style="color:#909090" class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">
+                                        <b>Last update</b>  @Model.Colleges[0].CreatedOn.ToShortDateString() <b>By</b> @Model.Colleges[0].CreatedBy
+                                    </div>*@
+                            }
+                            else
+                            {
+                                <div class="noResults">
+                                    @SharedResources.NoDataToDisplay
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn red" href="@Url.Action("Users", "security",new { UserType = Request.QueryString["type"],uid= ViewContext.RouteData.Values["id"] })">@SharedResources.Back</a>
+
+}

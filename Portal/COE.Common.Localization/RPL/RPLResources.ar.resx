@@ -1,0 +1,736 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcademicRecord" xml:space="preserve">
+    <value>السجل الاكاديمي</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>الاجراءات</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>اضافة</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>المبلغ</value>
+  </data>
+  <data name="ApplicationChecklistAttachments" xml:space="preserve">
+    <value>الوثائق</value>
+  </data>
+  <data name="ApplicationDetails" xml:space="preserve">
+    <value>معلومات الطلب</value>
+  </data>
+  <data name="Applications" xml:space="preserve">
+    <value>الطلبات</value>
+  </data>
+  <data name="Attachment" xml:space="preserve">
+    <value>المرفق</value>
+  </data>
+  <data name="AttachmentIsRequired" xml:space="preserve">
+    <value>المرفق الزامي</value>
+  </data>
+  <data name="AttachmentName" xml:space="preserve">
+    <value>اسم المرفق</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+  </data>
+  <data name="BtnBack" xml:space="preserve">
+    <value>العودة</value>
+  </data>
+  <data name="CandidateIdentity" xml:space="preserve">
+    <value>الهوية الوطنية</value>
+  </data>
+  <data name="CandidateIdentityAttachment" xml:space="preserve">
+    <value>الهوية الوطنية</value>
+  </data>
+  <data name="CandidateInformation" xml:space="preserve">
+    <value>بيانات المتقدم</value>
+  </data>
+  <data name="CardCVC" xml:space="preserve">
+    <value>الرمز السري</value>
+  </data>
+  <data name="CardNumber" xml:space="preserve">
+    <value>رقم البطاقة</value>
+  </data>
+  <data name="CardType" xml:space="preserve">
+    <value>نوع البطاقة</value>
+  </data>
+  <data name="CertificateAttachment" xml:space="preserve">
+    <value>صورة مصدقة من الشهادة العلمية</value>
+  </data>
+  <data name="CertificateEquivalenceLetter" xml:space="preserve">
+    <value>صورة من معادلة الشهادة العلمية</value>
+  </data>
+  <data name="CertificateTitle" xml:space="preserve">
+    <value>مسمى الشهادة</value>
+  </data>
+  <data name="ClickHereToEdit" xml:space="preserve">
+    <value>اضغط هنا للتعديل</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>استمرار</value>
+  </data>
+  <data name="ContinueWizard" xml:space="preserve">
+    <value>استمرار</value>
+  </data>
+  <data name="CreditCardInformation" xml:space="preserve">
+    <value>معلومات البطاقة الائتمانية</value>
+  </data>
+  <data name="CurriculumVitae" xml:space="preserve">
+    <value>السيرة الذاتية</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>اليوم</value>
+  </data>
+  <data name="Degree" xml:space="preserve">
+    <value>المستوى التعليمي</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="EducationalQualificationDetails" xml:space="preserve">
+    <value>بيانات المؤهل</value>
+  </data>
+  <data name="EducationLevel" xml:space="preserve">
+    <value>المستوى التعليمي</value>
+  </data>
+  <data name="EmployerLetter" xml:space="preserve">
+    <value>خطاب تعريف من جهة العمل (للموظف)</value>
+  </data>
+  <data name="ExperienceCertificate" xml:space="preserve">
+    <value>شهادة مدد وأجور من موقع التأمينات</value>
+  </data>
+  <data name="ExpirationDate" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>مكتمل</value>
+  </data>
+  <data name="FullNameArabic" xml:space="preserve">
+    <value>الاسم الكامل (باللغة العربية)</value>
+  </data>
+  <data name="FullNameEnglish" xml:space="preserve">
+    <value>الاسم الكامل (باللغة الانجليزية)</value>
+  </data>
+  <data name="GraduationDate" xml:space="preserve">
+    <value>تاريخ التخرج</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="IAgreeFeesUnrefundable" xml:space="preserve">
+    <value>اوافق على أن الرسوم غير مستردة.</value>
+  </data>
+  <data name="Incomplete" xml:space="preserve">
+    <value>غير مكتمل</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>تنويه</value>
+  </data>
+  <data name="InProgress" xml:space="preserve">
+    <value>تحت الاجراء</value>
+  </data>
+  <data name="InstitutionAddress" xml:space="preserve">
+    <value>عنوان المؤسسة التعليمية</value>
+  </data>
+  <data name="InstitutionName" xml:space="preserve">
+    <value>المؤسسة التعليمية المانحة للشهادة</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>الشهر</value>
+  </data>
+  <data name="NameOnCard" xml:space="preserve">
+    <value>الاسم على البطاقة</value>
+  </data>
+  <data name="NewApplication" xml:space="preserve">
+    <value>طلب جديد</value>
+  </data>
+  <data name="NoDataToDisplay" xml:space="preserve">
+    <value>لا توجد بيانات</value>
+  </data>
+  <data name="NoFileUploaded" xml:space="preserve">
+    <value>لا يوجد مرفق</value>
+  </data>
+  <data name="OHSInfo" xml:space="preserve">
+    <value>ارفق الشهادات والدورات</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>دفعة</value>
+  </data>
+  <data name="Payments" xml:space="preserve">
+    <value>الدفع</value>
+  </data>
+  <data name="PaymentsInformation" xml:space="preserve">
+    <value>معلومات الدفع</value>
+  </data>
+  <data name="PayNow" xml:space="preserve">
+    <value>ادفع</value>
+  </data>
+  <data name="ProgramDescription" xml:space="preserve">
+    <value>الوصف الوظيفي الحالي</value>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>الطلبات</value>
+  </data>
+  <data name="RPLApplications" xml:space="preserve">
+    <value>طلبات معادلة الشهادات</value>
+  </data>
+  <data name="RPLApprovalRequest" xml:space="preserve">
+    <value>طلب معادلة الشهادات</value>
+  </data>
+  <data name="RPLInformation" xml:space="preserve">
+    <value>معلومات الطلب</value>
+  </data>
+  <data name="RplRequestWizard" xml:space="preserve">
+    <value>طلب معادلة الشهادات</value>
+  </data>
+  <data name="SaveAndContinue" xml:space="preserve">
+    <value>حفظ واستمرار</value>
+  </data>
+  <data name="SaveAndSubmit" xml:space="preserve">
+    <value>حفظ وارسال</value>
+  </data>
+  <data name="SaveAndSubmitConfirm" xml:space="preserve">
+    <value>هل تريد الحفظ وارسال الطلب؟</value>
+  </data>
+  <data name="StartStudyDate" xml:space="preserve">
+    <value>تاريخ الالتحاق</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="UpdatedAt" xml:space="preserve">
+    <value>تاريخ التحديث</value>
+  </data>
+  <data name="UploadYourAttachmentsOptional" xml:space="preserve">
+    <value>ارفق الملفات</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>مشاهدة</value>
+  </data>
+  <data name="WaitingForPayment" xml:space="preserve">
+    <value>بانتظار الدفع</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>تنبيه</value>
+  </data>
+  <data name="YakeenServicesNoDataRetrived" xml:space="preserve">
+    <value>عذرا, لم يتم استرجاع بيانات المتقدم من خدمة يقين.</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>السنة</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>المدينة</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>البلد</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>الاسم الاول</value>
+  </data>
+  <data name="FourthName" xml:space="preserve">
+    <value>اسم العائلة</value>
+  </data>
+  <data name="SecondName" xml:space="preserve">
+    <value>الاسم الثاني</value>
+  </data>
+  <data name="ThirdName" xml:space="preserve">
+    <value>الاسم الثالث</value>
+  </data>
+  <data name="CourseName" xml:space="preserve">
+    <value>اسم الدورة</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>اسم الملف</value>
+  </data>
+  <data name="FileType" xml:space="preserve">
+    <value>نوع الملف</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>الأسئلة الشائعة</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
+  <data name="UsageAndDisclaimer" xml:space="preserve">
+    <value>الإستخدام وإخلاء المسؤولية</value>
+  </data>
+  <data name="Brief" xml:space="preserve">
+    <value>نبذة عن البرنامج</value>
+  </data>
+  <data name="CenterAccountRegistration" xml:space="preserve">
+    <value>تسجيل حساب منشأة تدريبية</value>
+  </data>
+  <data name="CenterName" xml:space="preserve">
+    <value>اسم المنشأة التدريبية بالإنجليزيه</value>
+  </data>
+  <data name="YouMustAgree" xml:space="preserve">
+    <value>يجب الموافقة</value>
+  </data>
+  <data name="CenterNameAR" xml:space="preserve">
+    <value>اسم المنشأة التدريبية</value>
+  </data>
+  <data name="CenterDescription" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="IAgree" xml:space="preserve">
+    <value>أوافق على</value>
+  </data>
+  <data name="TermsOfUse" xml:space="preserve">
+    <value>اتفاقية الاستخدام و سياسة الخصوصية</value>
+  </data>
+  <data name="StatusInvalid" xml:space="preserve">
+    <value>الحالة لا تسمح بهذه العملية</value>
+  </data>
+  <data name="CenterRequest" xml:space="preserve">
+    <value>طلب اعتماد منشأة التدريبية</value>
+  </data>
+  <data name="SubmitCenterRequest" xml:space="preserve">
+    <value>طلب اعتماد مركز جديد</value>
+  </data>
+  <data name="CollegeTypeIsNotCenter" xml:space="preserve">
+    <value>الرجاء التحقق من نوع المركز</value>
+  </data>
+  <data name="CenterInformation" xml:space="preserve">
+    <value>معلومات المنشأة التدريبية</value>
+  </data>
+  <data name="RPLModuleTitle" xml:space="preserve">
+    <value>MOL</value>
+  </data>
+  <data name="CenterContactDetails" xml:space="preserve">
+    <value>معلومات الاتصال</value>
+  </data>
+  <data name="CenterNameEn" xml:space="preserve">
+    <value>اسم المنشأة التدريبية (En)</value>
+  </data>
+  <data name="CenterType" xml:space="preserve">
+    <value>النوع</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="DescriptionAr" xml:space="preserve">
+    <value>الوصف (Ar)</value>
+  </data>
+  <data name="DescriptionEn" xml:space="preserve">
+    <value>الوصف (En)</value>
+  </data>
+  <data name="MobileNo" xml:space="preserve">
+    <value>جوال</value>
+  </data>
+  <data name="OfficialEmail" xml:space="preserve">
+    <value>البريد الالكتروني الرسمي</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="TVTCNum" xml:space="preserve">
+    <value>رقم TVTC</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الالكتروني</value>
+  </data>
+  <data name="FaxNo" xml:space="preserve">
+    <value>فاكس</value>
+  </data>
+  <data name="LoginAccountDetails" xml:space="preserve">
+    <value>معلومات المستخدم</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>الملف</value>
+  </data>
+  <data name="SubmitProfile" xml:space="preserve">
+    <value>ارسال</value>
+  </data>
+  <data name="TelNo" xml:space="preserve">
+    <value>الهاتف</value>
+  </data>
+  <data name="TelNo1" xml:space="preserve">
+    <value>الهاتف 1</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="PasswordValidator" xml:space="preserve">
+    <value>كلمة المرور غير صالحة  . يجب أن تكون كلمة المرور بين 8 و 25 حرفا</value>
+  </data>
+  <data name="CenterDuplicateName" xml:space="preserve">
+    <value>اسم المنشأة التدريبية مكرر ، يرجى اختيار اسم آخر</value>
+  </data>
+  <data name="CenterInvalidCode" xml:space="preserve">
+    <value>ادخل الكود المرسل الى جوالك بشكل صحيح</value>
+  </data>
+  <data name="CenterRegisterSuccess" xml:space="preserve">
+    <value>&lt;b&gt; تم التسجيل! &lt;/ b&gt; لقد سجلت بنجاح حساب مع التفاصيل المرسلة و يمكنك الان تسجيل الدخول</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="CenterSecureCode" xml:space="preserve">
+    <value>رمز التحقق</value>
+  </data>
+  <data name="Resend" xml:space="preserve">
+    <value>اعادة ارسال</value>
+  </data>
+  <data name="Seconds" xml:space="preserve">
+    <value>ثانية</value>
+  </data>
+  <data name="SecureCodeNotification" xml:space="preserve">
+    <value>تم إرسال رمز التفعيل إلى رقم الجوال المسجل</value>
+  </data>
+  <data name="Passport" xml:space="preserve">
+    <value>جواز السفر</value>
+  </data>
+  <data name="CenterGender" xml:space="preserve">
+    <value>نوع المنشأة التدريبية</value>
+  </data>
+  <data name="GenderBoth" xml:space="preserve">
+    <value>رجال و نساء</value>
+  </data>
+  <data name="GenderFemale" xml:space="preserve">
+    <value>نساء</value>
+  </data>
+  <data name="GenderMale" xml:space="preserve">
+    <value>رجال</value>
+  </data>
+  <data name="RequestSavedSuccessfully" xml:space="preserve">
+    <value>تم ارسال طلب مطابقة الشهادة بنجاح</value>
+  </data>
+  <data name="ApplicationQualificationsCollegeAddressIsRequired" xml:space="preserve">
+    <value>عنوان المعهد / الكلية مطلوب</value>
+  </data>
+  <data name="ApplicationQualificationsCollegeNameIsRequired" xml:space="preserve">
+    <value>اسم المعهد / الكلية مطلوب</value>
+  </data>
+  <data name="ApplicationQualificationsNameIsRequired" xml:space="preserve">
+    <value>مسمى الشهادة مطلوب</value>
+  </data>
+  <data name="CandidateQulifications" xml:space="preserve">
+    <value>الشهادات والدورات</value>
+  </data>
+  <data name="RPLRequests" xml:space="preserve">
+    <value>طلبات مطابقة شهادة</value>
+  </data>
+  <data name="AttachmenMaxSize" xml:space="preserve">
+    <value>حجم الملف كبير جدًا. الحد الأقصى لحجم الملف هو 1 ميجا بايت</value>
+  </data>
+  <data name="CertificateLevel" xml:space="preserve">
+    <value>مستوى المطابقة</value>
+  </data>
+  <data name="IssuingCertificate" xml:space="preserve">
+    <value>اصدار شهادة</value>
+  </data>
+  <data name="Certificates" xml:space="preserve">
+    <value>الشهادات</value>
+  </data>
+  <data name="CertificateSavedFaild" xml:space="preserve">
+    <value>عذرا ، الشهادة لم تصدر بعد</value>
+  </data>
+  <data name="CertificateSavedSuccessfully" xml:space="preserve">
+    <value>تم إصدار الشهادة بنجاح</value>
+  </data>
+  <data name="HaveTheCertificate" xml:space="preserve">
+    <value>عذرًا ، لقد تم إصدار هذه الشهادة من قبل لهذا المرشح</value>
+  </data>
+  <data name="SelectCertificatesLevel" xml:space="preserve">
+    <value>الرجاء تحديد مستوى المطابقة</value>
+  </data>
+  <data name="CenterManager" xml:space="preserve">
+    <value>مدير المنشأة التدريبية</value>
+  </data>
+  <data name="GeneralLicenseThreeMonth" xml:space="preserve">
+    <value>هل تم الحصول على الترخيص العام للمنشأة لتقديم التدريب من قبل الإدارة العامة للتدريب الأهلي بالمؤسسة
+العامة للتدريب التقني والمهني. بحيث لا تقل مدة التنفيذ البرامج في الرخصة العامة عن ثلاثة أشهر</value>
+  </data>
+  <data name="PrivateLicenseHealthSafety" xml:space="preserve">
+    <value>هل تم الحصول على الترخيص الخاص بتقديم التدريب للبرامج المستهدفة "السلامة والصحة المهنية"</value>
+  </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>الطاقة الاستيعابية</value>
+  </data>
+  <data name="CenterAddress" xml:space="preserve">
+    <value>عنوان المنشأة التدريبية</value>
+  </data>
+  <data name="UrlValidator" xml:space="preserve">
+    <value>الموقع الإلكتروني غير صحيح</value>
+  </data>
+  <data name="WebAddress" xml:space="preserve">
+    <value>الموقع الإلكتروني</value>
+  </data>
+  <data name="CenterTrainingCourseInfo" xml:space="preserve">
+    <value>بيانات الدورة التدريبية</value>
+  </data>
+  <data name="NumberOfTeachers" xml:space="preserve">
+    <value>عدد المدربين</value>
+  </data>
+  <data name="NumberOfTrainees" xml:space="preserve">
+    <value>عدد المتدربين</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>الفئة المستهدفة</value>
+  </data>
+  <data name="AddNewCourse" xml:space="preserve">
+    <value>اضافة</value>
+  </data>
+  <data name="TrainerQualificationTerms" xml:space="preserve">
+    <value> &lt;ul&gt;
+                &lt;li&gt;
+                    أن يكون المدرب قادر على التواصل الجيد والقراءة والكتابة باللغة العربية.  كما لابد ان يجيد المدرب اللغة الانجليزية للتمكن من شرح المصطلحات الخاصة بالبرنامج التدريبي.
+                &lt;/li&gt;
+                &lt;li&gt;
+                    أن يكون حاصل على:
+                    &lt;ul&gt;
+                        &lt;li&gt;
+                            درجة البكالوريوس في السلامة والصحة المهنية من جامعة معترف بها. ولديه خبرة عمل 3 سنوات في مجال السلامة والصحة المهنية
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                            أو يكون حاصل على مؤهل في السلامة والصحة المهنية من جهة معترف بها دوليا ودرجة بكالوريوس في احد المجالات التقنية او الهندسية من جامعة معترف بها ولديه خبرة عمل 3 سنوات في مجال السلامة والصحة المهنية
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    ان يكون لديه خبرة تعليمية سابقة في قطاع ما بعد الثانوي أو الفني أو المهني. خبرة ثلاث سنوات هي الحد الأدنى.
+                &lt;/li&gt;
+            &lt;/ul&gt;</value>
+  </data>
+  <data name="ForgetPasswordConfirmMsg" xml:space="preserve">
+    <value>فضلا تحقق من الرابط المرسل الى بريدك الإكتروني أو الجوال رقم : xxxxxxx{0} لاعادة تعيين البيانات الشخصية</value>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>الترخيص</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>رجال</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>نساء</value>
+  </data>
+  <data name="CenterTrainingType" xml:space="preserve">
+    <value>البرنامج التدريبي المطلوب</value>
+  </data>
+  <data name="AddNewTrainer" xml:space="preserve">
+    <value>اضافة</value>
+  </data>
+  <data name="CertificateType" xml:space="preserve">
+    <value>نوع الشهادة</value>
+  </data>
+  <data name="CV" xml:space="preserve">
+    <value>ارفاق اعتماد مدرب سلامة وصحة مهنية من المؤسسة العامة للتدريب التقني والمهني</value>
+  </data>
+  <data name="EducationExperience" xml:space="preserve">
+    <value>الخبرات فيما يتعلق بالتدريس</value>
+  </data>
+  <data name="GeneralLicenseAttachment" xml:space="preserve">
+    <value>مرفق الترخيص العام</value>
+  </data>
+  <data name="ManagedUnits" xml:space="preserve">
+    <value>الوحدات المسؤول عنها (إن وجدت)</value>
+  </data>
+  <data name="Msg_ErrorMustAddTrainingCourseInfo" xml:space="preserve">
+    <value>يجب اضافة بيانات الدورة التدريبية</value>
+  </data>
+  <data name="Msg_ErrorMustSelectTrainingCourseGender" xml:space="preserve">
+    <value>يجب اختيار الفئة المستهدفة</value>
+  </data>
+  <data name="PrivateLicenseAttachment" xml:space="preserve">
+    <value>مرفق الترخيص الخاص</value>
+  </data>
+  <data name="RequiredSelectCenterType" xml:space="preserve">
+    <value>يجب اختيار مستوي واحد على الاقل</value>
+  </data>
+  <data name="TeachingExperienceSector" xml:space="preserve">
+    <value>قطاع خبرة التدريس</value>
+  </data>
+  <data name="YearsOfEducationExperience" xml:space="preserve">
+    <value>عدد سنوات الخبرة في التدريس</value>
+  </data>
+  <data name="TrainerQualification" xml:space="preserve">
+    <value>المؤهل</value>
+  </data>
+  <data name="TrainerName" xml:space="preserve">
+    <value>اسم الموظف</value>
+  </data>
+  <data name="TrainerLevel" xml:space="preserve">
+    <value>الدرجة الوظيفية</value>
+  </data>
+  <data name="TrainersQualifications" xml:space="preserve">
+    <value>مؤهلات وخبرات المدربين</value>
+  </data>
+  <data name="LicenseAttachments" xml:space="preserve">
+    <value>مرفقات الترخيص</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>للتواصل والاستفسار</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>مقبول</value>
+  </data>
+  <data name="Bachelor" xml:space="preserve">
+    <value>بكالوريس</value>
+  </data>
+  <data name="Diploma" xml:space="preserve">
+    <value>دبلوم</value>
+  </data>
+  <data name="HigherProfessionalEducation" xml:space="preserve">
+    <value>تعليم مهني عالي</value>
+  </data>
+  <data name="HighSchool" xml:space="preserve">
+    <value>الثانوية العامة</value>
+  </data>
+  <data name="Master" xml:space="preserve">
+    <value>ماجستير</value>
+  </data>
+  <data name="NotApproved" xml:space="preserve">
+    <value>لم يتم القبول</value>
+  </data>
+  <data name="PhD" xml:space="preserve">
+    <value>دكتوراه</value>
+  </data>
+  <data name="QualificationLevel" xml:space="preserve">
+    <value>المستوى الأكاديمي</value>
+  </data>
+  <data name="SentBackToCandidate" xml:space="preserve">
+    <value>إعادة إرسال</value>
+  </data>
+  <data name="UpdateYearsOfExperience" xml:space="preserve">
+    <value>تحديث بيانات سنوات الخبرة</value>
+  </data>
+  <data name="ExperienceRequired" xml:space="preserve">
+    <value>يجب ادخال الخبره</value>
+  </data>
+  <data name="OSHExperienceRequired" xml:space="preserve">
+    <value>يجب ادخال الخبرة فى مجال السلامة والصحة المهنية</value>
+  </data>
+  <data name="WarrantAllInformationCorrect" xml:space="preserve">
+    <value>أقر وأتعهد بأن جميع المعلومات صحيحة</value>
+  </data>
+  <data name="MustWarrantAllInformationCorrect" xml:space="preserve">
+    <value>يجب ان تقر وتتعهد بأن جميع المعلومات صحيحة</value>
+  </data>
+  <data name="AcknowledgmentDataValidity" xml:space="preserve">
+    <value>الإقرار بصحة البيانات</value>
+  </data>
+</root>

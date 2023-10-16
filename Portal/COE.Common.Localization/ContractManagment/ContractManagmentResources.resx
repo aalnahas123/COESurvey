@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Area" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="CollegeName" xml:space="preserve">
+    <value>College Name</value>
+  </data>
+  <data name="CollegeNameAr" xml:space="preserve">
+    <value>College Arabic Name</value>
+  </data>
+  <data name="Colleges" xml:space="preserve">
+    <value>Colleges</value>
+  </data>
+  <data name="CollegeType" xml:space="preserve">
+    <value>College Type</value>
+  </data>
+  <data name="FacebookURL" xml:space="preserve">
+    <value>Facebook URL</value>
+  </data>
+  <data name="FaxNo" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="HasStipend" xml:space="preserve">
+    <value>Has Stipend</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+  <data name="MobileNo1" xml:space="preserve">
+    <value>MobileNo1</value>
+  </data>
+  <data name="MobileNo2" xml:space="preserve">
+    <value>MobileNo2</value>
+  </data>
+  <data name="Msg_ContactDataDublicated" xml:space="preserve">
+    <value>Contact Data Dublicated</value>
+  </data>
+  <data name="Msg_RelatedActiveContract" xml:space="preserve">
+    <value>Can't deactivate college because it has active contract</value>
+  </data>
+  <data name="Msg_RelatedEnrolledStudents" xml:space="preserve">
+    <value>Can't deactivate college because it has enrolled students</value>
+  </data>
+  <data name="Msg_RepresentiveDataDublicated" xml:space="preserve">
+    <value>Representive Data Dublicated</value>
+  </data>
+  <data name="NewCollege" xml:space="preserve">
+    <value>New College</value>
+  </data>
+  <data name="OfficialEmail" xml:space="preserve">
+    <value>Official Email</value>
+  </data>
+  <data name="ProviderID" xml:space="preserve">
+    <value>Provider</value>
+  </data>
+  <data name="RepresentativeEmail" xml:space="preserve">
+    <value>Representative Email</value>
+  </data>
+  <data name="RepresentativeJobTitle" xml:space="preserve">
+    <value>Representative Job Title</value>
+  </data>
+  <data name="RepresentativeMobileNo" xml:space="preserve">
+    <value>Representative Mobile No</value>
+  </data>
+  <data name="RepresentativeName" xml:space="preserve">
+    <value>Representative Name</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SupportEmail" xml:space="preserve">
+    <value>Support Email</value>
+  </data>
+  <data name="TelNo1" xml:space="preserve">
+    <value>TelNo1</value>
+  </data>
+  <data name="TelNo2" xml:space="preserve">
+    <value>TelNo2</value>
+  </data>
+  <data name="TVTCCollegeBankCode" xml:space="preserve">
+    <value>TVTC College Bank Code</value>
+  </data>
+  <data name="TVTCCollegeNameAr" xml:space="preserve">
+    <value>TVTC College Name</value>
+  </data>
+  <data name="TVTCFinanceCollegeCode" xml:space="preserve">
+    <value>TVTC Finance College Code</value>
+  </data>
+  <data name="TVTCSystemCollegeCode" xml:space="preserve">
+    <value>TVTC System College Code</value>
+  </data>
+  <data name="TwitterURL" xml:space="preserve">
+    <value>Twitter URL</value>
+  </data>
+  <data name="WaveID" xml:space="preserve">
+    <value>Wave</value>
+  </data>
+  <data name="WebAddress" xml:space="preserve">
+    <value>Web Address</value>
+  </data>
+  <data name="Msg_RelatedActiveContractDelete" xml:space="preserve">
+    <value>Can't delete college because it has active contract</value>
+  </data>
+  <data name="Msg_RelatedEnrolledStudentsDelete" xml:space="preserve">
+    <value>Can't delete college because it has enrolled students</value>
+  </data>
+  <data name="Title_CollegeInformation" xml:space="preserve">
+    <value>College Information</value>
+  </data>
+  <data name="Title_ContactInformation" xml:space="preserve">
+    <value>Contact Information</value>
+  </data>
+  <data name="Title_CreateCollege" xml:space="preserve">
+    <value>Create College</value>
+  </data>
+  <data name="Title_RepresentativeInformation" xml:space="preserve">
+    <value>Representative Information</value>
+  </data>
+  <data name="AcademicYearsDetails" xml:space="preserve">
+    <value>Academic Years Details</value>
+  </data>
+  <data name="AcademicYearsSettings" xml:space="preserve">
+    <value>Academic Years Settings</value>
+  </data>
+  <data name="BasicContractDetails" xml:space="preserve">
+    <value>Basic Contract Details</value>
+  </data>
+  <data name="ProvidersAndCollegesDetails" xml:space="preserve">
+    <value>Providers And Colleges Details</value>
+  </data>
+  <data name="InvalidTelNumber" xml:space="preserve">
+    <value>Invalid Telephone Number</value>
+  </data>
+  <data name="Msg_CollegeDublicated" xml:space="preserve">
+    <value>College Name Dublicated</value>
+  </data>
+  <data name="UnitCode" xml:space="preserve">
+    <value>Unit Code</value>
+  </data>
+  <data name="UnitName" xml:space="preserve">
+    <value>Unit Name</value>
+  </data>
+  <data name="UnitType" xml:space="preserve">
+    <value>Unit Type</value>
+  </data>
+  <data name="RecommendedLearningHours" xml:space="preserve">
+    <value>Recommended Learning Hours</value>
+  </data>
+</root>

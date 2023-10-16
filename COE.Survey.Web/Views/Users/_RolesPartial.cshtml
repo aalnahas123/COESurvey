@@ -1,0 +1,65 @@
+@model IEnumerable<COE.Common.Model.AspNetRoles>
+@using DevExpress.Data
+@using DevExpress.Data.Linq
+@using DevExpress.Data.Linq.Helpers
+@using DevExpress.Data.Filtering
+@using System.Web.UI.WebControls
+@using COE.Security.Web.Helpers
+@using DevExpress.Web.Mvc
+@using DevExpress.Web.ASPxTreeList
+
+@*@Html.DevExpress().GridView(settings =>
+    {
+        GridViewFeaturesHelper.SetupGlobalGridViewBehavior(settings);
+
+        settings.Name = "GridView1";
+        settings.CommandColumn.ShowSelectCheckbox = true;
+        settings.CommandColumn.Width = Unit.Pixel(100);
+        settings.SettingsPager.Visible = false;
+        settings.SettingsPager.AlwaysShowPager = false;
+        settings.Settings.GridLines = GridLines.None;
+        settings.Settings.ShowHeaderFilterButton = false;
+        settings.Settings.ShowColumnHeaders = false;
+
+        settings.KeyFieldName = "Id";
+
+        settings.Columns.Add("Name");
+
+
+    }).Bind(Model).GetHtml()*@
+@foreach (var item in Model)
+{
+
+}
+@*<script type="text/javascript">
+            function OnChangeDemoOptions() {
+                $('form').submit();
+            }
+            function OnBeginCallback(s, e) {
+                e.customArgs = MVCxClientUtils.GetSerializedEditorValuesInContainer("options");
+            }
+    </script>
+    @Html.DevExpress().TreeList(settings =>
+    {
+        settings.Name = "tree1";
+        settings.Theme = "Material";
+
+        settings.SettingsBehavior.AutoExpandAllNodes = true;
+        settings.SettingsBehavior.ExpandCollapseAction = TreeListExpandCollapseAction.NodeDblClick;
+
+        settings.SettingsCookies.Enabled = true;
+        settings.SettingsCookies.StoreExpandedNodes = true;
+        settings.SettingsCookies.StoreSelection = true;
+
+        settings.SettingsSelection.Enabled = true;
+        settings.SettingsSelection.Recursive = true;
+        settings.SettingsSelection.AllowSelectAll = true;
+        //settings.ClientSideEvents.SelectionChanged = "function(s, e) { s.PerformCallback(); }";
+
+        settings.KeyFieldName = "Id";
+
+        settings.Columns.Add("Name");
+
+
+    }).Bind(Model).GetHtml()*@
+

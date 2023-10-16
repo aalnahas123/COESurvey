@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcademicYearTerm_AcademicYearID" xml:space="preserve">
+    <value>Academic Year</value>
+  </data>
+  <data name="AcademicYearTerm_EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="AcademicYearTerm_StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="AcademicYearTerm_TermOrdering" xml:space="preserve">
+    <value>Term Ordering</value>
+  </data>
+  <data name="AcademicYearTerm_TermTypeID" xml:space="preserve">
+    <value>Term Type</value>
+  </data>
+  <data name="AcademicYear_EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="AcademicYear_StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="AspNetUsers_FullName" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="AspNetUsers_NationalId" xml:space="preserve">
+    <value>National Id</value>
+  </data>
+  <data name="Batch_BatchCode" xml:space="preserve">
+    <value>Batch Code</value>
+  </data>
+  <data name="Batch_BatchName" xml:space="preserve">
+    <value>Batch Name</value>
+  </data>
+  <data name="Batch_CollegeSpecializationID" xml:space="preserve">
+    <value>College Specialization</value>
+  </data>
+  <data name="Batch_GraduatedTermID" xml:space="preserve">
+    <value>Graduated Term</value>
+  </data>
+  <data name="Batch_GraduatedYearID" xml:space="preserve">
+    <value>Graduated Academic Year</value>
+  </data>
+  <data name="Batch_IntakeTermID" xml:space="preserve">
+    <value>Intake Term</value>
+  </data>
+  <data name="Batch_IntakeYearID" xml:space="preserve">
+    <value>Intake Academic Year</value>
+  </data>
+  <data name="Batch_ProgramID" xml:space="preserve">
+    <value>Program Type</value>
+  </data>
+  <data name="Batch_SubProgramID" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="Bond_BankID" xml:space="preserve">
+    <value>Bank</value>
+  </data>
+  <data name="Bond_ContractID" xml:space="preserve">
+    <value>Contract</value>
+  </data>
+  <data name="Bond_ExpiryDate" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="Bond_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Bond_SubmissionDate" xml:space="preserve">
+    <value>Submission Date</value>
+  </data>
+  <data name="Bond_TypeID" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Bond_Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="College_Name" xml:space="preserve">
+    <value>College Name</value>
+  </data>
+  <data name="College_NameAr" xml:space="preserve">
+    <value>College Arabic Name</value>
+  </data>
+  <data name="College_Wave" xml:space="preserve">
+    <value>Wave</value>
+  </data>
+  <data name="Common_CreatedBy" xml:space="preserve">
+    <value>Created By</value>
+  </data>
+  <data name="Common_CreatedOn" xml:space="preserve">
+    <value>Created On</value>
+  </data>
+  <data name="Common_UpdatedBy" xml:space="preserve">
+    <value>Updated By</value>
+  </data>
+  <data name="Common_UpdatedOn" xml:space="preserve">
+    <value>Updated On</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_AcademicYearID" xml:space="preserve">
+    <value>Academic Year</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_Assessment" xml:space="preserve">
+    <value>Assessment</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_BasePriceForAssociateStudent" xml:space="preserve">
+    <value>Base Price For Associate Student</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_BasePriceForDiplomaStudent" xml:space="preserve">
+    <value>Base Price For Diploma Student</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_BasePriceForFoundationStudent" xml:space="preserve">
+    <value>Base Price For Foundation Student</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_CollegeID" xml:space="preserve">
+    <value>College</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_ContractID" xml:space="preserve">
+    <value>Contract</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_Employability" xml:space="preserve">
+    <value>Employability</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_FoundationStudentToTeacherRatio" xml:space="preserve">
+    <value>Foundation Student To Teacher Ratio</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_InstitutionalReview" xml:space="preserve">
+    <value>Institutional Review</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_PerformancePrice" xml:space="preserve">
+    <value>Performance Price</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_PracticalStudentToTeacherRatio" xml:space="preserve">
+    <value>Practical Student To Teacher Ratio</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_Saudization" xml:space="preserve">
+    <value>Saudization</value>
+  </data>
+  <data name="ContractCollegeAcademicYear_VocationalStudentToTeacherRatio" xml:space="preserve">
+    <value>Vocational Student To Teacher Ratio</value>
+  </data>
+  <data name="ContractTermPaymentSetting_AcademicYearTermID" xml:space="preserve">
+    <value>Term</value>
+  </data>
+  <data name="ContractTermPaymentSetting_ContractCollegeAcademicYearID" xml:space="preserve">
+    <value>ContractCollegeAcademicYearID</value>
+  </data>
+  <data name="ContractTermPaymentSetting_EnrollmentBeforeAttrition" xml:space="preserve">
+    <value>Enrollment Before Attrition</value>
+  </data>
+  <data name="ContractTermPaymentSetting_ExpectedAttritionPercentage" xml:space="preserve">
+    <value>Expected Attrition Percentage</value>
+  </data>
+  <data name="ContractTermPaymentSetting_IsDroppedOutStudentsIncludedInPayment" xml:space="preserve">
+    <value>Include Dropped Out Students</value>
+  </data>
+  <data name="ContractTermPaymentSetting_MinimumGuarantee" xml:space="preserve">
+    <value>Minimum Guarantee</value>
+  </data>
+  <data name="ContractTermPaymentSetting_PlannedStudentNo" xml:space="preserve">
+    <value>Planned Student No</value>
+  </data>
+  <data name="ContractTermPaymentSetting_RequiredHoursPerStudent" xml:space="preserve">
+    <value>Required Hours Per Student</value>
+  </data>
+  <data name="Contract_ContractTypeID" xml:space="preserve">
+    <value>Contract Type</value>
+  </data>
+  <data name="Contract_EffectiveDate" xml:space="preserve">
+    <value>Effective Date</value>
+  </data>
+  <data name="Contract_EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="Contract_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Contract_ProviderID" xml:space="preserve">
+    <value>Provider</value>
+  </data>
+  <data name="Contract_ReferenceNo" xml:space="preserve">
+    <value>Reference Number</value>
+  </data>
+  <data name="Contract_SigningDate" xml:space="preserve">
+    <value>Signing Date</value>
+  </data>
+  <data name="Contract_StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="Contract_TermTypeID" xml:space="preserve">
+    <value>TermType</value>
+  </data>
+  <data name="Contract_Value" xml:space="preserve">
+    <value>Value (SR)</value>
+  </data>
+  <data name="Contract_WaveID" xml:space="preserve">
+    <value>Wave</value>
+  </data>
+  <data name="DismissRequest_DismissRequestReason" xml:space="preserve">
+    <value>Dismiss Request Reasons</value>
+  </data>
+  <data name="EnrollmentStatisticType_Name" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="EnrollmentStatistic_DeanEmail" xml:space="preserve">
+    <value>Dean's Email</value>
+  </data>
+  <data name="EnrollmentStatistic_DeanMobileNumber" xml:space="preserve">
+    <value>Dean's Mobile Number</value>
+  </data>
+  <data name="EnrollmentStatistic_DeanName" xml:space="preserve">
+    <value>Dean's Name</value>
+  </data>
+  <data name="EnrollmentStatistic_NumberOfAdminStaff" xml:space="preserve">
+    <value>Admin Staff</value>
+  </data>
+  <data name="EnrollmentStatistic_NumberOfFoundationTeachers" xml:space="preserve">
+    <value>Foundation Teachers</value>
+  </data>
+  <data name="EnrollmentStatistic_NumberOfTechnicalTeachers" xml:space="preserve">
+    <value>Technical Teachers</value>
+  </data>
+  <data name="Level_Name" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="Request_RequestNumber" xml:space="preserve">
+    <value>Request Number</value>
+  </data>
+  <data name="SpecializationStatistic_NumberOfContinuing" xml:space="preserve">
+    <value>Continuing</value>
+  </data>
+  <data name="SpecializationStatistic_NumberOfNew" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="SpecializationStatistic_NumberOfRepeats" xml:space="preserve">
+    <value>Repeats</value>
+  </data>
+  <data name="Specialization_Name" xml:space="preserve">
+    <value>Specialization Name</value>
+  </data>
+  <data name="Specialization_NameAr" xml:space="preserve">
+    <value>Specialization Name</value>
+  </data>
+  <data name="Stage_Name" xml:space="preserve">
+    <value>Stage Name</value>
+  </data>
+  <data name="Stage_NameAr" xml:space="preserve">
+    <value>Stage Name</value>
+  </data>
+  <data name="Status_Name" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Workflow_NameAr" xml:space="preserve">
+    <value>Workflow Type</value>
+  </data>
+  <data name="Workflow_NameEn" xml:space="preserve">
+    <value>Workflow Type </value>
+  </data>
+</root>

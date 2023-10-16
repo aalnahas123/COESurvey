@@ -1,0 +1,154 @@
+﻿@using COE.Common.Model;
+
+@model Survey
+
+@{
+    ViewBag.Title = "Publish Survey";
+    List<SurveyModules> modules = ViewBag.Modules;
+}
+
+<title>Use options to customize the Survey Editor, Survey Builder Example</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://unpkg.com/jquery"></script>
+<script src="https://surveyjs.azureedge.net/1.0.53/survey.jquery.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+
+<style>
+    .svd_q_selected .svda-add-new-rating-item {
+        display: none !important;
+    }
+
+    .modal-dialog {
+        left: auto !important;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <form style="margin-top: 25px;">
+            <h3>Publish Survey</h3>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Survey Data</h4>
+                    <div class="form-group">
+                        <label for="sel1">Select Module</label>
+                        <select class="form-control" id="ddlModules">
+                            @if (modules != null)
+                            {
+                                <option value="-1">---Select---</option>
+                                for (int i = 0; i < modules.Count; i++)
+                                {
+                                    <option value="@modules[i].ID">@modules[i].ModuleTitleEn</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" id="sTitle" placeholder="Enter Survey Title" value="@Model.SurveyTitle">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" id="txtDesc" placeholder="Enter Survey Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="mt-checkbox">
+                            <input type="checkbox" id="cBoxAnon" />Allow anonymous users to participate
+                            <span></span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="mt-checkbox">
+                            <input type="checkbox" id="cBoxMult" />Allow multiple answers for each user
+                            <span></span>
+                        </label>
+                    </div>
+                    <div class="form-group" style="width: 285px;">
+                        <label>Duration</label>
+                        <div class="input-group input-daterange">
+                            <input type="text" class="form-control" id="txtStartDate">
+                            <div class="input-group-addon">to</div>
+                            <input type="text" class="form-control" id="txtEndDate">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Survey Review</h4>
+                    <div id="surveyContainer">
+                        <div id="surveyElement"></div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="return UploadTemplate()">Publish</button>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var text = '@Model.SurveyText';
+    text = text.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "");
+    text = text.replace(/&amp;amp;#39;/g, '\\\\\'').replace(/\\/g, "");
+    text = text.replace(/&#39;/g, '\\\\\'').replace(/\\/g, "");
+    var Surveyjson = text.replace(/&#39;/g, '\'').replace(/&quot;/g, '\\"').replace(/\\/g, "");
+    Survey.StylesManager.applyTheme("bootstrap");
+    Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+    window.survey = new Survey.Model(Surveyjson);
+    //survey.mode = 'display';
+    $("#surveyElement").Survey({ model: survey });
+
+    $(window).on('load', function () {
+        $('.svd_commercial_container').remove();
+        $("#svd-upload").show();
+
+        $('.input-daterange input').each(function () {
+            $(this).datepicker({
+                format: 'dd/mm/yyyy',
+                startDate: '0d'
+            }).on('changeDate', function (e) {
+                $('#txtEndDate').datepicker('setStartDate', $('#txtStartDate').val());
+            });
+        });
+
+    });
+
+
+
+    function UploadTemplate() {
+
+        var selectedItems = new Array();
+
+        selectedItems.push($('#sTitle').val());
+        selectedItems.push($('#txtDesc').val());
+        selectedItems.push($('#txtStartDate').val());
+        selectedItems.push($('#txtEndDate').val());
+        selectedItems.push($('#ddlModules').val());
+        selectedItems.push('@Model.ID');
+        selectedItems.push($('#cBoxAnon').is(":checked"));
+        selectedItems.push($('#cBoxMult').is(":checked"));
+
+        $.ajax({
+            url: '@Url.Action("PublishSurvey", "Surveys")',
+            type: 'POST',
+            dataType: 'JSON',
+            data: { surveyItems: selectedItems },
+            success: function (data) {
+                if (data.success == true) {
+                    window.location.href = '@Url.Action("Index", "Surveys")';
+                }
+                else {
+                    $util.hideOverlay()
+                    alert(data.errorMessage)
+                }
+            },
+            error: function (data) {
+                $util.hideOverlay()
+                alert('Error Occured');
+            }
+        });
+
+        return false;
+    }
+
+</script>

@@ -1,0 +1,47 @@
+﻿@using Commons.Framework.Web.Mvc.Helpers
+@using COE.Common.Localization
+
+@model COE.Enrollment.Model.ViewModels.ResendConfirmEmailViewModel
+
+@{
+    ViewBag.Title = UsersMgmtResources.ResendConfirmEmailLink;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    if (Model != null)
+    {
+        @Html.AntiForgeryToken()
+        <div class="panel panel-default panel-green">
+            <div class="panel-heading">@ViewBag.Title</div>
+            <div class="panel-body clearfix">
+
+                <div class="col-md-6">
+                    <div class="form-group form-group-lg">
+                        @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control text-left", @dir = "ltr" })
+                        @Html.ValidationMessageFor(model => model.Email, string.Empty, new { @class = "text-danger help-block" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        
+                        @Html.CaptchaFor(model => model.Captcha)
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6"> </div>
+            <div class="col-xs-6 text-left">
+                <input type="submit" class="btn btn-default btn-lg btn-green" value="@SharedResources.Send"/>
+                <a href="/Account/Login/" class="btn btn-green btn-lg">@SharedResources.Back</a>
+            </div>
+        </div>
+    }
+}
