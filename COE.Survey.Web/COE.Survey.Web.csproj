@@ -335,6 +335,7 @@
     <Content Include="Views\Users\_UserColleges.cshtml" />
     <Content Include="Views\Users\_UserRole.cshtml" />
     <Content Include="Views\Users\_Users.cshtml" />
+    <Content Include="Views\Surveys\Dashboard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -380,6 +381,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CustomFileUploader.cs" />
+    <Compile Include="Helpers\JsonHelper.cs" />
     <Compile Include="Helpers\LookupsHelper.cs" />
     <Compile Include="Helpers\LookupValues\AspNetRoles.cs" />
     <Compile Include="Helpers\LookupValues\Menu.cs" />
@@ -394,6 +397,7 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Entities.cs" />
+    <Compile Include="ViewModels\SurveyAllAnswers.cs" />
     <Compile Include="ViewModels\SurveysViewModel.cs" />
   </ItemGroup>
   <ItemGroup />

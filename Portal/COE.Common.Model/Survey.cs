@@ -37,7 +37,9 @@ namespace COE.Common.Model
         public Nullable<bool> AllowAnonymous { get; set; }
         public Nullable<bool> AllowMultiple { get; set; }
         public bool IsRTL { get; set; }
-    
+
+        public string ImageUrl { get; set; }
+
         public virtual SurveyModules SurveyModules { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SurveyAnswer> SurveyAnswer { get; set; }

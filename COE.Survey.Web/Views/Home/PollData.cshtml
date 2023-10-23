@@ -1,0 +1,261 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/survey-jquery@1.9.106/survey.jquery.min.js"></script>
+<script src="https://unpkg.com/wordcloud@1.1.0/src/wordcloud2.js"></script>
+<script src="https://unpkg.com/plotly.js-dist-min/plotly.min.js"></script>
+<script src="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.min.js"></script>
+
+<style>
+  
+
+    .sa-poll-table {
+        width: 100%;
+        font-family: SegoeUI, Arial, sans-serif;
+        font-size: 14px;
+        color: #404040;
+        /* border-collapse: collapse; */
+        background-color: #f7f7f7;
+    }
+
+    .sa-poll-table__cell {
+        padding: 8px;
+        min-height: 34px;
+    }
+
+    .sa-poll-table__cell-value {
+        text-align: right;
+        min-width: 30px;
+    }
+
+    .sa-poll-table__cell-header {
+        font-weight: bold;
+    }
+
+    .sa-poll-sparkline {
+        min-width: 100px;
+        height: 24px;
+        border: 1px solid #1ab394;
+        ;
+        border-radius: 5px;
+    }
+
+    .sa-poll-sparkline-value {
+        height: 100%;
+        background-color: #1ab394;
+        ;
+    }
+
+    .data-loading-indicator-panel {
+        width: 100%;
+        height: 400px;
+    }
+
+    .data-loading-indicator {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        left: calc((100% - 64px)/ 2);
+        top: calc((100% - 64px)/ 2);
+        animation: data-loading-indicator-spinner 1s infinite linear;
+    }
+
+    @@keyframes data-loading-indicator-spinner {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(359deg);
+        }
+    }
+</style>
+
+
+<div>
+    @* class="text-center"*@
+    <h1 class="display-4">Dashboard</h1>
+
+
+    <div id="loadingIndicator" class="data-loading-indicator-panel">
+        <div class="data-loading-indicator">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_17928_11482)">
+                    <path d="M32 64C14.36 64 0 49.65 0 32C0 14.35 14.36 0 32 0C49.64 0 64 14.35 64 32C64 49.65 49.64 64 32 64ZM32 4C16.56 4 4 16.56 4 32C4 47.44 16.56 60 32 60C47.44 60 60 47.44 60 32C60 16.56 47.44 4 32 4Z" fill="#E5E5E5" />
+                    <path d="M53.2101 55.2104C52.7001 55.2104 52.1901 55.0104 51.8001 54.6204C51.0201 53.8404 51.0201 52.5704 51.8001 51.7904C57.0901 46.5004 60.0001 39.4704 60.0001 31.9904C60.0001 24.5104 57.0901 17.4804 51.8001 12.1904C51.0201 11.4104 51.0201 10.1404 51.8001 9.36039C52.5801 8.58039 53.8501 8.58039 54.6301 9.36039C60.6701 15.4004 64.0001 23.4404 64.0001 31.9904C64.0001 40.5404 60.6701 48.5704 54.6301 54.6204C54.2401 55.0104 53.7301 55.2104 53.2201 55.2104H53.2101Z" fill="#19B394" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_17928_11482">
+                        <rect width="64" height="64" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </div>
+    </div>
+
+
+    <div id="surveyDashboardContainer"></div>
+
+
+
+</div>
+
+
+
+<script type="text/javascript">
+
+    var selectedLang = getLanguage();
+   
+
+    const json = {
+        "pages": [
+            {
+                "name": "page_info",
+                "elements": [
+                    {
+                        "type": "radiogroup",
+                        "name": "organization_type",
+                        "title": "Which of the following best describes you or your organization?",
+                        "showOtherItem": true,
+                        "choices": [
+                            {
+                                "value": "ISV",
+                                "text": "ISV (building commercial/shrink wrapped software)"
+                            },
+                            {
+                                "value": "Consulting",
+                                "text": "Software consulting firm (provide development services to other organizations)"
+                            },
+                            {
+                                "value": "Custom",
+                                "text": "Custom software development (as a freelancer/contractor)"
+                            },
+                            {
+                                "value": "In-house",
+                                "text": "In-house software development"
+                            },
+                            {
+                                "value": "Hobbyist",
+                                "text": "Hobbyist (develop apps for personal use)"
+                            }
+                        ],
+                        "colCount": 2
+                    }
+                ]
+            }
+        ]
+    };
+
+    const dataFromServer = [
+        { organization_type: "In-house" },
+        { organization_type: "other" },
+        { organization_type: "Hobbyist" },
+        { organization_type: "Hobbyist" },
+        { organization_type: "Hobbyist" },
+        { organization_type: "Consulting" },
+        { organization_type: "In-house" },
+        { organization_type: "Consulting" },
+        { organization_type: "Hobbyist" },
+        { organization_type: "Hobbyist" },
+        { organization_type: "ISV" },
+        { organization_type: "ISV" },
+        { organization_type: "Custom" },
+        { organization_type: "ISV" },
+        { organization_type: "Custom" }
+    ];
+
+
+    // Custom visualizer for poll results
+    function PollVisualizer(question, data, options) {
+
+        var renderContent = function (contentContainer, visualizer) {
+            var answersData = visualizer.getAnswersData();
+            var datasets = answersData.datasets;
+            var labels = answersData.labels;
+            var colors = answersData.colors;
+            var texts = answersData.texts;
+            var seriesLabels = answersData.seriesLabels;
+            var hasSeries = seriesLabels.length > 1;
+
+            var emptyTextNode = SurveyAnalytics.DocumentHelper.createElement("p", "", {
+                innerHTML: SurveyAnalytics.localization.getString("noResults"),
+            });
+
+            if (datasets.length === 0 || datasets[0].length === 0) {
+                contentContainer.appendChild(emptyTextNode);
+                return;
+            }
+
+            datasets.forEach(function (data, idx) {
+                var tableNode = (
+                    SurveyAnalytics.DocumentHelper.createElement("table", "sa-poll-table")
+                );
+
+                tableNode.style.backgroundColor = visualizer.backgroundColor;
+
+                data.forEach(function (rowData, index) {
+                    var row = SurveyAnalytics.DocumentHelper.createElement("tr");
+                    var labelCell = SurveyAnalytics.DocumentHelper.createElement("td", "sa-poll-table__cell", {
+                        textContent: labels[index] + " - " + texts[idx][index] + "%" + " (" + rowData + " votes)",
+                    });
+                    row.appendChild(labelCell);
+                    tableNode.appendChild(row);
+
+                    row = SurveyAnalytics.DocumentHelper.createElement("tr");
+                    var sparklineCell = SurveyAnalytics.DocumentHelper.createElement("td", "sa-poll-table__cell");
+                    sparklineCell.colspan = "3";
+                    var outerBar = SurveyAnalytics.DocumentHelper.createElement("div", "sa-poll-sparkline");
+                    var innerBar = SurveyAnalytics.DocumentHelper.createElement("div", "sa-poll-sparkline-value");
+                    innerBar.style.width = texts[idx][index] + "%";
+                    outerBar.appendChild(innerBar);
+                    sparklineCell.appendChild(outerBar);
+                    row.appendChild(sparklineCell);
+                    tableNode.appendChild(row);
+                });
+
+                contentContainer.appendChild(tableNode);
+            });
+        };
+        var visualizer = new SurveyAnalytics.SelectBase(question, data, {
+            renderContent: renderContent, dataProvider: options.dataProvider
+        }, "pollVisualizer");
+        visualizer.answersOrder = "asc";
+        visualizer.showPercentages = true;
+        return visualizer;
+    }
+
+    // Unregister default radiogroup visualizer
+    SurveyAnalytics.VisualizationManager.unregisterVisualizer("radiogroup", SurveyAnalytics.SelectBasePlotly);
+
+    // Register custom visualizer for the given question type
+    SurveyAnalytics.VisualizationManager.registerVisualizer("radiogroup", PollVisualizer);
+
+    // Set localized title of this visualizer
+    SurveyAnalytics.localization.locales["en"]["visualizer_pollVisualizer"] = "Poll visualizer";
+    SurveyAnalytics.localization.currentLocale = selectedLang;
+
+    const survey = new Survey.Model(json);
+    //Imitate an asynchronous call to get data from a server
+    setTimeout(() => {
+
+        const vizPanel = new SurveyAnalytics.VisualizationPanel(
+            survey.getAllQuestions(),
+            dataFromServer,
+            { allowDynamicLayout: false, allowHideQuestions: false }
+        );
+
+
+        document.getElementById("loadingIndicator").style.display = "none";
+        vizPanel.render("surveyDashboardContainer");
+    }, 1000);
+
+    Survey.setLicenseKey(
+        "ZDdhYjZhM2YtYTZjZi00MTI1LWFmYjMtMWI5M2RkYjQ0NDgwOzE9MjAyNC0wOC0zMSwyPTIwMjQtMDgtMzEsND0yMDI0LTA4LTMx"
+    );
+
+
+
+</script>

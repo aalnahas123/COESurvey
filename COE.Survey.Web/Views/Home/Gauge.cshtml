@@ -1,0 +1,237 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/survey-jquery@1.9.106/survey.jquery.min.js"></script>
+<script src="https://unpkg.com/wordcloud@1.1.0/src/wordcloud2.js"></script>
+<script src="https://unpkg.com/plotly.js-dist-min/plotly.min.js"></script>
+<script src="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.min.js"></script>
+
+<style>
+    /* You can add your custom css here.*/
+    .data-loading-indicator-panel {
+        width: 100%;
+        height: 400px;
+    }
+
+    .data-loading-indicator {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        left: calc((100% - 64px)/ 2);
+        top: calc((100% - 64px)/ 2);
+        animation: data-loading-indicator-spinner 1s infinite linear;
+    }
+
+    @@keyframes data-loading-indicator-spinner {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(359deg);
+        }
+    }
+
+</style>
+
+
+<div>
+    @* class="text-center"*@
+    <h1 class="display-4">Gauge Chart</h1>
+
+
+    <div id="loadingIndicator" class="data-loading-indicator-panel">
+        <div class="data-loading-indicator">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_17928_11482)">
+                    <path d="M32 64C14.36 64 0 49.65 0 32C0 14.35 14.36 0 32 0C49.64 0 64 14.35 64 32C64 49.65 49.64 64 32 64ZM32 4C16.56 4 4 16.56 4 32C4 47.44 16.56 60 32 60C47.44 60 60 47.44 60 32C60 16.56 47.44 4 32 4Z" fill="#E5E5E5" />
+                    <path d="M53.2101 55.2104C52.7001 55.2104 52.1901 55.0104 51.8001 54.6204C51.0201 53.8404 51.0201 52.5704 51.8001 51.7904C57.0901 46.5004 60.0001 39.4704 60.0001 31.9904C60.0001 24.5104 57.0901 17.4804 51.8001 12.1904C51.0201 11.4104 51.0201 10.1404 51.8001 9.36039C52.5801 8.58039 53.8501 8.58039 54.6301 9.36039C60.6701 15.4004 64.0001 23.4404 64.0001 31.9904C64.0001 40.5404 60.6701 48.5704 54.6301 54.6204C54.2401 55.0104 53.7301 55.2104 53.2201 55.2104H53.2101Z" fill="#19B394" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_17928_11482">
+                        <rect width="64" height="64" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </div>
+    </div>
+    <div id="surveyDashboardContainer"></div>
+
+
+
+</div>
+
+
+
+<script type="text/javascript">
+
+    var selectedLang = getLanguage();
+   
+
+
+    const json = {
+  "elements": [
+    {
+      "type": "rating",
+      "name": "nps_score",
+      "title": "How likely are you to recommend SurveyJS to a friend or colleague?",
+      "isRequired": true,
+      "rateMin": 0,
+      "rateMax": 10,
+      "minRateDescription": "Most unlikely",
+      "maxRateDescription": "Most likely"
+    }
+  ]
+};
+
+    const dataUrl = "https://api.surveyjs.io/private/Surveys/getSurveyNPCResults/";
+    SurveyAnalytics.VisualizationManager.unregisterVisualizer("rating", SurveyAnalytics.HistogramPlotly);
+
+    function generateValues(maxValue, stepsCount) {
+        const values = [];
+
+        for (let i = 0; i < stepsCount; i++) {
+            values.push(maxValue / stepsCount);
+        }
+
+        values.push(maxValue);
+
+        return values;
+    }
+
+    function generateText(maxValue, minValue, stepsCount) {
+        return [
+            "very height (" + maxValue + ")",
+            "height",
+            "medium",
+            "low",
+            "very low (" + minValue + ")",
+        ];
+    }
+
+    function getCustomData(model, level, arrowColor) {
+        const question = model.question;
+        const name = model.name;
+
+        const maxValue = question.rateMax;
+        const minValue = question.rateMin;
+        const stepsCount = SurveyAnalytics.GaugePlotly.stepsCount;
+        const values = generateValues(maxValue, stepsCount);
+        const text = generateText(maxValue, minValue, stepsCount);
+        const colors = model.generateColors(maxValue, minValue, stepsCount);
+
+        return [
+            {
+                type: "scatter",
+                x: [0],
+                y: [0],
+                marker: {
+                    size: 28,
+                    color: arrowColor,
+                },
+                name: name,
+                text: level,
+                showlegend: false,
+                hoverinfo: "text+name",
+            },
+            {
+                values: values,
+                rotation: 90,
+                text: text,
+                textinfo: "text",
+                textposition: "inside",
+                // textfont: {
+                //   size: 20
+                // },
+                marker: {
+                    colors: colors,
+                },
+                hoverinfo: "skip",
+                hole: 0.5,
+                type: "pie",
+                showlegend: false,
+            },
+        ];
+    }
+
+    function getCustomLayout(model, level, arrowColor) {
+        const maxValue = model.question.rateMax;
+        const degrees = maxValue - level;
+        const radius = 0.5;
+        const radians = (degrees * Math.PI) / maxValue;
+        const x = radius * Math.cos(radians);
+        const y = radius * Math.sin(radians);
+
+        // Path: may have to change to create a better triangle
+        const mainPath = "M -.0 -0.025 L .0 0.025 L ",
+            pathX = String(x),
+            space = " ",
+            pathY = String(y),
+            pathEnd = " Z";
+        const path = mainPath.concat(pathX, space, pathY, pathEnd);
+
+        return {
+            shapes: [
+                {
+                    type: "path",
+                    path: path,
+                    fillcolor: arrowColor,
+                    line: {
+                        color: arrowColor,
+                    },
+                },
+            ],
+            title: Math.round(level),
+            height: 600,
+            width: 600,
+            xaxis: {
+                zeroline: false,
+                showticklabels: false,
+                showgrid: false,
+                range: [-1, 1],
+            },
+            yaxis: {
+                zeroline: false,
+                showticklabels: false,
+                showgrid: false,
+                range: [-1, 1],
+            },
+            plot_bgcolor: model.backgroundColor,
+            paper_bgcolor: model.backgroundColor,
+        };
+    }
+
+    SurveyAnalytics.PlotlySetup.onPlotCreating.add((model, options) => {
+        if (model.chartType !== "gauge") return;
+        const arrowColor = "#4e6198";
+        const level = options.data[0].value;
+        options.data = getCustomData(model, level, arrowColor);
+        options.layout = getCustomLayout(model, level, arrowColor);
+    });
+
+     SurveyAnalytics.localization.currentLocale = selectedLang;
+
+    const survey = new Survey.Model(json);
+    fetch(dataUrl).then(response => response.json()).then(data => {
+        const dataFromServer = data.Data;
+
+        const vizPanel = new SurveyAnalytics.VisualizationPanel(
+            survey.getAllQuestions(),
+            dataFromServer
+        );
+
+
+        document.getElementById("loadingIndicator").style.display = "none";
+        vizPanel.render("surveyDashboardContainer");
+    });
+
+    Survey.setLicenseKey(
+        "ZDdhYjZhM2YtYTZjZi00MTI1LWFmYjMtMWI5M2RkYjQ0NDgwOzE9MjAyNC0wOC0zMSwyPTIwMjQtMDgtMzEsND0yMDI0LTA4LTMx"
+    );
+
+
+
+</script>

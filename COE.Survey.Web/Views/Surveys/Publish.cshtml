@@ -7,11 +7,18 @@
     List<SurveyModules> modules = ViewBag.Modules;
 }
 
-<title>Use options to customize the Survey Editor, Survey Builder Example</title>
+<title>Publishing @ViewBag.Title</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://unpkg.com/jquery"></script>
-<script src="https://surveyjs.azureedge.net/1.0.53/survey.jquery.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+<script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/survey-jquery@1.9.113/survey.jquery.min.js"></script>
+<script src="https://unpkg.com/survey-jquery@1.9.113/themes/index.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/survey-jquery@1.9.113/defaultV2.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+
+
 
 <style>
     .svd_q_selected .svda-add-new-rating-item {
@@ -23,67 +30,65 @@
     }
 </style>
 
-<div class="container">
-    <div class="row">
-        <form style="margin-top: 25px;">
-            <h3>Publish Survey</h3>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>Survey Data</h4>
-                    <div class="form-group">
-                        <label for="sel1">Select Module</label>
-                        <select class="form-control" id="ddlModules">
-                            @if (modules != null)
-                            {
-                                <option value="-1">---Select---</option>
-                                for (int i = 0; i < modules.Count; i++)
-                                {
-                                    <option value="@modules[i].ID">@modules[i].ModuleTitleEn</option>
-                                }
-                            }
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" class="form-control" id="sTitle" placeholder="Enter Survey Title" value="@Model.SurveyTitle">
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <textarea class="form-control" id="txtDesc" placeholder="Enter Survey Description"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="mt-checkbox">
-                            <input type="checkbox" id="cBoxAnon" />Allow anonymous users to participate
-                            <span></span>
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label class="mt-checkbox">
-                            <input type="checkbox" id="cBoxMult" />Allow multiple answers for each user
-                            <span></span>
-                        </label>
-                    </div>
-                    <div class="form-group" style="width: 285px;">
-                        <label>Duration</label>
-                        <div class="input-group input-daterange">
-                            <input type="text" class="form-control" id="txtStartDate">
-                            <div class="input-group-addon">to</div>
-                            <input type="text" class="form-control" id="txtEndDate">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <h4>Survey Review</h4>
-                    <div id="surveyContainer">
-                        <div id="surveyElement"></div>
-                    </div>
+<form style="margin-top: 25px;">
+    <h3>Publish Survey</h3>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Survey Data</h4>
+            <div class="form-group">
+                <label for="sel1">Select Module</label>
+                <select class="form-control" id="ddlModules">
+                    @if (modules != null)
+                    {
+                        <option value="-1">---Select---</option>
+                        for (int i = 0; i < modules.Count; i++)
+                        {
+                            <option value="@modules[i].ID">@modules[i].ModuleTitleEn</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" id="sTitle" placeholder="Enter Survey Title" value="@Model.SurveyTitle">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" id="txtDesc" placeholder="Enter Survey Description"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="mt-checkbox">
+                    <input type="checkbox" id="cBoxAnon" />Allow anonymous users to participate
+                    <span></span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="mt-checkbox">
+                    <input type="checkbox" id="cBoxMult" />Allow multiple answers for each user
+                    <span></span>
+                </label>
+            </div>
+            <div class="form-group" style="width: 285px;">
+                <label>Duration</label>
+                <div class="input-group input-daterange">
+                    <input type="text" class="form-control" id="txtStartDate">
+                    <div class="input-group-addon">to</div>
+                    <input type="text" class="form-control" id="txtEndDate">
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" onclick="return UploadTemplate()">Publish</button>
-        </form>
+        </div>
+        <div class="col-md-6">
+            <h4>Survey Review</h4>
+            <div id="surveyContainer">
+                <div id="surveyElement"></div>
+            </div>
+        </div>
     </div>
-</div>
+    <button type="submit" class="btn btn-primary" onclick="return UploadTemplate()">Publish</button>
+</form>
+
 
 <script type="text/javascript">
 
@@ -91,24 +96,32 @@
     text = text.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "");
     text = text.replace(/&amp;amp;#39;/g, '\\\\\'').replace(/\\/g, "");
     text = text.replace(/&#39;/g, '\\\\\'').replace(/\\/g, "");
-    var Surveyjson = text.replace(/&#39;/g, '\'').replace(/&quot;/g, '\\"').replace(/\\/g, "");
-    Survey.StylesManager.applyTheme("bootstrap");
-    Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
-    window.survey = new Survey.Model(Surveyjson);
-    //survey.mode = 'display';
+    text = text.replace(/&#39;/g, '\'').replace(/&quot;/g, '\\"').replace(/\\/g, "");
+    var surveyJson = JSON.parse(text);
+
+    const survey = new Survey.Model(surveyJson);
+
+
     $("#surveyElement").Survey({ model: survey });
 
     $(window).on('load', function () {
         $('.svd_commercial_container').remove();
         $("#svd-upload").show();
 
-        $('.input-daterange input').each(function () {
-            $(this).datepicker({
-                format: 'dd/mm/yyyy',
-                startDate: '0d'
-            }).on('changeDate', function (e) {
-                $('#txtEndDate').datepicker('setStartDate', $('#txtStartDate').val());
-            });
+
+        // Initialize the datepicker
+        $('#txtStartDate, #txtEndDate').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            setDate: '0d'
+        });
+
+        // Set txtEndDate to be 15 days from start date when txtStartDate changes
+        $('#txtStartDate').on('changeDate', function () {
+            var startDate = $(this).datepicker('getDate');
+            var endDate = new Date(startDate);
+            endDate.setDate(endDate.getDate() + 15);
+            $('#txtEndDate').datepicker('setDate', endDate);
         });
 
     });

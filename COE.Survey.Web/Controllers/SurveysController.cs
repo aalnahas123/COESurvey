@@ -21,6 +21,9 @@ using System.IO;
 using CsvHelper;
 using System.Text;
 using COE.Survey.Web.Helpers.LookupValues;
+using COE.Survey.Web.Helpers;
+
+
 
 namespace COE.Survey.Web
 {
@@ -60,6 +63,10 @@ namespace COE.Survey.Web
 
             foreach (var item in surveys)
             {
+                var jObj = JObject.Parse(item.SurveyText);
+                var imgurl = JsonHelper.GetAttributeFromJson("logo", jObj);
+                item.ImageUrl = imgurl;
+
                 item.ModuleText = item.SurveyModules?.ModuleTitleEn;
                 item.SurveyLink = Url.Action("Answer", "Surveys", new { id = item.ID });
                 item.IsActive = item.StatusId != (int)SurveyStatusEnum.Deactivated;
@@ -99,9 +106,12 @@ namespace COE.Survey.Web
                 surveys = surveys.Where(a => a.CreatedBy == this.UserName);
             }
 
-            var surveyList = surveys.ToList();
+            var surveyList = surveys.ToList();  
             foreach (var item in surveyList)
             {
+                var jObj = JObject.Parse(item.SurveyText);
+                var imgurl = JsonHelper.GetAttributeFromJson("logo", jObj);
+                item.ImageUrl = imgurl;
                 item.ModuleText = item.SurveyModules?.ModuleTitleEn;
             }
 
@@ -145,75 +155,20 @@ namespace COE.Survey.Web
                     return Json(new { success = false, errorMessage = "There's no survey data" });
                 }
 
-                var questionTypes = UnitOfWork.QuestionType.GetAll().ToList();
-                var values = JsonConvert.DeserializeObject<Dictionary<string, object>>(surveyText);
-                var pages = values["pages"] as JArray;
+                var jObj = JObject.Parse(data.SurveyText);
 
-                List<SurveyQuestion> parsedQuestions = new List<SurveyQuestion>();
-                foreach (var page in pages)
-                {
-                    JToken token = page["elements"] as JToken;
-                    if (token == null)
-                    {
-                        return Json(new { success = false, errorMessage = "There's no survey data" });
-                    }
-
-                    var questions = token.Children().ToList();
-                    if (questions == null || !questions.Any())
-                    {
-                        return Json(new { success = false, errorMessage = "Please add at least one question" });
-                    }
-
-                    foreach (var question in questions)
-                    {
-                        SurveyQuestion newQuestion = new SurveyQuestion();
-
-                        if (string.IsNullOrEmpty((string)question["name"]))
-                        {
-                            return Json(new { success = false, errorMessage = "Questions names can't be empty" });
-                        }
-
-                        var type = questionTypes.FirstOrDefault(a => a.TypeText == (string)question["type"]);
-                        if (type == null)
-                        {
-                            return Json(new { success = false, errorMessage = "This question type is not supported yet" });
-                        }
-
-                        newQuestion.Name = ((string)question["name"]).Trim();
-                        newQuestion.TypeText = type.TypeText;
-                        newQuestion.TypeId = type.Id;
-                        newQuestion.JsonContent = question.ToString();
-                        newQuestion.Title = (string)question["title"];
-                        newQuestion.HasChoices = false;
-
-                        if (question["choices"] != null || question["rateValues"] != null)
-                        {
-                            newQuestion.HasChoices = true;
-                            newQuestion.QuestionOption = new List<QuestionOption>();
-                            var questionChoices = GetChoices(newQuestion.JsonContent, (QuestionTypeEnum)type.Id);
-                            foreach (var item in questionChoices)
-                            {
-                                newQuestion.QuestionOption.Add(new QuestionOption
-                                {
-                                    OptionKey = item.Key,
-                                    OptionValue = item.Value
-                                });
-                            }
-                        }
-
-
-                        parsedQuestions.Add(newQuestion);
-                    }
-                }
+                string logoUrl = HandleLogo(jObj);
+                jObj = JsonHelper.SetAttributeFromJson("logo", logoUrl, jObj);
 
 
                 UnitOfWork.Survey.Add(new Common.Model.Survey
                 {
                     SurveyTitle = title.Trim(),
                     StatusId = (int)SurveyStatusEnum.Draft,
-                    SurveyText = surveyText.Replace("\\", "\\\\"),
-                    SurveyQuestion = parsedQuestions,
+                    SurveyText = jObj.ToString().Replace("\\", "\\\\"),
+                    SurveyQuestion = null,
                     IsRTL = data.IsRTL,
+                    ImageUrl = logoUrl,
                     CreatedBy = UserName,
                     UpdatedBy = UserName,
                     CreatedOn = DateTime.Now,
@@ -221,11 +176,7 @@ namespace COE.Survey.Web
                 });
 
                 int rows = UnitOfWork.Save();
-                //int rows = 0;
                 return Json(new { success = rows > 0 });
-
-                //return Json(new { success = false });
-
             }
             catch (Exception ex)
             {
@@ -288,6 +239,11 @@ namespace COE.Survey.Web
                     return Json(new { success = false, errorMessage = "Invalid Survey" });
                 }
 
+
+                var jObj = JObject.Parse(survey.SurveyText);
+                jObj = JsonHelper.SetAttributeFromJson("title", title.Trim(), jObj);
+                survey.SurveyText = jObj.ToString().Replace("\\", "\\\\").Replace("\r\n", "").Replace("\n", "");
+
                 survey.SurveyTitle = title.Trim();
                 survey.StatusId = (int)SurveyStatusEnum.Published;
                 survey.UpdatedBy = "Admin1";
@@ -298,6 +254,8 @@ namespace COE.Survey.Web
                 survey.ModuleId = moduleId;
                 survey.AllowAnonymous = allowAnon;
                 survey.AllowMultiple = allowMulti;
+
+
                 int rows = UnitOfWork.Save();
 
                 return Json(new { success = rows > 0 });
@@ -332,6 +290,8 @@ namespace COE.Survey.Web
                 return RedirectToAction("Index", "Surveys");
             }
 
+
+            survey.SurveyText = survey.SurveyText.Replace("\r\n", "").Replace("\n", "");
             return View(survey);
         }
 
@@ -371,8 +331,12 @@ namespace COE.Survey.Web
 
             var survey = UnitOfWork.Survey.GetById(id);
 
+            var jObj = JObject.Parse(survey.SurveyText);
 
-            survey.SurveyText = survey.SurveyText.Replace("\r\n", "").Replace("\n", "");
+            survey.ID = 0;
+            survey.SurveyTitle = "copy of " + survey.SurveyTitle;
+            jObj = JsonHelper.SetAttributeFromJson("title", survey.SurveyTitle, jObj);
+            survey.SurveyText = jObj.ToString().Replace("\\", "\\\\").Replace("\r\n", "").Replace("\n", "");
             return View(survey);
         }
 
@@ -381,127 +345,33 @@ namespace COE.Survey.Web
         {
             try
             {
-                int id = data.SurveyId;
-                string SurveyText = data.SurveyText;
-                string title = data.SurveyTitle;
-
-                //if (string.IsNullOrEmpty(title))
-                //{
-                //    return Json(new { success = false, errorMessage = "survey title is required" });
-                //}
-
-                var survey = UnitOfWork.Survey.GetById(id);
-                if (survey == null)
-                {
-                    return Json(new { success = false, errorMessage = "There's no survey with given id" });
-                }
-
-                if (survey.StatusId.HasValue && (SurveyStatusEnum)survey.StatusId != SurveyStatusEnum.Draft)
-                {
-                    return Json(new { success = false, errorMessage = "This survey can't be edited" });
-                }
-
-                if (survey.SurveyAnswer.Any())
-                {
-                    if (survey.StatusId.HasValue && (SurveyStatusEnum)survey.StatusId != SurveyStatusEnum.Draft)
-                    {
-                        return Json(new { success = false, errorMessage = "This survey can't be edited" });
-                    }
-                    else
-                    {
-                        var questionAnswers = UnitOfWork.QuestionAnswer.GetByQuery(a => a.SurveyAnswer.SurveyId == id).ToList();
-                        UnitOfWork.QuestionAnswer.Delete(questionAnswers);
-
-                        var surveyAnswers = survey.SurveyAnswer.ToList();
-                        UnitOfWork.SurveyAnswer.Delete(surveyAnswers);
-
-                        UnitOfWork.Save();
-                    }
-                }
-
-                if (string.IsNullOrEmpty(SurveyText))
+                if (string.IsNullOrEmpty(data.SurveyText))
                 {
                     return Json(new { success = false, errorMessage = "There's no survey data" });
                 }
 
-
-
-
-
-                //
-
-                var questionTypes = UnitOfWork.QuestionType.GetAll().ToList();
-                var values = JsonConvert.DeserializeObject<Dictionary<string, object>>(SurveyText);
-                var pages = values["pages"] as JArray;
-
-                List<SurveyQuestion> parsedQuestions = new List<SurveyQuestion>();
-                foreach (var page in pages)
+                var survey = UnitOfWork.Survey.GetById(data.SurveyId);
+                if (survey == null)
                 {
-                    JToken token = page["elements"] as JToken;
-                    if (token == null)
-                    {
-                        return Json(new { success = false, errorMessage = "There's no survey data" });
-                    }
-
-                    var questions = token.Children().ToList();
-                    if (questions == null || !questions.Any())
-                    {
-                        return Json(new { success = false, errorMessage = "Please add at least one question" });
-                    }
-
-                    foreach (var question in questions)
-                    {
-                        SurveyQuestion newQuestion = new SurveyQuestion();
-
-                        if (string.IsNullOrEmpty((string)question["name"]))
-                        {
-                            return Json(new { success = false, errorMessage = "Questions names can't be empty" });
-                        }
-
-                        var type = questionTypes.FirstOrDefault(a => a.TypeText == (string)question["type"]);
-                        if (type == null)
-                        {
-                            return Json(new { success = false, errorMessage = "This question type is not supported yet" });
-                        }
-
-                        newQuestion.Name = ((string)question["name"]).Trim();
-                        newQuestion.TypeText = type.TypeText;
-                        newQuestion.TypeId = type.Id;
-                        newQuestion.JsonContent = question.ToString();
-                        newQuestion.Title = (string)question["title"];
-                        newQuestion.HasChoices = false;
-                        newQuestion.SurveyId = survey.ID;
-
-                        if (question["choices"] != null || question["rateValues"] != null)
-                        {
-                            newQuestion.HasChoices = true;
-                            newQuestion.QuestionOption = new List<QuestionOption>();
-                            var questionChoices = GetChoices(newQuestion.JsonContent, (QuestionTypeEnum)type.Id);
-                            foreach (var item in questionChoices)
-                            {
-                                newQuestion.QuestionOption.Add(new QuestionOption
-                                {
-                                    OptionKey = item.Key,
-                                    OptionValue = item.Value
-                                });
-                            }
-                        }
-
-                        parsedQuestions.Add(newQuestion);
-                    }
+                    return Json(new { success = false, errorMessage = "There's no survey with the given id" });
                 }
 
-                foreach (SurveyQuestion item in survey.SurveyQuestion)
+                if (!IsEditable(survey))
                 {
-                    UnitOfWork.QuestionOption.Delete(item.QuestionOption);
+                    return Json(new { success = false, errorMessage = "This survey can't be edited" });
                 }
 
-                survey.SurveyTitle = title;
-                survey.SurveyText = SurveyText.Replace("\\", "\\\\");
+                HandleSurveyAnswers(survey, data.SurveyId);
+
+                var jObj = JObject.Parse(data.SurveyText);
+
+                string logoUrl = HandleLogo(jObj);
+                jObj = JsonHelper.SetAttributeFromJson("logo", logoUrl, jObj);
+
+                survey.SurveyTitle = data.SurveyTitle;
+                survey.SurveyText = jObj.ToString().Replace("\\", "\\\\");
                 survey.IsRTL = data.IsRTL;
-
-                UnitOfWork.SurveyQuestion.Delete(survey.SurveyQuestion);
-                UnitOfWork.SurveyQuestion.Add(parsedQuestions);
+                survey.ImageUrl = logoUrl;
 
                 int rows = UnitOfWork.Save();
                 return Json(new { success = rows > 0 });
@@ -509,9 +379,40 @@ namespace COE.Survey.Web
             catch (Exception ex)
             {
                 Logger.Error(ex);
-                return Json(new { success = false, errorMessage = "Error occured" });
+                return Json(new { success = false, errorMessage = "Error occurred" });
             }
         }
+
+        #region Update Related Methods
+
+
+        private bool IsEditable(COE.Common.Model.Survey survey)
+        {
+            return survey.StatusId.HasValue && (SurveyStatusEnum)survey.StatusId == SurveyStatusEnum.Draft;
+        }
+
+        private void HandleSurveyAnswers(COE.Common.Model.Survey survey, int surveyId)
+        {
+            if (survey.SurveyAnswer.Any())
+            {
+                var questionAnswers = UnitOfWork.QuestionAnswer.GetByQuery(a => a.SurveyAnswer.SurveyId == surveyId).ToList();
+                UnitOfWork.QuestionAnswer.Delete(questionAnswers);
+
+                var surveyAnswers = survey.SurveyAnswer.ToList();
+                UnitOfWork.SurveyAnswer.Delete(surveyAnswers);
+
+                UnitOfWork.Save();
+            }
+        }
+
+        private string HandleLogo(JObject jObj)
+        {
+            var logoBase64Str = JsonHelper.GetAttributeFromJson("logo", jObj);
+            return CustomFileUploader.UploadFile(logoBase64Str);
+        }
+
+
+        #endregion
 
         [AllowAnonymous]
         public ActionResult Answer(int? id)
@@ -567,7 +468,7 @@ namespace COE.Survey.Web
                 }
 
                 //survey.SurveyText = survey.SurveyText.Insert(survey.SurveyText.Length - 1, ",\"completedHtml\":\"<p><h4>نشكركم على مشاركتكم في الإستبيان</h4></p><p>هل ترغب في إقتراح خدمات جديدة للشركة؟</p><p>للمشاركة برجاء الضفط على هذا الرابط</p>\"");
-                survey.SurveyText = survey.SurveyText.Replace("\n", "");
+                survey.SurveyText = survey.SurveyText.Replace("\r\n", "").Replace("\n", "");
                 survey.SurveyDirection = survey.IsRTL ? "rtl" : "ltr";
 
 
@@ -704,79 +605,6 @@ namespace COE.Survey.Web
                     return Json(new { success = false });
                 }
 
-                var jsonAnswers = JsonConvert.DeserializeObject<Dictionary<string, object>>(AnswerText).ToList();
-                List<QuestionAnswer> parsedAnswers = new List<QuestionAnswer>();
-
-                for (int i = 0; i < jsonAnswers.Count; i++)
-                {
-                    var item = jsonAnswers[i];
-                    var qName = item.Key.Contains("Comment") ? item.Key.Split('-')[0] : item.Key;
-                    var question = surveyQuestions.FirstOrDefault(a => a.Name.Trim() == qName.Trim());
-                    if (question == null)
-                    {
-                        return Json(new { success = false });
-                    }
-
-                    //if (question.Name == "question4")
-                    //{
-                    //    if (question.QuestionAnswer.Any(a => a.AnswerText == item.Value.ToString()))
-                    //    {
-                    //        return Json(new { success = false, AlreadyApplied = "1" });
-                    //    }
-                    //}
-
-                    if (question.HasChoices)
-                    {
-                        JArray choices = item.Value as JArray;
-                        if (choices == null)
-                        {
-                            var selectedOption = question.QuestionOption.FirstOrDefault(a => a.OptionKey.ToLower() == item.Value.ToString().ToLower());
-                            QuestionAnswer newAnswer = new QuestionAnswer();
-                            newAnswer.QuestionId = question.Id;
-                            newAnswer.OptionId = selectedOption?.ID;
-                            newAnswer.AnswerText = item.Value.ToString();
-                            parsedAnswers.Add(newAnswer);
-                        }
-                        else
-                        {
-                            foreach (var choice in choices)
-                            {
-                                string choiceString = choice.ToString();
-
-                                QuestionOption selectedOption;
-
-                                if (choiceString == "other")
-                                {
-                                    selectedOption = question.QuestionOption.FirstOrDefault(a => a.OptionValue.Contains("اخرى"));
-                                    i = i + 1;
-                                    var nextItem = jsonAnswers[i];
-                                    choiceString = nextItem.Value.ToString();
-                                }
-                                else
-                                {
-                                    selectedOption = question.QuestionOption.FirstOrDefault(a => a.OptionKey.ToLower() == choiceString.ToLower());
-                                }
-
-
-
-                                QuestionAnswer newAnswer = new QuestionAnswer();
-                                newAnswer.QuestionId = question.Id;
-                                newAnswer.OptionId = selectedOption.ID;
-                                newAnswer.AnswerText = choiceString;
-                                parsedAnswers.Add(newAnswer);
-                            }
-                        }
-
-                    }
-                    else
-                    {
-                        QuestionAnswer newAnswer = new QuestionAnswer();
-                        newAnswer.QuestionId = question.Id;
-                        newAnswer.AnswerText = item.Value.ToString();
-                        parsedAnswers.Add(newAnswer);
-                    }
-                }
-
                 string createdBy = UserName;
                 if (string.IsNullOrEmpty(createdBy))
                 {
@@ -790,7 +618,7 @@ namespace COE.Survey.Web
                 UnitOfWork.SurveyAnswer.Add(new SurveyAnswer
                 {
                     AnswerText = AnswerText,
-                    QuestionAnswer = parsedAnswers,
+                    QuestionAnswer = null,
                     CreatedOn = DateTime.Now,
                     SurveyId = id,
                     CreatedBy = createdBy
@@ -943,146 +771,77 @@ namespace COE.Survey.Web
 
         public ActionResult Result(int? id, int? PageNumber, string sqid = null)
         {
+            try
+            {
+                //return ExportResult(id.Value);
 
-            //return ExportResult(id.Value);
+                if (!id.HasValue)
+                {
+                    return RedirectToAction("Index", "Surveys");
+                }
+
+                if (!PageNumber.HasValue)
+                {
+                    PageNumber = 1;
+                }
+
+                var surveyItem = UnitOfWork.Survey.GetById(id);
+                if (surveyItem != null)
+                {
+                    var answerItems = UnitOfWork.SurveyAnswer.GetByQuery(m => m.SurveyId == id).ToList().Select(a => JObject.Parse(a.AnswerText));
+                    if (answerItems != null)
+                    {
+                        var json = JsonConvert.SerializeObject(new
+                        {
+                            data = answerItems
+                        });
+
+                        SurveyAllAnswers allAnswers = new SurveyAllAnswers
+                        {
+                            Id = id.Value,
+                            AnswerItems = JsonConvert.SerializeObject(answerItems),
+                            SurveyTitle = surveyItem.SurveyTitle,
+                            ContentJson = surveyItem.SurveyText.Replace("\r\n", "").Replace("\n", "")
+                        };
+
+
+                        return View(allAnswers);
+                    }
+
+                    return View(new SurveyAllAnswers { Id = 0, ContentJson = surveyItem.SurveyText, SurveyTitle = surveyItem.SurveyText });
+                }
+
+                return View(new SurveyAllAnswers { Id = 0 });
+            }
+            catch (Exception)
+            {
+                return View(new SurveyAllAnswers { Id = 0 });
+            }
+        }
+
+        public ActionResult Dashboard(int? id, int? PageNumber, string sqid = null)
+        {
+            SetCulture("en-US");
 
             if (!id.HasValue)
             {
                 return RedirectToAction("Index", "Surveys");
             }
 
-            if (!PageNumber.HasValue)
-            {
-                PageNumber = 1;
-            }
-
             var survey = UnitOfWork.Survey.GetById(id);
-            var questions = survey.SurveyQuestion.Where(a => a.TypeId != 13 && a.TypeId != 7 && a.TypeId != 12).ToList();
 
-            var answersPagedList = survey.SurveyAnswer.AsQueryable().GetPaged(o => o.CreatedOn, false, PageNumber.Value, 10);
-            var answers = answersPagedList.ToList();
-
-            int questionsCount = questions.Count;
-            int answersCount = survey.SurveyAnswer.Count;
-
-            KeyValuePair<string, string>[,] surveyMatrix = new KeyValuePair<string, string>[questionsCount, answersCount + 1];
-
-            for (int x = 0; x < questionsCount; x++)
+            if (survey.StatusId.HasValue && (SurveyStatusEnum)survey.StatusId != SurveyStatusEnum.Draft)
             {
-                int y = 0;
-
-                if (string.IsNullOrEmpty(questions[x].Title))
-                {
-                    string sug1 = new string(questions[x].Name.ToList().Where(c => c < 0x20 || c > 0x7E || c == ' ').ToArray()).Trim();
-                    if (!string.IsNullOrEmpty(sug1))
-                    {
-                        questions[x].Name = sug1;
-                    }
-
-                    surveyMatrix[x, y++] = new KeyValuePair<string, string>(questions[x].Name, questions[x].Name);
-                }
-                else
-                {
-                    string sug2 = new string(questions[x].Title.ToList().Where(c => c < 0x20 || c > 0x7E || c == ' ').ToArray()).Trim();
-                    if (!string.IsNullOrEmpty(sug2))
-                    {
-                        questions[x].Title = sug2;
-                    }
-
-                    surveyMatrix[x, y++] = new KeyValuePair<string, string>(questions[x].Name, questions[x].Title);
-                }
-
-                int count = answersPagedList.Count;
-                for (int i = 0; i < count; i++)
-                {
-                    if (answers[i].QuestionAnswer.Any())
-                    {
-                        var allValues = answers[i].QuestionAnswer.Where(a => a.QuestionId == questions[x].Id).ToList();
-                        string collectedAnswer = "";
-                        foreach (var item in allValues)
-                        {
-                            if (item.OptionId.HasValue)
-                            {
-                                collectedAnswer += item.QuestionOption.OptionValue + ",";
-                            }
-                            else
-                            {
-                                string sug3 = new string(item.AnswerText.ToList().Where(c => c < 0x20 || c > 0x7E || c == ' ').ToArray()).Trim();
-                                if (!string.IsNullOrEmpty(sug3))
-                                {
-                                    item.AnswerText = sug3;
-                                }
-
-                                collectedAnswer += item.AnswerText + ",";
-                            }
-                        }
-
-                        if (!string.IsNullOrEmpty(collectedAnswer))
-                        {
-                            collectedAnswer = collectedAnswer.Substring(0, collectedAnswer.Length - 1);
-                        }
-
-                        surveyMatrix[x, y++] = new KeyValuePair<string, string>("", collectedAnswer);
-                    }
-                }
+                return RedirectToAction("Index", "Surveys");
             }
 
-            string choices = string.Empty;
-            string choicesOccurrence = string.Empty;
-            string currentQuestion = string.Empty;
+            //if (survey.SurveyAnswer.Any())
+            //{
+            //    return RedirectToAction("Index", "Surveys");
+            //}
 
-
-            SurveyQuestion selectedQuestion;
-            if (string.IsNullOrEmpty(sqid))
-            {
-                selectedQuestion = questions.OrderBy(a => a.Id).Take(1).FirstOrDefault();
-            }
-            else
-            {
-                selectedQuestion = questions.FirstOrDefault(a => a.Name.ToLower() == sqid.ToLower());
-            }
-
-            if (selectedQuestion != null)
-            {
-                ViewBag.sqid = selectedQuestion.Name.ToLower();
-
-                currentQuestion = selectedQuestion.Title?.Trim();
-                var options = selectedQuestion.QuestionOption.ToList();
-                var seperatedAnswers = selectedQuestion.QuestionAnswer.ToList();
-
-                choices = "[";
-                choicesOccurrence = "[";
-                foreach (var option in options)
-                {
-                    int occurrence = seperatedAnswers.Count(a => a.AnswerText == option.OptionKey);
-                    double occurrencePercent = Math.Round(((float)occurrence / (float)seperatedAnswers.Count) * 100, 2);
-
-                    choices += "\"" + option.OptionValue + "\"" + ",";
-                    choicesOccurrence += occurrencePercent + ",";
-                }
-
-                choices += "]";
-                choicesOccurrence += "]";
-
-                choices = choices.Replace(",]", "]");
-                choicesOccurrence = choicesOccurrence.Replace(",]", "]");
-            }
-
-
-            SurveysViewModel model = new SurveysViewModel();
-            model.Id = survey.ID;
-            model.AnswersList = answers;
-            model.NumOfQuestions = questionsCount;
-            model.NumOfAnswers = answersCount;
-            model.SurveyMatrix = surveyMatrix;
-            model.ChartLabels = choices.Replace("\r", "").Replace("\n", "");
-            model.ChartData = choicesOccurrence;
-            model.CurrentQuestion = currentQuestion;
-            model.Items = new StaticPagedList<SurveyAnswer>(answersPagedList, answersPagedList.PageNumber, 10, answersPagedList.TotalItemCount);
-
-
-            ViewBag.SurveyId = id;
-            return View(model);
+            survey.SurveyText = survey.SurveyText.Replace("\r\n", "").Replace("\n", "");
+            return View(survey);
         }
 
         [AllowAnonymous]
@@ -1096,8 +855,8 @@ namespace COE.Survey.Web
             var surveyAnswer = UnitOfWork.SurveyAnswer.GetById(id);
             if (surveyAnswer != null)
             {
-                surveyAnswer.AnswerText = surveyAnswer.AnswerText.Replace("\n", "");
-                surveyAnswer.SurveyText = surveyAnswer.Survey.SurveyText.Replace("\n", "");
+                surveyAnswer.AnswerText = surveyAnswer.AnswerText.Replace("\r\n", "").Replace("\n", "");
+                surveyAnswer.SurveyText = surveyAnswer.Survey.SurveyText.Replace("\r\n", "").Replace("\n", "");
             }
 
             return View(surveyAnswer);
@@ -1248,6 +1007,40 @@ namespace COE.Survey.Web
             }
         }
 
+        [HttpPost]
+        public JsonResult UpdateSurveyTitle(int id, string title)
+        {
+            try
+            {
+                var survey = UnitOfWork.Survey.GetById(id);
+                if (survey == null)
+                {
+                    return Json(new { success = false, errorMessage = "Invalid Survey" });
+                }
+
+                if (survey.SurveyTitle == title)
+                {
+                    return Json(new { success = true });
+                }
+
+                survey.SurveyTitle = title;
+                var jObj = JObject.Parse(survey.SurveyText);
+                jObj = JsonHelper.SetAttributeFromJson("title", title, jObj);
+
+
+                survey.SurveyText = jObj.ToString().Replace("\\", "\\\\");
+
+                int rows = UnitOfWork.Save();
+
+                return Json(new { success = rows > 0 });
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return Json(new { success = false, errorMessage = "" });
+            }
+        }
+
         public string GetClientIpAddress(HttpRequestBase request)
         {
             try
@@ -1306,100 +1099,101 @@ namespace COE.Survey.Web
         [HttpPost]
         public ActionResult ExportResult(SurveysViewModel model)
         {
-            try
-            {
-                int id = model.Id;
-                var survey = UnitOfWork.Survey.GetById(id);
-                var questions = survey.SurveyQuestion.ToList();
+            return null;
+            //try
+            //{
+            //    int id = model.Id;
+            //    var survey = UnitOfWork.Survey.GetById(id);
+            //    var questions = survey.SurveyQuestion.ToList();
 
-                var answers = survey.SurveyAnswer.ToList();
+            //    var answers = survey.SurveyAnswer.ToList();
 
-                int questionsCount = questions.Count;
-                int answersCount = survey.SurveyAnswer.Count;
+            //    int questionsCount = questions.Count;
+            //    int answersCount = survey.SurveyAnswer.Count;
 
-                KeyValuePair<string, string>[,] surveyMatrix = new KeyValuePair<string, string>[questionsCount, answersCount + 1];
+            //    KeyValuePair<string, string>[,] surveyMatrix = new KeyValuePair<string, string>[questionsCount, answersCount + 1];
 
-                for (int x = 0; x < questionsCount; x++)
-                {
-                    int y = 0;
+            //    for (int x = 0; x < questionsCount; x++)
+            //    {
+            //        int y = 0;
 
-                    if (string.IsNullOrEmpty(questions[x].Title))
-                    {
-                        surveyMatrix[x, y++] = new KeyValuePair<string, string>(questions[x].Name, questions[x].Name);
-                    }
-                    else
-                    {
-                        surveyMatrix[x, y++] = new KeyValuePair<string, string>(questions[x].Name, questions[x].Title);
-                    }
+            //        if (string.IsNullOrEmpty(questions[x].Title))
+            //        {
+            //            surveyMatrix[x, y++] = new KeyValuePair<string, string>(questions[x].Name, questions[x].Name);
+            //        }
+            //        else
+            //        {
+            //            surveyMatrix[x, y++] = new KeyValuePair<string, string>(questions[x].Name, questions[x].Title);
+            //        }
 
-                    for (int i = 0; i < answersCount; i++)
-                    {
-                        if (answers[i].QuestionAnswer.Any())
-                        {
-                            var allValues = answers[i].QuestionAnswer.Where(a => a.QuestionId == questions[x].Id).ToList();
-                            string collectedAnswer = "";
-                            foreach (var item in allValues)
-                            {
-                                if (item.OptionId.HasValue)
-                                {
-                                    collectedAnswer += item.QuestionOption.OptionValue + ",";
-                                }
-                                else
-                                {
-                                    collectedAnswer += item.AnswerText + ",";
-                                }
-                            }
+            //        for (int i = 0; i < answersCount; i++)
+            //        {
+            //            if (answers[i].QuestionAnswer.Any())
+            //            {
+            //                var allValues = answers[i].QuestionAnswer.Where(a => a.QuestionId == questions[x].Id).ToList();
+            //                string collectedAnswer = "";
+            //                foreach (var item in allValues)
+            //                {
+            //                    if (item.OptionId.HasValue)
+            //                    {
+            //                        collectedAnswer += item.QuestionOption.OptionValue + ",";
+            //                    }
+            //                    else
+            //                    {
+            //                        collectedAnswer += item.AnswerText + ",";
+            //                    }
+            //                }
 
-                            if (!string.IsNullOrEmpty(collectedAnswer))
-                            {
-                                collectedAnswer = collectedAnswer.Substring(0, collectedAnswer.Length - 1);
-                            }
+            //                if (!string.IsNullOrEmpty(collectedAnswer))
+            //                {
+            //                    collectedAnswer = collectedAnswer.Substring(0, collectedAnswer.Length - 1);
+            //                }
 
-                            surveyMatrix[x, y++] = new KeyValuePair<string, string>("", collectedAnswer);
-                        }
-                    }
-                }
-
-
-                var stream = new MemoryStream();
-                var writer = new StreamWriter(stream, Encoding.UTF8);
-                var csv = new CsvWriter(writer);
+            //                surveyMatrix[x, y++] = new KeyValuePair<string, string>("", collectedAnswer);
+            //            }
+            //        }
+            //    }
 
 
-                csv.WriteField("Answered By");
-                for (int i = 0; i < questionsCount; i++)
-                {
-                    csv.WriteField(surveyMatrix[i, 0].Value);
-                }
-                csv.NextRecord();
+            //    var stream = new MemoryStream();
+            //    var writer = new StreamWriter(stream, Encoding.UTF8);
+            //    var csv = new CsvWriter(writer);
 
 
-                for (int y = 0; y < answersCount; y++)
-                {
-                    csv.WriteField(answers[y].CreatedBy);
-                    for (int x = 0; x < questionsCount; x++)
-                    {
-                        csv.WriteField(surveyMatrix[x, y + 1].Value);
-                    }
-                    csv.NextRecord();
-                }
-
-                writer.Flush();
-                stream.Position = 0;
-
-                return File(stream, "text/csv", "SurveyResult.csv");
-                // return itemsReport;
-            }
+            //    csv.WriteField("Answered By");
+            //    for (int i = 0; i < questionsCount; i++)
+            //    {
+            //        csv.WriteField(surveyMatrix[i, 0].Value);
+            //    }
+            //    csv.NextRecord();
 
 
-            //   return File(stream, "text/csv", "Attendance_Export_" + startDate.ToShortDateString() + "_" + endDate.ToShortDateString() + ".csv");
+            //    for (int y = 0; y < answersCount; y++)
+            //    {
+            //        csv.WriteField(answers[y].CreatedBy);
+            //        for (int x = 0; x < questionsCount; x++)
+            //        {
+            //            csv.WriteField(surveyMatrix[x, y + 1].Value);
+            //        }
+            //        csv.NextRecord();
+            //    }
 
-            catch (Exception ex)
-            {
-                Logger.Error(ex);
-                ViewBag.success = 0;
-                return null;
-            }
+            //    writer.Flush();
+            //    stream.Position = 0;
+
+            //    return File(stream, "text/csv", "SurveyResult.csv");
+            //    // return itemsReport;
+            //}
+
+
+            ////   return File(stream, "text/csv", "Attendance_Export_" + startDate.ToShortDateString() + "_" + endDate.ToShortDateString() + ".csv");
+
+            //catch (Exception ex)
+            //{
+            //    Logger.Error(ex);
+            //    ViewBag.success = 0;
+            //    return null;
+            //}
         }
     }
 

@@ -1,0 +1,81 @@
+﻿@model COE.Survey.Web.DBModels.SurveyItem
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<link href="https://unpkg.com/survey-jquery/defaultV2.min.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
+
+
+<script src="https://unpkg.com/survey-core/survey.i18n.min.js"></script>
+
+
+
+
+<div>
+    @* class="text-center"*@
+    <h1 class="display-4">View</h1>
+
+
+    <div id="surveyContainer"></div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+    var da = '@Model.ContentJson'.replace(/&quot;/g, '"');
+    var surveyJson = JSON.parse(da);
+
+    const survey = new Survey.Model(surveyJson);
+    survey.focusFirstQuestionAutomatic = false;
+    Survey.surveyLocalization.supportedLocales = ["en", "ar"];
+
+    var selectedLang = getLanguage();
+    survey.locale = selectedLang;
+
+
+    function alertResults(sender) {
+        const results = JSON.stringify(sender.data);
+
+        $.ajax({
+            type: "POST",
+            url: '/Home/SaveAnswer',
+            data: { Id: 0, SurveyId: @Model.Id, AnswerJson: results },
+            success: function (d) {
+
+                if (d > 0) {
+                    alert('saved successfully!');
+                }
+                else {
+                    alert('error occured!');
+                }
+
+            }
+        });
+
+
+        //alert(results);
+    }
+
+    survey.onComplete.add(alertResults);
+
+    $(function () {
+        $("#surveyContainer").Survey({ model: survey });
+    });
+
+    Survey.setLicenseKey(
+        "ZDdhYjZhM2YtYTZjZi00MTI1LWFmYjMtMWI5M2RkYjQ0NDgwOzE9MjAyNC0wOC0zMSwyPTIwMjQtMDgtMzEsND0yMDI0LTA4LTMx"
+    );
+
+
+</script>

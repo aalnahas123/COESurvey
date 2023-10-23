@@ -3,21 +3,37 @@
 @model COE.Common.Model.Survey
 
 @{
-    ViewBag.Title = "Edit Survey";
+    ViewBag.Title = "Clone Survey";
 }
 
-<title>Use options to customize the Survey Editor, Survey Builder Example</title>
+<title>Clone Survey</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
-<script src="~/Content/surveyjs/survey.ko.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
-<!-- Uncomment to enable Select2 <script src="https://unpkg.com/jquery"></script> <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" /> <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script> -->
-<link href="~/Content/surveyjs/surveyeditor.min.css" rel="stylesheet" />
-<script src="~/Content/surveyjs/surveyeditor.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+
+<!-- ... -->
+<script type="text/javascript" src="https://unpkg.com/knockout/build/output/knockout-latest.js"></script>
+
+<!-- SurveyJS resources -->
+<link href="https://unpkg.com/survey-core/defaultV2.min.css" type="text/css" rel="stylesheet">
+<script src="https://unpkg.com/survey-core/survey.core.min.js"></script>
+<script src="https://unpkg.com/survey-knockout-ui/survey-knockout-ui.min.js"></script>
+
+<!-- Survey Creator resources -->
+<link href="https://unpkg.com/survey-creator-core/survey-creator-core.min.css" type="text/css" rel="stylesheet">
+<script src="https://unpkg.com/survey-creator-core/survey-creator-core.min.js"></script>
+<script src="https://unpkg.com/survey-creator-knockout/survey-creator-knockout.min.js"></script>
+<!-- ... -->
+
+<script src="https://unpkg.com/survey-core/survey.i18n.min.js"></script>
+<script src="https://unpkg.com/survey-creator-core/survey-creator-core.i18n.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <style>
+    .sv_q_matrix {
+        width: 100% !important;
+    }
+
+
     .container {
         width: 95% !important;
     }
@@ -72,24 +88,22 @@
 
 
 
-<div class="container">
-    <div class="row">
-        <form style="margin-top: 25px;">
 
-            <div class="form-group">
-                <label>Title</label>
-                <input type="text" class="form-control" id="sTitle" placeholder="Enter Survey Title" value="@Model.SurveyTitle">
+<div class="container mt-4">
+    <div class="form-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="isRTL">Select Language</label>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="isRTL">
+                        <label class="form-check-label" for="isRTL">Is Arabic</label>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div id="surveyContainer">
-                <div id="editorElement"></div>
-            </div>
-
-            <div id="divUpload" class="col-md-12">
-                <button type="submit" class="btn btn-primary float-right" onclick="return UploadTemplate()">Save Changes</button>
-            </div>
-
-        </form>
+        <div id="surveyCreator" style="height: 100vh;"></div>
     </div>
 </div>
 
@@ -100,82 +114,106 @@
 
 <span tabindex="0" class="svd_action" id="svd-upload" style="display:none;"><button type="button" class="btn btn-primary" onclick="return UploadTemplate()"><span>Update</span></button></span>
 
+
+
 <script type="text/javascript">
-    var editorOptions = {};
-    editorOptions.questionTypes = ["text", "checkbox", "radiogroup", "dropdown", "rating", "html"];
-    editorOptions.showJSONEditorTab = false;
-    editorOptions.showTestSurveyTab = true;
-    editorOptions.showEmbededSurveyTab = false;
-    editorOptions.showTranslationTab = false;
-
-    var editor = new SurveyEditor.SurveyEditor("editorElement", editorOptions);
-
-    var mainColor = "#337ab7";
-    var mainHoverColor = "#232f58";
-    var textColor = "#232f58";
-
-    var defaultThemeColorsEditor = SurveyEditor.StylesManager.ThemeColors["default"];
-    defaultThemeColorsEditor["$primary-color"] = mainColor;
-    defaultThemeColorsEditor["$secondary-color"] = mainColor;
-    defaultThemeColorsEditor["$primary-hover-color"] = mainHoverColor;
-    defaultThemeColorsEditor["$primary-text-color"] = textColor;
-    defaultThemeColorsEditor["$selection-border-color"] = mainColor;
-
-    SurveyEditor.StylesManager.applyTheme();
 
 
-    var surveySettingsAction = editor.toolbarItems().filter(function (item) {
-        return item.id === "svd-survey-settings";
-    })[0];
+      //var mainColor = "#337ab7";
+  //var mainHoverColor = "#232f58";
+  //var textColor = "#232f58";
 
-    editor.toolbarItems.remove(surveySettingsAction);
-    
-    debugger;
-    var text = '@Model.SurveyText';
-    text = text.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "");
-    text = text.replace(/&amp;amp;#39;/g, '\\\\\'').replace(/\\/g, "");
-    text = text.replace(/&#39;/g, '\\\\\'').replace(/\\/g, "");
-    editor.text = text.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "")
+  //var defaultThemeColorsEditor = SurveyEditor.StylesManager.ThemeColors["default"];
+  //defaultThemeColorsEditor["$primary-color"] = mainColor;
+  //defaultThemeColorsEditor["$secondary-color"] = mainColor;
+  //defaultThemeColorsEditor["$primary-hover-color"] = mainHoverColor;
+  //defaultThemeColorsEditor["$primary-text-color"] = textColor;
+  //defaultThemeColorsEditor["$selection-border-color"] = mainColor;
+
+  //SurveyEditor.StylesManager.applyTheme();
 
 
-    editor.survey.onSelectedElementChanged
-    .add(function (editor, options) {
 
-        if (options.newElement) {
+    var creator;
+    var selectedLang = getLanguage();
 
-            debugger;
+    const creatorOptions = {
+        showLogicTab: true,
+        isAutoSave: false,
+        showTranslationTab: true
+    };
 
-            if (options.newElement.getType() != 'html')
-            {
-                options.newElement.isRequired = true;
-            }
 
-            if (options.newElement.getType() != 'rating')
-                return;
 
-            setTimeout(function myfunction() {
-                $(".sv_q_rating_item_text").removeClass("item_editable");
-            }, 200)
+    Survey.surveyLocalization.supportedLocales = ["en", "ar"];
+    SurveyCreator.localization.currentLocale = selectedLang;
 
-            options.newElement.rateValuesChangedCallback = function myfunction(e, x) {
+    creator = new SurveyCreator.SurveyCreator(creatorOptions);
+    creator.toolbox.forceCompact = false;
 
-            }
-        }
+    var surveyAsJson = '@Model.SurveyText';
+    surveyAsJson = surveyAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "");
+    surveyAsJson = surveyAsJson.replace(/&amp;amp;#39;/g, '\\\\\'').replace(/\\/g, "");
+    surveyAsJson = surveyAsJson.replace(/&#39;/g, '\\\\\'').replace(/\\/g, "");
+    surveyAsJson = surveyAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "")
+
+    if (surveyAsJson == undefined || surveyAsJson == '') {
+        surveyAsJson = {
+            pages: [{
+                name: "Name",
+                elements: [{
+                    name: "FirstName",
+                    title: "Enter your first name:",
+                    type: "text"
+                }, {
+                    name: "LastName",
+                    title: "Enter your last name:",
+                    type: "text"
+                }]
+            }]
+        };
+    }
+
+    creator.text = surveyAsJson;
+    creator.saveSurveyFunc = (saveNo, callback) => {
+        window.localStorage.setItem("survey-json", creator.text);
+        callback(saveNo, true);
+        saveSurveyJson(
+            "https://your-web-service.com/",
+            creator.JSON,
+            saveNo,
+            callback
+        );
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+        creator.render("surveyCreator");
     });
 
+    function saveSurveyJson(url, json, saveNo, callback) {
 
-    $(window).load(function () {
-        $('.svd_commercial_container').remove();
-        $(".svd_content").append($("#divUpload"));
-    });
+        UploadTemplate();
 
-    function UploadTemplate() {
 
-        $.ajax({
-            url: "@Url.Action("UploadTemplate", "Surveys")",
-            type: "POST",
+
+    }
+
+    Survey.setLicenseKey(
+        "ZDdhYjZhM2YtYTZjZi00MTI1LWFmYjMtMWI5M2RkYjQ0NDgwOzE9MjAyNC0wOC0zMSwyPTIwMjQtMDgtMzEsND0yMDI0LTA4LTMx"
+    );
+
+
+        function UploadTemplate() {
+
+    $.ajax({
+        url: "@Url.Action("UploadTemplate", "Surveys")",
+        type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({ SurveyTitle: $('#sTitle').val(), SurveyText: JSON.stringify(editor.getSurveyJSON()) }),
+        data: JSON.stringify({
+            SurveyTitle: creator.survey.title,
+            IsRTL: $('#isRTL').is(":checked"),
+            SurveyText: JSON.stringify(creator.JSON)
+        }),
         success: function (response) {
             if (response.success) {
                 window.location.href = '@Url.Action("Index","Surveys")';
@@ -188,6 +226,54 @@
     });
 
     return false;
-    }
+}
+
+
+
+    function changeLanguage() {
+
+
+
+
+        $.ajax({
+            type: "POST",
+            url: '/Home/SetLanguage',
+            data: { "value": $("#ddLangs").val() },
+            success: function (r) {
+                switch (currentAction) {
+                    case 'Index':
+                        survey.locale = $('#ddLangs').val();
+                        break;
+
+                    case 'Create':
+                        window.location.href = "/Home/Create?lang=" + $('#ddLangs').val();
+                        break;
+
+                    case 'PollData':
+                        window.location.href = "/Home/PollData?lang=" + $('#ddLangs').val();
+                        break;
+
+                    case 'Dashboard':
+                        window.location.href = "/Home/Dashboard?lang=" + $('#ddLangs').val();
+                        break;
+
+                    case 'Gauge':
+                        window.location.href = "/Home/Gauge?lang=" + $('#ddLangs').val();
+                        break;
+
+                    case 'Table':
+                        window.location.href = "/Home/Table?lang=" + $('#ddLangs').val();
+                        break;
+                }
+            }
+        });
+
+    };
+
+
+
+
 
 </script>
+
+

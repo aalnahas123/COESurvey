@@ -3,104 +3,52 @@
 @model Survey
 
 @{
-    ViewBag.Title = "Survey";
+    ViewBag.Title = "Survey | " + Model.SurveyTitle;
     var dir = Model.IsRTL ? "right" : "left";
     var completeBtnPos = Model.IsRTL ? "left" : "right";
 }
 
-<title>Use options to customize the Survey Editor, Survey Builder Example</title>
+<title>Survey | @ViewBag.Title</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://unpkg.com/jquery"></script>
-<script src="~/Content/surveyjs/survey.jquery.min.js"></script>
-<link href="~/Content/surveyjs/survey.min.css" rel="stylesheet" />
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<link href="https://unpkg.com/survey-jquery/defaultV2.min.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
+
+
+<script src="https://unpkg.com/survey-core/survey.i18n.min.js"></script>
 
 <style>
-    .caption {
-        font-weight: bold;
-        font-size: 20px !important;
+
+
+    /*scaling*/
+     .hidden {
+        transition: all 1s ease-in-out;
+        transform-origin: left top;
+        transform: scaleY(0);
     }
 
-    .sv_q_matrix:first-child tr td:first-child {
-        font-weight: bold;
-        direction: @Model.SurveyDirection;
-        text-align: @dir !important;
-        width: 100% !important;
-    }
-    .sv_header h3{
-        text-align: @dir !important;
-    }
-
-    .sv_q_matrix tr td .sv_q_m_cell_label {
-        display: none !important;
-    }
-
-    .sv_q_matrix tr td {
-        width: 50px;
-        min-width: 8em !important;
-    }
-
-    .sv_q_m_cell_label {
-        width: 40px;
+    .visible {
+        transform: scaleY(1);
     }
 
 
-    .portlet > .portlet-title > .caption {
-        float: @dir;
+    /*fading
+    .hidden {
+        transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+        opacity: 0;
+        visibility: hidden;
     }
 
-    .sv_q_title, .sv_page_title {
-        font-size: 1.4em !important;
-        color: #0b79b8;
-        direction: @Model.SurveyDirection;
-        font-weight: bold !important;
-    }
-
-    .sv_page_title {
-        display: list-item;
-    }
-
-    .msgText {
-        font-size: 13px;
-        color: green;
-        font-weight: bold;
-        background-color: #f4f4f4;
-        margin: 10px 0px 0 0;
-        padding: 10px;
-    }
-
-    .sv_body {
-        border: 0px !important;
-    }
-
-    .modal-dialog {
-        left: auto !important;
-    }
-
-    .sv_select_wrapper {
-        width: 200px !important;
-    }
-
-    .sv_q_rating_item_text {
-        padding: 0 2em !important;
-    }
-
-    .sv_main .sv_container .sv_body .sv_p_root > .sv_row {
-        background-color: initial !important;
-        border-bottom: 0px !important;
-    }
-
-    .sv_start_btn,
-    .sv_next_btn,
-    .sv_complete_btn {
-        float: @completeBtnPos !important;
-    }
-
-    .sv_prev_btn {
-        float: @dir !important;
-    }
-
+    .visible {
+        transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+        opacity: 1;
+        visibility: visible;
+    }*/
 </style>
-
 
 
 <div class="row">
@@ -116,8 +64,7 @@
                 <div class="form-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <div id="surveyElement" style="direction:@Model.SurveyDirection"></div>
-                            <div id="surveyResult" style="direction:@Model.SurveyDirection"></div>
+                            <div id="surveyContainer"></div>
                         </div>
                     </div>
                 </div>
@@ -128,57 +75,31 @@
 
 <script type="text/javascript">
 
-    var wantsToContinue = false;
+    var isAnimationEnabled = true;
+    var doAnimation = true;
 
-    var surveyValueChanged = function (sender, options) {
-        debugger;
+    var surveyAsJson = '@Model.SurveyText';
+    json = surveyAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "");
 
-        if (options.name != "ToAddMore")
-            return;
+    var surveyJson = JSON.parse(json);
 
-        if ('@Model.ID' == '27' || '@Model.ID' == '28') {
-            wantsToContinue = options.value == 'item1';
-            if (wantsToContinue) {
-                window.survey.completedHtml = "<p></p><p><b>سوف يتم توجيه الصفحة الآن</b></p><p> إذا لم يتم ذلك تلقائياً برجاء الضغط على <a href=\"http://eportal.coe.com.sa/Surveys/Surveys/Answer/28\" style=\"font-size: 16px;color: blue;font-style: italic;\">هذا الرابط</a></p>";
-            }
-            else {
-                window.survey.completedHtml = "<h2 style=\"color:green\"> نشكركم على مشاركتكم في هذا الإستبيان</h2>";
-            }
-        }
-    };
+    const survey = new Survey.Model(surveyJson);
+    survey.focusFirstQuestionAutomatic = false;
+    Survey.surveyLocalization.supportedLocales = ["en", "ar"];
 
+    var selectedLang = getLanguage();
+    survey.locale = selectedLang;
 
+    debugger;
+    survey.completedHtml = "<h2 style=\"color:green\"> نشكركم على مشاركتكم في هذا الإستبيان</h2>";
 
+    function submitResults(sender) {
 
-    //var json = '@Model.SurveyText'.replace(/&quot;/g, '\\"').replace(/\\/g, "");
-    var json = '@Model.SurveyText'.replace(/&#39;/g, '\'').replace(/&quot;/g, '\\"').replace(/\\/g, "");
-    //debugger;
-
-
-    // json.completedHtml = "dffff";
-
-
-
-    window.survey = new Survey.Model(json);
-
-    if ('@Model.ID' == '27' || '@Model.ID' == '28') {
-        window.survey.completedHtml = "<h2 style=\"color:green\"> نشكركم على مشاركتكم في هذا الإستبيان</h2>";
-    }
-
-
-
-
-    survey
-        .onComplete
-        .add(function (result) {
-            //
-			scroll(0,0);
-			
             $.ajax({
                 url: '@Url.Action("UploadAnswer","Surveys")',
                 data: {
                     id: "@Model.ID",
-                    AnswerText: JSON.stringify(result.data)
+                    AnswerText: JSON.stringify(sender.data)
                 },
                 type: 'post',
                 dataType: 'json',
@@ -195,49 +116,77 @@
                     debugger;
                 }
             });
-        });
 
-
-    if ('@dir' == 'right') {
-        survey.locale = "ar";
+        animate(true);
+        //alert(results);
     }
 
+    survey.onComplete.add(submitResults);
 
-    $("#surveyElement").Survey({ model: survey, onValueChanged: surveyValueChanged });
+    if (isAnimationEnabled) {
+        applyAnimation();
+    }
 
-    var mainColor = "#337ab7";
-    var mainHoverColor = "#232f58";
-    var textColor = "#232f58";
-
-    var defaultThemeColorsEditor = Survey.StylesManager.ThemeColors["default"];
-    defaultThemeColorsEditor["$primary-color"] = mainColor;
-    defaultThemeColorsEditor["$main-color"] = mainColor;
-    defaultThemeColorsEditor["$secondary-color"] = mainColor;
-    defaultThemeColorsEditor["$primary-hover-color"] = mainHoverColor;
-    defaultThemeColorsEditor["$primary-text-color"] = textColor;
-    defaultThemeColorsEditor["$selection-border-color"] = mainColor;
-
-    Survey.StylesManager.applyTheme();
-
-
-    $(window).on('load', function () {
-        $('.svd_commercial_container').remove();
-        $(".svd_toolbar").prepend($("#svd-upload"));
-        $("#svd-upload").show();
-        setInterval(updatetext, 300);
-        $('textarea').attr('maxlength', '200')
+    $(function () {
+        $("#surveyContainer").Survey({ model: survey });
     });
 
+    Survey.setLicenseKey(
+        "ZDdhYjZhM2YtYTZjZi00MTI1LWFmYjMtMWI5M2RkYjQ0NDgwOzE9MjAyNC0wOC0zMSwyPTIwMjQtMDgtMzEsND0yMDI0LTA4LTMx"
+    );
 
-    //$(window).load(function () {
 
-    //});
 
-    function updatetext() {
-        $('input[value="Next"]').val('التالي');
-        $('input[value="Previous"]').val('السابق');
-        $('input[value="Complete"]').val('إتمام');
-        $("div").find("[data-bind='html: question.locHtml.koRenderedHtml']").addClass('msgText');
+
+
+    /*Animation Part*/
+
+   
+
+
+    function animate(isShowing) {
+        const element = document.getElementById("surveyContainer");
+        if (!!element) {
+            const classes = element.classList;
+            if (!classes.contains("hidden")) {
+                classes.add("hidden");
+            }
+            isShowing ? classes.add("visible") : classes.remove("visible");
+        }
     }
+
+    function showAnimated() { animate(true); }
+    function hideAnimated() { animate(false); }
+
+
+    function applyAnimation() {
+
+        survey.onAfterRenderSurvey.add(showAnimated);
+        survey.onCurrentPageChanging.add(function (_, options) {
+            if (!doAnimation) return;
+            options.allow = false;
+            setTimeout(function () {
+                doAnimation = false;
+                survey.currentPage = options.newCurrentPage;
+                doAnimation = true;
+            }, 700);
+            hideAnimated();
+        });
+        survey.onCurrentPageChanged.add(showAnimated);
+        survey.onCompleting.add(function (_, options) {
+            if (!doAnimation) return;
+            options.allow = false;
+            setTimeout(function () {
+                doAnimation = false;
+                survey.doComplete();
+                doAnimation = true;
+            }, 700);
+            hideAnimated();
+        });
+
+    }
+
+
+
 
 </script>

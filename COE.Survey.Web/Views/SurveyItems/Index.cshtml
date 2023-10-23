@@ -1,0 +1,65 @@
+﻿@model IEnumerable<COE.Survey.Web.DBModels.SurveyItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+<style>
+    /* Custom CSS for styling */
+    .custom-table {
+        background-color: #19b394;
+        color: white;
+    }
+
+        .custom-table th {
+            border: none;
+        }
+
+        .custom-table .btn {
+            background-color: #19b394;
+            border-color: #19b394;
+        }
+
+            .custom-table .btn:hover {
+                background-color: #15a183;
+                border-color: #15a183;
+            }
+</style>
+
+<div class="table-responsive">
+    <table class="table custom-table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a class="btn btn-success" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

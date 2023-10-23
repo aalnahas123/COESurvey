@@ -1,0 +1,123 @@
+﻿@model IEnumerable<COE.Survey.Web.DBModels.SurveyItem>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<style>
+    .create-new {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    /* Add margin between cards */
+    .card {
+        margin-bottom: 20px;
+        margin-right: 20px;
+    }
+
+    /* Move dropdown to top right corner */
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .img-fluid {
+        min-width: 100%;
+        height: 200px;
+    }
+</style>
+
+
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<link href="https://unpkg.com/survey-jquery/defaultV2.min.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
+
+
+<script src="https://unpkg.com/survey-core/survey.i18n.min.js"></script>
+
+
+
+<h1>List of surveys</h1>
+
+
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="card create-new" style="width: 350px;">
+            <!-- Big Button for Creating New Survey -->
+            <div class="card text-center">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-plus-circle"></i> <!-- FontAwesome icon for add -->
+                    <a target="_blank" asp-action="Create">Create New Survey</a>
+                </div>
+            </div>
+        </div>
+
+
+        @foreach (var item in Model)
+        {
+            <div class="card" style="width: 350px;">
+                <div class="card-header">
+                    <h5 class="card-title">@item.Title</h5>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" id="optionsDropdown1" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="optionsDropdown1">
+                            <a class="dropdown-item" target="_blank" asp-controller="Home" asp-action="Answer" asp-route-id="@item.Id">Run</a>
+                            <a class="dropdown-item"  asp-controller="Home" asp-action="Create" asp-route-id="@item.Id">Edit</a>
+                            <a class="dropdown-item"  asp-controller="Home" asp-action="Clone" asp-route-id="@item.Id">Clone</a>
+                            <div class="dropdown-divder"></div>
+                            <a class="dropdown-item" target="_blank" aref="#">Publish</a>
+                            <a class="dropdown-item" target="_blank" aref="#">Copy URL</a>
+                            <a class="dropdown-item" target="_blank" asp-controller="Home" asp-action="Table" asp-route-id="@item.Id">View Results</a>
+                            <a class="dropdown-item" target="_blank" asp-controller="Home" asp-action="Dashboard" asp-route-id="@item.Id">View Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card-body">
+
+                    @if (string.IsNullOrEmpty(@item.Logo))
+                    {
+                        <img src="~/images/default300.png" class="img-fluid"
+                             alt="Survey Image">
+                    }
+                    else
+                    {
+                        <img src="@item.Logo" class="img-fluid"
+                             alt="Survey Image">
+                    }
+
+                    <hr>
+                    <p>Created on: @item.CreatedOn  </p>
+                    <p>Updated on: @item.UpdatedOn</p>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

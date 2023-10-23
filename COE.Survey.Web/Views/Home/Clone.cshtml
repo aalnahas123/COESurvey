@@ -1,50 +1,54 @@
-﻿@using COE.Common.Model;
+﻿@model COE.Survey.Web.DBModels.SurveyItem
 
 @{
-    ViewBag.Title = "Add Survey";
-    List<SurveyModules> modules = ViewBag.Modules;
+    ViewData["Title"] = "Cloning" + @Model.Title;
 }
 
-<!-- Stylesheets -->
-<link href="https://unpkg.com/survey-core/defaultV2.min.css" rel="stylesheet" type="text/css">
-<link href="https://unpkg.com/survey-creator-core/survey-creator-core.min.css" rel="stylesheet" type="text/css">
 
-<div class="container mt-4">
-    <div class="form-body">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="isRTL">Select Language</label>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="isRTL">
-                        <label class="form-check-label" for="isRTL">Is Arabic</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="surveyCreator" style="height: 100vh;"></div>
-    </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://unpkg.com/knockout/build/output/knockout-latest.js"></script>
+<!-- ... -->
+<script type="text/javascript" src="https://unpkg.com/knockout/build/output/knockout-latest.js"></script>
 
 <!-- SurveyJS resources -->
+<link href="https://unpkg.com/survey-core/defaultV2.min.css" type="text/css" rel="stylesheet">
 <script src="https://unpkg.com/survey-core/survey.core.min.js"></script>
 <script src="https://unpkg.com/survey-knockout-ui/survey-knockout-ui.min.js"></script>
-<script src="https://unpkg.com/survey-core/survey.i18n.min.js"></script>
 
 <!-- Survey Creator resources -->
+<link href="https://unpkg.com/survey-creator-core/survey-creator-core.min.css" type="text/css" rel="stylesheet">
 <script src="https://unpkg.com/survey-creator-core/survey-creator-core.min.js"></script>
 <script src="https://unpkg.com/survey-creator-knockout/survey-creator-knockout.min.js"></script>
+<!-- ... -->
+
+<script src="https://unpkg.com/survey-core/survey.i18n.min.js"></script>
 <script src="https://unpkg.com/survey-creator-core/survey-creator-core.i18n.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<div>
+    @* class="text-center"*@
+    <h1 class="display-4">Cloning @Model.Title</h1>
+
+
+    @*  <div class="container">
+    <button class="btn btn-success float-end" style="background-color: #19b394; color: white;">Save Changes</button>
+    </div> *@
+
+    <div id="surveyCreator" style="height: 100vh;"></div>
+
+
+
+
+</div>
+
 
 
 <script type="text/javascript">
 
-    var creator;
+
     var selectedLang = getLanguage();
+
+
 
     const creatorOptions = {
         showLogicTab: true,
@@ -57,26 +61,31 @@
     Survey.surveyLocalization.supportedLocales = ["en", "ar"];
     SurveyCreator.localization.currentLocale = selectedLang;
 
-    creator = new SurveyCreator.SurveyCreator(creatorOptions);
+    const creator = new SurveyCreator.SurveyCreator(creatorOptions);
     creator.toolbox.forceCompact = false;
 
+    var da = '@Model.ContentJson'.replace(/&quot;/g, '"');
 
+    if (da == "") {
 
-    var defaultJson = {
-        pages: [{
-            name: "Name",
-            elements: [{
-                name: "FirstName",
-                title: "Enter your first name:",
-                type: "text"
-            }, {
-                name: "LastName",
-                title: "Enter your last name:",
-                type: "text"
+        var defaultJson = {
+            pages: [{
+                name: "Name",
+                elements: [{
+                    name: "FirstName",
+                    title: "Enter your first name:",
+                    type: "text"
+                }, {
+                    name: "LastName",
+                    title: "Enter your last name:",
+                    type: "text"
+                }]
             }]
-        }]
-    };
-
+        };
+    }
+    else {
+        var defaultJson = JSON.parse(da);
+    }
 
 
 
@@ -100,10 +109,49 @@
 
     function saveSurveyJson(url, json, saveNo, callback) {
 
-        UploadTemplate();
 
 
 
+
+
+
+        $.ajax({
+            type: "POST",
+            url: '/Home/SaveSurvey',
+            data: { Title: creator.survey.title, Id: @Model.Id, ContentJson: JSON.stringify(json) },
+            success: function (d) {
+
+                if (d > 0) {
+                    window.location.href = "/Home/Index";
+                }
+                else {
+                    alert('error occured!');
+                }
+
+            }
+        });
+
+
+        // fetch('/Home/SaveSurvey', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json;charset=UTF-8'
+        //     },
+        //     body: JSON.stringify(surveyItem)
+        // })
+        //     .then(response => {
+
+
+
+        //         if (response.ok) {
+        //             callback(saveNo, true);
+        //         } else {
+        //             callback(saveNo, false);
+        //         }
+        //     })
+        //     .catch(error => {
+        //         callback(saveNo, false);
+        //     });
     }
 
 
@@ -115,30 +163,7 @@
     );
 
 
-        function UploadTemplate() {
 
-    $.ajax({
-        url: "@Url.Action("UploadTemplate", "Surveys")",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({
-            SurveyTitle: creator.survey.title,
-            IsRTL: $('#isRTL').is(":checked"),
-            SurveyText: JSON.stringify(creator.JSON)
-        }),
-        success: function (response) {
-            if (response.success) {
-                window.location.href = '@Url.Action("Index","Surveys")';
-            }
-            else {
-                swal("Oops", response.errorMessage, "error")
-            }
-
-        }
-    });
-
-    return false;
-}
 
 
 
@@ -187,3 +212,5 @@
 
 
 </script>
+
+

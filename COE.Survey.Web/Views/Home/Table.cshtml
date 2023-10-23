@@ -1,27 +1,25 @@
-﻿@model COE.Survey.Web.ViewModels.SurveyAllAnswers
+﻿@model COE.Survey.Web.DBModels.SurveyAllAnswers
 
 @{
-    ViewBag.Title = "Survey Results";
+    ViewData["Title"] = "Table View";
 }
 
-
 @*
-    <!-- ... -->
-    <script type="text/javascript" src="https://unpkg.com/knockout/build/output/knockout-latest.js"></script>
+<!-- ... -->
+<script type="text/javascript" src="https://unpkg.com/knockout/build/output/knockout-latest.js"></script>
 
-    <!-- SurveyJS Form Library resources -->
-    <script type="text/javascript" src="https://unpkg.com/survey-core/survey.core.min.js"></script>
-    <!-- Uncomment the following lines if you also display the survey on the page -->
-    <!-- <link href="https://unpkg.com/survey-core/defaultV2.min.css" type="text/css" rel="stylesheet"> -->
-    <!-- <script type="text/javascript" src="https://unpkg.com/survey-knockout-ui/survey-knockout-ui.min.js"></script> -->
-    <!-- Third-party visualization libraries -->
-    <script src="https://unpkg.com/plotly.js-dist-min/plotly.min.js"></script>
-    <!-- Uncomment the following line if you use the Text, Multiple Text, or Comment question types in your surveys -->
-    <!-- <script src="https://unpkg.com/wordcloud/src/wordcloud2.js"></script> -->
-    <!-- SurveyJS Dashboard resources-->
-    <link href="https://unpkg.com/survey-analytics/survey.analytics.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/survey-analytics/survey.analytics.min.js"></script>*@
-
+<!-- SurveyJS Form Library resources -->
+<script type="text/javascript" src="https://unpkg.com/survey-core/survey.core.min.js"></script>
+<!-- Uncomment the following lines if you also display the survey on the page -->
+<!-- <link href="https://unpkg.com/survey-core/defaultV2.min.css" type="text/css" rel="stylesheet"> -->
+<!-- <script type="text/javascript" src="https://unpkg.com/survey-knockout-ui/survey-knockout-ui.min.js"></script> -->
+<!-- Third-party visualization libraries -->
+<script src="https://unpkg.com/plotly.js-dist-min/plotly.min.js"></script>
+<!-- Uncomment the following line if you use the Text, Multiple Text, or Comment question types in your surveys -->
+<!-- <script src="https://unpkg.com/wordcloud/src/wordcloud2.js"></script> -->
+<!-- SurveyJS Dashboard resources-->
+<link href="https://unpkg.com/survey-analytics/survey.analytics.min.css" rel="stylesheet">
+<script src="https://unpkg.com/survey-analytics/survey.analytics.min.js"></script>*@
 
 
 
@@ -37,7 +35,6 @@
 <script src="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.7.2/css/tabulator.min.css" />
 <link rel="stylesheet" href="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.tabulator.css" />
-
 
 
 <style>
@@ -66,6 +63,7 @@
             transform: rotate(359deg);
         }
     }
+
 </style>
 
 <div>
@@ -78,8 +76,8 @@
     <div class="row mb-5">
         <div class="col-12">
             <div class="text-center">
-                <a class="btn btn-success" style="background-color: #19b394; color: white;" href="@Url.Action("Result", "Surveys", new { Id = Model.Id })">Table</a>
-                <a class="btn btn-success" style="background-color: ghostwhite; color: darkgray;" href="@Url.Action("Dashboard", "Surveys", new { Id = Model.Id })">Dashboard</a>
+                <a class="btn btn-success" style="background-color: #19b394; color: white;" asp-action="Dashboard" asp-route-id="@Model.Id">Table</a>
+                <a class="btn btn-success" style="background-color: ghostwhite; color: darkgray;" asp-action="Dashboard" asp-route-id="@Model.Id">Dashboard</a>
             </div>
         </div>
     </div>
@@ -121,12 +119,16 @@
 
     var selectedLang = getLanguage();
 
-    var surveyJson = '@Model.ContentJson'.replace(/&quot;/g, '"');
-    var answerJson = '@Model.AnswerItems'.replace(/&quot;/g, '"');
+    var json = '@Model.ContentJson'.replace(/&quot;/g, '"');
+    var json2 = '@Model.AnswerItems'.replace(/&quot;/g, '"');
+    
+    var dataFromServer = JSON.parse(json2);
+    
 
-    var dataFromServer = JSON.parse(answerJson);
 
-    const survey = new Survey.Model(surveyJson);
+   
+
+    const survey = new Survey.Model(json);
     var vizPanel = new SurveyAnalyticsTabulator.Tabulator(
         survey,
         dataFromServer
@@ -137,7 +139,7 @@
     document.getElementById("loadingIndicator").style.display = "none";
     vizPanel.render("surveyDashboardContainer");
 
-
+   
 
 
 </script>
