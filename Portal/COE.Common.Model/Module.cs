@@ -18,9 +18,9 @@ namespace COE.Common.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Module()
         {
-            this.ModuleAction = new HashSet<ModuleAction>();
             this.ModuleField = new HashSet<ModuleField>();
             this.ModuleRole = new HashSet<ModuleRole>();
+            this.ModuleAction = new HashSet<ModuleAction>();
         }
     
         public int ID { get; set; }
@@ -35,10 +35,10 @@ namespace COE.Common.Model
     
         public virtual ModuleCategory ModuleCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ModuleAction> ModuleAction { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ModuleField> ModuleField { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ModuleRole> ModuleRole { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ModuleAction> ModuleAction { get; set; }
     }
 }

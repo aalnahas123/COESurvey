@@ -21,14 +21,6 @@ namespace COE.Common.Model
             this.AspNetUserClaims = new HashSet<AspNetUserClaims>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
             this.UserDisplay = new HashSet<UserDisplay>();
-            this.StudentProfile = new HashSet<StudentProfile>();
-            this.ExcludedStudent = new HashSet<ExcludedStudent>();
-            this.EnrollmentRequest = new HashSet<EnrollmentRequest>();
-            this.StudentOJT = new HashSet<StudentOJT>();
-            this.ComplaintRequests = new HashSet<ComplaintRequest>();
-            this.RPLExamRequests = new HashSet<RPLExamRequest>();
-            this.RPLExamBookings = new HashSet<RPLExamBooking>();
-            this.RPLApplicant = new HashSet<RPLApplicant>();
         }
     
         public System.Guid Id { get; set; }
@@ -61,22 +53,5 @@ namespace COE.Common.Model
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserDisplay> UserDisplay { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentProfile> StudentProfile { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExcludedStudent> ExcludedStudent { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnrollmentRequest> EnrollmentRequest { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentOJT> StudentOJT { get; set; }
-        public virtual Country Country { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ComplaintRequest> ComplaintRequests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RPLExamRequest> RPLExamRequests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RPLExamBooking> RPLExamBookings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RPLApplicant> RPLApplicant { get; set; }
     }
 }

@@ -15,26 +15,6 @@ namespace COE.Common.Model
        
     public partial class Attachments
     { 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Attachments()
-        {
-            this.RequestAttachment = new HashSet<RequestAttachment>();
-            this.ContractAttachment = new HashSet<ContractAttachment>();
-            this.BondAttachment = new HashSet<BondAttachment>();
-            this.CollegePaymentAttachement = new HashSet<CollegePaymentAttachement>();
-            this.StudentProfileAttachement = new HashSet<StudentProfileAttachement>();
-            this.RPLApplicantAttachment = new HashSet<RPLApplicantAttachment>();
-            this.RPLQualificationAttachment = new HashSet<RPLQualificationAttachment>();
-            this.CandidateAttachment = new HashSet<CandidateAttachment>();
-            this.EmployerAttachment = new HashSet<EmployerAttachment>();
-            this.CenterAttachments = new HashSet<CenterAttachment>();
-            this.CenterStaffDetailAttachments = new HashSet<CenterStaffDetailAttachment>();
-            this.RPLExamRequestAttachments = new HashSet<RPLExamRequestAttachment>();
-            this.RPLExamBookingPaymentInvoice = new HashSet<RPLExamBookingPaymentInvoice>();
-            this.RPLExamBookingInvoiceCreditNote = new HashSet<RPLExamBookingInvoiceCreditNote>();
-            this.ZATCAInvoiceIntegration = new HashSet<ZATCAInvoiceIntegration>();
-        }
-    
         public System.Guid Id { get; set; }
         public string Name { get; set; }
         public string Extention { get; set; }
@@ -49,35 +29,5 @@ namespace COE.Common.Model
     
         public virtual AttachmentContents AttachmentContents { get; set; }
         public virtual AttachmentTypes AttachmentTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RequestAttachment> RequestAttachment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContractAttachment> ContractAttachment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BondAttachment> BondAttachment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CollegePaymentAttachement> CollegePaymentAttachement { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentProfileAttachement> StudentProfileAttachement { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RPLApplicantAttachment> RPLApplicantAttachment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RPLQualificationAttachment> RPLQualificationAttachment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CandidateAttachment> CandidateAttachment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployerAttachment> EmployerAttachment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CenterAttachment> CenterAttachments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CenterStaffDetailAttachment> CenterStaffDetailAttachments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RPLExamRequestAttachment> RPLExamRequestAttachments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RPLExamBookingPaymentInvoice> RPLExamBookingPaymentInvoice { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RPLExamBookingInvoiceCreditNote> RPLExamBookingInvoiceCreditNote { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ZATCAInvoiceIntegration> ZATCAInvoiceIntegration { get; set; }
     }
 }

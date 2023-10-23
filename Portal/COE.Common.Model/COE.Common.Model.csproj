@@ -94,31 +94,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcademicYear.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AcademicYearTerm.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AcademicYearTermPeriod.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="AcademicYearTerm_SelectByID_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Action.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="ActivationCode.cs">
+      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Alert.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="AlertType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ApplicantExperince.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Area.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetRoles.cs">
@@ -139,21 +127,6 @@
     <Compile Include="AspNetUsers_SelectUserIdByCollegeIdAndNationalIdAndTermId_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Assessment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AssessmentComponent.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AssessmentPeriod.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AssessmentPeriodComponent.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AssessmentPeriodStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="AttachmentContents.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
@@ -163,64 +136,7 @@
     <Compile Include="AttachmentTypes.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="AttendenceStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Bank.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Batch.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BatchDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BatchEditingView.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BatchServicePeriod.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Bond.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BondAttachment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BondType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="CalculateStudentPayment_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Candidate.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CandidateAttachment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CandidateExperinece.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CandidateSkill.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CandidateVacancyRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CardsFeedbackDenialReason.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CardsFeedbackStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CardsFeedbackValidation.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CardsRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CardsRequestType.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CardsRequest_GetStudentsByRequestId_Result.cs">
@@ -241,124 +157,16 @@
     <Compile Include="CardsRequest_Update_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CardType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CenterAttachment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CenterDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CenterDetailTrainingType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CenterRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CenterStaffDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CenterStaffDetailAttachment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CenterTrainingCourse.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CenterTrainingType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="City.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="College.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CollegeAcademicYear.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CollegeAcademicYearPeriod.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CollegeAcademicYearQualificationPeriod.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CollegeAcademicYearTermPeriod.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CollegeContactDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CollegePayment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CollegePaymentAttachement.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="CollegePayment_SelectByRequestID_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CollegePlan.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CollegeRepresentiveDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CollegeSpecialization.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CollegeSpecializationRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CollegeSponser.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="CollegeStaff.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CollegeType.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="College_GetByID_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="College_GetCollegesWithStipend_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ComplaintPeriod.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ComplaintRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ComplaintType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ContractAttachment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ContractCollegeAcademicYear.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ContractTermPaymentSetting.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ContractType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Country.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Course.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CourseLevelPaymentSetting.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CourseType.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Course_SelectCourseIdByCourseCodeAndCollegeID_Result.cs">
@@ -372,82 +180,7 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="DaysWeek.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Decision.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DeferralReason.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DeferralRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DeferralRequestAcademicYearTerm.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DeferralRequestReason.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="DisabilityLevel_GetDisabilityLevels_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DismissReason.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DismissRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DismissRequestReason.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Employer.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EmployerAttachment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EmployerContactDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EmployerIndustry.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EmployerRepresentiveDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EmployerRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EnglishExamResult.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EnglishExamScore.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Enrollment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EnrollmentChangeStatusRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EnrollmentCollegeSponser.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EnrollmentOJT.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EnrollmentRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EnrollmentRequestDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EnrollmentStatistic.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EnrollmentStatisticType.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Enrollment_GetEnrolledStudentsByCollegeAndTerm_Result.cs">
@@ -457,61 +190,13 @@
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Enums\Enum.cs" />
-    <Compile Include="EquivalentNOSSCourse.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExamBookingType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExamCalendar.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExamCalendarDay.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExamCalendarRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExamCalendarRequestCancelation.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExamCalendarRequestComments.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExamCalendarStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="ExamEligibility_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExamStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EXAMS_AVAILABLE_SLOTS.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExamType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExcludedStudent.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FieldVisibilty.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="FileAutoGenerationStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FinalExamResult.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="FoundationExamEligibility_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetAllRequestNotStudent.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetAllRequestStudent.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="GetCurrentAcademicYearTermByAcademicYearId_Result.cs">
@@ -520,16 +205,10 @@
     <Compile Include="GetEmailBody_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="GetEnrollmentRequestList.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="GetExamBookingPaymentInvoice_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="GetModuleActionsByUserNameAndCategoryAndModuleAndAction_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetRPLCertificateView.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="GetRPLCertificate_Result.cs">
@@ -553,43 +232,10 @@
     <Compile Include="GetTeachersWithRequiredLectures_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="GetTermEnrollmentList.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GetTermEnrollmentListOSH.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GradingRule.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GradingScheme.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GradingSchemeSetting.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GradingType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GraduationYear.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="HomePageCategory.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="HomePageModule.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="IncomingExamResult.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="IncomingExamResultDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="IncomingExamResultGradingSetting.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Industry.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="IntegrationServicesModels\FinalExamResultsSearchViewModel.cs" />
@@ -609,12 +255,6 @@
     <Compile Include="IntegrationServicesModels\SarasUserViewModel.cs" />
     <Compile Include="IntegrationServicesModels\SarasUserResponseViewModel.cs" />
     <Compile Include="IntegrationServicesModels\YaseerEducationData.cs" />
-    <Compile Include="Interview.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="InvoiceRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="IsRepeated_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
@@ -624,74 +264,27 @@
     <Compile Include="LeaveReason.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Level.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Metadata\AssessmentComponent.cs" />
-    <Compile Include="Metadata\ContractManagement\AcademicYearTerm.cs" />
-    <Compile Include="Metadata\ContractManagement\AcademicYearTermPeriod.cs" />
-    <Compile Include="Metadata\ContractManagement\SpecializationUnit.cs" />
-    <Compile Include="Metadata\ContractManagement\Unit.cs" />
-    <Compile Include="Metadata\ContractManagement\CollegeAcademicYearPeriod.cs" />
-    <Compile Include="Metadata\ContractManagement\ContractCollegeAcademicYear.cs" />
-    <Compile Include="Metadata\ContractManagement\ContractTermPaymentSetting.cs" />
-    <Compile Include="Metadata\ContractManagement\CollegeAcademicYearTermPeriod.cs" />
-    <Compile Include="Metadata\ContractManagement\Bond.cs" />
-    <Compile Include="Metadata\ContractManagement\QualificationPeriod.cs" />
-    <Compile Include="Metadata\ContractManagment\College.cs" />
-    <Compile Include="Metadata\ContractManagment\CollegeContactDetail.cs" />
-    <Compile Include="Metadata\ContractManagment\CollegeRepresentiveDetail.cs" />
-    <Compile Include="Metadata\ContractManagment\SponserContactDetail.cs" />
-    <Compile Include="Metadata\ContractManagment\SponserRepresentiveDetail.cs" />
-    <Compile Include="Metadata\ContractManagement\Contract.cs" />
-    <Compile Include="Metadata\DCS\SessionValidation.cs" />
-    <Compile Include="Metadata\ExamCalendarRequest.cs" />
     <Compile Include="Metadata\GetExamBookingPaymentInvoice_Result.cs" />
-    <Compile Include="Metadata\OSHRPLGraduatesView.cs" />
     <Compile Include="Metadata\Portal\HomePageModule.cs" />
-    <Compile Include="Metadata\RPLExamBooking.cs" />
-    <Compile Include="Metadata\RPLRequest.cs" />
-    <Compile Include="Metadata\SectionEnrollment.cs" />
     <Compile Include="Metadata\sp_CalculateFinalExamResult_Result.cs" />
-    <Compile Include="Metadata\Payment\CollegePayment.cs" />
-    <Compile Include="Metadata\Payment\PaymentSetting.cs" />
-    <Compile Include="Metadata\Payment\SectionEnrollment.cs" />
-    <Compile Include="Metadata\Payment\StudentCoursePayment.cs" />
-    <Compile Include="Metadata\Payment\StudentMonthlyPayment.cs" />
-    <Compile Include="Metadata\Payment\TermCourse.cs" />
-    <Compile Include="Metadata\ProviderContactDetail.cs" />
-    <Compile Include="Metadata\ProviderRepresentiveDetail.cs" />
-    <Compile Include="Metadata\ContractManagment\Sponser.cs" />
-    <Compile Include="Metadata\Stipend\FileAutoGenerationStatus.cs" />
-    <Compile Include="Metadata\Stipend\Setting.cs" />
-    <Compile Include="Metadata\Stipend\StudentStipendsRequest.cs" />
-    <Compile Include="Metadata\Stipend\StipendPaymentMethod.cs" />
-    <Compile Include="Metadata\Stipend\StipendFeedbackStatus.cs" />
-    <Compile Include="Metadata\Stipend\RequestStatus.cs" />
-    <Compile Include="Metadata\Stipend\Period\Period.cs" />
     <Compile Include="Metadata\AspNetUsers.cs" />
-    <Compile Include="Metadata\CardsRequest.cs" />
     <Compile Include="Metadata\CommonMetaData.cs" />
     <Compile Include="Metadata\Enrollment.cs" />
     <Compile Include="Metadata\Level.cs" />
     <Compile Include="Metadata\EnrollmentStatisticType.cs" />
-    <Compile Include="Metadata\CollegeStaff.cs" />
     <Compile Include="Metadata\SpecializationStatistic.cs" />
     <Compile Include="Metadata\EnrollmentStatistic.cs" />
-    <Compile Include="Metadata\DismissRequest.cs" />
     <Compile Include="Metadata\Request.cs" />
     <Compile Include="Metadata\Action.cs" />
     <Compile Include="Metadata\ModuleAction.cs" />
     <Compile Include="Metadata\ModuleCategory.cs" />
-    <Compile Include="Metadata\Provider.cs" />
     <Compile Include="Metadata\Module.cs" />
     <Compile Include="Metadata\AspNetRoles.cs" />
     <Compile Include="Metadata\SelectListItem.cs" />
     <Compile Include="Metadata\Specialization.cs" />
     <Compile Include="Metadata\Stage.cs" />
     <Compile Include="Metadata\Status.cs" />
-    <Compile Include="Metadata\Stipend\Requests\StipendRequest.cs" />
-    <Compile Include="Metadata\Stipend\Month.cs" />
     <Compile Include="Metadata\StudentCardsRequest.cs" />
     <Compile Include="Metadata\Surveys\SurveyAnswerMetadata.cs" />
     <Compile Include="Metadata\Surveys\SurveyMetadata.cs" />
@@ -713,49 +306,10 @@
     <Compile Include="ModuleRole.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Month.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Nationality.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NOSSCourse.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NotificationQueue.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NotificationSendStatu.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NotificationType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OSHRPLGraduatesView.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OSHShortCoursesGraduatesView.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PaymentRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PaymentRequestStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PaymentSetting.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="PaymentSetting_SelectByCollegeAndTerm_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Period.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Period_GetByCollegeAndStipendMonthAndAcademicYear_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ProgramDashBoardApplicationsByStage_Result.cs">
@@ -770,34 +324,7 @@
     <Compile Include="ProgramdashBoardEnrollmentCounts_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProgramLevel.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramSpecialization.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProgressType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Provider.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProviderContactDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProviderRepresentiveDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Qualification.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="QualificationLevel.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="QualificationPeriod.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="QuestionAnswer.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
@@ -807,100 +334,7 @@
     <Compile Include="QuestionType.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Reason.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ReinstateRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Request.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RequestAction.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RequestAttachment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RequestStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="RolePermission.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLApplicant.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLApplicantAttachment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLCertificate.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLCertificateType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLCity.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLCountry.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLExamBooking.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLExamBookingAttendanceStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLExamBookingCancelationReason.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLExamBookingInvoiceCreditNote.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLExamBookingNotification.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLExamBookingNotificationType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLExamBookingPayment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLExamBookingPaymentInvoice.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLExamRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLExamRequestAction.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLExamRequestAttachment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLExamResult.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLQualification.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLQualificationAttachment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RPLRequestPayment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SarasLog.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SarasLogDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SchoolType.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="SearchModels\CertificateVerificationSearchModel.cs" />
@@ -909,103 +343,22 @@
     <Compile Include="SearchModels\EnrollmentSm.cs" />
     <Compile Include="SearchModels\ModuleActionSearchModel.cs" />
     <Compile Include="SearchModels\SearchModel.cs" />
-    <Compile Include="Section.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SectionAttendanceSetting.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SectionAttendanceSettingHistory.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="SectionAttendanceSetting_SelectDetails_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SectionEnrollment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SectionEnrollmentAttendance.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SectionEnrollmentAttendanceHistory.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SectionEnrollmentAttendanceValidation.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="SectionEnrollmentAttendance_CheckIfRepeatedStudent_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="SectionEnrollmentHistory.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SectionEnrollmentValidation.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="SectionEnrollment_CheckIfRepeatedStudent_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="SectionHistory.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SectionType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SectionValidation.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Section_SelectByCodeAndCourseCodeAndTerm_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sector.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectStudentsAttendancePerPeriod_ByCollegeAndTerm_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectStudentsCourseAttendance_ByCollegeAndTerm_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Service.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ServiceType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SessionAttendanceSettingSchedule.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SessionMonths.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SessionScheduleDelegation.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SessionValidation.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Skill.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Specialization.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SpecializationComponentAssessment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SpecializationStatistic.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SpecializationUnit.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sponser.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SponserContactDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SponserRepresentiveDetail.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_CalculateFinalExamResult_Result.cs">
@@ -1015,9 +368,6 @@
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SSSExam.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="StaffLevel.cs">
@@ -1041,22 +391,10 @@
     <Compile Include="Status.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="StipendFeedbackStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StipendMonth.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="StipendMonth_GetByID_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="StipendMonth_GetByMonthIdAndYearId_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StipendPaymentMethod.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StipendsRequest.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="StipendsRequest_GetByID_Result.cs">
@@ -1068,58 +406,10 @@
     <Compile Include="StipendsRequest_Update_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="StudentCard.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentCardHistory.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentCardsRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="StudentCardsRequest_SelectByRequestIdAndEnrollmentId_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="StudentCoursePayment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentExamCalendar.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentFailureIntegrationLog.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentGradeBook.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentMonthlyPayment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentOJT.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentProfile.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentProfileAttachement.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentsDisabilityLevel.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentsDisabilityRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentStipendsRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="StudentStipendsRequest_GetByStipendsRequestID_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentSuccessIntegrationLog.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubProgram.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Survey.cs">
@@ -1134,79 +424,19 @@
     <Compile Include="SurveyQuestion.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="TeacherLectures.cs">
+    <Compile Include="SystemSettings.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="TermCourse.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TermCourseValidation.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TermEnrollment.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TermEnrollmentStatisticSetting.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TermType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TrainingSectionEnrollmentAttendance.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TransferRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TransferRequestReason.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TransferVistorRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Unit.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UnitType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UploadRejectionReason.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UploadRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UploadRequestDetailsAttendance.cs">
+    <Compile Include="TempNotificationQueue.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="UploadRequestDetailsAttendance_SelectByUploadRequestID_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UploadRequestDetailsSection.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UploadRequestDetailsSectionEnrollment.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="UploadRequestDetailsSectionEnrollment_SelectByUploadRequestID_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="UploadRequestDetailsSection_SelectByUploadRequestID_Result.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UploadRequestDetailsSession.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UploadRequestHistory.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UploadRequestStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UploadRequestTrackStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UploadRequestType.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="UserActivity.cs">
@@ -1320,224 +550,24 @@
     <Compile Include="uspPrintStudentGraduationCertification_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Vacancy.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VacancySkill.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\AccountViewModel.cs" />
-    <Compile Include="ViewModels\Alert\AlertTypeViewModel.cs" />
-    <Compile Include="ViewModels\Alert\AlertsGroupViewModel.cs" />
-    <Compile Include="ViewModels\Alert\AlertViewModel.cs" />
-    <Compile Include="ViewModels\Alert\AlertSearchViewModel.cs" />
-    <Compile Include="ViewModels\Announcement\AnnouncementViewModel.cs" />
     <Compile Include="ViewModels\AspNetRoles.cs" />
-    <Compile Include="ViewModels\AssessmentPeriod\AssessmentPeriodSearchViewModel.cs" />
-    <Compile Include="ViewModels\AssessmentPeriod\AssessmentPeriodViewModel.cs" />
-    <Compile Include="ViewModels\AssessmentPeriod\ExamBookingRequestViewModel.cs" />
-    <Compile Include="ViewModels\AssessmentPeriod\ExamBookingSearchViewModel.cs" />
-    <Compile Include="ViewModels\AssessmentPeriod\ExamBookingViewModel.cs" />
-    <Compile Include="ViewModels\AssessmentPeriod\ExamCalendarV.cs" />
-    <Compile Include="ViewModels\AssessmentPeriod\ExamCalendarViewModel.cs" />
-    <Compile Include="ViewModels\AssessmentPeriod\ExtendedLookupViewModel.cs" />
-    <Compile Include="ViewModels\AssessmentPeriod\StudentExamBookingViewModel.cs" />
     <Compile Include="ViewModels\AttachmentViewModel.cs" />
     <Compile Include="ViewModels\AttachmentVM.cs" />
     <Compile Include="ViewModels\AttendanceSheet.cs" />
     <Compile Include="ViewModels\BaseSearchViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\Bulletine\BulletineViewModel.cs" />
     <Compile Include="ViewModels\CertificateVerificationViewModel.cs" />
-    <Compile Include="ViewModels\College\CollegeSpecializationViewModel.cs" />
-    <Compile Include="ViewModels\College\CollegeViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\AcademicYearSearchViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\AcademicYearTermPeriodSearchViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\AcademicYearTermViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\DashboardViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\BatchStudentsCount.cs" />
-    <Compile Include="ViewModels\ContractManagement\Period\PeriodViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\QualificationPeriodSearchViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\SubProgramSearchViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\BatchSearchViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\BondSearchViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\BatchViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\BondViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\CollegeAcademicYearTermPeriodViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\CollegeAcademicYearTermPeriodSearchViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\CollegeSearchViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\CollegeViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\AcademicYearViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\ContractAttachmentViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\ContractViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\Provider\ProviderSearchViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\Provider\ProviderViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\Sponser\SponserSearchViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\Sponser\SponserViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\ContractSearchViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\ContractTermPaymentSettingViewModel.cs" />
-    <Compile Include="ViewModels\ContractManagement\ContractCollegeAcademicYearViewModel.cs" />
-    <Compile Include="Metadata\ContractManagement\SubProgram.cs" />
-    <Compile Include="ViewModels\ContractManagement\UnitSearchViewModel.cs" />
-    <Compile Include="ViewModels\ContractProviderStaffAttendanceUploadViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Attendance\AttendanceAllViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Attendance\AttendanceDetailsViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Attendance\AttendanceSearchViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Attendance\AttendanceUploadAllViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Attendance\AttendanceUploadDetailsViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Attendance\AttendanceUploadSearchViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Attendance\AttendanceUploadViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Attendance\DashboardViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Course\CourseAllViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Course\CourseDetailsViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Course\CourseOpenTermViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Course\CourseSearchViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Course\CourseViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Course\OpenCourseViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Enums.cs" />
-    <Compile Include="ViewModels\DCS\Metadata\AcademicYear.cs" />
-    <Compile Include="ViewModels\DCS\Metadata\College.cs" />
-    <Compile Include="ViewModels\DCS\Metadata\SectionAttendanceSettingMeta.cs" />
-    <Compile Include="ViewModels\DCS\Metadata\SectionEnrollment.cs" />
-    <Compile Include="ViewModels\DCS\Metadata\SectionEnrollmentAttendanceValidation.cs" />
-    <Compile Include="ViewModels\DCS\Metadata\SectionEnrollmentValidation.cs" />
-    <Compile Include="ViewModels\DCS\Metadata\SectionValidation.cs" />
-    <Compile Include="ViewModels\DCS\Metadata\TermType.cs" />
-    <Compile Include="ViewModels\DCS\Metadata\UploadRejectionReason.cs" />
-    <Compile Include="ViewModels\DCS\Metadata\UploadRequest.cs" />
-    <Compile Include="ViewModels\DCS\Metadata\UploadRequestStatus.cs" />
-    <Compile Include="ViewModels\DCS\SectionEnrollment\SectionEnrollmentAllViewModel.cs" />
-    <Compile Include="ViewModels\DCS\SectionEnrollment\SectionEnrollmentDetailsViewModel.cs" />
-    <Compile Include="ViewModels\DCS\SectionEnrollment\SectionEnrollmentSearchViewModel.cs" />
-    <Compile Include="ViewModels\DCS\SectionEnrollment\SectionEnrollmentUploadAllViewModel.cs" />
-    <Compile Include="ViewModels\DCS\SectionEnrollment\SectionEnrollmentUploadDetailsViewModel.cs" />
-    <Compile Include="ViewModels\DCS\SectionEnrollment\SectionEnrollmentUploadSearchViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Section\ExtendedLookupViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Section\SectionAllViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Section\SectionDetailsViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Section\SectionMetaData.cs" />
-    <Compile Include="ViewModels\DCS\Section\SectionSearchViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Section\SectionUploadAllViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Section\SectionUploadDetailsViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Section\SectionUploadSearchViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Section\SectionUploadViewModel.cs" />
-    <Compile Include="ViewModels\DCS\Section\SessionUploadItem.cs" />
-    <Compile Include="ViewModels\DCS\Section\TraineeTransfer.cs" />
-    <Compile Include="ViewModels\DCS\UploadViewModel.cs" />
-    <Compile Include="ViewModels\College\CollegeAcademicYearTermsViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\ApplicantsBatchEditingSearchViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\Applications\ApplicationEditViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\Applications\ApplicationListViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\Applications\StudentChoicesEditViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\Applications\StudentChoicesViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\Applications\StudentExperienceViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\Applications\StudentIdentityViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\Applications\ApplicationViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\Applications\StudentInformationViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\Applications\StudentSchoolInformationViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\CertificationViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\DashboardEnrollmentRequestPercentageChartViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\DashboardRequestPercentageChartViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\DashboardRequestStatusChartViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\DashboardViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\EnrollmentAttendanceViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\EnrollmentChangeStatusRequestViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\EnrollmentEnglishExamViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\EnrollmentExamViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\EnrollmentHistoryViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\EnrollmentRequestDetailViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\EnrollmentRequestViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\EnrollmentSearchViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\EnrollmentExportViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\EnrollmentViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\ExamBooking\ExamDate.cs" />
-    <Compile Include="ViewModels\Enrollment\ExamBooking\ExamDateSlots.cs" />
-    <Compile Include="ViewModels\Enrollment\ExamResult\ExamResultViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\ProgramDashboard\ChartViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\ProgramDashboard\DashboardSearchViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\ProgramDashboard\EnrollmentStatusCounts.cs" />
-    <Compile Include="ViewModels\Enrollment\ProgramDashboard\ProgramDashboardViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\SectionEnrollmentAttendanceViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\SeriesAttendanceChartViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\StudentInfo\StudentInfoEditViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\StudentInfo\StudentOtherInfoEditViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\OJTEditBatchViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\TermEnrollmentEditBatchViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\TermEnrollmentHistoryViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\TermEnrollmentListSearchViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\TermEnrollmentListViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\TermEnrollmentSearchViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\TermEnrollmentSerializableModel.cs" />
-    <Compile Include="ViewModels\Enrollment\TermEnrollmentViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\TransferRecordViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\TransferVisitorViewModel.cs" />
     <Compile Include="ViewModels\ExamBookingSearchViewModel.cs" />
-    <Compile Include="ViewModels\ExamBooking\StudentAttencance.cs" />
-    <Compile Include="ViewModels\ExamBooking\CreditsViewModel.cs" />
-    <Compile Include="ViewModels\ExamBooking\ExamBookingIntegerationModel.cs" />
-    <Compile Include="ViewModels\ExamBooking\ExamBookingSearchViewModel.cs" />
-    <Compile Include="ViewModels\ExamBooking\ExamineeAllHistory.cs" />
-    <Compile Include="ViewModels\ExamBooking\ExamineeBookings.cs" />
-    <Compile Include="ViewModels\ExamBooking\ExamineeNotifications.cs" />
-    <Compile Include="ViewModels\ExamBooking\ExamineesHistoryViewModel.cs" />
-    <Compile Include="ViewModels\ExamBooking\ManageTraineesViewModel.cs" />
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\Lookups\LookupViewModel.cs" />
     <Compile Include="ViewModels\ManageUsersViewModel.cs" />
     <Compile Include="ViewModels\MenuActionsViewModel.cs" />
-    <Compile Include="ViewModels\MOL\ApplicationsAllViewModel.cs" />
-    <Compile Include="ViewModels\MOL\CenterProfileViewModel.cs" />
-    <Compile Include="ViewModels\MOL\Center\AccountDetailsVM.cs" />
-    <Compile Include="ViewModels\MOL\Center\BaseRegistrationStepVM.cs" />
-    <Compile Include="ViewModels\MOL\Center\BasicDetailsVM.cs" />
-    <Compile Include="ViewModels\MOL\Center\CenterTrainingTypeVM.cs" />
-    <Compile Include="ViewModels\MOL\Center\LicenseVM.cs" />
-    <Compile Include="ViewModels\MOL\Center\OTpVM.cs" />
-    <Compile Include="ViewModels\MOL\Center\SummaryVM.cs" />
-    <Compile Include="ViewModels\MOL\Center\TrainersQualificationsDetailsVM.cs" />
-    <Compile Include="ViewModels\MOL\Center\TrainersQualificationsVM.cs" />
-    <Compile Include="ViewModels\MOL\Center\TrainingCourseInfoVM.cs" />
-    <Compile Include="ViewModels\MOL\Center\TrainingCourseVM.cs" />
-    <Compile Include="ViewModels\MOL\Center\WizerdVM.cs" />
-    <Compile Include="ViewModels\MOL\CertificateViewModel.cs" />
-    <Compile Include="ViewModels\MOL\DashboardDataChartViewModel.cs" />
-    <Compile Include="ViewModels\MOL\DashboardRequestPercentageChartViewModel.cs" />
-    <Compile Include="ViewModels\MOL\DashboardRequestStatusChartViewModel.cs" />
-    <Compile Include="ViewModels\MOL\ExamRequest\ExamRequestViewModel.cs" />
-    <Compile Include="ViewModels\MOL\ExamRequest\StudentProfile\RequesterAttachmentsViewModel.cs" />
-    <Compile Include="ViewModels\MOL\ExamRequest\StudentProfile\RequesterIdentityViewModel.cs" />
-    <Compile Include="ViewModels\MOL\ExamRequest\StudentProfile\RequesterInfoViewModel.cs" />
-    <Compile Include="ViewModels\MOL\ExamRequest\TermsOfServices.cs" />
-    <Compile Include="ViewModels\MOL\ExamUserTypeViewModel.cs" />
-    <Compile Include="ViewModels\MOL\MOLDashboardViewModel.cs" />
-    <Compile Include="ViewModels\MOL\PaymentResultViewModel.cs" />
-    <Compile Include="ViewModels\MOL\QualificationsViewModel.cs" />
-    <Compile Include="ViewModels\MOL\RPLRequestViewModel.cs" />
-    <Compile Include="ViewModels\MOL\CertificateInformationViewModel.cs" />
     <Compile Include="ViewModels\NewsModel.cs" />
-    <Compile Include="ViewModels\Payment\CollegePaymentDetails.cs" />
-    <Compile Include="ViewModels\Payment\CollegePaymentRequestDetailsViewModel.cs" />
-    <Compile Include="ViewModels\Payment\CollegePaymentViewModel.cs" />
-    <Compile Include="ViewModels\Payment\PaymentProgress.cs" />
-    <Compile Include="ViewModels\Payment\PaymentRequestsSearchViewModel.cs" />
-    <Compile Include="ViewModels\Payment\PaymentSettingSearchViewModel.cs" />
-    <Compile Include="ViewModels\Payment\PaymentSettingViewModel.cs" />
-    <Compile Include="ViewModels\Payment\RequestApproveViewModel.cs" />
-    <Compile Include="ViewModels\Portal\PortalHomeViewModel.cs" />
-    <Compile Include="ViewModels\Qualification\QualificationInsertViewModel.cs" />
-    <Compile Include="ViewModels\Qualification\QualificationNossViewModel.cs" />
-    <Compile Include="ViewModels\Qualification\QualificationSearchViewModel.cs" />
-    <Compile Include="ViewModels\Qualification\QualificationViewModel.cs" />
     <Compile Include="ViewModels\Report\ReportInfo.cs" />
     <Compile Include="ViewModels\ResendConfirmEmailViewModel.cs" />
     <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\StudentInfo\SchoolViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\StudentInfo\StudentProfileViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\StudentInfo\StudentViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\User\ChangeContactViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\User\ChangePasswordViewModel.cs" />
-    <Compile Include="ViewModels\Enrollment\User\UserDisplayViewModel.cs" />
     <Compile Include="ViewModels\Security\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Security\PagedResultBase.cs" />
     <Compile Include="ViewModels\Security\MenuViewModel.cs" />
@@ -1552,64 +582,8 @@
     <Compile Include="ViewModels\Security\UserRoleModel.cs" />
     <Compile Include="ViewModels\Security\UserSearchModel.cs" />
     <Compile Include="ViewModels\SelectListItem.cs" />
-    <Compile Include="ViewModels\Stipend\Cards\CardRequestDetailsViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\Cards\CardRequestHistoryViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\Cards\CardRequestsSearchViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\Cards\CardsAllViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\Cards\NewRequestViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\Cards\CardsSearchViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\Cards\CardsRequestFeedbackViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\Cards\CollegeCardRequestManagmentViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\Cards\SelectedUser.cs" />
-    <Compile Include="ViewModels\Stipend\PagedResultBase.cs" />
-    <Compile Include="ViewModels\Stipend\Cards\RequestManagmentViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\Periods\PeriodsViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\MonthlyStipendviewModel.cs" />
-    <Compile Include="ViewModels\Stipend\StipendNewRequestViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\StipendRequestFeedbackViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\StipendRequestDetailsViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\Stipend\DownloadStipend.cs" />
-    <Compile Include="ViewModels\Stipend\Stipend\CollegeStipendRequestManagmentViewModel.cs" />
-    <Compile Include="Metadata\Stipend\ExecludedStudent.cs" />
-    <Compile Include="ViewModels\Stipend\Stipend\StipendRequestManagmentViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\Students\StudentStipendViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\Students\StudentViewModel.cs" />
-    <Compile Include="ViewModels\Stipend\UploadFeedbackBase.cs" />
     <Compile Include="ViewModels\SystemSettingSearchModel.cs" />
     <Compile Include="ViewModels\SystemSettingViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\ChangeStatusRequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\Complaint\ComplaintApplicantInfoViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\Complaint\ComplaintRequestActionsViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\Complaint\ComplaintRequestDetailsViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\Complaint\ComplaintRequestListViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\Complaint\ComplaintRequestSearchViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\Complaint\ComplaintRequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\DecisionViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\DeferralRequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\DismissRequestAllViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\DismissRequestSearchViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\ExamRequestSearchViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\ExamRequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\InvoiceRequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\MOL\CenterRequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\MOL\RPLApprovalRequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\MOL\RPLRequestPaymentMoyasarViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\QualificationApprovalRequestDecisionViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\QualificationApprovalRequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\ReinstateRequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\DismissRequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\EnrollmentStatisticSearchViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\EnrollmentStatisticCreateViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\EnrollmentStatisticViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\RequestActionViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\RequestAttachmentViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\RequestListViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\RequestSearchViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\RequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\QualificationApprovalRequestSubmitViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\StudentsDisabilityRequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\TransferRequestViewModel.cs" />
-    <Compile Include="ViewModels\Workflow\WithdrawRequestViewModel.cs" />
     <Compile Include="VisaType.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
@@ -1617,45 +591,6 @@
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="VisibitlyRule.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VocationalExamResult.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VocationalExamResultDetail.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VocationalExamScore.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VocationalExamType.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Wave.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WithdrawReason.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WithdrawRequest.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WithdrawRequestReason.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Workflow.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WorkStatus.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Year.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ZATCAInvoiceIntegration.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ZATCAInvoiceIntegrationLog.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ZATCA\ReportInvoiceData.cs" />
@@ -1698,7 +633,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Annotations\" />
-    <Folder Include="ViewModels\MOL\ExamRequest\eTraining\" />
+    <Folder Include="ViewModels\Portal\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

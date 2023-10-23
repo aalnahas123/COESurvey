@@ -105,7 +105,6 @@ namespace COE.Survey.Web.Controllers
                 }
             }
 
-            var CurrentUserColleges = UnitOfWork.College.GetListByUserId(User.Identity.Name).Select(X => X.Value).ToList();
             var allowedRoles = UnitOfWork.AspNetRoles.GetAllowedRoleForUser(User.Identity.Name);
             var isAdmin = LookupsHelper.GetCurrentUserRoles(User.Identity.Name).Contains(Guid.Parse(Helpers.LookupValues.AspNetRoles.Values.SystemAdmin));
 
@@ -121,7 +120,6 @@ namespace COE.Survey.Web.Controllers
                 if (!isAdmin)
                 {
                     users = users.Where(x => x.AspNetUsers == null
-                             && (x.UserCollege.Any(uc => CurrentUserColleges.Contains(uc.College.ID)))
                              && (x.AspNetRoles.Any(ar => allowedRoles.Contains(ar.Id)))
                              //allowedRoles.Contains(x.AspNetRoles.OrderBy(o => o.Priority).FirstOrDefault().Id)
                              );
@@ -245,15 +243,13 @@ namespace COE.Survey.Web.Controllers
                 if (!isAdmin)
                 {
                     query = query.Where(x => x.AspNetUsers != null
-                             && (x.UserCollege.Any(uc => CurrentUserColleges.Contains(uc.College.ID)))
                              && (x.AspNetRoles.Any(ar => allowedRoles.Contains(ar.Id)) || x.AspNetRoles.Count <= 0)
                              //allowedRoles.Contains(x.AspNetRoles.OrderBy(o => o.Priority).FirstOrDefault().Id)
                              );
                 }
                 else
                 {
-                    query = query.Where(x => x.AspNetUsers != null
-                             && ((x.UserCollege.Any(uc => CurrentUserColleges.Contains(uc.College.ID))) || (x.UserCollege.Count <= 0)));
+                    query = query.Where(x => x.AspNetUsers != null);
                 }
 
                 if (model.RoleId != null)
@@ -313,220 +309,6 @@ namespace COE.Survey.Web.Controllers
 
                 }
 
-            }
-            return View(model);
-        }
-
-        [ModuleAuthorize("Security", "User", ActionName = "UserCollege")]
-        public ActionResult AddCollege(Guid? id, int? type)
-        {
-            if (id == null)
-            {
-                return RedirectToAction("users");
-            }
-
-            if (Session["Message"] != null)
-            {
-                Header.ShowSuccess(Session["Message"].ToString(), true);
-                Session["Message"] = null;
-            }
-            if (Session["MessageError"] != null)
-            {
-                Header.ShowError(Session["MessageError"].ToString(), true);
-                Session["MessageError"] = null;
-            }
-            var isAdmin = LookupsHelper.GetCurrentUserRoles(User.Identity.Name).Contains(Guid.Parse(Helpers.LookupValues.AspNetRoles.Values.SystemAdmin));
-
-            var CurrentUserColleges = isAdmin ? UnitOfWork.College.GetByQuery(c => true).Select(X => X.ID).ToList()
-                                        : UnitOfWork.College.GetListByUser(User.Identity.Name).Select(X => X.ID).ToList();
-            TempData["type"] = type;
-
-            //Get All Providers With Colleges
-            var providers = UnitOfWork.Provider.GetProvidersWithColleges(CurrentUserColleges);
-
-            var collegesAssignedToCurrentUser = UnitOfWork.UserCollege.GetByQuery(u => u.UserDisplayID == id).Select(x => x.College.ID).ToList();
-            foreach (var provider in providers)
-            {
-                foreach (var college in provider.CollegeList)
-                {
-                    foreach (var userCollegeID in collegesAssignedToCurrentUser)
-                    {
-                        if (userCollegeID == college.ID)
-                        {
-                            college.IsSelected = true;
-                            provider.IsSelected = true;
-                        }
-                    }
-                }
-            }
-
-            return View(providers);
-        }
-
-        [HttpPost]
-        public ActionResult AddCollege(Guid? id, List<Provider> model)
-        {
-
-            string userId = id.Value.ToString();
-
-            //Get Checked Colleges And Add To User Colleges Table
-            if (model != null)
-            {
-                //get selected colleages from model
-                var selectedColleges = model.Where(x => x.IsSelected).SelectMany(y => y.CollegeList.Where(z => z.IsSelected == true)).ToList();
-
-                List<UserCollege> obj = new List<UserCollege>();
-
-                if (selectedColleges.Count() > 0)
-                {
-
-                    //Delete All User Colleges
-                    var userColleges = UnitOfWork.UserCollege.GetByQuery(x => x.UserDisplayID == new Guid(userId)).ToList();
-                    UnitOfWork.UserCollege.Delete(userColleges);
-
-                    //Save
-                    UnitOfWork.Save();
-
-                    foreach (var item in selectedColleges)
-                    {
-                        UnitOfWork.UserCollege.Add(new UserCollege
-                        {
-                            CollegeID = item.ID,
-                            UserDisplayID = new Guid(userId),
-                            CreatedBy = UserName,
-                            UpdatedBy = UserName,
-                            IsActive = true
-                        });
-                    }
-                    try
-                    {
-                        //Save
-                        UnitOfWork.Save();
-                        Session["Message"] = SecurityResources.CollegeSavedSuccessMessage;
-                        return RedirectToAction("addCollege", "Security", new { @type = TempData.Peek("type").ToString() });
-                    }
-                    catch (Exception ex)
-                    {
-                        Session["MessageError"] = Common.Localization.SharedResources.UnexpectedError;
-                        return RedirectToAction("addCollege", "Security", new { @type = TempData.Peek("type").ToString() });
-                    }
-                }
-                else
-                {
-                    Session["Message"] = "Please Select College";
-                    return RedirectToAction("addCollege", "Security", new { @type = TempData.Peek("type").ToString() });
-                }
-            }
-            return View(model);
-        }
-
-        [ModuleAuthorize("Security", "User", ActionName = "UserCollege")]
-        public ActionResult AddQualification(Guid? id, int? type)
-        {
-            if (id == null)
-            {
-                return RedirectToAction("users");
-            }
-
-            if (Session["Message"] != null)
-            {
-                Header.ShowSuccess(Session["Message"].ToString(), true);
-                Session["Message"] = null;
-            }
-            if (Session["MessageError"] != null)
-            {
-                Header.ShowError(Session["MessageError"].ToString(), true);
-                Session["MessageError"] = null;
-            }
-            //var isAdmin = LookupsHelpers.GetCurrentUserRoles(User.Identity.Name).Contains(Guid.Parse(COE.Security.Model.LookupValues.AspNetRoles.Values.SystemAdmin));
-
-            //var CurrentUserSpecialization = isAdmin ? UnitOfWork.Specialization.GetByQuery(c => true).Select(X => X.ID).ToList()
-            //                            : UnitOfWork.Specialization.GetListByUser(User.Identity.Name).Select(X => X.ID).ToList();
-
-            var isAdmin = LookupsHelper.GetCurrentUserRoles(User.Identity.Name).Contains(Guid.Parse(Helpers.LookupValues.AspNetRoles.Values.SystemAdmin));
-
-            var currentLogedInUserColleges = isAdmin ? UnitOfWork.College.GetByQuery(c => true).Select(X => X.ID).ToList()
-                                        : UnitOfWork.College.GetListByUser(User.Identity.Name).Select(X => X.ID).ToList();
-
-            //var CurrentUserSpecialization = UnitOfWork.Specialization.GetListByUser(id.Value).Select(X => X.ID).ToList();
-
-            TempData["type"] = type;
-
-            //Get All Colleges With Specializations
-            var colleges = UnitOfWork.College.GetCollegesWithSpecializationsByUserID(id.Value, currentLogedInUserColleges);
-
-            var specializationAssignedToCurrentUser = UnitOfWork.UserSpecialization.GetByQuery(u => u.UserDisplayID == id).Select(x => x.SpecializationID).ToList();
-            foreach (var college in colleges)
-            {
-                foreach (var collegeSpecialization in college.SpecializationsList)
-                {
-                    foreach (var userspecializationID in specializationAssignedToCurrentUser)
-                    {
-                        if (userspecializationID == collegeSpecialization.ID)
-                        {
-                            collegeSpecialization.IsSelected = true;
-                            college.IsSelected = true;
-                        }
-                    }
-                }
-            }
-
-            return View(colleges);
-        }
-
-        [HttpPost]
-        public ActionResult AddQualification(Guid? id, List<College> model)
-        {
-
-            string userId = id.Value.ToString();
-
-            //Get Checked Specializations And Add To User Specializations Table
-            if (model != null)
-            {
-                //get selected Specializations from model
-                var selectedSpecializations = model.Where(x => x.IsSelected).SelectMany(y => y.SpecializationsList.Where(z => z.IsSelected == true)).ToList();
-
-                List<UserSpecialization> obj = new List<UserSpecialization>();
-
-                //if (selectedSpecializations.Count() > 0)
-                {
-
-                    //Delete All User Specializations
-                    var userSpecializations = UnitOfWork.UserSpecialization.GetByQuery(x => x.UserDisplayID == new Guid(userId)).ToList();
-                    UnitOfWork.UserSpecialization.Delete(userSpecializations);
-
-                    //Save
-                    UnitOfWork.Save();
-
-                    foreach (var item in selectedSpecializations)
-                    {
-                        UnitOfWork.UserSpecialization.Add(new UserSpecialization
-                        {
-                            SpecializationID = item.ID,
-                            UserDisplayID = new Guid(userId),
-                            CreatedBy = UserName,
-                            UpdatedBy = UserName,
-                            IsActive = true
-                        });
-                    }
-                    try
-                    {
-                        //Save
-                        UnitOfWork.Save();
-                        Session["Message"] = SecurityResources.QualificationSavedSuccessMessage;
-                        return RedirectToAction("AddQualification", "Security", new { @type = TempData.Peek("type").ToString() });
-                    }
-                    catch (Exception ex)
-                    {
-                        Session["MessageError"] = Common.Localization.SharedResources.UnexpectedError;
-                        return RedirectToAction("AddQualification", "Security", new { @type = TempData.Peek("type").ToString() });
-                    }
-                }
-                //else
-                //{
-                //    Session["Message"] = "Please Select Qualification";
-                //    return RedirectToAction("AddQualification", "Security", new { @type = TempData.Peek("type").ToString() });
-                //}
             }
             return View(model);
         }
@@ -898,18 +680,6 @@ namespace COE.Survey.Web.Controllers
         {
             UserDetails userDetails = new UserDetails();
             userDetails.Roles = UnitOfWork.UserDisplay.GetById(id).AspNetRoles.ToList();
-            userDetails.Colleges = UnitOfWork.UserCollege.
-                GetByQuery(u => u.UserDisplayID == id).
-                Select(x => new { x.College.ID, x.College.Name }).
-                AsEnumerable().Select(c => new College
-                {
-                    ID = c.ID,
-                    Name = c.Name
-                }).ToList();
-            userDetails.Qualifications =
-                UnitOfWork.UserSpecialization.GetByQuery(us => us.UserDisplayID == id).
-                Select(us => new { us.Specialization.Name }).AsEnumerable().
-                Select(s => new Specialization { Name = s.Name }).ToList();
             userDetails.User = UnitOfWork.UserDisplay.GetById(id);
             userDetails.UserId = id.Value;
             ViewBag.UserDisplayForCurrentUser = UnitOfWork.UserDisplay.GetByQuery(x => x.LoginName == User.Identity.Name).Select(s => s.ID).FirstOrDefault();

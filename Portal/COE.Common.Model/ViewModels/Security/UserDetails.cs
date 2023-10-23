@@ -13,7 +13,6 @@ namespace COE.Common.Model.ViewModels
         public Guid UserId { get; set; }
 
         public UserDisplay User { get; set; }
-        public List<College> Colleges { get; set; }
         public List<AspNetRoles> Roles { get; set; }
 
         public List<Specialization> Qualifications { get; set; }

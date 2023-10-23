@@ -25,7 +25,6 @@ namespace COE.Common.Model
         public string UpdatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }
     
-        public virtual AspNetRoles AspNetRoles { get; set; }
         public virtual ModuleAction ModuleAction { get; set; }
         public virtual VisibitlyRule VisibitlyRule { get; set; }
     }

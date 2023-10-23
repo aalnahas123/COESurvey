@@ -25,6 +25,5 @@ namespace COE.Common.Model
         public System.DateTime UpdatedOn { get; set; }
     
         public virtual UserDisplay UserDisplay { get; set; }
-        public virtual Employer Employer { get; set; }
     }
 }

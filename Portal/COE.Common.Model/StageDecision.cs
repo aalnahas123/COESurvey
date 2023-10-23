@@ -19,7 +19,6 @@ namespace COE.Common.Model
         public int StageID { get; set; }
         public int DecisionID { get; set; }
     
-        public virtual Decision Decision { get; set; }
         public virtual Stage Stage { get; set; }
     }
 }

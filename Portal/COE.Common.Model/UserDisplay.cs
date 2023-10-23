@@ -19,13 +19,11 @@ namespace COE.Common.Model
         public UserDisplay()
         {
             this.UserCollege = new HashSet<UserCollege>();
+            this.UserCollege1 = new HashSet<UserCollege>();
             this.UserPermission = new HashSet<UserPermission>();
-            this.AspNetRoles = new HashSet<AspNetRoles>();
-            this.SectionAttendanceSetting = new HashSet<SectionAttendanceSetting>();
-            this.SessionAttendanceSettingSchedule = new HashSet<SessionAttendanceSettingSchedule>();
-            this.SessionScheduleDelegation = new HashSet<SessionScheduleDelegation>();
-            this.UserEmployer = new HashSet<UserEmployer>();
             this.UserSpecialization = new HashSet<UserSpecialization>();
+            this.UserEmployer = new HashSet<UserEmployer>();
+            this.AspNetRoles = new HashSet<AspNetRoles>();
         }
     
         public System.Guid ID { get; set; }
@@ -42,18 +40,14 @@ namespace COE.Common.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserCollege> UserCollege { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserCollege> UserCollege1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserPermission> UserPermission { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SectionAttendanceSetting> SectionAttendanceSetting { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SessionAttendanceSettingSchedule> SessionAttendanceSettingSchedule { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SessionScheduleDelegation> SessionScheduleDelegation { get; set; }
+        public virtual ICollection<UserSpecialization> UserSpecialization { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserEmployer> UserEmployer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserSpecialization> UserSpecialization { get; set; }
+        public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
     }
 }

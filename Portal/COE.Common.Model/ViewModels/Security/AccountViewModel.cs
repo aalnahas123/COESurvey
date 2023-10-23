@@ -12,7 +12,6 @@ namespace COE.Common.Model.ViewModels
 
         public bool IsOnlineUser { get { return UserType == "2"; } set { } }
 
-        public List<Provider> Providers { get; set; }
         
     }
 }

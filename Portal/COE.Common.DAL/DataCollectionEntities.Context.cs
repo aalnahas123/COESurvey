@@ -28,159 +28,48 @@ namespace COE.Common.DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Model.DismissRequest> DismissRequest { get; set; }
-        public virtual DbSet<Model.AcademicYear> AcademicYear { get; set; }
-        public virtual DbSet<Model.AcademicYearTerm> AcademicYearTerm { get; set; }
-        public virtual DbSet<Model.Area> Area { get; set; }
-        public virtual DbSet<Model.City> City { get; set; }
-        public virtual DbSet<Model.CollegeType> CollegeType { get; set; }
-        public virtual DbSet<Model.Country> Country { get; set; }
-        public virtual DbSet<Model.CourseType> CourseType { get; set; }
-        public virtual DbSet<Model.Level> Level { get; set; }
-        public virtual DbSet<Model.TermCourse> TermCourse { get; set; }
-        public virtual DbSet<Model.TermType> TermType { get; set; }
+        public virtual DbSet<Model.ActivationCode> ActivationCode { get; set; }
+        public virtual DbSet<Model.Alert> Alert { get; set; }
+        public virtual DbSet<Model.AlertType> AlertType { get; set; }
         public virtual DbSet<Model.AttachmentContents> AttachmentContents { get; set; }
         public virtual DbSet<Model.Attachments> Attachments { get; set; }
         public virtual DbSet<Model.AttachmentTypes> AttachmentTypes { get; set; }
-        public virtual DbSet<Model.EnrollmentStatistic> EnrollmentStatistic { get; set; }
-        public virtual DbSet<Model.EnrollmentStatisticType> EnrollmentStatisticType { get; set; }
-        public virtual DbSet<Model.SpecializationStatistic> SpecializationStatistic { get; set; }
-        public virtual DbSet<Model.TermEnrollmentStatisticSetting> TermEnrollmentStatisticSetting { get; set; }
+        public virtual DbSet<Model.HomePageCategory> HomePageCategory { get; set; }
+        public virtual DbSet<Model.HomePageModule> HomePageModule { get; set; }
+        public virtual DbSet<Model.SystemSettings> SystemSettings { get; set; }
+        public virtual DbSet<Model.UserActivity> UserActivity { get; set; }
+        public virtual DbSet<Model.UserActivityType> UserActivityType { get; set; }
         public virtual DbSet<Model.AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<Model.AspNetRolesParent> AspNetRolesParent { get; set; }
         public virtual DbSet<Model.AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<Model.AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<Model.AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Model.Decision> Decision { get; set; }
         public virtual DbSet<Model.Stage> Stage { get; set; }
         public virtual DbSet<Model.StageDecision> StageDecision { get; set; }
         public virtual DbSet<Model.Status> Status { get; set; }
-        public virtual DbSet<Model.SectionEnrollment> SectionEnrollment { get; set; }
-        public virtual DbSet<Model.SectionEnrollmentAttendance> SectionEnrollmentAttendance { get; set; }
-        public virtual DbSet<Model.DeferralReason> DeferralReason { get; set; }
-        public virtual DbSet<Model.DeferralRequest> DeferralRequest { get; set; }
-        public virtual DbSet<Model.DeferralRequestAcademicYearTerm> DeferralRequestAcademicYearTerm { get; set; }
-        public virtual DbSet<Model.DeferralRequestReason> DeferralRequestReason { get; set; }
-        public virtual DbSet<Model.DismissReason> DismissReason { get; set; }
-        public virtual DbSet<Model.DismissRequestReason> DismissRequestReason { get; set; }
-        public virtual DbSet<Model.EnrollmentRequestDetail> EnrollmentRequestDetail { get; set; }
-        public virtual DbSet<Model.Assessment> Assessment { get; set; }
-        public virtual DbSet<Model.EnglishExamResult> EnglishExamResult { get; set; }
-        public virtual DbSet<Model.EnglishExamScore> EnglishExamScore { get; set; }
-        public virtual DbSet<Model.ExamStatus> ExamStatus { get; set; }
-        public virtual DbSet<Model.ExamType> ExamType { get; set; }
-        public virtual DbSet<Model.VocationalExamResult> VocationalExamResult { get; set; }
-        public virtual DbSet<Model.VocationalExamResultDetail> VocationalExamResultDetail { get; set; }
-        public virtual DbSet<Model.VocationalExamScore> VocationalExamScore { get; set; }
-        public virtual DbSet<Model.VocationalExamType> VocationalExamType { get; set; }
         public virtual DbSet<Model.Action> Action { get; set; }
+        public virtual DbSet<Model.CollegeStaff> CollegeStaff { get; set; }
         public virtual DbSet<Model.FieldVisibilty> FieldVisibilty { get; set; }
+        public virtual DbSet<Model.JobType> JobType { get; set; }
+        public virtual DbSet<Model.LeaveReason> LeaveReason { get; set; }
         public virtual DbSet<Model.Module> Module { get; set; }
         public virtual DbSet<Model.ModuleAction> ModuleAction { get; set; }
         public virtual DbSet<Model.ModuleCategory> ModuleCategory { get; set; }
         public virtual DbSet<Model.ModuleField> ModuleField { get; set; }
         public virtual DbSet<Model.ModuleRole> ModuleRole { get; set; }
         public virtual DbSet<Model.RolePermission> RolePermission { get; set; }
-        public virtual DbSet<Model.UserCollege> UserCollege { get; set; }
-        public virtual DbSet<Model.UserDisplay> UserDisplay { get; set; }
-        public virtual DbSet<Model.UserPermission> UserPermission { get; set; }
-        public virtual DbSet<Model.VisibiltyRuleField> VisibiltyRuleField { get; set; }
-        public virtual DbSet<Model.VisibitlyRule> VisibitlyRule { get; set; }
-        public virtual DbSet<Model.FileAutoGenerationStatus> FileAutoGenerationStatus { get; set; }
-        public virtual DbSet<Model.GraduationYear> GraduationYear { get; set; }
-        public virtual DbSet<Model.SchoolType> SchoolType { get; set; }
-        public virtual DbSet<Model.WorkStatus> WorkStatus { get; set; }
-        public virtual DbSet<Model.Reason> Reason { get; set; }
-        public virtual DbSet<Model.SSSExam> SSSExam { get; set; }
-        public virtual DbSet<Model.TransferRequest> TransferRequest { get; set; }
-        public virtual DbSet<Model.TransferRequestReason> TransferRequestReason { get; set; }
-        public virtual DbSet<Model.CardsFeedbackValidation> CardsFeedbackValidation { get; set; }
-        public virtual DbSet<Model.ProgressType> ProgressType { get; set; }
-        public virtual DbSet<Model.SectionEnrollmentAttendanceValidation> SectionEnrollmentAttendanceValidation { get; set; }
-        public virtual DbSet<Model.SectionEnrollmentValidation> SectionEnrollmentValidation { get; set; }
-        public virtual DbSet<Model.SectionValidation> SectionValidation { get; set; }
-        public virtual DbSet<Model.TermCourseValidation> TermCourseValidation { get; set; }
-        public virtual DbSet<Model.UploadRejectionReason> UploadRejectionReason { get; set; }
-        public virtual DbSet<Model.UploadRequest> UploadRequest { get; set; }
-        public virtual DbSet<Model.UploadRequestDetailsAttendance> UploadRequestDetailsAttendance { get; set; }
-        public virtual DbSet<Model.UploadRequestDetailsSection> UploadRequestDetailsSection { get; set; }
-        public virtual DbSet<Model.UploadRequestDetailsSectionEnrollment> UploadRequestDetailsSectionEnrollment { get; set; }
-        public virtual DbSet<Model.UploadRequestStatus> UploadRequestStatus { get; set; }
-        public virtual DbSet<Model.UploadRequestTrackStatus> UploadRequestTrackStatus { get; set; }
-        public virtual DbSet<Model.UploadRequestType> UploadRequestType { get; set; }
-        public virtual DbSet<Model.WithdrawReason> WithdrawReason { get; set; }
-        public virtual DbSet<Model.WithdrawRequest> WithdrawRequest { get; set; }
-        public virtual DbSet<Model.WithdrawRequestReason> WithdrawRequestReason { get; set; }
-        public virtual DbSet<Model.Request> Request { get; set; }
-        public virtual DbSet<Model.RequestAction> RequestAction { get; set; }
-        public virtual DbSet<Model.RequestAttachment> RequestAttachment { get; set; }
-        public virtual DbSet<Model.Workflow> Workflow { get; set; }
-        public virtual DbSet<Model.SectionEnrollmentAttendanceHistory> SectionEnrollmentAttendanceHistory { get; set; }
-        public virtual DbSet<Model.SectionEnrollmentHistory> SectionEnrollmentHistory { get; set; }
-        public virtual DbSet<Model.RequestStatus> RequestStatus { get; set; }
-        public virtual DbSet<Model.CollegeStaff> CollegeStaff { get; set; }
-        public virtual DbSet<Model.Sponser> Sponser { get; set; }
-        public virtual DbSet<Model.Wave> Wave { get; set; }
-        public virtual DbSet<Model.StaffType> StaffType { get; set; }
-        public virtual DbSet<Model.Nationality> Nationality { get; set; }
         public virtual DbSet<Model.StaffLevel> StaffLevel { get; set; }
         public virtual DbSet<Model.StaffQualification> StaffQualification { get; set; }
         public virtual DbSet<Model.StaffSpecialization> StaffSpecialization { get; set; }
+        public virtual DbSet<Model.StaffType> StaffType { get; set; }
+        public virtual DbSet<Model.UserCollege> UserCollege { get; set; }
+        public virtual DbSet<Model.UserDisplay> UserDisplay { get; set; }
+        public virtual DbSet<Model.UserEmployer> UserEmployer { get; set; }
+        public virtual DbSet<Model.UserPermission> UserPermission { get; set; }
+        public virtual DbSet<Model.UserSpecialization> UserSpecialization { get; set; }
         public virtual DbSet<Model.VisaType> VisaType { get; set; }
-        public virtual DbSet<Model.EnrollmentChangeStatusRequest> EnrollmentChangeStatusRequest { get; set; }
-        public virtual DbSet<Model.CollegeAcademicYear> CollegeAcademicYear { get; set; }
-        public virtual DbSet<Model.CollegePayment> CollegePayment { get; set; }
-        public virtual DbSet<Model.CourseLevelPaymentSetting> CourseLevelPaymentSetting { get; set; }
-        public virtual DbSet<Model.PaymentRequest> PaymentRequest { get; set; }
-        public virtual DbSet<Model.PaymentRequestStatus> PaymentRequestStatus { get; set; }
-        public virtual DbSet<Model.StudentCoursePayment> StudentCoursePayment { get; set; }
-        public virtual DbSet<Model.CardsFeedbackDenialReason> CardsFeedbackDenialReason { get; set; }
-        public virtual DbSet<Model.CardsFeedbackStatus> CardsFeedbackStatus { get; set; }
-        public virtual DbSet<Model.CardsRequest> CardsRequest { get; set; }
-        public virtual DbSet<Model.CardsRequestType> CardsRequestType { get; set; }
-        public virtual DbSet<Model.CardType> CardType { get; set; }
-        public virtual DbSet<Model.Period> Period { get; set; }
-        public virtual DbSet<Model.StipendFeedbackStatus> StipendFeedbackStatus { get; set; }
-        public virtual DbSet<Model.StipendMonth> StipendMonth { get; set; }
-        public virtual DbSet<Model.StipendPaymentMethod> StipendPaymentMethod { get; set; }
-        public virtual DbSet<Model.StipendsRequest> StipendsRequest { get; set; }
-        public virtual DbSet<Model.StudentCard> StudentCard { get; set; }
-        public virtual DbSet<Model.StudentStipendsRequest> StudentStipendsRequest { get; set; }
-        public virtual DbSet<Model.StudentCardHistory> StudentCardHistory { get; set; }
-        public virtual DbSet<Model.StudentCardsRequest> StudentCardsRequest { get; set; }
-        public virtual DbSet<Model.PaymentSetting> PaymentSetting { get; set; }
-        public virtual DbSet<Model.ReinstateRequest> ReinstateRequest { get; set; }
-        public virtual DbSet<Model.Month> Month { get; set; }
-        public virtual DbSet<Model.Year> Year { get; set; }
-        public virtual DbSet<Model.JobType> JobType { get; set; }
-        public virtual DbSet<Model.LeaveReason> LeaveReason { get; set; }
-        public virtual DbSet<Model.StudentsDisabilityLevel> StudentsDisabilityLevel { get; set; }
-        public virtual DbSet<Model.StudentsDisabilityRequest> StudentsDisabilityRequest { get; set; }
-        public virtual DbSet<Model.Bond> Bond { get; set; }
-        public virtual DbSet<Model.BondType> BondType { get; set; }
-        public virtual DbSet<Model.CollegeAcademicYearTermPeriod> CollegeAcademicYearTermPeriod { get; set; }
-        public virtual DbSet<Model.CollegeRepresentiveDetail> CollegeRepresentiveDetail { get; set; }
-        public virtual DbSet<Model.ProviderRepresentiveDetail> ProviderRepresentiveDetail { get; set; }
-        public virtual DbSet<Model.SponserRepresentiveDetail> SponserRepresentiveDetail { get; set; }
-        public virtual DbSet<Model.Alert> Alert { get; set; }
-        public virtual DbSet<Model.AlertType> AlertType { get; set; }
-        public virtual DbSet<Model.UserActivity> UserActivity { get; set; }
-        public virtual DbSet<Model.UserActivityType> UserActivityType { get; set; }
-        public virtual DbSet<Model.Bank> Bank { get; set; }
-        public virtual DbSet<Model.College> College { get; set; }
-        public virtual DbSet<Model.Contract> Contract { get; set; }
-        public virtual DbSet<Model.ContractCollegeAcademicYear> ContractCollegeAcademicYear { get; set; }
-        public virtual DbSet<Model.ContractTermPaymentSetting> ContractTermPaymentSetting { get; set; }
-        public virtual DbSet<Model.CollegeContactDetail> CollegeContactDetail { get; set; }
-        public virtual DbSet<Model.SponserContactDetail> SponserContactDetail { get; set; }
-        public virtual DbSet<Model.Provider> Provider { get; set; }
-        public virtual DbSet<Model.ProviderContactDetail> ProviderContactDetail { get; set; }
-        public virtual DbSet<Model.ContractAttachment> ContractAttachment { get; set; }
-        public virtual DbSet<Model.BondAttachment> BondAttachment { get; set; }
-        public virtual DbSet<Model.ContractType> ContractType { get; set; }
-        public virtual DbSet<Model.CollegeAcademicYearPeriod> CollegeAcademicYearPeriod { get; set; }
-        public virtual DbSet<Model.StudentProfile> StudentProfile { get; set; }
-        public virtual DbSet<Model.AcademicYearTermPeriod> AcademicYearTermPeriod { get; set; }
-        public virtual DbSet<Model.AspNetRolesParent> AspNetRolesParent { get; set; }
+        public virtual DbSet<Model.VisibiltyRuleField> VisibiltyRuleField { get; set; }
+        public virtual DbSet<Model.VisibitlyRule> VisibitlyRule { get; set; }
         public virtual DbSet<Model.QuestionAnswer> QuestionAnswer { get; set; }
         public virtual DbSet<Model.QuestionOption> QuestionOption { get; set; }
         public virtual DbSet<Model.QuestionType> QuestionType { get; set; }
@@ -188,153 +77,7 @@ namespace COE.Common.DAL
         public virtual DbSet<Model.SurveyAnswer> SurveyAnswer { get; set; }
         public virtual DbSet<Model.SurveyModules> SurveyModules { get; set; }
         public virtual DbSet<Model.SurveyQuestion> SurveyQuestion { get; set; }
-        public virtual DbSet<Model.ExcludedStudent> ExcludedStudent { get; set; }
-        public virtual DbSet<Model.UploadRequestHistory> UploadRequestHistory { get; set; }
-        public virtual DbSet<Model.InvoiceRequest> InvoiceRequest { get; set; }
-        public virtual DbSet<Model.CollegePaymentAttachement> CollegePaymentAttachement { get; set; }
-        public virtual DbSet<Model.StudentMonthlyPayment> StudentMonthlyPayment { get; set; }
-        public virtual DbSet<Model.Program> Program { get; set; }
-        public virtual DbSet<Model.ProgramSpecialization> ProgramSpecialization { get; set; }
-        public virtual DbSet<Model.SectionType> SectionType { get; set; }
-        public virtual DbSet<Model.StudentProfileAttachement> StudentProfileAttachement { get; set; }
-        public virtual DbSet<Model.SubProgram> SubProgram { get; set; }
-        public virtual DbSet<Model.EnrollmentRequest> EnrollmentRequest { get; set; }
-        public virtual DbSet<Model.TermEnrollment> TermEnrollment { get; set; }
-        public virtual DbSet<Model.ProgramLevel> ProgramLevel { get; set; }
-        public virtual DbSet<Model.Batch> Batch { get; set; }
-        public virtual DbSet<Model.BatchDetail> BatchDetail { get; set; }
-        public virtual DbSet<Model.CollegePlan> CollegePlan { get; set; }
-        public virtual DbSet<Model.GetAllRequestNotStudent> GetAllRequestNotStudent { get; set; }
-        public virtual DbSet<Model.GetAllRequestStudent> GetAllRequestStudent { get; set; }
-        public virtual DbSet<Model.SectionAttendanceSetting> SectionAttendanceSetting { get; set; }
-        public virtual DbSet<Model.Section> Section { get; set; }
-        public virtual DbSet<Model.GetEnrollmentRequestList> GetEnrollmentRequestList { get; set; }
-        public virtual DbSet<Model.CollegeSponser> CollegeSponser { get; set; }
-        public virtual DbSet<Model.Enrollment> Enrollment { get; set; }
-        public virtual DbSet<Model.EnrollmentCollegeSponser> EnrollmentCollegeSponser { get; set; }
-        public virtual DbSet<Model.SectionAttendanceSettingHistory> SectionAttendanceSettingHistory { get; set; }
-        public virtual DbSet<Model.AssessmentComponent> AssessmentComponent { get; set; }
-        public virtual DbSet<Model.BatchServicePeriod> BatchServicePeriod { get; set; }
-        public virtual DbSet<Model.CollegeAcademicYearQualificationPeriod> CollegeAcademicYearQualificationPeriod { get; set; }
-        public virtual DbSet<Model.EquivalentNOSSCourse> EquivalentNOSSCourse { get; set; }
-        public virtual DbSet<Model.GradingRule> GradingRule { get; set; }
-        public virtual DbSet<Model.NOSSCourse> NOSSCourse { get; set; }
-        public virtual DbSet<Model.Sector> Sector { get; set; }
-        public virtual DbSet<Model.Service> Service { get; set; }
-        public virtual DbSet<Model.SpecializationComponentAssessment> SpecializationComponentAssessment { get; set; }
-        public virtual DbSet<Model.CollegeSpecializationRequest> CollegeSpecializationRequest { get; set; }
-        public virtual DbSet<Model.AttendenceStatus> AttendenceStatus { get; set; }
-        public virtual DbSet<Model.DaysWeek> DaysWeek { get; set; }
-        public virtual DbSet<Model.SessionAttendanceSettingSchedule> SessionAttendanceSettingSchedule { get; set; }
-        public virtual DbSet<Model.SessionScheduleDelegation> SessionScheduleDelegation { get; set; }
-        public virtual DbSet<Model.TrainingSectionEnrollmentAttendance> TrainingSectionEnrollmentAttendance { get; set; }
-        public virtual DbSet<Model.ApplicantExperince> ApplicantExperince { get; set; }
-        public virtual DbSet<Model.QualificationLevel> QualificationLevel { get; set; }
-        public virtual DbSet<Model.RPLApplicantAttachment> RPLApplicantAttachment { get; set; }
-        public virtual DbSet<Model.RPLCity> RPLCity { get; set; }
-        public virtual DbSet<Model.RPLCountry> RPLCountry { get; set; }
-        public virtual DbSet<Model.RPLQualification> RPLQualification { get; set; }
-        public virtual DbSet<Model.RPLQualificationAttachment> RPLQualificationAttachment { get; set; }
-        public virtual DbSet<Model.RPLRequestPayment> RPLRequestPayment { get; set; }
-        public virtual DbSet<Model.UserEmployer> UserEmployer { get; set; }
-        public virtual DbSet<Model.SessionValidation> SessionValidation { get; set; }
-        public virtual DbSet<Model.UploadRequestDetailsSession> UploadRequestDetailsSession { get; set; }
-        public virtual DbSet<Model.SectionHistory> SectionHistory { get; set; }
-        public virtual DbSet<Model.SessionMonths> SessionMonths { get; set; }
-        public virtual DbSet<Model.Candidate> Candidate { get; set; }
-        public virtual DbSet<Model.CandidateAttachment> CandidateAttachment { get; set; }
-        public virtual DbSet<Model.CandidateExperinece> CandidateExperinece { get; set; }
-        public virtual DbSet<Model.CandidateSkill> CandidateSkill { get; set; }
-        public virtual DbSet<Model.CandidateVacancyRequest> CandidateVacancyRequest { get; set; }
-        public virtual DbSet<Model.EmployerAttachment> EmployerAttachment { get; set; }
-        public virtual DbSet<Model.EmployerContactDetail> EmployerContactDetail { get; set; }
-        public virtual DbSet<Model.EmployerRepresentiveDetail> EmployerRepresentiveDetail { get; set; }
-        public virtual DbSet<Model.EmployerRequest> EmployerRequest { get; set; }
-        public virtual DbSet<Model.Interview> Interview { get; set; }
-        public virtual DbSet<Model.Skill> Skill { get; set; }
-        public virtual DbSet<Model.Vacancy> Vacancy { get; set; }
-        public virtual DbSet<Model.VacancySkill> VacancySkill { get; set; }
-        public virtual DbSet<Model.CollegeSpecialization> CollegeSpecialization { get; set; }
-        public virtual DbSet<Model.Course> Course { get; set; }
-        public virtual DbSet<Model.Employer> Employer { get; set; }
-        public virtual DbSet<Model.EmployerIndustry> EmployerIndustry { get; set; }
-        public virtual DbSet<Model.Industry> Industry { get; set; }
-        public virtual DbSet<Model.StudentOJT> StudentOJT { get; set; }
-        public virtual DbSet<Model.EnrollmentOJT> EnrollmentOJT { get; set; }
-        public virtual DbSet<Model.ServiceType> ServiceType { get; set; }
-        public virtual DbSet<Model.StudentFailureIntegrationLog> StudentFailureIntegrationLog { get; set; }
-        public virtual DbSet<Model.StudentSuccessIntegrationLog> StudentSuccessIntegrationLog { get; set; }
-        public virtual DbSet<Model.TeacherLectures> TeacherLectures { get; set; }
-        public virtual DbSet<Model.GradingScheme> GradingScheme { get; set; }
-        public virtual DbSet<Model.GradingSchemeSetting> GradingSchemeSetting { get; set; }
-        public virtual DbSet<Model.GradingType> GradingType { get; set; }
-        public virtual DbSet<Model.IncomingExamResult> IncomingExamResult { get; set; }
-        public virtual DbSet<Model.IncomingExamResultDetail> IncomingExamResultDetail { get; set; }
-        public virtual DbSet<Model.IncomingExamResultGradingSetting> IncomingExamResultGradingSetting { get; set; }
-        public virtual DbSet<Model.AssessmentPeriod> AssessmentPeriod { get; set; }
-        public virtual DbSet<Model.AssessmentPeriodComponent> AssessmentPeriodComponent { get; set; }
-        public virtual DbSet<Model.AssessmentPeriodStatus> AssessmentPeriodStatus { get; set; }
-        public virtual DbSet<Model.ExamBookingType> ExamBookingType { get; set; }
-        public virtual DbSet<Model.ExamCalendar> ExamCalendar { get; set; }
-        public virtual DbSet<Model.ExamCalendarDay> ExamCalendarDay { get; set; }
-        public virtual DbSet<Model.ExamCalendarRequest> ExamCalendarRequest { get; set; }
-        public virtual DbSet<Model.ExamCalendarStatus> ExamCalendarStatus { get; set; }
-        public virtual DbSet<Model.StudentExamCalendar> StudentExamCalendar { get; set; }
-        public virtual DbSet<Model.FinalExamResult> FinalExamResult { get; set; }
-        public virtual DbSet<Model.StudentGradeBook> StudentGradeBook { get; set; }
-        public virtual DbSet<Model.HomePageCategory> HomePageCategory { get; set; }
-        public virtual DbSet<Model.QualificationPeriod> QualificationPeriod { get; set; }
-        public virtual DbSet<Model.Specialization> Specialization { get; set; }
-        public virtual DbSet<Model.UserSpecialization> UserSpecialization { get; set; }
-        public virtual DbSet<Model.SpecializationUnit> SpecializationUnit { get; set; }
-        public virtual DbSet<Model.Unit> Unit { get; set; }
-        public virtual DbSet<Model.UnitType> UnitType { get; set; }
-        public virtual DbSet<Model.HomePageModule> HomePageModule { get; set; }
-        public virtual DbSet<Model.BatchEditingView> BatchEditingView { get; set; }
-        public virtual DbSet<Model.TransferVistorRequest> TransferVistorRequest { get; set; }
-        public virtual DbSet<Model.RPLCertificate> RPLCertificate { get; set; }
-        public virtual DbSet<Model.RPLCertificateType> RPLCertificateType { get; set; }
-        public virtual DbSet<Model.CenterAttachment> CenterAttachments { get; set; }
-        public virtual DbSet<Model.CenterTrainingCourse> CenterTrainingCourses { get; set; }
-        public virtual DbSet<Model.CenterTrainingType> CenterTrainingTypes { get; set; }
-        public virtual DbSet<Model.CenterRequest> CenterRequest { get; set; }
-        public virtual DbSet<Model.CenterDetail> CenterDetails { get; set; }
-        public virtual DbSet<Model.CenterDetailTrainingType> CenterDetailTrainingTypes { get; set; }
-        public virtual DbSet<Model.CenterStaffDetail> CenterStaffDetails { get; set; }
-        public virtual DbSet<Model.CenterStaffDetailAttachment> CenterStaffDetailAttachments { get; set; }
-        public virtual DbSet<Model.ComplaintPeriod> ComplaintPeriods { get; set; }
-        public virtual DbSet<Model.ComplaintRequest> ComplaintRequests { get; set; }
-        public virtual DbSet<Model.ComplaintType> ComplaintTypes { get; set; }
-        public virtual DbSet<Model.GetTermEnrollmentListOSH> GetTermEnrollmentListOSHes { get; set; }
-        public virtual DbSet<Model.OSHShortCoursesGraduatesView> OSHShortCoursesGraduatesViews { get; set; }
-        public virtual DbSet<Model.GetRPLCertificateView> GetRPLCertificateViews { get; set; }
-        public virtual DbSet<Model.RPLExamRequestAttachment> RPLExamRequestAttachments { get; set; }
-        public virtual DbSet<Model.RPLExamRequestAction> RPLExamRequestActions { get; set; }
-        public virtual DbSet<Model.RPLExamBookingCancelationReason> RPLExamBookingCancelationReasons { get; set; }
-        public virtual DbSet<Model.SarasLog> SarasLogs { get; set; }
-        public virtual DbSet<Model.SarasLogDetail> SarasLogDetails { get; set; }
-        public virtual DbSet<Model.RPLExamRequest> RPLExamRequests { get; set; }
-        public virtual DbSet<Model.RPLExamBookingPayment> RPLExamBookingPayments { get; set; }
-        public virtual DbSet<Model.Qualification> Qualifications { get; set; }
-        public virtual DbSet<Model.EXAMS_AVAILABLE_SLOTS> EXAMS_AVAILABLE_SLOTS { get; set; }
-        public virtual DbSet<Model.RPLExamBooking> RPLExamBookings { get; set; }
-        public virtual DbSet<Model.RPLApplicant> RPLApplicant { get; set; }
-        public virtual DbSet<Model.RPLExamBookingNotification> RPLExamBookingNotification { get; set; }
-        public virtual DbSet<Model.RPLExamBookingNotificationType> RPLExamBookingNotificationType { get; set; }
-        public virtual DbSet<Model.RPLRequest> RPLRequest { get; set; }
-        public virtual DbSet<Model.NotificationQueue> NotificationQueues { get; set; }
-        public virtual DbSet<Model.NotificationSendStatu> NotificationSendStatus { get; set; }
-        public virtual DbSet<Model.NotificationType> NotificationTypes { get; set; }
-        public virtual DbSet<Model.GetTermEnrollmentList> GetTermEnrollmentList { get; set; }
-        public virtual DbSet<Model.RPLExamResult> RPLExamResult { get; set; }
-        public virtual DbSet<Model.RPLExamBookingPaymentInvoice> RPLExamBookingPaymentInvoice { get; set; }
-        public virtual DbSet<Model.RPLExamBookingInvoiceCreditNote> RPLExamBookingInvoiceCreditNote { get; set; }
-        public virtual DbSet<Model.ZATCAInvoiceIntegration> ZATCAInvoiceIntegration { get; set; }
-        public virtual DbSet<Model.ZATCAInvoiceIntegrationLog> ZATCAInvoiceIntegrationLog { get; set; }
-        public virtual DbSet<Model.RPLExamBookingAttendanceStatus> RPLExamBookingAttendanceStatus { get; set; }
-        public virtual DbSet<Model.ExamCalendarRequestComments> ExamCalendarRequestComments { get; set; }
-        public virtual DbSet<Model.ExamCalendarRequestCancelation> ExamCalendarRequestCancelation { get; set; }
-        public virtual DbSet<Model.OSHRPLGraduatesView> OSHRPLGraduatesView { get; set; }
+        public virtual DbSet<Model.TempNotificationQueue> TempNotificationQueue { get; set; }
     
         public virtual int TempInsertIntoCollegeSpecialization()
         {

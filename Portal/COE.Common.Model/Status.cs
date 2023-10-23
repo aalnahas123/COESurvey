@@ -19,15 +19,6 @@ namespace COE.Common.Model
         public Status()
         {
             this.Stage = new HashSet<Stage>();
-            this.Sponser = new HashSet<Sponser>();
-            this.Provider = new HashSet<Provider>();
-            this.Sector = new HashSet<Sector>();
-            this.Interview = new HashSet<Interview>();
-            this.IncomingExamResultGradingSetting = new HashSet<IncomingExamResultGradingSetting>();
-            this.StudentGradeBook = new HashSet<StudentGradeBook>();
-            this.Specialization = new HashSet<Specialization>();
-            this.Unit = new HashSet<Unit>();
-            this.College = new HashSet<College>();
         }
     
         public int ID { get; set; }
@@ -36,23 +27,5 @@ namespace COE.Common.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stage> Stage { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sponser> Sponser { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Provider> Provider { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sector> Sector { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Interview> Interview { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IncomingExamResultGradingSetting> IncomingExamResultGradingSetting { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentGradeBook> StudentGradeBook { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Specialization> Specialization { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Unit> Unit { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<College> College { get; set; }
     }
 }

@@ -37,30 +37,7 @@ namespace COE.Survey.Web.Helpers
         public static Guid UserId => System.Web.HttpContext.Current.User.Identity.GetUserId().To<Guid>();
         public static string UserName => System.Web.HttpContext.Current.User.Identity.GetUserName().To<string>();
 
-        public static List<SelectListItem> GetCollegesByCurrentUser(string loginName)
-        {
-            using (var uow = new COEUoW())
-            {
-                return uow.College.GetListByUserId(loginName).Select(c =>
-                     new SelectListItem
-                     {
-                         Value = c.Value.ToString(),
-                         Text = c.Text
-                     }).ToList();
-            }
-        }
-        public static List<SelectListItem> GetColleges()
-        {
-            using (var uow = new COEUoW())
-            {
-                return uow.College.GetAll().Select(c =>
-                     new SelectListItem
-                     {
-                         Value = c.ID.ToString(),
-                         Text = CultureHelper.IsArabic ? c.NameAr : c.Name
-                     }).ToList();
-            }
-        }
+       
         public static List<SelectListItem> GetUserTypes()
         {
             using (var uow = new COEUoW())
@@ -95,18 +72,7 @@ namespace COE.Survey.Web.Helpers
                      }).ToList();
             }
         }
-        public static List<SelectListItem> GetNationalities()
-        {
-            using (var uow = new COEUoW())
-            {
-                return uow.Nationality.GetAll().Select(c =>
-                     new SelectListItem
-                     {
-                         Value = c.ID.ToString(),
-                         Text = c.Name
-                     }).ToList();
-            }
-        }
+        
         public static List<SelectListItem> GetLevels()
         {
             using (var uow = new COEUoW())

@@ -112,7 +112,6 @@ namespace COE.Survey.Web
             }
             ViewBag.SuccessMessage = successMessage;
             ModelState.Clear();
-            GetColleges(model);
             return View(model);
         }
         // POST: Add Center
@@ -185,12 +184,6 @@ namespace COE.Survey.Web
                     return this.View(model);
                 }
 
-                var selectedColleges = model.Providers?.Where(x => x.IsSelected).SelectMany(y => y.CollegeList.Where(z => z.IsSelected == true)).ToList();
-                if (selectedColleges == null || selectedColleges.Count() <= 0)
-                {
-                    Header.ShowError(SecurityResources.SelectCollegeMsg);
-                    return View(model);
-                }
                 var userDisplay = UnitOfWork.UserDisplay.GetByQuery(x => x.LoginName.ToLower() == model.UserName.ToLower().Trim()).FirstOrDefault();
                 if (userDisplay != null)
                 {
@@ -246,33 +239,6 @@ namespace COE.Survey.Web
                             UnitOfWork.UserDisplay.Add(userdisplay);
                             UnitOfWork.Save();
                             newID = userdisplay.ID;
-
-                            //ADD SELECTED COLLEGES HERE
-                            if (selectedColleges.Count() > 0)
-                            {
-                                List<UserCollege> obj = new List<UserCollege>();
-
-                                //Delete All User Colleges
-                                var userColleges = UnitOfWork.UserCollege.GetByQuery(x => x.UserDisplayID == userdisplay.ID).ToList();
-                                UnitOfWork.UserCollege.Delete(userColleges);
-
-                                //Save
-                                UnitOfWork.Save();
-
-                                foreach (var item in selectedColleges)
-                                {
-                                    UnitOfWork.UserCollege.Add(new UserCollege
-                                    {
-                                        CollegeID = item.ID,
-                                        UserDisplayID = userdisplay.ID,
-                                        CreatedBy = UserName,
-                                        UpdatedBy = UserName,
-                                        IsActive = true
-                                    });
-                                }
-                                //Save
-                                UnitOfWork.Save();
-                            }
 
                             // Show Sucess Message In New View
                             ModelState.Clear();
@@ -435,14 +401,6 @@ namespace COE.Survey.Web
             {
                 return View(model);
             }
-        }
-
-        private void GetColleges(AccountViewModel model)
-        {
-            var CurrentUserColleges = UnitOfWork.College.GetListByUserId(User.Identity.Name).Select(X => X.Value).ToList();
-
-            //Get All Providers With Colleges
-            model.Providers = UnitOfWork.Provider.GetAll().ToList();
         }
     }
 }

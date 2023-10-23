@@ -18,8 +18,8 @@ namespace COE.Common.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ModuleAction()
         {
-            this.RolePermission = new HashSet<RolePermission>();
             this.UserPermission = new HashSet<UserPermission>();
+            this.RolePermission = new HashSet<RolePermission>();
         }
     
         public int ID { get; set; }
@@ -35,8 +35,8 @@ namespace COE.Common.Model
         public virtual Action Action { get; set; }
         public virtual Module Module { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RolePermission> RolePermission { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserPermission> UserPermission { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RolePermission> RolePermission { get; set; }
     }
 }

@@ -103,15 +103,12 @@
     <Compile Include="Repositories\AspNetRoles\AspNetRolesRepository.cs" />
     <Compile Include="Repositories\AspNetUsers\AspNetUsersRepository.cs" />
     <Compile Include="Repositories\CollegeStaff\CollegeStaffsRepository.cs" />
-    <Compile Include="Repositories\Lookup\CollegesRepository.cs" />
     <Compile Include="Repositories\Lookup\ModuleCategoryRepository.cs" />
-    <Compile Include="Repositories\Lookup\SpecializationsRepository.cs" />
     <Compile Include="Repositories\Repositories.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Repositories.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\Security\ProvidersRepository.cs" />
     <Compile Include="Repositories\Security\UserDisplaysRepository.cs" />
     <Compile Include="Repositories\Staff\StaffsRepository.cs" />
     <Compile Include="UnitOfWork.cs">

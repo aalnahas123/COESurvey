@@ -25,6 +25,6 @@ namespace COE.Common.Model
         public System.DateTime UpdatedOn { get; set; }
     
         public virtual UserDisplay UserDisplay { get; set; }
-        public virtual College College { get; set; }
+        public virtual UserDisplay UserDisplay1 { get; set; }
     }
 }

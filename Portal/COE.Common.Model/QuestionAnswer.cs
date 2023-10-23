@@ -22,7 +22,7 @@ namespace COE.Common.Model
         public string AnswerText { get; set; }
     
         public virtual QuestionOption QuestionOption { get; set; }
-        public virtual SurveyAnswer SurveyAnswer { get; set; }
         public virtual SurveyQuestion SurveyQuestion { get; set; }
+        public virtual SurveyAnswer SurveyAnswer { get; set; }
     }
 }

@@ -71,54 +71,6 @@ namespace COE.Survey.Web.Controllers
             }
             ViewBag.SuccessMessage = successMessage;
 
-            List<int> CurrentUserColleges = UnitOfWork.College.GetListByUserId(User.Identity.Name).Select(x => x.Value).ToList();
-            if (CurrentUserColleges.Count > 0)
-            {
-                var staffUsers = UnitOfWork.CollegeStaff.GetByQuery(w => CurrentUserColleges.Contains(w.College.ID));
-
-                if (!string.IsNullOrEmpty(model.Name))
-                {
-                    staffUsers = staffUsers.Where(x => x.Name.ToLower().Contains(model.Name));
-                }
-                if (!string.IsNullOrEmpty(model.Email))
-                {
-                    staffUsers = staffUsers.Where(x => x.Email.ToLower().Contains(model.Email.ToLower()));
-                }
-                if (model.College > 0)
-                {
-                    staffUsers = staffUsers.Where(x => x.CollegeID == model.College);
-                }
-                if (model.UserType > 0)
-                {
-                    staffUsers = staffUsers.Where(x => x.TypeID == model.UserType);
-                }
-                if (model.VisaType > 0)
-                {
-                    staffUsers = staffUsers.Where(x => x.VisaTypeID == model.VisaType);
-                }
-                if (model.Specialization > 0)
-                {
-                    staffUsers = staffUsers.Where(x => x.SpesializationID == model.Specialization);
-                }
-                if (model != null)
-                {
-                    var UsersList = staffUsers
-                        .GetPaged(x => x.ID, true, model.PageNumber, BLL.AppSettings.DefaultPagerPageSize);
-
-                    model.Items = new StaticPagedList<CollegeStaff>(
-                                          UsersList.ToList(),
-                                          UsersList.PageNumber,
-                                          UsersList.PageSize,
-                                          UsersList.TotalItemCount);
-
-                    //if has request ajax we'll be load Partial View
-                    if (Request.IsAjaxRequest())
-                    {
-                        return PartialView("_Staff", model);
-                    }
-
-                }
-            }
             return View(model);
         }
 

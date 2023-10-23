@@ -24,7 +24,6 @@ namespace COE.Common.Model
         public string UpdatedBy { get; set; }
         public System.DateTime UpdatedOn { get; set; }
     
-        public virtual Specialization Specialization { get; set; }
         public virtual UserDisplay UserDisplay { get; set; }
     }
 }

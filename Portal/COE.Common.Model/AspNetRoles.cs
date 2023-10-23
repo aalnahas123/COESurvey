@@ -19,28 +19,25 @@ namespace COE.Common.Model
         public AspNetRoles()
         {
             this.ModuleRole = new HashSet<ModuleRole>();
-            this.RolePermission = new HashSet<RolePermission>();
-            this.UserDisplay = new HashSet<UserDisplay>();
             this.AspNetRolesParent = new HashSet<AspNetRolesParent>();
+            this.UserDisplay = new HashSet<UserDisplay>();
         }
     
         public System.Guid Id { get; set; }
         public int Code { get; set; }
+        public Nullable<int> Priority { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public string CreatedBy { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
-        public Nullable<int> Priority { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ModuleRole> ModuleRole { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RolePermission> RolePermission { get; set; }
+        public virtual ICollection<AspNetRolesParent> AspNetRolesParent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserDisplay> UserDisplay { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetRolesParent> AspNetRolesParent { get; set; }
     }
 }

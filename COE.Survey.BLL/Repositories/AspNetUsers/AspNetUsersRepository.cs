@@ -20,7 +20,6 @@ namespace COE.Survey.BLL.Repositories
         {
             var unitOfWork = new COEUoW();
 
-            var CurrentUserColleges = unitOfWork.College.GetListByUserId(UserName).Select(X => X.Value).ToList();
             var allowedRoles = unitOfWork.AspNetRoles.GetAllowedRoleForUser(UserName);
             var isAdmin = unitOfWork.AspNetRoles.GetCurrentUserRoles(UserName).Contains(Guid.Parse(LookupValues.AspNetRoles.Values.SystemAdmin));
 
@@ -32,7 +31,6 @@ namespace COE.Survey.BLL.Repositories
                 if (!isAdmin)
                 {
                     users = users.Where(x => x.AspNetUsers == null
-                             && (x.UserCollege.Any(uc => CurrentUserColleges.Contains(uc.College.ID)))
                              && (x.AspNetRoles.Any(ar => allowedRoles.Contains(ar.Id))));
                 }
                 else
@@ -60,15 +58,10 @@ namespace COE.Survey.BLL.Repositories
                 if (!isAdmin)
                 {
                     users = users.Where(x => x.AspNetUsers != null
-                             && (x.UserCollege.Any(uc => CurrentUserColleges.Contains(uc.College.ID)))
                              && (x.AspNetRoles.Any(ar => allowedRoles.Contains(ar.Id)))
                              );
                 }
-                else
-                {
-                    users = users.Where(x => x.AspNetUsers != null
-                             && (x.UserCollege.Any(uc => CurrentUserColleges.Contains(uc.College.ID))));
-                }
+               
 
                 if (model.RoleId != null)
                 {
