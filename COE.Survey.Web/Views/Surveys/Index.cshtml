@@ -28,7 +28,7 @@
     <div class="card mb-5">
         <h5 class="card-header bg-primary text-white">
             <div class="d-flex justify-content-between align-items-center">
-                <span><i class="fa fa-search"></i> Advanced Search</span>
+                <span><i class="fa fa-search"></i> @SurveysResources.AdvancedSearch</span>
 
             </div>
         </h5>
@@ -36,7 +36,7 @@
         <div class="card-body">
             <div class="form-body row">
                 <div class="form-group col-md-6">
-                    <label class="control-label">Survey Module</label>
+                    <label class="control-label">@SurveysResources.SurveyModule</label>
                     @Html.DropDownListFor(model => model.ModuleId, new SelectList(modules, "Value", "Text"), @SharedResources.DefaultSelect, new { @class = "form-control select2" })
                 </div>
                 <div class="form-group col-md-6">
@@ -54,7 +54,7 @@
 
     <div class="card">
         <h5 class="card-header bg-primary text-white">
-            <i class="fa fa-list"></i> Surveys
+            <i class="fa fa-list"></i> @SurveysResources.Surveys
         </h5>
         <div class="card-body">
             <div class="form-body">
@@ -75,7 +75,7 @@
                                 <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
                                     <a class="btn btn-light" href="@Url.Action("Add", "Surveys")">
                                         <i class="fas fa-plus-circle"></i>
-                                        Create New Survey
+                                        @SurveysResources.CreateNewSurvey
                                     </a>
                                 </div>
                             </div>
@@ -125,33 +125,34 @@
                                                 {
                                                     if (canCreate)
                                                     {
-                                                        <a href="@Url.Action("edit", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Publish"><i class="fa fa-pencil"></i> Edit</a>
+                                                        <a href="@Url.Action("edit", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Publish"><i class="fa fa-pencil"></i> @SurveysResources.Edit</a>
                                                     }
 
                                                     if (canPublish)
                                                     {
-                                                        <a href="@Url.Action("publish", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Publish"><i class="fa fa-paper-plane"></i> Publish</a>
+                                                        <a href="@Url.Action("publish", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Publish"><i class="fa fa-paper-plane"></i> @SurveysResources.Publish</a>
                                                     }
                                                 }
                                                 else if (item.StatusId == (int)SurveyStatusEnum.Published)
                                                 {
                                                     if (canApprove)
                                                     {
-                                                        <a href="@Url.Action("Approve", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Approve"><i class="fa fa-check"> Approve</i></a>
+                                                        <a href="@Url.Action("Approve", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Approve"><i class="fa fa-check"> @SurveysResources.Approve</i></a>
                                                     }
                                                 }
                                                 else if (item.StatusId == (int)SurveyStatusEnum.Approved)
                                                 {
-                                                    <a href="@Url.Action("answer", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Answer"><i class="fa fa-users"></i> Answer</a>
-                                                    <button class="dropdown-item" title="Copy Survey Url" onclick="CopyTextToClipboard(this,'@item.SurveyLink')"><i class="fa fa-copy"></i> Copy Link</button>
+                                                    <a href="@Url.Action("answer", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Answer"><i class="fa fa-users"></i> @SurveysResources.Answer</a>
+                                                    <button class="dropdown-item" title="Copy Survey Url" onclick="CopyTextToClipboard(this,'@item.SurveyLink')"><i class="fa fa-copy"></i> @SurveysResources.CopyLink</button>
+                                                    <a href="@Url.Action("Result", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Results"><i class="fa fa-users"></i> @SurveysResources.Results</a>
+                                                    <a href="@Url.Action("Dashboard", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Results"><i class="fa fa-users"></i> @SurveysResources.Dashboard</a>
                                                 }
-                                                <a href="@Url.Action("Result", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Results"><i class="fa fa-users"></i> Results</a>
-                                                <a href="@Url.Action("Dashboard", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Results"><i class="fa fa-users"></i> Dashboard</a>
+
 
 
                                                 @if (canCreate)
                                                 {
-                                                <a href="@Url.Action("Duplicate", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Publish"><i class="fa fa-copy"></i> Clone</a>
+                                                    <a href="@Url.Action("Duplicate", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Publish"><i class="fa fa-copy"></i> @SurveysResources.Clone</a>
                                                 }
 
                                             </div>
@@ -172,21 +173,21 @@
                                     else
                                     {
                                         @*<img src="~/Content/Images/default300.png" class="img-fluid"
-                                             alt="Survey Image">*@
+                                            alt="Survey Image">*@
 
                                         <img src="@item.ImageUrl" class="img-fluid"
-                                            alt="Survey Image">
+                                             alt="Survey Image">
                                     }
 
                                     <hr>
 
-                                    <input class="surveyStatus" id="@item.ID" type="checkbox" onchange="UpdateSurveyStatus($(this));" checked="@item.IsActive" data-toggle="toggle" data-on="Activated" data-off="Deactivated" />
+                                    <input class="surveyStatus" id="@item.ID" type="checkbox" onchange="UpdateSurveyStatus($(this));" checked="@item.IsActive" data-toggle="toggle" data-on="@SurveysResources.Activated" data-off="@SurveysResources.Deactivated" />
 
                                     <hr>
                                     <p>@item.ModuleText</p>
-                                    <p>Status: @(((SurveyStatusEnum)@item.StatusId).ToString())</p>
-                                    <p>Created by: @item.CreatedBy  </p>
-                                    <p>Last Update: @item.UpdatedOn</p>
+                                    <p>@SurveysResources.Status: @(((SurveyStatusEnum)@item.StatusId).ToString())</p>
+                                    <p>@SurveysResources.Createdby: @item.CreatedBy  </p>
+                                    <p>@SurveysResources.LastUpdate: @item.UpdatedOn</p>
                                 </div>
                             </div>
                         }
@@ -194,7 +195,7 @@
                     else
                     {
                         <div class="col-md-12">
-                            <div class="alert alert-info">No Surveys to display</div>
+                            <div class="alert alert-info">@SurveysResources.NoSurveystodisplay</div>
                         </div>
                     }
                 </div>

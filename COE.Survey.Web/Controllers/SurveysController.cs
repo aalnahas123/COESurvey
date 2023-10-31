@@ -22,8 +22,7 @@ using CsvHelper;
 using System.Text;
 using COE.Survey.Web.Helpers.LookupValues;
 using COE.Survey.Web.Helpers;
-
-
+using Commons.Framework.Globalization;
 
 namespace COE.Survey.Web
 {
@@ -36,7 +35,7 @@ namespace COE.Survey.Web
         [HttpGet]
         public ActionResult Index(int? moduleId)
         {
-            SetCulture("en-US");
+
 
             LoadAuthorizationModuleActions("Survey", "SurveyModule");
 
@@ -67,7 +66,7 @@ namespace COE.Survey.Web
                 var imgurl = JsonHelper.GetAttributeFromJson("logo", jObj);
                 item.ImageUrl = imgurl;
 
-                item.ModuleText = item.SurveyModules?.ModuleTitleEn;
+                item.ModuleText = CultureHelper.IsArabic ? item.SurveyModules?.ModuleTitleAr : item.SurveyModules?.ModuleTitleEn;
                 item.SurveyLink = Url.Action("Answer", "Surveys", new { id = item.ID });
                 item.IsActive = item.StatusId != (int)SurveyStatusEnum.Deactivated;
             }
@@ -106,13 +105,13 @@ namespace COE.Survey.Web
                 surveys = surveys.Where(a => a.CreatedBy == this.UserName);
             }
 
-            var surveyList = surveys.ToList();  
+            var surveyList = surveys.ToList();
             foreach (var item in surveyList)
             {
                 var jObj = JObject.Parse(item.SurveyText);
                 var imgurl = JsonHelper.GetAttributeFromJson("logo", jObj);
                 item.ImageUrl = imgurl;
-                item.ModuleText = item.SurveyModules?.ModuleTitleEn;
+                item.ModuleText = CultureHelper.IsArabic ? item.SurveyModules?.ModuleTitleAr : item.SurveyModules?.ModuleTitleEn;
             }
 
             SurveysViewModel allItems = new SurveysViewModel { SurviesList = surveyList };
@@ -129,7 +128,7 @@ namespace COE.Survey.Web
         [ModuleAuthorize("Survey", "SurveyModule", ActionName = "CreateSurvey")]
         public ActionResult Add()
         {
-            SetCulture("en-US");
+
             ViewBag.Modules = UnitOfWork.SurveyModules.GetAll().ToList();
             return View();
         }
@@ -160,6 +159,8 @@ namespace COE.Survey.Web
                 string logoUrl = HandleLogo(jObj);
                 jObj = JsonHelper.SetAttributeFromJson("logo", logoUrl, jObj);
 
+                var lang = JsonHelper.GetAttributeFromJson("locale", jObj);
+
 
                 UnitOfWork.Survey.Add(new Common.Model.Survey
                 {
@@ -167,7 +168,7 @@ namespace COE.Survey.Web
                     StatusId = (int)SurveyStatusEnum.Draft,
                     SurveyText = jObj.ToString().Replace("\\", "\\\\"),
                     SurveyQuestion = null,
-                    IsRTL = data.IsRTL,
+                    IsRTL = lang.ToLower().Trim() == "ar",
                     ImageUrl = logoUrl,
                     CreatedBy = UserName,
                     UpdatedBy = UserName,
@@ -274,7 +275,7 @@ namespace COE.Survey.Web
         [ModuleAuthorize("Survey", "SurveyModule", ActionName = "PublishSurvey")]
         public ActionResult Publish(int? id)
         {
-            SetCulture("en-US");
+
 
             if (!id.HasValue)
             {
@@ -297,7 +298,7 @@ namespace COE.Survey.Web
 
         public ActionResult Edit(int? id)
         {
-            SetCulture("en-US");
+
 
             if (!id.HasValue)
             {
@@ -322,7 +323,7 @@ namespace COE.Survey.Web
 
         public ActionResult Duplicate(int? id)
         {
-            SetCulture("en-US");
+
 
             if (!id.HasValue)
             {
@@ -368,9 +369,11 @@ namespace COE.Survey.Web
                 string logoUrl = HandleLogo(jObj);
                 jObj = JsonHelper.SetAttributeFromJson("logo", logoUrl, jObj);
 
+                var lang = JsonHelper.GetAttributeFromJson("locale", jObj);
+
                 survey.SurveyTitle = data.SurveyTitle;
                 survey.SurveyText = jObj.ToString().Replace("\\", "\\\\");
-                survey.IsRTL = data.IsRTL;
+                survey.IsRTL = lang.ToLower().Trim() == "ar";
                 survey.ImageUrl = logoUrl;
 
                 int rows = UnitOfWork.Save();
@@ -419,7 +422,7 @@ namespace COE.Survey.Web
         {
             try
             {
-                SetCulture("en-US");
+
                 var survey = UnitOfWork.Survey.GetById(id);
                 if (survey == null)
                 {
@@ -470,7 +473,10 @@ namespace COE.Survey.Web
                 //survey.SurveyText = survey.SurveyText.Insert(survey.SurveyText.Length - 1, ",\"completedHtml\":\"<p><h4>نشكركم على مشاركتكم في الإستبيان</h4></p><p>هل ترغب في إقتراح خدمات جديدة للشركة؟</p><p>للمشاركة برجاء الضفط على هذا الرابط</p>\"");
                 survey.SurveyText = survey.SurveyText.Replace("\r\n", "").Replace("\n", "");
                 survey.SurveyDirection = survey.IsRTL ? "rtl" : "ltr";
-
+                if (survey.IsRTL)
+                {
+                    SetCulture(_cultureAr);
+                }
 
                 return View(survey);
             }
@@ -486,7 +492,7 @@ namespace COE.Survey.Web
         {
             try
             {
-                SetCulture("en-US");
+
 
                 if (!id.HasValue)
                 {
@@ -544,7 +550,7 @@ namespace COE.Survey.Web
         {
             try
             {
-                SetCulture("en-US");
+
 
                 if (!id.HasValue)
                 {
@@ -821,7 +827,7 @@ namespace COE.Survey.Web
 
         public ActionResult Dashboard(int? id, int? PageNumber, string sqid = null)
         {
-            SetCulture("en-US");
+
 
             if (!id.HasValue)
             {
@@ -830,7 +836,7 @@ namespace COE.Survey.Web
 
             var survey = UnitOfWork.Survey.GetById(id);
 
-            if (survey.StatusId.HasValue && (SurveyStatusEnum)survey.StatusId != SurveyStatusEnum.Draft)
+            if (survey.StatusId.HasValue && (SurveyStatusEnum)survey.StatusId != SurveyStatusEnum.Published)
             {
                 return RedirectToAction("Index", "Surveys");
             }
@@ -857,6 +863,11 @@ namespace COE.Survey.Web
             {
                 surveyAnswer.AnswerText = surveyAnswer.AnswerText.Replace("\r\n", "").Replace("\n", "");
                 surveyAnswer.SurveyText = surveyAnswer.Survey.SurveyText.Replace("\r\n", "").Replace("\n", "");
+
+                if (surveyAnswer.Survey.IsRTL)
+                {
+                    SetCulture(_cultureAr);
+                }
             }
 
             return View(surveyAnswer);
@@ -944,7 +955,7 @@ namespace COE.Survey.Web
         [ModuleAuthorize("Survey", "SurveyModule", ActionName = "ApproveSurvey")]
         public ActionResult Approve(int? id)
         {
-            SetCulture("en-US");
+
 
             if (!id.HasValue)
             {
@@ -952,7 +963,7 @@ namespace COE.Survey.Web
             }
 
             var survey = UnitOfWork.Survey.GetById(id);
-            survey.ModuleText = survey.SurveyModules.ModuleTitleEn;
+            survey.ModuleText = CultureHelper.IsArabic ? survey.SurveyModules.ModuleTitleAr : survey.SurveyModules.ModuleTitleEn;
             if (survey.StatusId.Value != (int)SurveyStatusEnum.Published)
             {
                 return RedirectToAction("Index", "Surveys");
@@ -1194,6 +1205,29 @@ namespace COE.Survey.Web
             //    ViewBag.success = 0;
             //    return null;
             //}
+        }
+
+        [HttpPost]
+        public ActionResult SetLanguage(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return new EmptyResult();
+            }
+
+            value = value.Trim().ToLower();
+            switch (value)
+            {
+                case "ar":
+                    SetCulture(_cultureAr);
+                    break;
+                default:
+                    SetCulture(_cultureEn);
+                    break;
+            }
+
+            HttpContext.Session["lang"] = value ?? "";
+            return new EmptyResult();
         }
     }
 

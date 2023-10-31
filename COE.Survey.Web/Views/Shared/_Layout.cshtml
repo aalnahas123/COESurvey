@@ -1,5 +1,8 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using COE.Common.Localization
+@using Commons.Framework.Globalization
+
+<!DOCTYPE html>
+<html lang="@CultureHelper.CurrentLanguage" dir="@CultureHelper.CurrentDirection">
 
 <head>
     <meta charset="utf-8" />
@@ -32,14 +35,16 @@
 
 
         function getLanguage() {
-            var selectedLang = (new URL(location.href)).searchParams.get('lang');
-            if (!selectedLang) {
-                selectedLang = '@TempData["lang"]';
-                if (!selectedLang || selectedLang == '') {
-                    selectedLang = "en";
-                }
+
+            debugger;
+
+            var isar = '@CultureHelper.IsArabic';
+
+            if (isar == 'True') {
+                return 'ar';
             }
-            return selectedLang;
+
+            return 'en';
         };
 
 
@@ -48,40 +53,27 @@
     $(document).ready(function () {
         var selectedLang = getLanguage();
         $('#ddLangs').val(selectedLang);
+
+        $('#english').click(function () {
+            changeLanguage('en');
+        });
+
+        $('#arabic').click(function () {
+            changeLanguage('ar');
+        });
+
     });
 
-    function changeLanguage() {
+    function changeLanguage(lang) {
 
         $.ajax({
             type: "POST",
-            url: '/Home/SetLanguage',
-            data: { "value": $("#ddLangs").val() },
+            url: '@Url.Action("SetLanguage", "Surveys")',
+            data: { "value": lang },
             success: function (r) {
-                switch (currentAction) {
-                    case 'Index':
-                        survey.locale = $('#ddLangs').val();
-                        break;
 
-                    case 'Create':
-                        window.location.href = "/Home/Create?lang=" + $('#ddLangs').val();
-                        break;
+                    window.location.reload();
 
-                    case 'PollData':
-                        window.location.href = "/Home/PollData?lang=" + $('#ddLangs').val();
-                        break;
-
-                    case 'Dashboard':
-                        window.location.href = "/Home/Dashboard?lang=" + $('#ddLangs').val();
-                        break;
-
-                         case 'Gauge':
-                        window.location.href = "/Home/Gauge?lang=" + $('#ddLangs').val();
-                        break;
-
-                         case 'Table':
-                        window.location.href = "/Home/Table?lang=" + $('#ddLangs').val();
-                        break;
-                }
             }
         });
     };
@@ -101,17 +93,17 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="@Url.Action("Index", "Surveys")">Home</a>
+                            <a class="nav-link text-dark" href="@Url.Action("Index", "Surveys")">@SurveysResources.Home</a>
                         </li>
                     </ul>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                            Change Language
+                            @SurveysResources.ChangeLanguage
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">English</a>
-                            <a class="dropdown-item" href="#">العربية</a>
+                            <a class="dropdown-item" href="#" id="english">English</a>
+                            <a class="dropdown-item" href="#" id="arabic">العربية</a>
                         </div>
                     </div>
                 </div>

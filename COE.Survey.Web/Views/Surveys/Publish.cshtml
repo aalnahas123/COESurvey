@@ -1,13 +1,17 @@
 ﻿@using COE.Common.Model;
+@using Commons.Framework.Globalization
 
 @model Survey
 
 @{
-    ViewBag.Title = "Publish Survey";
+    ViewBag.Title = SurveysResources.PublishSurvey;
+}
+
+@{
     List<SurveyModules> modules = ViewBag.Modules;
 }
 
-<title>Publishing @ViewBag.Title</title>
+<title>@SurveysResources.Publish @ViewBag.Title</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
 <script src="https://unpkg.com/survey-jquery@1.9.113/survey.jquery.min.js"></script>
@@ -32,46 +36,46 @@
 
 
 <form style="margin-top: 25px;">
-    <h3>Publish Survey</h3>
+    <h3>@SurveysResources.PublishSurvey</h3>
 
     <div class="row">
         <div class="col-md-6">
-            <h4>Survey Data</h4>
+            <h4>@SurveysResources.SurveyData</h4>
             <div class="form-group">
-                <label for="sel1">Select Module</label>
+                <label for="sel1">@SurveysResources.SelectModule</label>
                 <select class="form-control" id="ddlModules">
                     @if (modules != null)
                     {
                         <option value="-1">---Select---</option>
                         for (int i = 0; i < modules.Count; i++)
                         {
-                            <option value="@modules[i].ID">@modules[i].ModuleTitleEn</option>
+                            <option value="@modules[i].ID"> @String.Format("{0}", @CultureHelper.IsArabic ? @modules[i].ModuleTitleAr : @modules[i].ModuleTitleEn)</option>
                         }
                     }
                 </select>
             </div>
             <div class="form-group">
-                <label>Title</label>
+                <label>@SurveysResources.Title</label>
                 <input type="text" class="form-control" id="sTitle" placeholder="Enter Survey Title" value="@Model.SurveyTitle">
             </div>
             <div class="form-group">
-                <label>Description</label>
-                <textarea class="form-control" id="txtDesc" placeholder="Enter Survey Description"></textarea>
+                <label>@SurveysResources.Description</label>
+                <textarea class="form-control" id="txtDesc" placeholder="@SurveysResources.Description"></textarea>
             </div>
             <div class="form-group">
                 <label class="mt-checkbox">
-                    <input type="checkbox" id="cBoxAnon" />Allow anonymous users to participate
+                    <input type="checkbox" id="cBoxAnon" />@SurveysResources.Allowanonymoususerstoparticipate
                     <span></span>
                 </label>
             </div>
             <div class="form-group">
                 <label class="mt-checkbox">
-                    <input type="checkbox" id="cBoxMult" />Allow multiple answers for each user
+                    <input type="checkbox" id="cBoxMult" />@SurveysResources.Allowmultipleanswersforeachuser
                     <span></span>
                 </label>
             </div>
             <div class="form-group" style="width: 285px;">
-                <label>Duration</label>
+                <label>@SurveysResources.Duration</label>
                 <div class="input-group input-daterange">
                     <input type="text" class="form-control" id="txtStartDate">
                     <div class="input-group-addon">to</div>
@@ -80,13 +84,13 @@
             </div>
         </div>
         <div class="col-md-6">
-            <h4>Survey Review</h4>
+            <h4>@SurveysResources.SurveyReview</h4>
             <div id="surveyContainer">
                 <div id="surveyElement"></div>
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary" onclick="return UploadTemplate()">Publish</button>
+    <button type="submit" class="btn btn-primary" onclick="return UploadTemplate()">@SurveysResources.Publish</button>
 </form>
 
 
@@ -100,7 +104,8 @@
     var surveyJson = JSON.parse(text);
 
     const survey = new Survey.Model(surveyJson);
-
+    var selectedLang = getLanguage();
+    survey.locale = selectedLang;
 
     $("#surveyElement").Survey({ model: survey });
 

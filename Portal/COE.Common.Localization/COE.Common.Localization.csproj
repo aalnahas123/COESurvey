@@ -316,6 +316,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Surveys\SurveysResources.ar.Designer.cs">
+      <DependentUpon>SurveysResources.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Surveys\SurveysResources.Designer.cs">
+      <DependentUpon>SurveysResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Surveys\SurveysResources.en.Designer.cs">
+      <DependentUpon>SurveysResources.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="UsersMgmtResources.ar.Designer.cs">
       <DependentUpon>UsersMgmtResources.ar.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -723,6 +738,24 @@
     <EmbeddedResource Include="Stipend\StipendResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StipendResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Surveys\SurveysResources.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SurveysResources.ar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Surveys\SurveysResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SurveysResources.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Surveys\SurveysResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SurveysResources.Designer.cs</LastGenOutput>
       <CustomToolNamespace>COE.Common.Localization</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>

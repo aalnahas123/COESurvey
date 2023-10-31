@@ -229,45 +229,45 @@
 
 
 
-    function changeLanguage() {
+    //function changeLanguage() {
 
 
 
 
-        $.ajax({
-            type: "POST",
-            url: '/Home/SetLanguage',
-            data: { "value": $("#ddLangs").val() },
-            success: function (r) {
-                switch (currentAction) {
-                    case 'Index':
-                        survey.locale = $('#ddLangs').val();
-                        break;
+    //    $.ajax({
+    //        type: "POST",
+    //        url: '/Home/SetLanguage',
+    //        data: { "value": $("#ddLangs").val() },
+    //        success: function (r) {
+    //            switch (currentAction) {
+    //                case 'Index':
+    //                    survey.locale = $('#ddLangs').val();
+    //                    break;
 
-                    case 'Create':
-                        window.location.href = "/Home/Create?lang=" + $('#ddLangs').val();
-                        break;
+    //                case 'Create':
+    //                    window.location.href = "/Home/Create?lang=" + $('#ddLangs').val();
+    //                    break;
 
-                    case 'PollData':
-                        window.location.href = "/Home/PollData?lang=" + $('#ddLangs').val();
-                        break;
+    //                case 'PollData':
+    //                    window.location.href = "/Home/PollData?lang=" + $('#ddLangs').val();
+    //                    break;
 
-                    case 'Dashboard':
-                        window.location.href = "/Home/Dashboard?lang=" + $('#ddLangs').val();
-                        break;
+    //                case 'Dashboard':
+    //                    window.location.href = "/Home/Dashboard?lang=" + $('#ddLangs').val();
+    //                    break;
 
-                    case 'Gauge':
-                        window.location.href = "/Home/Gauge?lang=" + $('#ddLangs').val();
-                        break;
+    //                case 'Gauge':
+    //                    window.location.href = "/Home/Gauge?lang=" + $('#ddLangs').val();
+    //                    break;
 
-                    case 'Table':
-                        window.location.href = "/Home/Table?lang=" + $('#ddLangs').val();
-                        break;
-                }
-            }
-        });
+    //                case 'Table':
+    //                    window.location.href = "/Home/Table?lang=" + $('#ddLangs').val();
+    //                    break;
+    //            }
+    //        }
+    //    });
 
-    };
+    //};
 
 
 
