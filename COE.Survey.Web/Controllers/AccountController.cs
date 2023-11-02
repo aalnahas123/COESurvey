@@ -242,8 +242,8 @@ namespace COE.Survey.Web.Controllers
 
             var user = UsersFacade.CurrentUser;
 
-            SetCulture(_cultureAr);
-
+            //SetCulture(_cultureAr);
+            
             if (user != null)
             {
                 if (string.IsNullOrEmpty(returnUrl))

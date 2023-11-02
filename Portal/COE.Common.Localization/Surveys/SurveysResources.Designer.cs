@@ -70,6 +70,15 @@ namespace COE.Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activation Status.
+        /// </summary>
+        public static string ActivationStatus {
+            get {
+                return ResourceManager.GetString("ActivationStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Advanced Search.
         /// </summary>
         public static string AdvancedSearch {

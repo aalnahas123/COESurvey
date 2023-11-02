@@ -71,6 +71,7 @@ namespace COE.Survey.Web
             bundles.Clear();
             bundles.ResetAll();
             BundleTable.EnableOptimizations = false;
+            return;
 
             bundles.Add(
                 new ScriptBundle("~/bundles/scripts").Include(
@@ -88,7 +89,6 @@ namespace COE.Survey.Web
             bundles.Add(
                 new ScriptBundle("~/bundles/validateScripts").Include(
                     "~/Scripts/jquery.validate*").ForceOrdered());
-            // Bundel Boxed Layout By Mohammed Mostafa
 
             // Styles
             #region CSS GLOBAL MANDATORY STYLES

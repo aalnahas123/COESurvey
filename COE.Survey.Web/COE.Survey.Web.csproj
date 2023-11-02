@@ -269,6 +269,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\login.css" />
+    <Content Include="Content\images\book-saved.svg" />
+    <Content Include="Content\images\coe-logo.svg" />
+    <Content Include="Content\images\copy.svg" />
+    <Content Include="Content\images\default300.png" />
+    <Content Include="Content\images\element-3.svg" />
+    <Content Include="Content\images\folder-2.svg" />
+    <Content Include="Content\images\Frame.svg" />
+    <Content Include="Content\images\Group.svg" />
+    <Content Include="Content\images\hierarchy-2.svg" />
+    <Content Include="Content\images\Image.png" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\images\coe-logo.png" />
+    <Content Include="Content\images\favico.ico" />
+    <Content Include="Content\images\loading-spinner-blue.gif" />
+    <Content Include="Content\images\more.svg" />
+    <Content Include="Content\images\surveys-logo.png" />
+    <Content Include="Content\images\test.jpeg" />
+    <Content Include="Content\js\main.js" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -291,8 +310,6 @@
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Login1.cshtml" />
-    <Content Include="Views\Account\Login2.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResendConfirmEmail.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
@@ -400,7 +417,10 @@
     <Compile Include="ViewModels\SurveyAllAnswers.cs" />
     <Compile Include="ViewModels\SurveysViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\assets\" />
+    <Folder Include="Content\fonts\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\COE.Survey.BLL\COE.Survey.BLL.csproj">
       <Project>{89d00eb3-81cd-4d63-a1dc-e300f44d0497}</Project>

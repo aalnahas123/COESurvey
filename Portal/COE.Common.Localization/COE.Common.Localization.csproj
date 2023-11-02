@@ -766,10 +766,12 @@
     <EmbeddedResource Include="UsersMgmtResources.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UsersMgmtResources.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UsersMgmtResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UsersMgmtResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Workflow\ChangeStatusRequestResource.ar.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -1207,6 +1207,7 @@ namespace COE.Survey.Web
             //}
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult SetLanguage(string value)
         {

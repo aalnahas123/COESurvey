@@ -120,6 +120,9 @@
   <data name="Activated" xml:space="preserve">
     <value>Activated</value>
   </data>
+  <data name="ActivationStatus" xml:space="preserve">
+    <value>Activation Status</value>
+  </data>
   <data name="AdvancedSearch" xml:space="preserve">
     <value>Advanced Search</value>
   </data>

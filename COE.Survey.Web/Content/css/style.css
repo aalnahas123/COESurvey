@@ -1,0 +1,261 @@
+html[dir="ltr"] {
+    font-family: "Inter", sans-serif;
+}
+
+html[dir="rtl"] {
+    font-family: "Cairo", sans-serif;
+}
+
+html[dir="ltr"] body {
+    font-family: "Inter", sans-serif !important;
+}
+
+html[dir="rtl"] body {
+    font-family: "Cairo", sans-serif !important;
+}
+
+html[dir="ltr"] .landing__survey-menu {
+    inset: 100% 5px auto auto !important;
+}
+
+html[dir="rtl"] .landing__survey-menu {
+    inset: 100% auto auto 5px !important;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.landing {
+    background-color: #f5f6fc;
+    flex-grow: 1;
+}
+
+    .landing .landing__navbar {
+        padding: 14px 0;
+        background-color: white;
+    }
+
+    .landing .landing__content {
+        flex-grow: 1;
+        padding: 40px 0;
+        gap: 24px;
+    }
+
+    .landing .landing__container {
+        background-color: white;
+        border-radius: 8px;
+        padding: 24px;
+    }
+
+    .landing h1,
+    .landing h2 {
+        color: #35489b;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 44px;
+        letter-spacing: -0.4px;
+    }
+
+    .landing .landing__search label {
+        color: #344054;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        margin-bottom: 8px;
+    }
+
+    .landing .landing__btn {
+        padding: 8px 12px;
+        border: 1px solid #35489b;
+        box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+        background: #35489b;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+        border-radius: 8px;
+        height: fit-content;
+    }
+
+    .landing .landing__surveys-container {
+        gap: 24px;
+        row-gap: 24px;
+    }
+
+    .landing .landing__survey-card {
+        padding: 24px;
+        width: calc((100% - 48px) / 3);
+        border-radius: 8px;
+        border: 1px solid #35489b;
+        background: #fff;
+    }
+
+        .landing .landing__survey-card img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .landing .landing__survey-card figure {
+            font-size: 0;
+            max-height: 260px;
+            margin-bottom: 24px;
+        }
+
+    .landing .langing__more-btn {
+        width: 24px;
+        height: 24px;
+        background-color: transparent;
+        border: unset !important;
+    }
+
+    .landing .landing__survey-card h3 {
+        color: #101828;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 32px;
+    }
+
+    .landing .landing__seperator {
+        border-top: 1px solid #e4e4e4;
+    }
+
+    .landing .landing__data-container {
+        gap: 18px;
+    }
+
+        .landing .landing__data-container label {
+            color: #475467;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            width: 135px;
+        }
+
+.form-check-input:checked {
+    background-color: #35489b !important;
+    border-color: #35489b !important;
+}
+
+.landing .landing__data-container p {
+    color: #475467;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 0;
+}
+
+.landing .landing__data {
+    gap: 16px;
+}
+
+.landing .landing__data-container .landing__status {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 2px 10px;
+    border-radius: 9999px;
+}
+
+.landing .landing__data-container .landing__data-approved {
+    background-color: #ecfdf3;
+    color: #067647;
+    border: 1px solid #abefc6;
+}
+
+.landing .landing__data-container .landing__data-declined {
+    background-color: #fef3f2;
+    color: #b42318;
+    border: 1px solid #fecdca;
+}
+
+.landing .landing__data-container .landing__data-waiting {
+    background-color: #fffaeb;
+    color: #b54708;
+    border: 1px solid #fedf89;
+}
+
+.landing .landing__survey-menu {
+    border: 1px solid #35489b;
+    box-shadow: 0px 4px 6px -2px rgba(16, 24, 40, 0.03), 0px 12px 16px -4px rgba(16, 24, 40, 0.08);
+    border-radius: 8px;
+    position: absolute;
+    padding: 4px 0;
+    max-width: 240px;
+    width: 60%;
+    background-color: white;
+    list-style: none;
+    transform: unset !important;
+    margin: 0;
+}
+
+    .landing .landing__survey-menu li {
+        padding: 6px 0;
+        border-bottom: 1px solid #eaecf0;
+    }
+
+    .landing .landing__survey-menu button {
+        background-color: transparent;
+        border: unset;
+        padding: 9px 10px;
+        gap: 8px;
+        color: #344054;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        width: 100%;
+    }
+
+    .landing .landing__survey-menu li:last-child {
+        border-bottom: unset !important;
+    }
+
+    .landing .landing__survey-menu a {
+        padding: 9px 10px;
+        gap: 8px;
+        color: #344054;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        text-decoration: none;
+    }
+
+.pagination li a {
+    color: #344054 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 20px;
+}
+
+.landing .landing__lang {
+    padding: 12px !important;
+    background-color: #35489b;
+    border-radius: 8px !important;
+    gap: 12px;
+    color: #fff !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+
+    .landing .landing__lang img {
+        border-radius: 8px;
+    }
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.landing .landing__lang:hover,
+.landing .landing__lang:active,
+.landing .landing__lang, .btn.show {
+    background-color: #35489b !important;
+}

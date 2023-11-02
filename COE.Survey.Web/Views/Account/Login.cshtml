@@ -3,6 +3,7 @@
 @using Commons.Framework.Extensions
 @using Commons.Framework.Web.Mvc.Helpers
 @using COE.Common.Model.ViewModels
+@using Commons.Framework.Globalization
 
 @model LoginViewModel
 @{
@@ -13,251 +14,100 @@
 
 <!DOCTYPE html>
 
-<html lang="en" dir="ltr">
-<!-- BEGIN HEAD -->
+<html lang="@CultureHelper.CurrentLanguage" dir="@CultureHelper.CurrentDirection">
+
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <title>Login </title>
     <meta content="Preview page of Metronic Admin Theme #2 for " name="description" />
     <meta content="" name="author" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/login.css")">
+
     <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")">
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-    <link href="~/Content/theme/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/theme/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/theme/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/theme/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
-    <!-- END GLOBAL MANDATORY STYLES -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <link href="~/Content/theme/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/theme/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- END PAGE LEVEL PLUGINS -->
-    <!-- BEGIN THEME GLOBAL STYLES -->
-    <link href="~/Content/theme/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
-    <link href="~/Content/theme/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
-    <!-- END THEME GLOBAL STYLES -->
-    <!-- BEGIN PAGE LEVEL STYLES -->
-    @*<link href="~/Content/theme_rtl/assets/pages/css/login-rtl.min.css" rel="stylesheet" type="text/css" />*@
-    <link href="~/Content/theme/assets/pages/css/login.css" rel="stylesheet" type="text/css" />
-	<link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
-    <!-- END PAGE LEVEL STYLES -->
-    <!-- BEGIN THEME LAYOUT STYLES -->
-    <!-- END THEME LAYOUT STYLES -->
-    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<!-- END HEAD -->
 
-<body>
 
-    <div class="container-fluid login">
+<body >
 
-        @* <div class="coe-info col-md-4 col-sm-12 col-xs-12">
-            <img src="~/Content/theme/assets/pages/img/coe-logo.png" alt="" class="img-responsive logo" />
-            <h3>Welcom to<br />Colleges of Excellence!</h3>
-            <div class="info-footer">
-                <div class="copyright">
-                    <span>© 2020 Colleges of Excellence</span>
-                    <div class="info-links pull-right hidden-xs">
-                        <a href="#">Privacy</a>
-                        <a href="#">Legal</a>
-                    </div>
-                </div>
+
+    @Html.AntiForgeryToken()
+    <main class="d-flex login">
+        <figure class="login__banner">
+            <img src="@Url.Content("~/Content/images/Image.png")" alt="coe-banner" />
+        </figure>
+
+        <section class="login__container d-flex flex-column">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle d-flex"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    <img src="@Url.Content("~/Content/images/Frame.svg")" /> <span>@string.Format("{0}", CultureHelper.IsArabic ? "العربية" : "English")</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#" id="arabic">العربية</a></li>
+                    <li><a class="dropdown-item" href="#" id="english">English</a></li>
+                </ul>
             </div>
 
-        </div> *@
-        <div class="login-container">
-            @* <h5 class="pull-right">Don't have an account yet? <a href="/Account/Register">@UsersMgmtResources.CreateAnAccount</a> </h5> *@
 
-            <div class="login-form-container">
-                @*@Html.Partial("_Header")*@
-                <img src="~/Content/theme/assets/pages/img/coe-logo.png" alt="" class="img-responsive logo" />
-                @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form", defaultbutton = "SubmitButton", id = "loginForm" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="alert alert-danger display-hide">
-                        <button class="close" data-close="alert"></button>
-                        <span>@UsersMgmtResources.EnterCredentials</span>
-                    </div>
-                    <img src="~/Content/theme/assets/pages/img/surveys-logo.png" alt="" class="img-responsive system-logo" />
-                    <div class="form-group">
-                        <label class="control-label visible-ie8 visible-ie9">@UsersMgmtResources.UserName</label>
-                        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="UserName" name="UserName" />
+            @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "d-flex flex-column justify-content-center align-items-center", role = "form", defaultbutton = "SubmitButton", id = "loginForm" }))
+            {
+
+                <div class="d-flex flex-column">
+                    <h1 class="login__title">@UsersMgmtResources.EnterCredentials</h1>
+
+                    <div class="login__input">
+                        <label class="form-label">@UsersMgmtResources.UserName</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="name@example.com" name="UserName" />
                         @Html.ValidationMessageFor(m => m.UserName, string.Empty, new { @class = "text-danger help-block" })
                     </div>
-                    <div class="form-group">
-                        <label class="control-label visible-ie8 visible-ie9">@UsersMgmtResources.Password</label>
-                        <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="Password" />
+
+                    <div class="login__input">
+                        <label class="form-label">@UsersMgmtResources.Password</label>
+                        <input class="form-control mb-2 placeholder-no-fix" type="password" autocomplete="off" placeholder="@UsersMgmtResources.Password" name="Password" />
                         @Html.ValidationMessageFor(m => m.Password, string.Empty, new { @class = "text-danger help-block" })
-                    </div>
-                    <div class="form-group">
-                        
-                        @* <a href="@Url.Action("ForgotPassword","Account", new { Area=""})" id="forget-password" class="forget-password">@UsersMgmtResources.ForgotPassword</a> *@
-                    </div>
-                    if (Model != null && Model.CaptchaRequired.To<bool>())
-                    {
-                        @*<div class="app_captcha">
-                            <div class="form-group captcha-control">
-                                @Html.CaptchaFor(model => model.Captcha)
-                                @Html.ValidationMessageFor(model => model.Captcha, string.Empty, new { @class = "text-danger help-block" })
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="g-recaptcha" data-sitekey="@System.Configuration.ConfigurationManager.AppSettings["RecaptchaPublicKey"]" data-theme="light"
-                                     data-callback="recaptchaCallback"></div>
-                                @Html.HiddenFor(model => model.Captcha)
-                                @Html.ValidationMessageFor(model => model.Captcha, "", new { @class = "text-danger" })
-                            </div>
-                        </div>*@
 
-                    }
-                    <div class="form-actions">
-                       
-                        <button type="submit" class="btn uppercase pull-right">LOGIN</button>
-                    </div>
-                }
-            </div>
 
-        </div>
-    </div>
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="flexCheckDefault" />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            @UsersMgmtResources.Remember
+                        </label>
+                    </div>
+
+                    <button type="submit" class="login__submit-btn">@UsersMgmtResources.Login</button>
+                </div>
+
+
+            }
+        </section>
+
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+
+    <script src="~/Content/js/main.js" defer></script>
+
 </body>
 </html>
-@*<link href="@Url.Content("~/Content/theme_rtl/assets/pages/css/login.min.css")" rel="stylesheet" type="text/css" />*@
-
-@* <div class="row">
-    <!-- Wrapper for slides -->
-    <div class="col-md-12">
-        <!-- Login -->
-        <div class="col-md-5 ">
-            <h4 class="head form-title font-green">
-                تسجيل دخول
-            </h4>
-
-            <div class="login-wrapper">
-
-                @Html.Partial("_Header")
-                @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form2", role = "form", defaultbutton = "SubmitButton", id = "loginForm" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="alert alert-danger display-hide">
-                        <button class="close" data-close="alert"></button>
-                        <span>@UsersMgmtResources.EnterCredentials</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label visible-ie8 visible-ie9">@UsersMgmtResources.UserName</label>
-                        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="@UsersMgmtResources.UserName" name="UserName" />
-                        @Html.ValidationMessageFor(m => m.UserName, string.Empty, new { @class = "text-danger help-block" })
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label visible-ie8 visible-ie9">@UsersMgmtResources.Password</label>
-                        <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="@UsersMgmtResources.Password" name="Password" />
-                        @Html.ValidationMessageFor(m => m.Password, string.Empty, new { @class = "text-danger help-block" })
-                    </div>
-                    <div class="form-group">
-                        <label class="rememberme check mt-checkbox mt-checkbox-outline">
-                            <input type="checkbox" name="RememberMe" value="true" />@UsersMgmtResources.Remember
-                            <span></span>
-                        </label>
-                        <a href="@Url.Action("ForgotPassword","Account", new { Area=""})" id="forget-password" class="forget-password">@UsersMgmtResources.ForgotPassword</a>
-                    </div>
-                    if (Model != null && Model.CaptchaRequired.To<bool>())
-                    {
-                        @*<div class="app_captcha">
-                            <div class="form-group captcha-control">
-                                @Html.CaptchaFor(model => model.Captcha)
-                                @Html.ValidationMessageFor(model => model.Captcha, string.Empty, new { @class = "text-danger help-block" })
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="g-recaptcha" data-sitekey="@System.Configuration.ConfigurationManager.AppSettings["RecaptchaPublicKey"]" data-theme="light"
-                                     data-callback="recaptchaCallback"></div>
-                                @Html.HiddenFor(model => model.Captcha)
-                                @Html.ValidationMessageFor(model => model.Captcha, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                    }
-                    <div class="form-actions">
-                        <button type="submit" class="btn green uppercase">@UsersMgmtResources.Login</button>
-                    </div>
-                }
 
 
-            </div>
-
-        </div>
-
-        <!-- ITC Home Part -->
-        <div class="col-md-7 ">
-            <h4 class="head form-title font-green">
-                كليات التقنية العالمية
-            </h4>
-            <div class="itc-home-part1-wrapper">
-                <div class="labels-wrapper">
-                    <div class="home-intro-div">
-                        <span class="itc-home-label">أنشئت الكليات التقنية العالمية لتكون الجهة الرائدة للتدريب التطبيقي في الممكلة بالتعاون مع أفضل منظمات التدريب التطبيقي دوليا وبالاعتماد على كوادرها العالمية. ومن خلالها تمنح الكليات الخريجين والخريجات شهادة دبلوم معتمدة من المؤسسة العامة للتدريب التقني والمهني. بعد الانتهاء من الدراسة والتدريب التطبيقي عالي الجودة لمدة 3 سنوات. و يصرف للمتدرب مبلغ 1000 ريال مكافأة شهرية خلال فترة التدريب.</span>
-                    </div>
-                    <div class="home-intro-div">
-                        <span class="itc-home-label"> &#8203;بلغت عدد الكليات العالمية التقنية 33 كلية للبنين والبنات موزعة على 24 مدينة في المملكة وهي: عرعر, القريات, الجوف, المدينة المنورة, الخرج, القويعية, عنيزة, بريدة, الوجه, أملج, الأحساء, القطيف, الجعيمة, الدمام, المجمعة, الطائف, الطائف, النماص, محايل, عسير, وادي الدواسر, الرياض, جدة, مكة المكرمة و جيزان .&#8203;</span>
-                    </div>
-                    <div class="form-actions">
-                        <br />
-                        <a class="btn btn-success uppercase" href="@Url.Action("Terms","Account")">سجل الآن!</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="logSpliter col-xs-12 col-sm-12 hidden-md hidden-lg">
-        </div>
-    </div>
-</div> *@
-
-@* <div id="forgetPasswordPopup" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- BEGIN FORGOT PASSWORD FORM -->
-            @using (Html.BeginForm("ForgotPassword", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "forget-form", role = "form", defaultbutton = "btnForgetPassword", id = "forgot-password" }))
-            {
-                @Html.AntiForgeryToken()
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h3 class="font-green"> @UsersMgmtResources.ForgetPassword ?</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="alert alert-danger alert-dismissable" id="divChangeStatusAlert" style="display:none;">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                @UsersMgmtResources.EnterEmailNationalId
-                            </div>
-                            <p> @UsersMgmtResources.Email </p>
-                            <div class="form-group">
-                                @Html.TextBoxFor(m => m.ForgotPassword.Email, string.Empty, new { @class = "form-control placeholder-no-fix", autocomplete = "off", placeholder = UsersMgmtResources.Email })
-                                @Html.ValidationMessageFor(m => m.ForgotPassword.Email, string.Empty, new { @class = "text-danger help-block" })
-                            </div>
-                            <p> @UsersMgmtResources.NationalId </p>
-                            <div class="form-group">
-                                @Html.TextBoxFor(m => m.ForgotPassword.NationalId, string.Empty, new { @class = "form-control placeholder-no-fix" , autocomplete = "off", placeholder = UsersMgmtResources.NationalId })
-                                @Html.ValidationMessageFor(m => m.ForgotPassword.NationalId, string.Empty, new { @class = "text-danger help-block" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                        <button type="button" data-dismiss="modal" class="btn dark btn-outline">@SharedResources.Close</button>
-                        <button type="submit" class="btn red" id="btnForgetPassword">@SharedResources.Submit</button>
-                    </div>
-            }
-            <!-- END FORGOT PASSWORD FORM -->
-        </div>
-    </div>
-</div> *@
-
-
-@section scripts {
-    @*<script src="@Url.Content("~/Content/theme_rtl/assets/pages/scripts/login.min.js")" type="text/javascript"></script>*@
-}

@@ -15,198 +15,249 @@
     bool canApprove = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("ApproveSurvey");
 }
 
-<link href="~/Content/theme/assets/global/plugins/bootstrap-toggle-master/css/bootstrap-toggle.min.css" rel="stylesheet" />
-<script src="~/Content/theme/assets/global/plugins/bootstrap-toggle-master/js/bootstrap-toggle.min.js"></script>
-
-
-@using (Html.BeginForm("Index", "Surveys", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken();
+@*<link href="~/Content/theme/assets/global/plugins/bootstrap-toggle-master/css/bootstrap-toggle.min.css" rel="stylesheet" />
+    <script src="~/Content/theme/assets/global/plugins/bootstrap-toggle-master/js/bootstrap-toggle.min.js"></script>*@
 
 
 
-    <div class="card mb-5">
-        <h5 class="card-header bg-primary text-white">
-            <div class="d-flex justify-content-between align-items-center">
-                <span><i class="fa fa-search"></i> @SurveysResources.AdvancedSearch</span>
+
+
+
+
+<section class="d-flex landing__content flex-column container">
+    <!-- Search section -->
+    @using (Html.BeginForm("Index", "Surveys", FormMethod.Post, new { @class = "landing__container landing__search", role = "form" }))
+    {
+        @Html.AntiForgeryToken();
+        <h1 class="mb-3">@SurveysResources.AdvancedSearch</h1>
+
+
+
+
+        <div class="row justify-content-between">
+            <!-- Survey module select -->
+            <div class="col-md-6 d-flex flex-column">
+                <label>@SurveysResources.SurveyModule</label>
+
+                @Html.DropDownListFor(model => model.ModuleId, new SelectList(modules, "Value", "Text"), @SharedResources.DefaultSelect, new { @class = "form-select", aria_label = "Default select example" })
+
 
             </div>
-        </h5>
 
-        <div class="card-body">
-            <div class="form-body row">
-                <div class="form-group col-md-6">
-                    <label class="control-label">@SurveysResources.SurveyModule</label>
-                    @Html.DropDownListFor(model => model.ModuleId, new SelectList(modules, "Value", "Text"), @SharedResources.DefaultSelect, new { @class = "form-control select2" })
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="control-label">Survey Status</label>
-                    @Html.DropDownListFor(model => model.StatusId, new SelectList(AllStatus, "Value", "Text"), @SharedResources.DefaultSelect, new { @class = "form-control select2" })
-                </div>
-            </div>
-            <div class="form-actions text-right">
-                <button type="submit" class="btn btn-success">
-                    @SharedResources.Search
-                </button>
+            <!-- Survey status select -->
+            <div class="col-md-6 d-flex flex-column">
+                <label>@SurveysResources.SurveyStatus</label>
+                @Html.DropDownListFor(model => model.StatusId, new SelectList(AllStatus, "Value", "Text"), @SharedResources.DefaultSelect, new { @class = "form-select", aria_label = "Default select example" })
             </div>
         </div>
-    </div>
 
-    <div class="card">
-        <h5 class="card-header bg-primary text-white">
-            <i class="fa fa-list"></i> @SurveysResources.Surveys
-        </h5>
-        <div class="card-body">
-            <div class="form-body">
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <p>@SharedResources.ItemsCount <span>@(Model?.SurviesList?.Count ?? 0)</span></p>
+        <!-- Search btn -->
+        <button type="submit" class="mt-3 landing__btn">@SharedResources.Search</button>
+    }
+
+    <!-- Survey list -->
+    <div class="landing__container">
+        <!-- Survey list header -->
+        <div class="d-flex justify-content-between mb-4 align-items-center">
+            <h2 class="mb-0">@SurveysResources.Surveys</h2>
+
+            @if (canCreate)
+            {
+                <a class="landing__btn" href="@Url.Action("Add", "Surveys")" style="text-decoration: none;">
+                    @SurveysResources.CreateNewSurvey
+                </a>
+            }
+
+        </div>
+
+        <div class="d-flex landing__surveys-container flex-wrap">
+
+
+            @if (Model?.SurviesList != null && Model.SurviesList.Any())
+            {
+                foreach (var item in Model.SurviesList)
+                {
+
+                    <div class="landing__survey-card d-flex flex-column">
+                        <!-- Survey img -->
+                        <figure class="d-flex justify-content-center align-items-center">
+
+                            @if (string.IsNullOrEmpty(@item.ImageUrl))
+                            {
+                                <img src="~/Content/Images/test.jpeg" class="img-fluid"
+                                     alt="Survey Image">
+                            }
+                            else
+                            {
+                                <img src="@item.ImageUrl" class="img-fluid"
+                                     alt="Survey Image">
+                            }
+
+                        </figure>
+
+                        <div class="d-flex justify-content-between mb-3 position-relative">
+                            <!-- Card title -->
+                            <h3>@item.SurveyTitle</h3>
+
+
+                            
+
+                            <!-- More btn -->
+                            <button type="button" class="langing__more-btn" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                <img src="~/Content/images/more.svg" alt="more-icon" />
+                            </button>
+
+                            <!-- Actions menu -->
+                            <ul class="landing__survey-menu dropdown-menu">
+
+                                @if (item.StatusId == (int)SurveyStatusEnum.Draft)
+                                {
+                                    if (canCreate)
+                                    {
+                                        <li><a href="@Url.Action("edit", "Surveys", new { Id = @item.ID })" class="d-flex" title="Edit"><img src="~/Content/images/copy.svg" alt="menu-icon" /> <span>@SurveysResources.Edit</span></a></li>
+                                        
+
+                                    }
+
+                                    if (canPublish)
+                                    {
+                                        <li><a href="@Url.Action("publish", "Surveys", new { Id = @item.ID })" class="d-flex" title="Publish"><img src="~/Content/images/copy.svg" alt="menu-icon" /> <span>@SurveysResources.Publish</span></a></li>
+                                        
+                                    }
+                                }
+                                else if (item.StatusId == (int)SurveyStatusEnum.Published)
+                                {
+                                    if (canApprove)
+                                    {
+                                        <li><a href="@Url.Action("Approve", "Surveys", new { Id = @item.ID })" class="d-flex" title="Approve"><img src="~/Content/images/copy.svg" alt="menu-icon" /> <span>@SurveysResources.Approve</span></a></li>
+                                        
+                                    }
+                                }
+                                else if (item.StatusId == (int)SurveyStatusEnum.Approved)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("answer", "Surveys", new { Id = @item.ID })" class="d-flex">
+                                            <img src="~/Content/images/folder-2.svg" alt="menu-icon" />
+                                            <span>@SurveysResources.Answer</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <button class="d-flex" onclick="CopyTextToClipboard(this,'@item.SurveyLink')">
+                                            <img src="~/Content/images/copy.svg" alt="menu-icon" />
+                                            <span>@SurveysResources.CopyLink</span>
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Result", "Surveys", new { Id = @item.ID })" class="d-flex">
+                                            <img src="~/Content/images/book-saved.svg" alt="menu-icon" />
+                                            <span>@SurveysResources.Results</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Dashboard", "Surveys", new { Id = @item.ID })" class="d-flex">
+                                            <img src="~/Content/images/element-3.svg" alt="menu-icon" />
+                                            <span>@SurveysResources.Dashboard</span>
+                                        </a>
+                                    </li>
+                                }
+
+                                @if (canCreate)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Duplicate", "Surveys", new { Id = @item.ID })" class="d-flex">
+                                            <img src="~/Content/images/hierarchy-2.svg" alt="menu-icon" />
+                                            <span>@SurveysResources.Clone</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="landing__seperator"></div>
+
+                        <!-- Card data -->
+                        <div class="mt-3 landing__data d-flex flex-column">
+                            <!-- Activation status -->
+                            <div class="d-flex landing__data-container align-items-center">
+                                <label>@SurveysResources.ActivationStatus:</label>
+
+                                <div class="form-check form-switch">
+                                    <input class="surveyStatus form-check-input" onchange="UpdateSurveyStatus($(this));" checked="@item.IsActive" id="@item.ID"
+                                           type="checkbox"
+                                           role="switch" />
+                                </div>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="d-flex landing__data-container">
+                                <label>@SurveysResources.Status:</label>
+
+                                <p class="landing__status @GetStatusClass((int)(SurveyStatusEnum)@item.StatusId)">@(((SurveyStatusEnum)@item.StatusId).ToString())</p>
+
+                            </div>
+
+                            <!-- Created by -->
+                            <div class="d-flex landing__data-container">
+                                <label>@SurveysResources.Createdby:</label>
+
+                                <p>@item.CreatedBy</p>
+                            </div>
+
+                            <!-- Last Update -->
+                            <div class="d-flex landing__data-container">
+                                <label>@SurveysResources.LastUpdate:</label>
+
+                                <p>@item.UpdatedOn</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- Survey Card List Starts Here -->
-                <div class="row">
+                }
+            }
 
-
-                    @if (canCreate)
-                    {
-                        <div class="card create-new" style="width: 350px;">
-                            <!-- Big Button for Creating New Survey -->
-                            <div class="card text-center" style="height: 100%;">
-                                <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
-                                    <a class="btn btn-light" href="@Url.Action("Add", "Surveys")">
-                                        <i class="fas fa-plus-circle"></i>
-                                        @SurveysResources.CreateNewSurvey
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    }
-
-
-
-                    @if (Model?.SurviesList != null && Model.SurviesList.Any())
-                    {
-                        foreach (var item in Model.SurviesList)
-                        {
-                            <div class="card" style="width: 350px;">
-                                <div class="card-header d-flex justify-content-between align-items-center">
-
-                                    <div class="d-flex">
-                                        <h5 class="card-title mb-0 mr-2" id="surveyTitle" data-original-title="@item.SurveyTitle">@item.SurveyTitle</h5>
-
-
-                                        @if (canCreate)
-                                        {
-                                            <a href="javascript:void(0)" class="btn btn-light p-0 mr-2 gray" data-toggle="tooltip" title="Edit" id="editIcon" onclick="toggleEdit(@item.ID)">
-                                                <i class="fa fa-pencil small-icon"></i>
-                                            </a>
-
-                                            <a href="javascript:void(0)" id="checkIcon_@item.ID" class="btn btn-link p-0 mr-2 d-none" data-toggle="tooltip" title="Save" onclick="UpdateSurveyTitle($(this));">
-                                                <i class="fa fa-check small-icon"></i>
-                                            </a>
-
-                                            <a href="javascript:void(0)" class="btn btn-red p-0 mr-2 d-none" data-toggle="tooltip" title="Edit" id="canceleditIcon" onclick="toggleEdit(@item.ID)">
-                                                <i class="fa fa-close small-icon"></i>
-                                            </a>
-                                        }
-                                    </div>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="dropdown">
-                                            <a class="btn btn-link p-0 dropdown-toggle" href="#" id="optionsDropdown1" role="button" data-toggle="dropdown"
-                                               aria-haspopup="true" aria-expanded="false">
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="optionsDropdown1">
-
-
-
-                                                @if (item.StatusId == (int)SurveyStatusEnum.Draft)
-                                                {
-                                                    if (canCreate)
-                                                    {
-                                                        <a href="@Url.Action("edit", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Publish"><i class="fa fa-pencil"></i> @SurveysResources.Edit</a>
-                                                    }
-
-                                                    if (canPublish)
-                                                    {
-                                                        <a href="@Url.Action("publish", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Publish"><i class="fa fa-paper-plane"></i> @SurveysResources.Publish</a>
-                                                    }
-                                                }
-                                                else if (item.StatusId == (int)SurveyStatusEnum.Published)
-                                                {
-                                                    if (canApprove)
-                                                    {
-                                                        <a href="@Url.Action("Approve", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Approve"><i class="fa fa-check"> @SurveysResources.Approve</i></a>
-                                                    }
-                                                }
-                                                else if (item.StatusId == (int)SurveyStatusEnum.Approved)
-                                                {
-                                                    <a href="@Url.Action("answer", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Answer"><i class="fa fa-users"></i> @SurveysResources.Answer</a>
-                                                    <button class="dropdown-item" title="Copy Survey Url" onclick="CopyTextToClipboard(this,'@item.SurveyLink')"><i class="fa fa-copy"></i> @SurveysResources.CopyLink</button>
-                                                    <a href="@Url.Action("Result", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Results"><i class="fa fa-users"></i> @SurveysResources.Results</a>
-                                                    <a href="@Url.Action("Dashboard", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Results"><i class="fa fa-users"></i> @SurveysResources.Dashboard</a>
-                                                }
-
-
-
-                                                @if (canCreate)
-                                                {
-                                                    <a href="@Url.Action("Duplicate", "Surveys", new { Id = @item.ID })" class="dropdown-item" data-toggle="tooltip" title="Publish"><i class="fa fa-copy"></i> @SurveysResources.Clone</a>
-                                                }
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="card-body">
-                                    <!-- Card body content goes here -->
-
-
-                                    @if (string.IsNullOrEmpty(@item.ImageUrl))
-                                    {
-                                        <img src="~/Content/Images/default300.png" class="img-fluid"
-                                             alt="Survey Image">
-                                    }
-                                    else
-                                    {
-                                        @*<img src="~/Content/Images/default300.png" class="img-fluid"
-                                            alt="Survey Image">*@
-
-                                        <img src="@item.ImageUrl" class="img-fluid"
-                                             alt="Survey Image">
-                                    }
-
-                                    <hr>
-
-                                    <input class="surveyStatus" id="@item.ID" type="checkbox" onchange="UpdateSurveyStatus($(this));" checked="@item.IsActive" data-toggle="toggle" data-on="@SurveysResources.Activated" data-off="@SurveysResources.Deactivated" />
-
-                                    <hr>
-                                    <p>@item.ModuleText</p>
-                                    <p>@SurveysResources.Status: @(((SurveyStatusEnum)@item.StatusId).ToString())</p>
-                                    <p>@SurveysResources.Createdby: @item.CreatedBy  </p>
-                                    <p>@SurveysResources.LastUpdate: @item.UpdatedOn</p>
-                                </div>
-                            </div>
-                        }
-                    }
-                    else
-                    {
-                        <div class="col-md-12">
-                            <div class="alert alert-info">@SurveysResources.NoSurveystodisplay</div>
-                        </div>
-                    }
-                </div>
-                <!-- Survey Card List Ends Here -->
-            </div>
         </div>
     </div>
 
+    <!-- Paginagtion -->
+    @*<nav class="d-flex justify-content-center">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>*@
+</section>
 
 
-    <script type="text/javascript">
+@functions {
+    string GetStatusClass(int statusId)
+    {
+        switch ((SurveyStatusEnum)statusId)
+        {
+            case SurveyStatusEnum.Draft:
+                return "landing__data-waiting";
+            case SurveyStatusEnum.Approved:
+            case SurveyStatusEnum.Published:
+                return "landing__data-approved";
+            case SurveyStatusEnum.Rejected:
+            case SurveyStatusEnum.Deactivated:
+                return "landing__data-declined";
+            default:
+                throw new ArgumentOutOfRangeException(nameof(statusId), $"Unsupported status id: {statusId}");
+        }
+    }
+}
+
+
+
+<script type="text/javascript">
 
     $(function () {
         $('.toggle-on').attr("style", "padding-left: 9px !important; padding-top:6px !important;")
@@ -303,42 +354,42 @@
     return false;
     }
 
-    </script>
+</script>
 
-    <script>
-        function toggleEdit(id) {
-            var title = document.getElementById("surveyTitle");
-            var editIcon = document.getElementById("editIcon");
-            var canceleditIcon = document.getElementById("canceleditIcon");
-            var checkIcon = document.getElementById("checkIcon_" + id);
+<script>
+    function toggleEdit(id) {
+        var title = document.getElementById("surveyTitle");
+        var editIcon = document.getElementById("editIcon");
+        var canceleditIcon = document.getElementById("canceleditIcon");
+        var checkIcon = document.getElementById("checkIcon_" + id);
 
-            // start editing
-            if (editIcon.classList.contains("d-none")) {
-                var newTitle = $("#txtNewTitle_" + id).val();
-                title.innerHTML = newTitle;
-                editIcon.classList.remove("d-none");
-                checkIcon.classList.add("d-none");
-                canceleditIcon.classList.add("d-none");
-                hideLoading();
-            } else {
+        // start editing
+        if (editIcon.classList.contains("d-none")) {
+            var newTitle = $("#txtNewTitle_" + id).val();
+            title.innerHTML = newTitle;
+            editIcon.classList.remove("d-none");
+            checkIcon.classList.add("d-none");
+            canceleditIcon.classList.add("d-none");
+            hideLoading();
+        } else {
 
-                var input = document.createElement("input");
-                input.type = "text";
-                input.id = "txtNewTitle_" + id;
-                input.value = title.textContent || title.innerText;
-                title.innerHTML = "";
-                title.appendChild(input);
+            var input = document.createElement("input");
+            input.type = "text";
+            input.id = "txtNewTitle_" + id;
+            input.value = title.textContent || title.innerText;
+            title.innerHTML = "";
+            title.appendChild(input);
 
-                editIcon.classList.add("d-none");
-                checkIcon.classList.remove("d-none");
-                canceleditIcon.classList.remove("d-none");
+            editIcon.classList.add("d-none");
+            checkIcon.classList.remove("d-none");
+            canceleditIcon.classList.remove("d-none");
 
 
-            }
         }
-    </script>
+    }
+</script>
 
-}
+
 
 
 

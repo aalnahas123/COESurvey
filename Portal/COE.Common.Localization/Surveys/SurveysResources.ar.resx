@@ -120,6 +120,9 @@
   <data name="Activated" xml:space="preserve">
     <value>مفعل</value>
   </data>
+  <data name="ActivationStatus" xml:space="preserve">
+    <value>حالة التفعيل</value>
+  </data>
   <data name="AdvancedSearch" xml:space="preserve">
     <value>البحث المتقدم</value>
   </data>

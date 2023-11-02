@@ -187,7 +187,7 @@
     <value>Email is incorrect</value>
   </data>
   <data name="EnterCredentials" xml:space="preserve">
-    <value>Enter any username and password</value>
+    <value>Enter username and password</value>
   </data>
   <data name="EnterEmailNationalId" xml:space="preserve">
     <value>Enter your e-mail address and nationalid below to reset your password .</value>
@@ -417,7 +417,7 @@
     <value>User paused, please sign in shortly or contact your system administrator</value>
   </data>
   <data name="UserName" xml:space="preserve">
-    <value>User Name NationalId For Student</value>
+    <value>UserName</value>
   </data>
   <data name="UserNotActivated" xml:space="preserve">
     <value>The user has been suspended by the system administrator</value>

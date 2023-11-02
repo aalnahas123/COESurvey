@@ -187,7 +187,7 @@
     <value>البريد الالكترونى غير صحيح</value>
   </data>
   <data name="EnterCredentials" xml:space="preserve">
-    <value>ادخل اسم المسخدم او الهوية الوطنية للطالب وكلمة المرور</value>
+    <value>ادخل اسم المسخدم  وكلمة المرور</value>
   </data>
   <data name="EnterEmailNationalId" xml:space="preserve">
     <value>ادخل البريد الإلكتروني والهوية الوطنية لإستعادة كلمة المرور .</value>
@@ -386,7 +386,7 @@
     <value>تم إيقاف المستخدم مؤقتاً، رجاء تسجيل الدخول بعد قليل أو التواصل مع مدير النظام</value>
   </data>
   <data name="UserName" xml:space="preserve">
-    <value>اسم المستخدم او الهوية الوطنية للطالب</value>
+    <value>اسم المستخدم</value>
   </data>
   <data name="UserNotActivated" xml:space="preserve">
     <value>تم ايقاف المستخدم من قبل مدير النظام</value>
