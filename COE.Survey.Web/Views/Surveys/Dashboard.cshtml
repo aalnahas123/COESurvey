@@ -1,28 +1,8 @@
 ﻿@model COE.Survey.Web.ViewModels.SurveyAllAnswers
 
 @{
-    ViewBag.Title = "Survey Results";
+    ViewBag.Title = @SurveysResources.Dashboard + " | " + Model.SurveyTitle;
 }
-
-@*
-    <!-- ... -->
-    <script type="text/javascript" src="https://unpkg.com/knockout/build/output/knockout-latest.js"></script>
-
-    <!-- SurveyJS Form Library resources -->
-    <script type="text/javascript" src="https://unpkg.com/survey-core/survey.core.min.js"></script>
-    <!-- Uncomment the following lines if you also display the survey on the page -->
-    <!-- <link href="https://unpkg.com/survey-core/defaultV2.min.css" type="text/css" rel="stylesheet"> -->
-    <!-- <script type="text/javascript" src="https://unpkg.com/survey-knockout-ui/survey-knockout-ui.min.js"></script> -->
-    <!-- Third-party visualization libraries -->
-    <script src="https://unpkg.com/plotly.js-dist-min/plotly.min.js"></script>
-    <!-- Uncomment the following line if you use the Text, Multiple Text, or Comment question types in your surveys -->
-    <!-- <script src="https://unpkg.com/wordcloud/src/wordcloud2.js"></script> -->
-    <!-- SurveyJS Dashboard resources-->
-    <link href="https://unpkg.com/survey-analytics/survey.analytics.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/survey-analytics/survey.analytics.min.js"></script>*@
-
-
-
 
 <script src="https://unpkg.com/survey-core@1.9.106/survey.core.min.js"></script>
 <script src="https://unpkg.com/survey-core@1.9.106/survey.i18n.min.js"></script>
@@ -38,29 +18,23 @@
 <link rel="stylesheet" href="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.tabulator.css" />
 
 
+<section class="d-flex landing__content flex-column container">
+    <div class="landing__container survey-results d-flex flex-column">
+        <h1>@SurveysResources.Dashboard</h1>
 
-<div>
-    <h2 class="text-secondary">@Model.SurveyTitle Results Summary</h2>
+        <h2>@Model.SurveyTitle</h2>
 
-
-   
-
-    <div class="row mb-5">
-        <div class="col-12">
-            <div class="text-center">
-                <a class="btn btn-success" style="background-color: ghostwhite; color: darkgray;" href="@Url.Action("Result", "Surveys", new { Id = Model.Id })">Table</a>
-                <a class="btn btn-success" style="background-color: #19b394; color: white;" href="@Url.Action("Dashboard", "Surveys", new { Id = Model.Id })">Dashboard</a>
-            </div>
+        <div class="survey-actions d-flex">
+            <a href="@Url.Action("Result", "Surveys", new { Id = Model.Id })" class="survey-actions__action">@SurveysResources.Table</a>
+            <a href="@Url.Action("Dashboard", "Surveys", new { Id = Model.Id })" class="survey-actions__active survey-actions__action">@SurveysResources.Dashboard</a>
         </div>
+
+        <div id="surveyVizPanel"></div>
     </div>
+</section>
 
 
 
-    <div id="surveyVizPanel"></div>
-
-
-
-</div>
 
 
 

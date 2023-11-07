@@ -4,15 +4,13 @@
 @model Survey
 
 @{
-    ViewBag.Title = SurveysResources.PublishSurvey;
+    ViewBag.Title = String.Format("{0}", @SurveysResources.Publish + " : " + @Model.SurveyTitle);
 }
 
 @{
-    List<SurveyModules> modules = ViewBag.Modules;
+    List<LookupViewModel> modules = ViewBag.Modules;
 }
 
-<title>@SurveysResources.Publish @ViewBag.Title</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
 <script src="https://unpkg.com/survey-jquery@1.9.113/survey.jquery.min.js"></script>
 <script src="https://unpkg.com/survey-jquery@1.9.113/themes/index.min.js"></script>
@@ -24,74 +22,107 @@
 
 
 
-<style>
-    .svd_q_selected .svda-add-new-rating-item {
-        display: none !important;
-    }
+<section class="d-flex landing__content flex-column container">
+    <div class="landing__container survey-approve d-flex flex-column">
+        <h1>@SurveysResources.PublishSurvey : @Model.SurveyTitle</h1>
 
-    .modal-dialog {
-        left: auto !important;
-    }
-</style>
+        <h2>@SurveysResources.SurveyData</h2>
 
 
-<form style="margin-top: 25px;">
-    <h3>@SurveysResources.PublishSurvey</h3>
+        <!-- Error alert container, hidden by default -->
+        <div id="errorAlert" class="alert alert-danger" role="alert" style="display: none;">
+            <!-- Error message text will go here -->
+        </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@SurveysResources.SurveyData</h4>
-            <div class="form-group">
-                <label for="sel1">@SurveysResources.SelectModule</label>
-                <select class="form-control" id="ddlModules">
-                    @if (modules != null)
-                    {
-                        <option value="-1">---Select---</option>
-                        for (int i = 0; i < modules.Count; i++)
-                        {
-                            <option value="@modules[i].ID"> @String.Format("{0}", @CultureHelper.IsArabic ? @modules[i].ModuleTitleAr : @modules[i].ModuleTitleEn)</option>
-                        }
-                    }
-                </select>
+        <form class="row w-100">
+            <div class="col-md-6 survey-approve__container d-flex flex-column">
+                <!-- Module input -->
+                <div>
+                    <label class="form-label">@SurveysResources.SelectModule</label>
+                    @Html.DropDownListFor(model => model.ModuleId, new SelectList(modules, "Value", "Text"), @SharedResources.DefaultSelect, new { id = "ddlModules", @class = "form-select", aria_label = "Default select example" })
+                </div>
+
+                <!-- Title input -->
+                <div>
+                    <label class="form-label">Title</label>
+                    <input class="form-control" placeholder="@SurveysResources.Title" id="sTitle" value="@Model.SurveyTitle" />
+                </div>
+
+                <div class="row">
+                    <!-- From input -->
+                    <div class="col-md-6">
+                        <label class="form-label">@SurveysResources.From</label>
+                        <input type="date" id="txtStartDate"
+                               class="form-control"
+                               placeholder="dd/mm/yyyy" />
+                    </div>
+
+                    <!-- To input -->
+                    <div class="col-md-6">
+                        <label class="form-label">@SurveysResources.To</label>
+                        <input type="date" id="txtEndDate"
+                               class="form-control"
+                               placeholder="dd/mm/yyyy" />
+                    </div>
+                </div>
+
+
+
+                <div>
+                    <label class="mt-checkbox">
+                        <input type="checkbox" id="cBoxAnon" /> @SurveysResources.Allowanonymoususerstoparticipate
+                        <span></span>
+                    </label>
+                </div>
+
+                <div>
+                    <label class="mt-checkbox">
+                        <input type="checkbox" id="cBoxMult" /> @SurveysResources.Allowmultipleanswersforeachuser
+                        <span></span>
+                    </label>
+                </div>
+
             </div>
-            <div class="form-group">
-                <label>@SurveysResources.Title</label>
-                <input type="text" class="form-control" id="sTitle" placeholder="Enter Survey Title" value="@Model.SurveyTitle">
-            </div>
-            <div class="form-group">
-                <label>@SurveysResources.Description</label>
-                <textarea class="form-control" id="txtDesc" placeholder="@SurveysResources.Description"></textarea>
-            </div>
-            <div class="form-group">
-                <label class="mt-checkbox">
-                    <input type="checkbox" id="cBoxAnon" />@SurveysResources.Allowanonymoususerstoparticipate
-                    <span></span>
-                </label>
-            </div>
-            <div class="form-group">
-                <label class="mt-checkbox">
-                    <input type="checkbox" id="cBoxMult" />@SurveysResources.Allowmultipleanswersforeachuser
-                    <span></span>
-                </label>
-            </div>
-            <div class="form-group" style="width: 285px;">
-                <label>@SurveysResources.Duration</label>
-                <div class="input-group input-daterange">
-                    <input type="text" class="form-control" id="txtStartDate">
-                    <div class="input-group-addon">to</div>
-                    <input type="text" class="form-control" id="txtEndDate">
+
+
+
+            <div class="col-md-6 mb-3">
+                <!-- Description input -->
+                <div>
+                    <label class="form-label"> @SurveysResources.Description </label>
+                    <textarea class="form-control" id="txtDesc"
+                              placeholder="@SurveysResources.Description"
+                              rows="4"></textarea>
+                </div>
+
+                <!-- Action btn -->
+                <div class="d-flex survey-approve__actions">
+                    <button class="survey-approve__reset-btn" type="button" onclick="return UploadTemplate('false')">
+                        @SharedResources.Cancel
+                    </button>
+
+                    <button class="survey-approve__approve-btn" type="submit" onclick="return UploadTemplate('true')">
+                        @SurveysResources.Publish
+                    </button>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <h4>@SurveysResources.SurveyReview</h4>
-            <div id="surveyContainer">
-                <div id="surveyElement"></div>
-            </div>
+        </form>
+
+
+
+
+    </div>
+</section>
+
+
+<section class="d-flex landing__content flex-column container">
+    <div class="landing__container survey-approve d-flex flex-column">
+        <h2>@SurveysResources.SurveyReview</h2>
+        <div id="surveyContainer">
+            <div id="surveyElement"></div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary" onclick="return UploadTemplate()">@SurveysResources.Publish</button>
-</form>
+</section>
 
 
 <script type="text/javascript">
@@ -106,6 +137,7 @@
     const survey = new Survey.Model(surveyJson);
     var selectedLang = getLanguage();
     survey.locale = selectedLang;
+    survey.mode = "display";
 
     $("#surveyElement").Survey({ model: survey });
 
@@ -114,37 +146,50 @@
         $("#svd-upload").show();
 
 
-        // Initialize the datepicker
-        $('#txtStartDate, #txtEndDate').datepicker({
-            format: 'dd/mm/yyyy',
-            autoclose: true,
-            setDate: '0d'
-        });
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+        var yyyy = today.getFullYear();
+        $('#txtStartDate').attr('min', yyyy + '-' + mm + '-' + dd);
 
-        // Set txtEndDate to be 15 days from start date when txtStartDate changes
-        $('#txtStartDate').on('changeDate', function () {
-            var startDate = $(this).datepicker('getDate');
-            var endDate = new Date(startDate);
-            endDate.setDate(endDate.getDate() + 15);
-            $('#txtEndDate').datepicker('setDate', endDate);
+
+        // When start date changes, set end date to two weeks later
+        $('#txtStartDate').change(function () {
+            var startDate = new Date($(this).val());
+            var endDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 14);
+
+            var dd = String(endDate.getDate()).padStart(2, '0');
+            var mm = String(endDate.getMonth() + 1).padStart(2, '0'); // January is 0!
+            var yyyy = endDate.getFullYear();
+
+            $('#txtEndDate').val(yyyy + '-' + mm + '-' + dd);
         });
 
     });
 
 
 
-    function UploadTemplate() {
+    function UploadTemplate(choice) {
+        $('#errorAlert').text('').hide();
+
+        if (choice == 'false') {
+            window.location.href = '@Url.Action("Index","Surveys")';
+            return false;
+        }
+
+        showLoading();
 
         var selectedItems = new Array();
 
         selectedItems.push($('#sTitle').val());
         selectedItems.push($('#txtDesc').val());
-        selectedItems.push($('#txtStartDate').val());
-        selectedItems.push($('#txtEndDate').val());
+        selectedItems.push(formatDateToDDMMYYYY($('#txtStartDate').val()));
+        selectedItems.push(formatDateToDDMMYYYY($('#txtEndDate').val()));
         selectedItems.push($('#ddlModules').val());
         selectedItems.push('@Model.ID');
         selectedItems.push($('#cBoxAnon').is(":checked"));
         selectedItems.push($('#cBoxMult').is(":checked"));
+
 
         $.ajax({
             url: '@Url.Action("PublishSurvey", "Surveys")',
@@ -152,17 +197,20 @@
             dataType: 'JSON',
             data: { surveyItems: selectedItems },
             success: function (data) {
+
+                hideLoading();
+
                 if (data.success == true) {
                     window.location.href = '@Url.Action("Index", "Surveys")';
                 }
                 else {
-                    $util.hideOverlay()
-                    alert(data.errorMessage)
+                    $('#errorAlert').text(data.errorMessage).show();
                 }
             },
             error: function (data) {
-                $util.hideOverlay()
-                alert('Error Occured');
+
+                hideLoading();
+                $('#errorAlert').text('Error Occured').show();
             }
         });
 

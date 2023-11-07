@@ -3,11 +3,9 @@
 @model COE.Common.Model.Survey
 
 @{
-    ViewBag.Title = "Edit Survey";
+    ViewBag.Title = @SurveysResources.EditSurvey + " | " + Model.SurveyTitle;
 }
 
-<title>Edit Survey</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- ... -->
 <script type="text/javascript" src="https://unpkg.com/knockout/build/output/knockout-latest.js"></script>
@@ -89,23 +87,14 @@
 
 
 
-<div class="container mt-4">
-    <div class="form-body">
-        @*<div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="isRTL">Select Language</label>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="isRTL">
-                        <label class="form-check-label" for="isRTL">Is Arabic</label>
-                    </div>
-                </div>
-            </div>
-        </div>*@
 
+
+<section class="d-flex landing__content flex-column container">
+    <div class="landing__container survey d-flex flex-column">
+        <h1 class="m-0">@SurveysResources.EditSurvey : @Model.SurveyTitle</h1>
         <div id="surveyCreator" style="height: 100vh;"></div>
     </div>
-</div>
+</section>
 
 
 

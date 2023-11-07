@@ -285,7 +285,7 @@ namespace COE.Survey.Web
 
 
             var survey = UnitOfWork.Survey.GetById(id);
-            ViewBag.Modules = UnitOfWork.SurveyModules.GetAll().ToList();
+            ViewBag.Modules = GetAllModules();
             if (survey.StatusId.Value != (int)SurveyStatusEnum.Draft)
             {
                 return RedirectToAction("Index", "Surveys");
@@ -605,12 +605,6 @@ namespace COE.Survey.Web
                     return Json(new { success = false });
                 }
 
-                var surveyQuestions = UnitOfWork.SurveyQuestion.GetByQuery(a => a.SurveyId == id).ToList();
-                if (surveyQuestions == null || !surveyQuestions.Any())
-                {
-                    return Json(new { success = false });
-                }
-
                 string createdBy = UserName;
                 if (string.IsNullOrEmpty(createdBy))
                 {
@@ -786,6 +780,8 @@ namespace COE.Survey.Web
                     return RedirectToAction("Index", "Surveys");
                 }
 
+               
+
                 if (!PageNumber.HasValue)
                 {
                     PageNumber = 1;
@@ -794,6 +790,13 @@ namespace COE.Survey.Web
                 var surveyItem = UnitOfWork.Survey.GetById(id);
                 if (surveyItem != null)
                 {
+
+                    if (surveyItem.StatusId.HasValue && (SurveyStatusEnum)surveyItem.StatusId != SurveyStatusEnum.Approved)
+                    {
+                        return RedirectToAction("Index", "Surveys");
+                    }
+
+
                     var answerItems = UnitOfWork.SurveyAnswer.GetByQuery(m => m.SurveyId == id).ToList().Select(a => JObject.Parse(a.AnswerText));
                     if (answerItems != null)
                     {
@@ -827,27 +830,61 @@ namespace COE.Survey.Web
 
         public ActionResult Dashboard(int? id, int? PageNumber, string sqid = null)
         {
-
-
-            if (!id.HasValue)
+            try
             {
-                return RedirectToAction("Index", "Surveys");
+                //return ExportResult(id.Value);
+
+                if (!id.HasValue)
+                {
+                    return RedirectToAction("Index", "Surveys");
+                }
+
+
+
+                if (!PageNumber.HasValue)
+                {
+                    PageNumber = 1;
+                }
+
+                var surveyItem = UnitOfWork.Survey.GetById(id);
+                if (surveyItem != null)
+                {
+
+                    if (surveyItem.StatusId.HasValue && (SurveyStatusEnum)surveyItem.StatusId != SurveyStatusEnum.Approved)
+                    {
+                        return RedirectToAction("Index", "Surveys");
+                    }
+
+
+                    var answerItems = UnitOfWork.SurveyAnswer.GetByQuery(m => m.SurveyId == id).ToList().Select(a => JObject.Parse(a.AnswerText));
+                    if (answerItems != null)
+                    {
+                        var json = JsonConvert.SerializeObject(new
+                        {
+                            data = answerItems
+                        });
+
+                        SurveyAllAnswers allAnswers = new SurveyAllAnswers
+                        {
+                            Id = id.Value,
+                            AnswerItems = JsonConvert.SerializeObject(answerItems),
+                            SurveyTitle = surveyItem.SurveyTitle,
+                            ContentJson = surveyItem.SurveyText.Replace("\r\n", "").Replace("\n", "")
+                        };
+
+
+                        return View(allAnswers);
+                    }
+
+                    return View(new SurveyAllAnswers { Id = 0, ContentJson = surveyItem.SurveyText, SurveyTitle = surveyItem.SurveyText });
+                }
+
+                return View(new SurveyAllAnswers { Id = 0 });
             }
-
-            var survey = UnitOfWork.Survey.GetById(id);
-
-            if (survey.StatusId.HasValue && (SurveyStatusEnum)survey.StatusId != SurveyStatusEnum.Published)
+            catch (Exception)
             {
-                return RedirectToAction("Index", "Surveys");
+                return View(new SurveyAllAnswers { Id = 0 });
             }
-
-            //if (survey.SurveyAnswer.Any())
-            //{
-            //    return RedirectToAction("Index", "Surveys");
-            //}
-
-            survey.SurveyText = survey.SurveyText.Replace("\r\n", "").Replace("\n", "");
-            return View(survey);
         }
 
         [AllowAnonymous]
@@ -884,7 +921,7 @@ namespace COE.Survey.Web
                     return Json(new { success = false, errorMessage = "Invalid Survey ID" });
                 }
 
-                if (status != 2)
+                if (status != 2 && status != 3)
                 {
                     return Json(new { success = false, errorMessage = "Invalid Data" });
                 }
@@ -895,7 +932,7 @@ namespace COE.Survey.Web
                     return Json(new { success = false, errorMessage = "Invalid Survey" });
                 }
 
-                survey.StatusId = (int)SurveyStatusEnum.Approved;
+                survey.StatusId = (byte) status; // (int)SurveyStatusEnum.Approved;
 
                 int rows = UnitOfWork.Save();
 

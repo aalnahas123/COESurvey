@@ -1,26 +1,11 @@
 ﻿@model COE.Survey.Web.ViewModels.SurveyAllAnswers
 
 @{
-    ViewBag.Title = "Survey Results";
+    ViewBag.Title = @SurveysResources.Table + " | " + Model.SurveyTitle;
 }
 
 
-@*
-    <!-- ... -->
-    <script type="text/javascript" src="https://unpkg.com/knockout/build/output/knockout-latest.js"></script>
 
-    <!-- SurveyJS Form Library resources -->
-    <script type="text/javascript" src="https://unpkg.com/survey-core/survey.core.min.js"></script>
-    <!-- Uncomment the following lines if you also display the survey on the page -->
-    <!-- <link href="https://unpkg.com/survey-core/defaultV2.min.css" type="text/css" rel="stylesheet"> -->
-    <!-- <script type="text/javascript" src="https://unpkg.com/survey-knockout-ui/survey-knockout-ui.min.js"></script> -->
-    <!-- Third-party visualization libraries -->
-    <script src="https://unpkg.com/plotly.js-dist-min/plotly.min.js"></script>
-    <!-- Uncomment the following line if you use the Text, Multiple Text, or Comment question types in your surveys -->
-    <!-- <script src="https://unpkg.com/wordcloud/src/wordcloud2.js"></script> -->
-    <!-- SurveyJS Dashboard resources-->
-    <link href="https://unpkg.com/survey-analytics/survey.analytics.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/survey-analytics/survey.analytics.min.js"></script>*@
 
 
 
@@ -39,76 +24,23 @@
 <link rel="stylesheet" href="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.tabulator.css" />
 
 
+<section class="d-flex landing__content flex-column container">
+    <div class="landing__container survey-results d-flex flex-column">
+        <h1>@SurveysResources.SurveysResults</h1>
 
-<style>
+        <h2>@Model.SurveyTitle</h2>
 
-    /* You can add your custom css here.*/
-    .data-loading-indicator-panel {
-        width: 100%;
-        height: 400px;
-    }
-
-    .data-loading-indicator {
-        position: relative;
-        width: 64px;
-        height: 64px;
-        left: calc((100% - 64px)/ 2);
-        top: calc((100% - 64px)/ 2);
-        animation: data-loading-indicator-spinner 1s infinite linear;
-    }
-
-    @@keyframes data-loading-indicator-spinner {
-        from {
-            transform: rotate(0deg);
-        }
-
-        to {
-            transform: rotate(359deg);
-        }
-    }
-</style>
-
-<div>
-    @* class="text-center"*@
-    <h1 class="display-4">Surveys Results</h1>
-    <h2 class="text-secondary">@Model.SurveyTitle</h2>
-
-
-
-    <div class="row mb-5">
-        <div class="col-12">
-            <div class="text-center">
-                <a class="btn btn-success" style="background-color: #19b394; color: white;" href="@Url.Action("Result", "Surveys", new { Id = Model.Id })">Table</a>
-                <a class="btn btn-success" style="background-color: ghostwhite; color: darkgray;" href="@Url.Action("Dashboard", "Surveys", new { Id = Model.Id })">Dashboard</a>
-            </div>
+        <div class="survey-actions d-flex">
+            <a href="@Url.Action("Result", "Surveys", new { Id = Model.Id })" class="survey-actions__active survey-actions__action">@SurveysResources.Table</a>
+            <a href="@Url.Action("Dashboard", "Surveys", new { Id = Model.Id })" class="survey-actions__action">@SurveysResources.Dashboard</a>
         </div>
+
+        <div id="surveyDashboardContainer"></div>
     </div>
+</section>
 
 
 
-    <div id="loadingIndicator" class="data-loading-indicator-panel">
-        <div class="data-loading-indicator">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_17928_11482)">
-                    <path d="M32 64C14.36 64 0 49.65 0 32C0 14.35 14.36 0 32 0C49.64 0 64 14.35 64 32C64 49.65 49.64 64 32 64ZM32 4C16.56 4 4 16.56 4 32C4 47.44 16.56 60 32 60C47.44 60 60 47.44 60 32C60 16.56 47.44 4 32 4Z" fill="#E5E5E5" />
-                    <path d="M53.2101 55.2104C52.7001 55.2104 52.1901 55.0104 51.8001 54.6204C51.0201 53.8404 51.0201 52.5704 51.8001 51.7904C57.0901 46.5004 60.0001 39.4704 60.0001 31.9904C60.0001 24.5104 57.0901 17.4804 51.8001 12.1904C51.0201 11.4104 51.0201 10.1404 51.8001 9.36039C52.5801 8.58039 53.8501 8.58039 54.6301 9.36039C60.6701 15.4004 64.0001 23.4404 64.0001 31.9904C64.0001 40.5404 60.6701 48.5704 54.6301 54.6204C54.2401 55.0104 53.7301 55.2104 53.2201 55.2104H53.2101Z" fill="#19B394" />
-                </g>
-                <defs>
-                    <clipPath id="clip0_17928_11482">
-                        <rect width="64" height="64" fill="white" />
-                    </clipPath>
-                </defs>
-            </svg>
-        </div>
-    </div>
-
-
-    <div id="surveyDashboardContainer"></div>
-
-
-
-
-</div>
 
 
 
@@ -134,7 +66,6 @@
 
     SurveyAnalyticsTabulator.localization.currentLocale = selectedLang;
 
-    document.getElementById("loadingIndicator").style.display = "none";
     vizPanel.render("surveyDashboardContainer");
 
 

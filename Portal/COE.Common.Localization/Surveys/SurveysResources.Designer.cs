@@ -223,6 +223,24 @@ namespace COE.Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Survey.
+        /// </summary>
+        public static string EditSurvey {
+            get {
+                return ResourceManager.GetString("EditSurvey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date From.
+        /// </summary>
+        public static string From {
+            get {
+                return ResourceManager.GetString("From", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Home {
@@ -237,6 +255,15 @@ namespace COE.Common.Localization {
         public static string LastUpdate {
             get {
                 return ResourceManager.GetString("LastUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
             }
         }
         
@@ -264,6 +291,15 @@ namespace COE.Common.Localization {
         public static string PublishSurvey {
             get {
                 return ResourceManager.GetString("PublishSurvey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reject.
+        /// </summary>
+        public static string Reject {
+            get {
+                return ResourceManager.GetString("Reject", resourceCulture);
             }
         }
         
@@ -322,6 +358,24 @@ namespace COE.Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Participate In Survey.
+        /// </summary>
+        public static string SurveyParticipation {
+            get {
+                return ResourceManager.GetString("SurveyParticipation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submitted Answer.
+        /// </summary>
+        public static string SurveyParticipationView {
+            get {
+                return ResourceManager.GetString("SurveyParticipationView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Survey Review.
         /// </summary>
         public static string SurveyReview {
@@ -340,6 +394,15 @@ namespace COE.Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Survey Results.
+        /// </summary>
+        public static string SurveysResults {
+            get {
+                return ResourceManager.GetString("SurveysResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Survey Status.
         /// </summary>
         public static string SurveyStatus {
@@ -349,11 +412,38 @@ namespace COE.Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thank you for participating in this survey.
+        /// </summary>
+        public static string SurveyThankYou {
+            get {
+                return ResourceManager.GetString("SurveyThankYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Table.
+        /// </summary>
+        public static string Table {
+            get {
+                return ResourceManager.GetString("Table", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Title.
         /// </summary>
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        public static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
             }
         }
     }

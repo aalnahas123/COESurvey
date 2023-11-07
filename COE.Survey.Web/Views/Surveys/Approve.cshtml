@@ -1,89 +1,121 @@
 ﻿@using COE.Common.Model;
+@using Commons.Framework.Globalization
 
 @model Survey
 
 @{
-    ViewBag.Title = "Approve Survey";
+    ViewBag.Title = String.Format("{0}", @SurveysResources.Approve + " : " + @Model.SurveyTitle);
 }
 
-<title>Use options to customize the Survey Editor, Survey Builder Example</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://unpkg.com/jquery"></script>
-<script src="~/Content/surveyjs/survey.jquery.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
 
-<style>
-    .svd_q_selected .svda-add-new-rating-item {
-        display: none !important;
-    }
+<script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/survey-jquery@1.9.113/survey.jquery.min.js"></script>
+<script src="https://unpkg.com/survey-jquery@1.9.113/themes/index.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/survey-jquery@1.9.113/defaultV2.min.css" />
 
-    .modal-dialog {
-        left: auto !important;
-    }
-</style>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="portlet box green">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="fa fa-question-circle"></i> @Model.SurveyTitle
+
+
+<section class="d-flex landing__content flex-column container">
+    <div class="landing__container survey-approve d-flex flex-column">
+        <h1>@SurveysResources.PublishSurvey : @Model.SurveyTitle</h1>
+
+        <h2>@SurveysResources.SurveyData</h2>
+
+
+        <!-- Error alert container, hidden by default -->
+        <div id="errorAlert" class="alert alert-danger" role="alert" style="display: none;">
+            <!-- Error message text will go here -->
+        </div>
+
+        <form class="row w-100">
+            <div class="col-md-6 survey-approve__container d-flex flex-column">
+                <!-- Module input -->
+                <div>
+                    <label class="form-label">@SurveysResources.SurveyModule</label>
+                    <input type="text" class="form-control-plaintext fw-bold" value="@Model.ModuleText" readonly="readonly">
                 </div>
-                <div class="tools">
-                    <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+
+                <!-- Title input -->
+                <div>
+                    <label class="form-label">Title</label>
+                    <input class="form-control-plaintext fw-bold" placeholder="@SurveysResources.Title" disabled id="sTitle" value="@Model.SurveyTitle" />
                 </div>
-            </div>
-            <form class="portlet-body form">
-                <!-- BEGIN FORM-->
-                <div class="form-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4>Survey Data</h4>
-                            <div class="form-group">
-                                <label for="sel1">Module</label>
-                                <input type="text" class="form-control" value="@Model.ModuleText" readonly="readonly">
-                            </div>
-                            <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" class="form-control" placeholder="Enter Survey Title" value="@Model.SurveyTitle" readonly="readonly">
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control" id="txtDesc" placeholder="Enter Survey Description" readonly="readonly">@Model.Description</textarea>
-                            </div>
-                            <div class="form-group" style="width: 285px;">
-                                <label>Duration</label>
-                                <div class="input-group input-daterange">
-                                    <input type="text" class="form-control" id="txtStartDate" value="@Model.StartDate.Value.ToString("dd/MM/yyyy")" readonly="readonly">
-                                    <div class="input-group-addon">to</div>
-                                    <input type="text" class="form-control" id="txtEndDate" value="@Model.EndDate.Value.ToString("dd/MM/yyyy")" readonly="readonly">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4>Survey Review</h4>
-                            <div id="surveyContainer">
-                                <div id="surveyElement"></div>
-                            </div>
-                        </div>
+
+                <div class="row">
+                    <!-- From input -->
+                    <div class="col-md-6">
+                        <label class="form-label">@SurveysResources.From</label>
+                        <input type="text" id="txtStartDate" disabled value="@Model.StartDate.Value.ToString("dd/MM/yyyy")"
+                               class="form-control-plaintext fw-bold" />
+                    </div>
+
+                    <!-- To input -->
+                    <div class="col-md-6">
+                        <label class="form-label">@SurveysResources.To</label>
+                        <input type="text" id="txtEndDate" disabled value="@Model.EndDate.Value.ToString("dd/MM/yyyy")"
+                               class="form-control-plaintext fw-bold" />
                     </div>
                 </div>
-                <div class="form-actions right">
-                    <button type="submit" class="btn btn-primary" onclick="return UploadTemplate()">Approve</button>
+
+
+
+                <div>
+                    <label class="mt-checkbox">
+                        <input type="checkbox" id="cBoxAnon" disabled /> @SurveysResources.Allowanonymoususerstoparticipate
+                        <span></span>
+                    </label>
                 </div>
-            </form>
+
+                <div>
+                    <label class="mt-checkbox">
+                        <input type="checkbox" id="cBoxMult" disabled /> @SurveysResources.Allowmultipleanswersforeachuser
+                        <span></span>
+                    </label>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6 mb-3">
+                <!-- Description input -->
+                <div>
+                    <label class="form-label"> @SurveysResources.Description </label>
+                    <textarea class="form-control-plaintext fw-bold" id="txtDesc" disabled
+                              
+                              rows="4"></textarea>
+                </div>
+
+                <!-- Action btn -->
+                <div class="d-flex survey-approve__actions">
+                    <button class="survey-approve__reset-btn" type="button" onclick="return UploadTemplate(3)">
+                        @SurveysResources.Reject
+                    </button>
+
+                    <button class="survey-approve__approve-btn" type="submit" onclick="return UploadTemplate(2)">
+                        @SurveysResources.Approve
+                    </button>
+                </div>
+            </div>
+        </form>
+
+
+
+
+    </div>
+</section>
+
+<section class="d-flex landing__content flex-column container">
+    <div class="landing__container survey-approve d-flex flex-column">
+        <h2>@SurveysResources.SurveyReview</h2>
+        <div id="surveyContainer">
+            <div id="surveyElement"></div>
         </div>
     </div>
-</div>
+</section>
 
-@*<div class="container">
-    <div class="row">
-        <form style="margin-top: 25px;">
-            
-            
-        </form>
-    </div>
-</div>*@
+
 
 <script type="text/javascript">
 
@@ -95,7 +127,7 @@
     Survey.StylesManager.applyTheme("bootstrap");
     Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
     window.survey = new Survey.Model(Surveyjson);
-    //survey.mode = 'display';
+    survey.mode = "display";
     $("#surveyElement").Survey({ model: survey });
 
     $(window).on('load', function () {
@@ -115,22 +147,31 @@
 
 
 
-    function UploadTemplate() {
+    function UploadTemplate(status) {
+
+
+        showLoading();
+
 
         $.ajax({
-            url: '@Url.Action("ApproveSurvey", "Surveys")'+ '?idstr=@Model.ID&status=2',
+            url: '@Url.Action("ApproveSurvey", "Surveys")' + '?idstr=@Model.ID&status=' + status,
             type: 'POST',
             dataType: 'JSON',
             success: function (data) {
+
+                hideLoading();
+
                 if (data.success == true) {
                     window.location.href = '@Url.Action("Index", "Surveys")';
                 }
                 else {
-                    alert(data.errorMessage)
+                    $('#errorAlert').text(data.errorMessage).show();
                 }
             },
             error: function (data) {
-                alert('Error Occured');
+
+                hideLoading();
+                $('#errorAlert').text('Error Occured').show();
             }
         });
 

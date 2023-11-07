@@ -275,7 +275,9 @@
     <Content Include="Content\images\copy.svg" />
     <Content Include="Content\images\default300.png" />
     <Content Include="Content\images\element-3.svg" />
+    <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\folder-2.svg" />
+    <Content Include="Content\images\Frame.png" />
     <Content Include="Content\images\Frame.svg" />
     <Content Include="Content\images\Group.svg" />
     <Content Include="Content\images\hierarchy-2.svg" />
@@ -283,6 +285,7 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\coe-logo.png" />
     <Content Include="Content\images\favico.ico" />
+    <Content Include="Content\images\imageloder.gif" />
     <Content Include="Content\images\loading-spinner-blue.gif" />
     <Content Include="Content\images\more.svg" />
     <Content Include="Content\images\surveys-logo.png" />

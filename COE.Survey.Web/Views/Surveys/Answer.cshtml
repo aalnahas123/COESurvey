@@ -3,29 +3,22 @@
 @model Survey
 
 @{
-    ViewBag.Title = "Survey | " + Model.SurveyTitle;
+    ViewBag.HideCustomButton = true;
+    ViewBag.Title = @SurveysResources.SurveyParticipation + " | " + Model.SurveyTitle;
     var dir = Model.IsRTL ? "right" : "left";
     var completeBtnPos = Model.IsRTL ? "left" : "right";
 }
 
-<title>Survey | @ViewBag.Title</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
 <link href="https://unpkg.com/survey-jquery/defaultV2.min.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
-
-
 <script src="https://unpkg.com/survey-core/survey.i18n.min.js"></script>
 
 <style>
 
 
     /*scaling*/
-     .hidden {
+    .hidden {
         transition: all 1s ease-in-out;
         transform-origin: left top;
         transform: scaleY(0);
@@ -51,27 +44,18 @@
 </style>
 
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="portlet box green">
-            <div class="portlet-title">
-                <div class="caption">
-                    @Model.SurveyTitle
-                </div>
-            </div>
-            <form class="portlet-body form">
-                <!-- BEGIN FORM-->
-                <div class="form-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="surveyContainer"></div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+
+
+<section class="d-flex landing__content flex-column container">
+    <div class="landing__container survey-answer d-flex flex-column">
+        <h1>@SurveysResources.SurveyParticipation</h1>
+
+        <h2>@Model.SurveyTitle</h2>
+
+        <div id="surveyContainer"></div>
     </div>
-</div>
+</section>
+
 
 <script type="text/javascript">
 
@@ -90,8 +74,8 @@
     var selectedLang = getLanguage();
     survey.locale = selectedLang;
 
-    debugger;
-    survey.completedHtml = "<h2 style=\"color:green\"> نشكركم على مشاركتكم في هذا الإستبيان</h2>";
+    
+    survey.completedHtml = "<div class=\"d-flex flex-column align-items-center justify-content-center\"><img src=\"/Content/images/Frame.png\" alt=\"success-img\" /><h3 style=\"font-family: 'Cairo', sans-serif !important;\">@SurveysResources.SurveyThankYou</h3></div>";
 
     function submitResults(sender) {
 
@@ -105,15 +89,15 @@
                 dataType: 'json',
                 success: function (data) {
 
-                    debugger;
-                    if (wantsToContinue) {
-                        window.location.href = "http://eportal.coe.com.sa/Surveys/Surveys/Answer/28";
+                    
+                    if (data.success == true) {
+                        window.location.href = "/";
                     }
 
 
                 },
                 error: function (data) {
-                    debugger;
+                    
                 }
             });
 
@@ -141,7 +125,7 @@
 
     /*Animation Part*/
 
-   
+
 
 
     function animate(isShowing) {

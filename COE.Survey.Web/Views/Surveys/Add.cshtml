@@ -1,31 +1,24 @@
 ﻿@using COE.Common.Model;
 
 @{
-    ViewBag.Title = "Add Survey";
     List<SurveyModules> modules = ViewBag.Modules;
+}
+
+@{
+    ViewBag.Title = @SurveysResources.CreateNewSurvey;
 }
 
 <!-- Stylesheets -->
 <link href="https://unpkg.com/survey-core/defaultV2.min.css" rel="stylesheet" type="text/css">
 <link href="https://unpkg.com/survey-creator-core/survey-creator-core.min.css" rel="stylesheet" type="text/css">
 
-<div class="container mt-4">
-    <div class="form-body">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    @*<label for="isRTL">Select Language</label>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="isRTL">
-                        <label class="form-check-label" for="isRTL">Is Arabic</label>
-                    </div>*@
-                </div>
-            </div>
-        </div>
+<section class="d-flex landing__content flex-column container">
+    <div class="landing__container survey d-flex flex-column">
+        <h1 class="m-0">@SurveysResources.CreateNewSurvey</h1>
 
         <div id="surveyCreator" style="height: 100vh;"></div>
     </div>
-</div>
+</section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://unpkg.com/knockout/build/output/knockout-latest.js"></script>

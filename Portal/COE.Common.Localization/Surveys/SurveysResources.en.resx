@@ -171,11 +171,20 @@
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="EditSurvey" xml:space="preserve">
+    <value>Edit Survey</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Date From</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
   <data name="LastUpdate" xml:space="preserve">
     <value>Last Update</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
   </data>
   <data name="NoSurveystodisplay" xml:space="preserve">
     <value>No Surveys to display</value>
@@ -185,6 +194,9 @@
   </data>
   <data name="PublishSurvey" xml:space="preserve">
     <value>Publish Survey</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Reject</value>
   </data>
   <data name="Results" xml:space="preserve">
     <value>Results</value>
@@ -204,16 +216,34 @@
   <data name="SurveyModule" xml:space="preserve">
     <value>Survey Module</value>
   </data>
+  <data name="SurveyParticipation" xml:space="preserve">
+    <value>Participate In Survey</value>
+  </data>
+  <data name="SurveyParticipationView" xml:space="preserve">
+    <value>Submitted Answer</value>
+  </data>
   <data name="SurveyReview" xml:space="preserve">
     <value>Survey Review</value>
   </data>
   <data name="Surveys" xml:space="preserve">
     <value>Surveys</value>
   </data>
+  <data name="SurveysResults" xml:space="preserve">
+    <value>Survey Results</value>
+  </data>
   <data name="SurveyStatus" xml:space="preserve">
     <value>Survey Status</value>
   </data>
+  <data name="SurveyThankYou" xml:space="preserve">
+    <value>Thank you for participating in this survey</value>
+  </data>
+  <data name="Table" xml:space="preserve">
+    <value>Table</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
   </data>
 </root>

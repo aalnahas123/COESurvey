@@ -259,3 +259,171 @@ body {
 .landing .landing__lang, .btn.show {
     background-color: #35489b !important;
 }
+
+
+.survey {
+    gap: 27px;
+}
+
+    .survey h1 {
+        color: #35489b;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 44px;
+        letter-spacing: -0.4px;
+    }
+
+
+
+.survey-approve h1 {
+    color: #35489b;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: -0.4px;
+    margin-bottom: 1rem;
+}
+
+.survey-approve h2 {
+    margin-bottom: 16px;
+    color: #35489b;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: -0.64px;
+}
+
+.survey-approve form label {
+    color: #344054;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.survey-approve__reset-btn {
+    border-radius: 8px;
+    border: 1px solid #35489b;
+    background: #fff;
+    padding: 8px;
+    color: #35489b;
+    font-size: 16px;
+    font-weight: 400;
+    width: calc((100% - 24px) / 2);
+}
+
+.survey-approve__actions {
+    margin-top: 42px;
+    gap: 24px;
+}
+
+.survey-approve__approve-btn {
+    border-radius: 8px;
+    background: #35489b;
+    padding: 8px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    width: calc((100% - 24px) / 2);
+}
+
+.survey-approve__container {
+    row-gap: 8px;
+}
+
+.survey-approve h3 {
+    color: #35489b;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: -0.48px;
+    margin-bottom: 1rem;
+}
+
+.survey-answer h1 {
+    color: #35489b;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: -0.4px;
+    margin-bottom: 1rem;
+}
+
+.survey-answer h2 {
+    margin-bottom: 32px;
+    color: #35489b;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: -0.64px;
+}
+
+.survey-results h1 {
+    color: #35489b;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: -0.4px;
+    margin-bottom: 1rem;
+}
+
+.survey-results h2 {
+    margin-bottom: 47px;
+    color: #35489b;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: -0.64px;
+}
+
+.survey-results > div {
+    gap: 40px;
+}
+
+.survey-results h3 {
+    color: #00ce8e;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: -0.8px;
+}
+
+.sd-completedpage h3 {
+    color: #00ce8e !important;
+    font-size: 40px !important;
+    font-weight: 600 !important;
+    line-height: 44px !important;
+    letter-spacing: -0.8px !important;
+}
+
+.sd-completedpage div {
+    gap: 40px !important;
+}
+
+
+
+.survey-actions {
+    gap: 12px;
+    width: fit-content;
+    border-radius: 8px;
+    background: #dce7ff;
+    padding: 4px;
+    margin-bottom: 40px;
+}
+
+    .survey-actions .survey-actions__action {
+        padding: 8px;
+        min-width: 152px;
+        color: #35489b;
+        font-size: 20px;
+        font-weight: 400;
+        text-decoration: none;
+        border-radius: 8px;
+        border: 1px solid #35489b;
+        background: #fff;
+        text-align: center;
+    }
+
+    .survey-actions .survey-actions__active {
+        background: #35489b !important;
+        color: white !important;
+    }
