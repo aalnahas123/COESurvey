@@ -357,7 +357,7 @@ body {
     letter-spacing: -0.64px;
 }
 
-.survey-results h1 {
+.survey-dashboard h1 {
     color: #35489b;
     font-size: 20px;
     font-weight: 600;
@@ -366,7 +366,7 @@ body {
     margin-bottom: 1rem;
 }
 
-.survey-results h2 {
+.survey-dashboard h2 {
     margin-bottom: 47px;
     color: #35489b;
     font-size: 32px;
@@ -375,11 +375,11 @@ body {
     letter-spacing: -0.64px;
 }
 
-.survey-results > div {
+.survey-result > div {
     gap: 40px;
 }
 
-.survey-results h3 {
+.survey-result h3 {
     color: #00ce8e;
     font-size: 40px;
     font-weight: 600;
@@ -427,3 +427,4 @@ body {
         background: #35489b !important;
         color: white !important;
     }
+

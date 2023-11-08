@@ -4,6 +4,8 @@
     ViewBag.Title = @SurveysResources.Dashboard + " | " + Model.SurveyTitle;
 }
 
+
+<script type="text/javascript" src="https://unpkg.com/knockout/build/output/knockout-latest.js"></script>
 <script src="https://unpkg.com/survey-core@1.9.106/survey.core.min.js"></script>
 <script src="https://unpkg.com/survey-core@1.9.106/survey.i18n.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.7.2/js/tabulator.min.js"></script>
@@ -18,8 +20,12 @@
 <link rel="stylesheet" href="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.tabulator.css" />
 
 
+<!-- SurveyJS Dashboard resources-->
+<link href="https://unpkg.com/survey-analytics/survey.analytics.min.css" rel="stylesheet">
+<script src="https://unpkg.com/survey-analytics/survey.analytics.min.js"></script>
+
 <section class="d-flex landing__content flex-column container">
-    <div class="landing__container survey-results d-flex flex-column">
+    <div class="landing__container survey-dashboard d-flex flex-column">
         <h1>@SurveysResources.Dashboard</h1>
 
         <h2>@Model.SurveyTitle</h2>
