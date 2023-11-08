@@ -187,7 +187,7 @@
     <value>Email is incorrect</value>
   </data>
   <data name="EnterCredentials" xml:space="preserve">
-    <value>Enter username and password</value>
+    <value>User Login</value>
   </data>
   <data name="EnterEmailNationalId" xml:space="preserve">
     <value>Enter your e-mail address and nationalid below to reset your password .</value>

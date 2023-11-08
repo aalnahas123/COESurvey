@@ -61,14 +61,14 @@
                             <ul class="dropdown-menu">
                                 <a class="dropdown-item" href="#" id="english">English</a>
                                 <a class="dropdown-item" href="#" id="arabic">العربية</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="@Url.Action("Login","Account")">@SurveysResources.Logout</a>
                             </ul>
                         </div>
                     }
 
 
-                    <a class="landing__btn d-none" href="@Url.Action("Login","Account")" style="text-decoration: none;">
-                        @SurveysResources.Logout
-                    </a>
+                    
                 </div>
             </div>
         </nav>

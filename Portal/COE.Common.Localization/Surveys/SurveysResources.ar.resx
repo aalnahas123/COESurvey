@@ -174,11 +174,23 @@
   <data name="EditSurvey" xml:space="preserve">
     <value>تعديل الإستبيان</value>
   </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>حدث خطأ</value>
+  </data>
   <data name="From" xml:space="preserve">
     <value>التاريخ من </value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>الرئيسية</value>
+  </data>
+  <data name="InvalidData" xml:space="preserve">
+    <value>يوجد خطأ في البيانات</value>
+  </data>
+  <data name="InvalidSurvey" xml:space="preserve">
+    <value>هذا الاستبيان غير صحيح</value>
+  </data>
+  <data name="InvalidSurveyID" xml:space="preserve">
+    <value>معرف الاستبيان غير صحيح</value>
   </data>
   <data name="LastUpdate" xml:space="preserve">
     <value>آخر تعديل</value>
@@ -186,8 +198,26 @@
   <data name="Logout" xml:space="preserve">
     <value>خروج</value>
   </data>
+  <data name="NoSurveyData" xml:space="preserve">
+    <value>لا توجد بيانات للاستبيان</value>
+  </data>
   <data name="NoSurveystodisplay" xml:space="preserve">
     <value>لا يوجد إستبيانات للعرض</value>
+  </data>
+  <data name="NoSurveyWithGivenID" xml:space="preserve">
+    <value>لا يوجد استبيان بالمعرف المحدد</value>
+  </data>
+  <data name="PleaseEnterTitleForSurvey" xml:space="preserve">
+    <value>الرجاء إدخال عنوان لهذا الاستبيان</value>
+  </data>
+  <data name="PleaseFillAllRequiredFields" xml:space="preserve">
+    <value>الرجاء ملء جميع الحقول المطلوبة</value>
+  </data>
+  <data name="PleaseSelectModule" xml:space="preserve">
+    <value>الرجاء إختيار تصنيف</value>
+  </data>
+  <data name="PleaseSelectValidDates" xml:space="preserve">
+    <value>الرجاء تحديد تواريخ صالحة</value>
   </data>
   <data name="Publish" xml:space="preserve">
     <value>نشر</value>
@@ -209,6 +239,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>الحالة</value>
+  </data>
+  <data name="SurveyCantBeEdited" xml:space="preserve">
+    <value>لا يمكن تعديل هذا الاستبيان</value>
   </data>
   <data name="SurveyData" xml:space="preserve">
     <value>بيانات الإستبيان</value>

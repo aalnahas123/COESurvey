@@ -187,7 +187,7 @@
     <value>البريد الالكترونى غير صحيح</value>
   </data>
   <data name="EnterCredentials" xml:space="preserve">
-    <value>ادخل اسم المسخدم  وكلمة المرور</value>
+    <value>تسجيل الدخول</value>
   </data>
   <data name="EnterEmailNationalId" xml:space="preserve">
     <value>ادخل البريد الإلكتروني والهوية الوطنية لإستعادة كلمة المرور .</value>

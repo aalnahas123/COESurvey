@@ -174,11 +174,23 @@
   <data name="EditSurvey" xml:space="preserve">
     <value>Edit Survey</value>
   </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Error occurred</value>
+  </data>
   <data name="From" xml:space="preserve">
     <value>Date From</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="InvalidData" xml:space="preserve">
+    <value>Invalid Data</value>
+  </data>
+  <data name="InvalidSurvey" xml:space="preserve">
+    <value>Invalid Survey</value>
+  </data>
+  <data name="InvalidSurveyID" xml:space="preserve">
+    <value>Invalid Survey ID</value>
   </data>
   <data name="LastUpdate" xml:space="preserve">
     <value>Last Update</value>
@@ -186,8 +198,26 @@
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="NoSurveyData" xml:space="preserve">
+    <value>There's no survey data</value>
+  </data>
   <data name="NoSurveystodisplay" xml:space="preserve">
     <value>No Surveys to display</value>
+  </data>
+  <data name="NoSurveyWithGivenID" xml:space="preserve">
+    <value>There's no survey with the given id</value>
+  </data>
+  <data name="PleaseEnterTitleForSurvey" xml:space="preserve">
+    <value>Please enter a title for this survey</value>
+  </data>
+  <data name="PleaseFillAllRequiredFields" xml:space="preserve">
+    <value>Please fill all required files</value>
+  </data>
+  <data name="PleaseSelectModule" xml:space="preserve">
+    <value>Please select a Module</value>
+  </data>
+  <data name="PleaseSelectValidDates" xml:space="preserve">
+    <value>Please select valid Dates</value>
   </data>
   <data name="Publish" xml:space="preserve">
     <value>Publish</value>
@@ -209,6 +239,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="SurveyCantBeEdited" xml:space="preserve">
+    <value>This survey can't be edited</value>
   </data>
   <data name="SurveyData" xml:space="preserve">
     <value>Survey Data</value>

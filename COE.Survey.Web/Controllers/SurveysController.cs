@@ -23,6 +23,7 @@ using System.Text;
 using COE.Survey.Web.Helpers.LookupValues;
 using COE.Survey.Web.Helpers;
 using Commons.Framework.Globalization;
+using COE.Common.Localization;
 
 namespace COE.Survey.Web
 {
@@ -141,17 +142,17 @@ namespace COE.Survey.Web
                 string surveyText = data.SurveyText; string title = data.SurveyTitle;
                 if (string.IsNullOrEmpty(surveyText))
                 {
-                    return Json(new { success = false, errorMessage = "Please fill all required files" });
+                    return Json(new { success = false,  errorMessage = SurveysResources.PleaseFillAllRequiredFields });
                 }
 
                 if (string.IsNullOrEmpty(title))
                 {
-                    return Json(new { success = false, errorMessage = "Please enter a title for this survey" });
+                    return Json(new { success = false, errorMessage = SurveysResources.PleaseEnterTitleForSurvey });
                 }
 
                 if (string.IsNullOrEmpty(surveyText))
                 {
-                    return Json(new { success = false, errorMessage = "There's no survey data" });
+                    return Json(new { success = false, errorMessage = SurveysResources.NoSurveyData });
                 }
 
                 var jObj = JObject.Parse(data.SurveyText);
@@ -193,7 +194,7 @@ namespace COE.Survey.Web
             {
                 if (surveyItems == null || surveyItems.Length != 8)
                 {
-                    return Json(new { success = false, errorMessage = "Invalid Data" });
+                    return Json(new { success = false, errorMessage = SurveysResources.InvalidData });
                 }
 
                 string title = surveyItems[0];
@@ -213,23 +214,23 @@ namespace COE.Survey.Web
 
                 if (!int.TryParse(surveyIdStr, out surveyId))
                 {
-                    return Json(new { success = false, errorMessage = "Invalid Survey" });
+                    return Json(new { success = false, errorMessage = SurveysResources.InvalidSurvey });
                 }
 
                 if (!int.TryParse(moduleIdStr, out moduleId) || moduleId == -1)
                 {
-                    return Json(new { success = false, errorMessage = "Please select a Module" });
+                    return Json(new { success = false, errorMessage = SurveysResources.PleaseSelectModule });
                 }
 
                 if (!DateTime.TryParseExact(startDateStr, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out startDate) ||
                    !DateTime.TryParseExact(endDateStr, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out endDate))
                 {
-                    return Json(new { success = false, errorMessage = "Please select valid Dates" });
+                    return Json(new { success = false, errorMessage = SurveysResources.PleaseSelectValidDates });
                 }
 
                 if (string.IsNullOrEmpty(title))
                 {
-                    return Json(new { success = false, errorMessage = "Please enter a title for this survey" });
+                    return Json(new { success = false, errorMessage = SurveysResources.PleaseEnterTitleForSurvey });
                 }
 
 
@@ -237,7 +238,7 @@ namespace COE.Survey.Web
 
                 if (survey == null)
                 {
-                    return Json(new { success = false, errorMessage = "Invalid Survey" });
+                    return Json(new { success = false, errorMessage = SurveysResources.InvalidSurvey });
                 }
 
 
@@ -348,18 +349,18 @@ namespace COE.Survey.Web
             {
                 if (string.IsNullOrEmpty(data.SurveyText))
                 {
-                    return Json(new { success = false, errorMessage = "There's no survey data" });
+                    return Json(new { success = false, errorMessage = SurveysResources.NoSurveyData });
                 }
 
                 var survey = UnitOfWork.Survey.GetById(data.SurveyId);
                 if (survey == null)
                 {
-                    return Json(new { success = false, errorMessage = "There's no survey with the given id" });
+                    return Json(new { success = false, errorMessage = SurveysResources.NoSurveyWithGivenID });
                 }
 
                 if (!IsEditable(survey))
                 {
-                    return Json(new { success = false, errorMessage = "This survey can't be edited" });
+                    return Json(new { success = false, errorMessage = SurveysResources.SurveyCantBeEdited });
                 }
 
                 HandleSurveyAnswers(survey, data.SurveyId);
@@ -382,7 +383,7 @@ namespace COE.Survey.Web
             catch (Exception ex)
             {
                 Logger.Error(ex);
-                return Json(new { success = false, errorMessage = "Error occurred" });
+                return Json(new { success = false, errorMessage = SurveysResources.ErrorOccurred });
             }
         }
 
@@ -780,7 +781,7 @@ namespace COE.Survey.Web
                     return RedirectToAction("Index", "Surveys");
                 }
 
-               
+
 
                 if (!PageNumber.HasValue)
                 {
@@ -918,21 +919,21 @@ namespace COE.Survey.Web
                 int id;
                 if (!int.TryParse(idstr, out id))
                 {
-                    return Json(new { success = false, errorMessage = "Invalid Survey ID" });
+                    return Json(new { success = false, errorMessage = SurveysResources.InvalidSurveyID });
                 }
 
-                if (status != 2 && status != 3)
+                if (status != 2 && status != 0)
                 {
-                    return Json(new { success = false, errorMessage = "Invalid Data" });
+                    return Json(new { success = false, errorMessage = SurveysResources.InvalidData });
                 }
 
                 var survey = UnitOfWork.Survey.GetById(id);
                 if (survey == null)
                 {
-                    return Json(new { success = false, errorMessage = "Invalid Survey" });
+                    return Json(new { success = false, errorMessage = SurveysResources.InvalidSurvey });
                 }
 
-                survey.StatusId = (byte) status; // (int)SurveyStatusEnum.Approved;
+                survey.StatusId = (byte)status; // (int)SurveyStatusEnum.Approved;
 
                 int rows = UnitOfWork.Save();
 
@@ -1015,7 +1016,7 @@ namespace COE.Survey.Web
                          new LookupViewModel
                          {
                              Value = a.ID,
-                             Text = a.ModuleTitleEn
+                             Text = CultureHelper.IsArabic ? a.ModuleTitleAr : a.ModuleTitleEn
                          }).ToList(); ;
 
             return result;
@@ -1024,9 +1025,9 @@ namespace COE.Survey.Web
         public List<LookupViewModel> GetSurveyStatus()
         {
             List<LookupViewModel> allStatus = new List<LookupViewModel>();
-            allStatus.Add(new LookupViewModel { Value = 0, Text = "Draft" });
-            allStatus.Add(new LookupViewModel { Value = 1, Text = "Published" });
-            allStatus.Add(new LookupViewModel { Value = 2, Text = "Approved" });
+            allStatus.Add(new LookupViewModel { Value = 0, Text = CultureHelper.IsArabic ? "مسودة": "Draft" });
+            allStatus.Add(new LookupViewModel { Value = 1, Text = CultureHelper.IsArabic ? "تم النشر" : "Published" });
+            allStatus.Add(new LookupViewModel { Value = 2, Text = CultureHelper.IsArabic ? "تمت الموافقة" : "Approved" });
             return allStatus;
         }
 
@@ -1039,7 +1040,7 @@ namespace COE.Survey.Web
                 var survey = UnitOfWork.Survey.GetById(id);
                 if (survey == null)
                 {
-                    return Json(new { success = false, errorMessage = "Invalid Survey" });
+                    return Json(new { success = false, errorMessage = SurveysResources.InvalidSurvey });
                 }
 
                 survey.StatusId = (byte)(isActive ? (int)SurveyStatusEnum.Approved : (int)SurveyStatusEnum.Deactivated);
@@ -1063,7 +1064,7 @@ namespace COE.Survey.Web
                 var survey = UnitOfWork.Survey.GetById(id);
                 if (survey == null)
                 {
-                    return Json(new { success = false, errorMessage = "Invalid Survey" });
+                    return Json(new { success = false, errorMessage = SurveysResources.InvalidSurvey });
                 }
 
                 if (survey.SurveyTitle == title)

@@ -232,6 +232,15 @@ namespace COE.Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error occurred.
+        /// </summary>
+        public static string ErrorOccurred {
+            get {
+                return ResourceManager.GetString("ErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date From.
         /// </summary>
         public static string From {
@@ -246,6 +255,33 @@ namespace COE.Common.Localization {
         public static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Data.
+        /// </summary>
+        public static string InvalidData {
+            get {
+                return ResourceManager.GetString("InvalidData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Survey.
+        /// </summary>
+        public static string InvalidSurvey {
+            get {
+                return ResourceManager.GetString("InvalidSurvey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Survey ID.
+        /// </summary>
+        public static string InvalidSurveyID {
+            get {
+                return ResourceManager.GetString("InvalidSurveyID", resourceCulture);
             }
         }
         
@@ -268,11 +304,65 @@ namespace COE.Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There&apos;s no survey data.
+        /// </summary>
+        public static string NoSurveyData {
+            get {
+                return ResourceManager.GetString("NoSurveyData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Surveys to display.
         /// </summary>
         public static string NoSurveystodisplay {
             get {
                 return ResourceManager.GetString("NoSurveystodisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There&apos;s no survey with the given id.
+        /// </summary>
+        public static string NoSurveyWithGivenID {
+            get {
+                return ResourceManager.GetString("NoSurveyWithGivenID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a title for this survey.
+        /// </summary>
+        public static string PleaseEnterTitleForSurvey {
+            get {
+                return ResourceManager.GetString("PleaseEnterTitleForSurvey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill all required files.
+        /// </summary>
+        public static string PleaseFillAllRequiredFields {
+            get {
+                return ResourceManager.GetString("PleaseFillAllRequiredFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a Module.
+        /// </summary>
+        public static string PleaseSelectModule {
+            get {
+                return ResourceManager.GetString("PleaseSelectModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select valid Dates.
+        /// </summary>
+        public static string PleaseSelectValidDates {
+            get {
+                return ResourceManager.GetString("PleaseSelectValidDates", resourceCulture);
             }
         }
         
@@ -336,6 +426,15 @@ namespace COE.Common.Localization {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This survey can&apos;t be edited.
+        /// </summary>
+        public static string SurveyCantBeEdited {
+            get {
+                return ResourceManager.GetString("SurveyCantBeEdited", resourceCulture);
             }
         }
         

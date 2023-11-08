@@ -268,7 +268,7 @@ namespace COE.Common.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter username and password.
+        ///   Looks up a localized string similar to User Login.
         /// </summary>
         public static string EnterCredentials {
             get {
