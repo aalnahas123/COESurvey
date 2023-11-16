@@ -4,124 +4,129 @@
 @model COE.Common.Model.ViewModels.AccountViewModel
 
 @{
-    Layout = "~/Views/Shared/_Layout2.cshtml";
     ViewBag.Title = SecurityResources.CreateUser;
     ViewBag.ModuleTitle = SecurityResources.Users;
 
 }
 
-@using (Html.BeginForm("Add", "Users", FormMethod.Post, new { @class = "register-form", role = "form", id = "registerForm" }))
-{
-    @Html.AntiForgeryToken()
-    <div class="row">
-        <div class="col-md-12">
-            @if (ViewBag.SuccessMessage != null && !string.IsNullOrEmpty(ViewBag.SuccessMessage))
+
+
+<section class="d-flex landing__content flex-column container">
+    <div class="landing__container survey-approve d-flex flex-column">
+
+        <h1>@SecurityResources.CreateUser</h1>
+
+        @*<h2>@SurveysResources.SurveyData</h2>*@
+
+
+
+
+
+        @using (Html.BeginForm("Add", "Users", FormMethod.Post, new { @class = "row w-100", role = "form", id = "registerForm" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+            <div class="col-md-12">
+                @if (ViewBag.SuccessMessage != null && !string.IsNullOrEmpty(ViewBag.SuccessMessage))
                 {
-            <div class="alert alert-@ViewBag.MessageType alert-dismissable">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>@ViewBag.SuccessMessage</strong>
+                    <div class="alert alert-@ViewBag.MessageType alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none;">
+                            <i class="fa fa-times" style="color:darkred;"></i>
+                        </a>
+                        <strong>@ViewBag.SuccessMessage</strong>
+                    </div>
+
+                }
             </div>
-            }
-        </div>
-        <div class="col-md-12">
-            <div class="portlet box green">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-search"></i> @SecurityResources.CreateUser
-                    </div>
-                    <div class="tools">
-                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                    </div>
-                </div>
-                <div class="portlet-body form">
-                    <div class="form-body">
-                        <div class="row" id="reg">
-                            @*@Html.ValidationSummary(false, string.Empty, new { @class = "text-danger help-block" })*@
-                            <div class="col-md-12">
-                                <div>
-                                    <div class="mt-radio-inline">
-                                        <label class="mt-radio">
-                                            @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory, new { @name = "uType", @onchange = "changeView(1)" })
-                                            @SecurityResources.ActiveDirectoryUser
-                                            <span></span>
-                                        </label>
-                                        <label class="mt-radio">
-                                            @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.Online, new { @name = "uType", @onchange = "changeView(2)" })
-                                            @SecurityResources.OnlineUser
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="OnlineView" style="@ViewBag.DisplayOnline">
-                                <div class="col-md-12">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <span class="caption-subject font-green-sharp bold uppercase">Basic Information</span>
-                                        </div>
-                                    </div>
-                                    <hr />
-                                </div>
-                                @Html.Partial("_UserBasicData")
-                                <br />
 
-                                <div class="col-md-12">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <span class="caption-subject font-green-sharp bold uppercase">Colleges</span>
-                                        </div>
-                                    </div>
-                                    <hr />
-                                </div>
-                                <div class="col-md-12">
-                                    @Html.Partial("_UserColleges")
-                                    </div>
-
-                                </div>
-                            <div class="ADView" style="@ViewBag.DisplayAD">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.AccountViewModelActiveDirectory.FullName, new { @class = "control-label" })
-                                        @Html.TextBoxFor(model => model.AccountViewModelActiveDirectory.FullName, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.AccountViewModelActiveDirectory.FullName, string.Empty, new { @class = "text-danger help-block" })
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.AccountViewModelActiveDirectory.UserName, new { @class = "control-label" })
-                                        @Html.TextBoxFor(model => model.AccountViewModelActiveDirectory.UserName, null, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.AccountViewModelActiveDirectory.UserName, string.Empty, new { @class = "text-danger help-block" })
-                                    </div>
-                                </div>
-                                @*<div class="col-md-12">
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.AccountViewModelActiveDirectory.IsActive, new { @class = "control-label" })
-                                            @Html.CheckBoxFor(model => model.AccountViewModelActiveDirectory.IsActive)
-                                        </div>
-                                    </div>*@
-                            </div>
-
+            <div class="row" id="reg">
+                @*@Html.ValidationSummary(false, string.Empty, new { @class = "text-danger help-block" })*@
+                <div class="col-md-12">
+                    <div>
+                        <div class="mt-radio-inline">
+                            <label class="mt-radio mt-3">
+                                @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory, new { @name = "uType", @onchange = "changeView(1)" })
+                                @SecurityResources.ActiveDirectoryUser
+                                <span></span>
+                            </label>
+                            <label class="mt-radio mt-3">
+                                @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.Online, new { @name = "uType", @onchange = "changeView(2)" })
+                                @SecurityResources.OnlineUser
+                                <span></span>
+                            </label>
                         </div>
                     </div>
-                    <div class="form-actions right">
-                        <input type="submit" value="@SharedResources.Save" class="btn btn-success" />
-                        <a href="@Url.Action("Users", "security")" class="btn red">@SharedResources.Back</a>
+                </div>
+                <div class="OnlineView @ViewBag.DisplayOnline">
+                    <div class="col-md-12">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <span class="caption-subject font-green-sharp bold uppercase"></span>
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                    @Html.Partial("_UserBasicData")
+                    <br />
+
+                    @*<div class="col-md-12">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <span class="caption-subject font-green-sharp bold uppercase">Colleges</span>
+                                </div>
+                            </div>
+                            <hr />
+                        </div>
+                        <div class="col-md-12">
+                            @Html.Partial("_UserColleges")
+                            </div>*@
+
+                </div>
+                <div class="ADView @ViewBag.DisplayAD">
+                    <div class="col-md-6 mt-3">
+                        @Html.LabelFor(model => model.AccountViewModelActiveDirectory.FullName, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.AccountViewModelActiveDirectory.FullName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AccountViewModelActiveDirectory.FullName, string.Empty, new { @class = "text-danger help-block" })
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        @Html.LabelFor(model => model.AccountViewModelActiveDirectory.UserName, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.AccountViewModelActiveDirectory.UserName, null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AccountViewModelActiveDirectory.UserName, string.Empty, new { @class = "text-danger help-block" })
                     </div>
                 </div>
 
             </div>
-        </div>
+
+
+
+
+            <!-- Action btn -->
+            <div class="d-flex survey-approve__actions mt-3">
+                <button class="survey-approve__approve-btn" type="submit">
+                    @SharedResources.Save
+                </button>
+
+                <a class="survey-approve__reset-btn" href="@Url.Action("Index", "Users")" style="text-decoration: none; text-align: center;">
+                    @SharedResources.Cancel
+                </a>
+            </div>
+        }
+
+
     </div>
-}
+</section>
+
+
 <script>
     function changeView(type) {
         if (type == 1) {
-            $('.ADView').show();
-            $('.OnlineView').hide();
+            $('.ADView').removeClass('d-none');
+            $('.OnlineView').addClass('d-none');
         }
         else {
-            $('.ADView').hide();
-            $('.OnlineView').show();
+            $('.ADView').addClass('d-none');
+            $('.OnlineView').removeClass('d-none');
         }
     }
 </script>

@@ -122,7 +122,8 @@ namespace COE.Common.Model.ViewModels
 
         public int? Code { get; set; }
 
-
+        public int Type { get; set; }
+        public Guid DisplayId { get; set; }
     }
 
     public partial class AccountViewModelActiveDirectory

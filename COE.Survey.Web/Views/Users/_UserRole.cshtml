@@ -51,6 +51,6 @@
  </div>
 <div class="form-actions right">
     <button type="submit" class="btn green"><i class="fa fa-save fa-fw" aria-hidden="true"></i>@SharedResources.Save</button>
-    <a class="btn red" href="@Url.Action("Users", "security",new { UserType = Request.QueryString["type"],uid= ViewContext.RouteData.Values["id"] })">@SharedResources.Back</a>
+    <a class="btn red" href="@Url.Action("Index", "Users",new { UserType = Request.QueryString["type"],uid= ViewContext.RouteData.Values["id"] })">@SharedResources.Back</a>
 </div>
 

@@ -127,7 +127,7 @@
     <value>Action Name</value>
   </data>
   <data name="Actions" xml:space="preserve">
-    <value>Actions</value>
+    <value>الإجراءات</value>
   </data>
   <data name="ActionSavedSuccessMessage" xml:space="preserve">
     <value>Action Saved Successfully</value>
@@ -145,13 +145,13 @@
     <value>User Details</value>
   </data>
   <data name="Action_UserRoles" xml:space="preserve">
-    <value>Roles</value>
+    <value>الأدوار</value>
   </data>
   <data name="ActiveDirectoryUser" xml:space="preserve">
-    <value>Active Directory</value>
+    <value>الدليل النشط</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>Add</value>
+    <value>إضافة</value>
   </data>
   <data name="AddAction" xml:space="preserve">
     <value>Add Action</value>
@@ -205,7 +205,7 @@
     <value>Error in change password , make sure you entred correct password</value>
   </data>
   <data name="Code" xml:space="preserve">
-    <value>Priority</value>
+    <value>الأولوية</value>
   </data>
   <data name="College" xml:space="preserve">
     <value>Colleges</value>
@@ -235,7 +235,7 @@
     <value>Created By</value>
   </data>
   <data name="CreateUser" xml:space="preserve">
-    <value>Create User</value>
+    <value>إضافة مستخدم</value>
   </data>
   <data name="CreateUserConfirm" xml:space="preserve">
     <value>Are you sure you want to create with this staff member data</value>
@@ -253,7 +253,7 @@
     <value>Description</value>
   </data>
   <data name="DisplayName" xml:space="preserve">
-    <value>Display Name</value>
+    <value>إسم الإستعراض</value>
   </data>
   <data name="EdidAction" xml:space="preserve">
     <value>Edit Action</value>
@@ -262,7 +262,7 @@
     <value>Edit  Module Action</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>تعديل</value>
   </data>
   <data name="EditCollege" xml:space="preserve">
     <value>Edit College</value>
@@ -280,16 +280,16 @@
     <value>Edit Role</value>
   </data>
   <data name="EditUser" xml:space="preserve">
-    <value>Edit</value>
+    <value>تعديل البيانات</value>
   </data>
   <data name="EffectiveDate" xml:space="preserve">
     <value>Effective Date</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email</value>
+    <value>البريد الإلكتروني</value>
   </data>
   <data name="EmailAlreadyRegistered" xml:space="preserve">
-    <value>Email Already Registered</value>
+    <value>البريد الإلكتروني مستخدم بالفعل</value>
   </data>
   <data name="EmptyValue" xml:space="preserve">
     <value>---</value>
@@ -316,13 +316,13 @@
     <value>Female</value>
   </data>
   <data name="FullName" xml:space="preserve">
-    <value>Full Name</value>
+    <value>الاسم بالكامل</value>
   </data>
   <data name="Gender" xml:space="preserve">
     <value>Gender</value>
   </data>
   <data name="IsActive" xml:space="preserve">
-    <value>Active</value>
+    <value>نشط</value>
   </data>
   <data name="ItemActivatedSuccessMessage" xml:space="preserve">
     <value>Item Activated Successfully</value>
@@ -352,7 +352,7 @@
     <value>Level</value>
   </data>
   <data name="LoginName" xml:space="preserve">
-    <value>Login Name</value>
+    <value>اسم الدخول</value>
   </data>
   <data name="Male" xml:space="preserve">
     <value>Male</value>
@@ -367,10 +367,10 @@
     <value>Role Permissions</value>
   </data>
   <data name="MenuItem_Roles" xml:space="preserve">
-    <value>Roles</value>
+    <value>الأدوار</value>
   </data>
   <data name="MenuItem_Users" xml:space="preserve">
-    <value>Search Users</value>
+    <value>بحث المستخدمين</value>
   </data>
   <data name="Module" xml:space="preserve">
     <value>Module</value>
@@ -412,10 +412,10 @@
     <value>Module Saved Successfully</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name</value>
+    <value>الاسم</value>
   </data>
   <data name="NationalId" xml:space="preserve">
-    <value>National ID</value>
+    <value>رقم الهوية</value>
   </data>
   <data name="Nationality" xml:space="preserve">
     <value>Nationality</value>
@@ -424,7 +424,7 @@
     <value>New Password</value>
   </data>
   <data name="OnlineUser" xml:space="preserve">
-    <value>Online</value>
+    <value>أونلاين</value>
   </data>
   <data name="PasswordChangedMsg" xml:space="preserve">
     <value>Password Changed Successfully</value>
@@ -433,10 +433,10 @@
     <value>Permissions</value>
   </data>
   <data name="Phone" xml:space="preserve">
-    <value>Phone</value>
+    <value>رقم الجوال</value>
   </data>
   <data name="PhoneNumberAlreadyRegistered" xml:space="preserve">
-    <value>Phone Number Already Registered</value>
+    <value>رقم الجوال مستخدم بالفعل</value>
   </data>
   <data name="PowerRoles" xml:space="preserve">
     <value>Power Roles</value>
@@ -457,19 +457,19 @@
     <value>Role Name</value>
   </data>
   <data name="Roles" xml:space="preserve">
-    <value>Roles</value>
+    <value>الأدوار</value>
   </data>
   <data name="RoleSavedSuccessMessage" xml:space="preserve">
-    <value>Role Saved Successfully</value>
+    <value>تم حفظ أدوار المستخدم بنجاح</value>
   </data>
   <data name="RolesManagement" xml:space="preserve">
     <value>Roles Management</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Search</value>
+    <value>البحث</value>
   </data>
   <data name="SearchUsers" xml:space="preserve">
-    <value>Search Users</value>
+    <value>بحث المستخدمين</value>
   </data>
   <data name="SecurityManagment" xml:space="preserve">
     <value>Security Managment</value>
@@ -505,7 +505,7 @@
     <value>Create Role</value>
   </data>
   <data name="Title_Roles" xml:space="preserve">
-    <value>Roles</value>
+    <value>الأدوار</value>
   </data>
   <data name="TypeID" xml:space="preserve">
     <value>Staff Type</value>
@@ -523,25 +523,25 @@
     <value>Details</value>
   </data>
   <data name="UserName" xml:space="preserve">
-    <value>User Name</value>
+    <value>اسم المستخدم</value>
   </data>
   <data name="UserNameAlreadyRegistered" xml:space="preserve">
-    <value>User Name Already Registered</value>
+    <value>اسم المستخدم موجود بالفعل</value>
   </data>
   <data name="UserNotExist" xml:space="preserve">
     <value>User not exist or locked in active directory</value>
   </data>
   <data name="UserRoles" xml:space="preserve">
-    <value>User Roles</value>
+    <value>أدوار المستخدم</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>Users</value>
+    <value>المستخدمين</value>
   </data>
   <data name="UserSavedSuccessMessage" xml:space="preserve">
-    <value>User Saved Successfully</value>
+    <value>تم حفظ بيانات المستخدم بنجاح</value>
   </data>
   <data name="UserType" xml:space="preserve">
-    <value>User Type</value>
+    <value>نوع المستخدم</value>
   </data>
   <data name="VisaType" xml:space="preserve">
     <value>Visa / Type</value>

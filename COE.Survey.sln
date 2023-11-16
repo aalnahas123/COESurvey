@@ -13,6 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLLs", "DLLs", "{7D8EB24D-9
 		DLLs\COE.Common.Helper.dll = DLLs\COE.Common.Helper.dll
 		DLLs\COE.DataSource.Sql.dll = DLLs\COE.DataSource.Sql.dll
 		DLLs\Commons.Framework.dll = DLLs\Commons.Framework.dll
+		DLLs\EntityFramework.Extended.dll = DLLs\EntityFramework.Extended.dll
+		DLLs\log4net.dll = DLLs\log4net.dll
+		DLLs\PhoneNumbers.dll = DLLs\PhoneNumbers.dll
 		DLLs\UsersMgmt.ActiveDirectory.dll = DLLs\UsersMgmt.ActiveDirectory.dll
 		DLLs\UsersMgmt.dll = DLLs\UsersMgmt.dll
 	EndProjectSection

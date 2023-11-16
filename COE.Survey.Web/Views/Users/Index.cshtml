@@ -1,151 +1,218 @@
 ﻿@using COE.Common.Localization.Security
 @using COE.Common.Localization
-@using COE.Security.Web.Helpers
-@using COE.Security.Model.LookupValues;
+@using COE.Survey.Web.Controllers
+
+@*@using COE.Security.Web.Helpers
+    @using COE.Security.Model.LookupValues;*@
 
 @model  COE.Common.Model.ViewModels.AspNetUsersSearchModel
 
 @{
     ViewBag.Title = SecurityResources.Users;
     ViewBag.ModuleTitle = SecurityResources.Users;
+
+    bool isTest = true;
+
+    bool userRole = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("UserRole");
+    bool userCollege = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("userCollege");
+    bool userDetails = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("Details");
+    bool userUpdate = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("Update");
+    bool Activate = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("Activate/Deactivate");
 }
 
-@using (Html.BeginForm())
-{
-    <div class="row">
-        <div class="col-md-12">
-            <div class="portlet box green">
-                <div class="portlet-body form">
-                    <!-- BEGIN FORM-->
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="col-md-12">
-                                    <div class="mt-radio-inline">
-                                        <label class="mt-radio">
-                                            @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory, new { @name = "uType", @onchange = "changeView(1)" })
-                                            @SecurityResources.ActiveDirectoryUser
-                                            <span></span>
-                                        </label>
-                                        <label class="mt-radio">
-                                            @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.Online, new { @name = "uType", @onchange = "changeView(2)" })
-                                            @SecurityResources.OnlineUser
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ADView" style="@ViewBag.DisplayAD">
-                                <div class="col-md-12">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.UserName, new { @class = "control-label" })
-                                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.ADRoleId, new { @class = "control-label" })
-                                            @Html.DropDownListFor(model => model.ADRoleId, new SelectList(LookupsHelpers.GetAllowedRoles(User.Identity.Name), "Value", "Text"), @StipendResources.DDL_DefaultSelect, new { @class = "form-control select2", data_placeholder = @StipendResources.DDL_DefaultSelect })
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.ADCollegeId, new { @class = "control-label" })
-                                            @Html.DropDownListFor(model => model.ADCollegeId, new SelectList(LookupsHelpers.GetCollegesByCurrentUser(User.Identity.Name), "Value", "Text"), @StipendResources.DDL_DefaultSelect, new { @class = "form-control select2", data_placeholder = @StipendResources.DDL_DefaultSelect })
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="OnlineView" style="@ViewBag.DisplayOnline">
-                                <div class="col-md-12">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.Email, new { @class = "control-label" })
-                                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.Phone, new { @class = "control-label" })
-                                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.NationalId, new { @class = "control-label" })
-                                                @Html.TextBoxFor(model => model.NationalId, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.UserName, new { @class = "control-label" })
-                                            @Html.TextBoxFor(model => model.UserNameOnline, new { @class = "form-control" })
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.RoleId, new { @class = "control-label" })
-                                            @Html.DropDownListFor(model => model.RoleId, new SelectList(LookupsHelpers.GetAllowedRoles(User.Identity.Name), "Value", "Text"), @StipendResources.DDL_DefaultSelect, new { @class = "form-control select2", data_placeholder = @StipendResources.DDL_DefaultSelect })
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.CollegeId, new { @class = "control-label" })
-                                            @{var isAdmin = (Session["UserRoles"] as List<Guid>).Contains(Guid.Parse(AspNetRoles.Values.SystemAdmin));}
-                                            @Html.DropDownListFor(model => model.CollegeId, new SelectList(isAdmin ? LookupsHelpers.GetColleges() : LookupsHelpers.GetCollegesByCurrentUser(User.Identity.Name), "Value", "Text"), @StipendResources.DDL_DefaultSelect, new { @class = "form-control select2", data_placeholder = @StipendResources.DDL_DefaultSelect })
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                @if (ViewBag.SuccessMessage != null && !string.IsNullOrEmpty(ViewBag.SuccessMessage))
-                                {
-                                    <div class="alert alert-success alert-dismissable">
-                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                        <strong>@ViewBag.SuccessMessage</strong>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-actions right">
-                        <button type="submit" class="btn green">@SharedResources.Search</button>
-                        <a class="btn default" href="@Url.Action("Users","Security")">@SharedResources.Cancel</a>
+
+
+<section class="d-flex landing__content flex-column container">
+
+    <!-- Search section -->
+    @using (Html.BeginForm("Index", "Users", FormMethod.Post, new { @class = "landing__container landing__search", role = "form" }))
+    {
+        @Html.AntiForgeryToken();
+        <h1 class="mb-3">@SurveysResources.AdvancedSearch</h1>
+
+        <div class="row justify-content-between">
+            <div class="col-md-6 mt-3">
+                <div class="mt-radio-inline">
+                    <label class="mt-radio">
+                        @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory, new { @name = "uType", @onchange = "changeView(1)" })
+                        @SecurityResources.ActiveDirectoryUser
+                        <span></span>
+                    </label>
+                    <label class="mt-radio">
+                        @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.Online, new { @name = "uType", @onchange = "changeView(2)" })
+                        @SecurityResources.OnlineUser
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row justify-content-between">
+            <div class="col-md-6 mt-3">
+                <div class="ADView @ViewBag.DisplayAD" >
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserName, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <!-- BEGIN SAMPLE TABLE PORTLET-->
-            <div class="portlet box green">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-th-list" aria-hidden="true"></i>@SecurityResources.Users
-                    </div>
-                    <div class="tools">
-                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                    </div>
+
+        <div class="OnlineView @ViewBag.DisplayOnline">
+            <div class="row">
+
+                <!-- First Inner Column -->
+                <div class="col-md-6 d-flex flex-column mt-3">
+
+                    @Html.LabelFor(model => model.Email, new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+
                 </div>
-                <div class="portlet-body">
-                    @Html.Partial("_GridViewPartial", Model)
+                <div class="col-md-6 d-flex flex-column mt-3">
+                    @Html.LabelFor(model => model.Phone, new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                </div>
+
+                <!-- Second Inner Column -->
+                <div class="col-md-6 d-flex flex-column mt-3">
+
+                    @Html.LabelFor(model => model.NationalId, new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.NationalId, new { @class = "form-control" })
+
+                </div>
+                <div class="col-md-6 d-flex flex-column mt-3">
+
+                    @Html.LabelFor(model => model.UserName, new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.UserNameOnline, new { @class = "form-control" })
+
                 </div>
             </div>
         </div>
+
+        <div class="row justify-content-between">
+            <div class="col-md-12 mt-3">
+                @if (ViewBag.SuccessMessage != null && !string.IsNullOrEmpty(ViewBag.SuccessMessage))
+                {
+                    <div class="alert alert-@ViewBag.MessageType alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none;">
+                            <i class="fa fa-times" style="color:darkred;"></i>
+                        </a>
+                        <strong>@ViewBag.SuccessMessage</strong>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Search btn -->
+        <button type="submit" class="mt-3 landing__btn">@SharedResources.Search</button>
+    }
+
+    <!-- Survey list -->
+    <div class="landing__container">
+        <!-- Survey list header -->
+        <div class="d-flex justify-content-between mb-4 align-items-center">
+            <h2 class="mb-0"> @SecurityResources.Users</h2>
+
+
+            <a class="landing__btn" href="@Url.Action("Add", "Users")" style="text-decoration: none;">
+                @SecurityResources.CreateUser
+            </a>
+
+
+
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>@SecurityResources.UserName</th>
+                                <th>@SecurityResources.NationalId</th>
+                                <th>@SecurityResources.Email</th>
+                                <th>@SecurityResources.Phone</th>
+                                <th class="col-xs-10"> @SecurityResources.Actions </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int index = 0;
+                            }
+
+                            @foreach (var item in Model.Items)
+                            {
+                                <tr>
+                                    <td>@item.UserName</td>
+                                    <td>@item.NationalId</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.PhoneNumber</td>
+
+                                    <td>
+                                        @if (userRole)
+                                        {
+                                            <a class="btn green" value="@item.UserName" href='@Url.Action("UserRole", "Users", new { id = item.Id, type = item.Type })' data-toggle="tooltip" title="@SecurityResources.Roles">
+                                                <i class="fa fa-users fa-fw" aria-hidden="true"></i>
+                                            </a>
+                                        }
+
+                                        @if (userUpdate)
+                                        {
+                                            <button class="btn green" value="@item.UserName" onclick="CheckUser('@item.UserName','@item.Id','@item.Type','@item.Email','Edit','Users');" data-toggle="tooltip" title="@SecurityResources.EditUser">
+                                                <i class="fa fa-edit fa-fw" aria-hidden="true"></i>
+                                                @*@SecurityResources.EditUser*@
+                                            </button>
+                                        }
+
+                                        @if (Activate)
+                                        {
+                                            if (item.IsActive)
+                                            {
+                                                <button type="button"
+                                                        class="btn btn-success deactivate btnUser"
+                                                        style="color:red !important"
+                                                        data-uid="@item.Id"
+                                                        id="btn_@index"
+                                                        title="Deactivate"
+                                                        data-state="0">
+                                                    <i class="fa fa-ban" aria-hidden="true"></i>
+                                                </button>
+
+                                            }
+                                            else
+                                            {
+                                                <button type="button"
+                                                        class="btn btn-success activate btnUser" style="color:forestgreen !important"
+                                                        data-uid="@item.Id"
+                                                        id="btn_@index"
+                                                        title="Activate"
+                                                        data-state="1">
+                                                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+
+                                                </button>
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+
     </div>
-                                                }
+
+
+</section>
+
+
 <script>
     function changeView(type) {
         if (type == 1) {
@@ -157,4 +224,92 @@
             $('.OnlineView').show();
         }
     }
+</script>
+
+
+<script>
+     $('.btnUser').click(function () {
+         // if state =0 then the clicked button is tactive and want to deactivate
+         var elementId = $(this).attr("id");
+         var datastate = $(this).attr("data-state");
+         var headerMessage = datastate == 0 ? '@SharedResources.Deactivate' : '@SharedResources.Activate';
+         var confirmMessage = datastate == 0 ? '@SharedResources.DeactivateConfirm' : '@SharedResources.ActivateConfirm';
+         var activeState = datastate == 0 ? false : true;
+         var _userId = $(this).attr("data-uid");
+
+
+         if (confirm(confirmMessage)) {
+
+                $.ajax({
+       url: '@Url.Action("ActiveDeActiveUser", "Users")',
+       type: "POST",
+       dataType: "JSON",
+       data: { stateParam: activeState, userID: _userId },
+       success: function (result) {
+
+           if (result.success) {
+               if (datastate == 0) {
+                   $('#' + elementId).html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>');
+                   $('#' + elementId).attr('title', 'Activate');
+                   $('#' + elementId).attr('data-original-title', 'Activate');
+                   $('#' + elementId).attr('style', 'color:forestgreen !important');
+                   $('#' + elementId).attr('data-state', '1');
+                   toastr.success('@SecurityResources.DeactivateSuccess');
+               }
+               else {
+                   $('#' + elementId).html('<i class="fa fa-ban" aria-hidden="true"></i>');
+                   $('#' + elementId).attr('title', 'Deactivate');
+                   $('#' + elementId).attr('data-original-title', 'Deactivate');
+                   $('#' + elementId).attr('style', 'color:red !important');
+                   $('#' + elementId).attr('data-state', '0');
+                   toastr.success('@SharedResources.ActivateSuccess');
+               }
+           }
+           else {
+               toastr.error('@SharedResources.UnexpectedError');
+           }
+       },
+       error: function (data) {
+           toastr.error('@SharedResources.UnexpectedError');
+       }
+   });
+
+         } else {
+            
+         }
+
+
+
+
+
+
+     });
+
+     function CheckUser(name, userId, userType, email, action, controller) {
+         $.ajax({
+             url: '@Url.Action("CheckUserExist", "Users")',
+             type: "POST",
+             dataType: "JSON",
+             data: { userName: name, userId: userId, userType: userType, email: email, controller: controller, action: action },
+             success: function (result) {
+                 window.location.href = result.Result;
+             }
+         });
+     }
+     function changeView(type) {
+         if (type == 1) {
+             $('.ADView').show();
+             $('.OnlineView').hide();
+         }
+         else {
+             $('.ADView').hide();
+             $('.OnlineView').show();
+         }
+    }
+
+
+    $(document).ready(function () {
+        changeView(2);
+    });
+
 </script>

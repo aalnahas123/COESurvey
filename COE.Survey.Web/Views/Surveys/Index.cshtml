@@ -24,6 +24,7 @@
 
 
 
+
 <section class="d-flex landing__content flex-column container">
     <!-- Search section -->
     @using (Html.BeginForm("Index", "Surveys", FormMethod.Post, new { @class = "landing__container landing__search", role = "form" }))
@@ -66,7 +67,7 @@
                 <a class="landing__btn" href="@Url.Action("Add", "Surveys")" style="text-decoration: none;">
                     @SurveysResources.CreateNewSurvey
                 </a>
-            
+
             }
 
         </div>
@@ -101,7 +102,7 @@
                             <h3>@item.SurveyTitle</h3>
 
 
-                            
+
 
                             <!-- More btn -->
                             <button type="button" class="langing__more-btn" data-bs-toggle="dropdown"
@@ -117,14 +118,14 @@
                                     if (canCreate)
                                     {
                                         <li><a href="@Url.Action("edit", "Surveys", new { Id = @item.ID })" class="d-flex" title="Edit"><img src="~/Content/images/copy.svg" alt="menu-icon" /> <span>@SurveysResources.Edit</span></a></li>
-                                        
+
 
                                     }
 
                                     if (canPublish)
                                     {
                                         <li><a href="@Url.Action("publish", "Surveys", new { Id = @item.ID })" class="d-flex" title="Publish"><img src="~/Content/images/copy.svg" alt="menu-icon" /> <span>@SurveysResources.Publish</span></a></li>
-                                        
+
                                     }
                                 }
                                 else if (item.StatusId == (int)SurveyStatusEnum.Published)
@@ -132,7 +133,7 @@
                                     if (canApprove)
                                     {
                                         <li><a href="@Url.Action("Approve", "Surveys", new { Id = @item.ID })" class="d-flex" title="Approve"><img src="~/Content/images/copy.svg" alt="menu-icon" /> <span>@SurveysResources.Approve</span></a></li>
-                                        
+
                                     }
                                 }
                                 else if (item.StatusId == (int)SurveyStatusEnum.Approved)

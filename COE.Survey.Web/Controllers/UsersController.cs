@@ -15,74 +15,86 @@ using Commons.Framework.Globalization;
 using System.Collections.Generic;
 using WebGrease.Css.Extensions;
 using System.Transactions;
+using PagedList;
+using Commons.Framework.Data;
 
 namespace COE.Survey.Web
 {
     [Authorize]
-    [ModuleAuthorize("Security", "User")]
+    //[ModuleAuthorize("Security", "User")]
     public class UsersController : BaseController<COEUoW>
     {
+        public ActionResult Index(AspNetUsersSearchModel model, int? success)
+        {
+            this.LoadAuthorizationModuleActions("Security", "User");
 
-        //public ActionResult Index(AccountSearchViewModel model, int? success)
-        //{
-        //    var aspNetUsers = UnitOfWork.AspNetUsers.GetAll().Where(u => u.UserDisplay.Any());
-        //    var users = aspNetUsers
-        //    .ToList().Select(x => new AccountViewModel
-        //    {
-        //        NationalId = x.NationalId ?? SecurityResources.EmptyValue,
-        //        Email = x.Email ?? SecurityResources.EmptyValue,
-        //        FullName = x.FullName ?? SecurityResources.EmptyValue,
-        //        UserName = x.UserName ?? SecurityResources.EmptyValue,
-        //        PhoneNumber = x.PhoneNumber ?? SecurityResources.EmptyValue,
-        //        Id = x.Id
-        //    }).ToList();
 
-        //    if (!string.IsNullOrEmpty(model.NationalID))
-        //    {
-        //        users = users.Where(x => x.NationalId.Contains(model.NationalID)).ToList();
-        //    }
-        //    if (!string.IsNullOrEmpty(model.UserName))
-        //    {
-        //        users = users.Where(x => x.FullName.ToLower().Contains(model.UserName.ToLower())).ToList();
-        //    }
+            var usersQuery = UnitOfWork.UserDisplay.GetAll();
 
-        //    if (model != null)
-        //    {
-        //        var UsersList = users.AsQueryable()
-        //            .GetPaged(x => x.NationalId, false, model.PageNumber, AppSettings.DefaultPagerPageSize);
+            //var aspNetUsers = UnitOfWork.AspNetUsers.GetAll().Where(u => u.UserDisplay.Any());
+            var users = usersQuery
+            .ToList().Select(x => new AccountViewModel
+            {
+                NationalId = x.AspNetUsers.NationalId ?? SecurityResources.EmptyValue,
+                Email = x.AspNetUsers.Email ?? SecurityResources.EmptyValue,
+                FullName = x.AspNetUsers.FullName ?? SecurityResources.EmptyValue,
+                UserName = x.AspNetUsers.UserName ?? SecurityResources.EmptyValue,
+                PhoneNumber = x.AspNetUsers.PhoneNumber ?? SecurityResources.EmptyValue,
+                Id = x.AspNetUsers.Id,
+                IsActive = x.IsActive,
+                Type = x.AspNetUsers != null ? ((int)COE.Common.Model.Enums.Enum.UserType.Online) : ((int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory)
+            }).ToList();
 
-        //        model.Items = new StaticPagedList<AccountViewModel>(
-        //                              UsersList.ToList(),
-        //                              UsersList.PageNumber,
-        //                              UsersList.PageSize,
-        //                              UsersList.TotalItemCount);
+            if (!string.IsNullOrEmpty(model.NationalId))
+            {
+                users = users.Where(x => x.NationalId.Contains(model.NationalId)).ToList();
+            }
+            if (!string.IsNullOrEmpty(model.UserName))
+            {
+                users = users.Where(x => x.FullName.ToLower().Contains(model.UserName.ToLower())).ToList();
+            }
 
-        //        // if has request ajax we'll be load Partial View
-        //        if (Request.IsAjaxRequest())
-        //        {
-        //            return PartialView("_Users", model);
-        //        }
 
-        //        ViewBag.success = success;
-        //    }
-        //    return View(model);
-        //}
+
+
+
+            if (model != null)
+            {
+                var UsersList = users.AsQueryable()
+                    .GetPaged(x => x.NationalId, false, model.PageNumber, BLL.AppSettings.DefaultPagerPageSize);
+
+                model.Items = new StaticPagedList<AccountViewModel>(
+                                      UsersList.ToList(),
+                                      UsersList.PageNumber,
+                                      UsersList.PageSize,
+                                      UsersList.TotalItemCount);
+
+                // if has request ajax we'll be load Partial View
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("_Users", model);
+                }
+
+                ViewBag.success = success;
+            }
+            return View(model);
+        }
 
         // GET: Show view
         //[ModuleAuthorize("Training", "Centers",ActionName ="AddCenter")]
 
-        [ModuleAuthorize("Security", "User", ActionName = "New")]
+        //[ModuleAuthorize("Security", "User", ActionName = "New")]
         [HttpGet]
         public ActionResult Add(AccountViewModel model, int? success, string userType)
         {
-            ViewBag.DisplayOnline = "display:block";
-            ViewBag.DisplayAD = "display:none";
+            ViewBag.DisplayOnline = "";
+            ViewBag.DisplayAD = "d-none";
             model.UserType = userType ?? ((int)COE.Common.Model.Enums.Enum.UserType.Online).ToString();
 
             if (model.UserType == ((int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory).ToString())
             {
-                ViewBag.DisplayAD = "display:block";
-                ViewBag.DisplayOnline = "display:none";
+                ViewBag.DisplayAD = "";
+                ViewBag.DisplayOnline = "d-none";
             }
             string successMessage = string.Empty;
             ViewBag.MessageType = BLL.Enum.MessageType.success.ToString();
@@ -98,14 +110,14 @@ namespace COE.Survey.Web
                 case (int)Common.Model.Enums.Enum.SaveStaus.NotExist:
                     successMessage = SecurityResources.UserNotExist;
                     ViewBag.MessageType = BLL.Enum.MessageType.danger.ToString();
-                    ViewBag.DisplayAD = "display:block";
-                    ViewBag.DisplayOnline = "display:none";
+                    ViewBag.DisplayAD = "";
+                    ViewBag.DisplayOnline = "d-none";
                     break;
                 case (int)Common.Model.Enums.Enum.SaveStaus.AlreadyExist:
                     successMessage = SecurityResources.UserAlreadyRegistred;
                     ViewBag.MessageType = BLL.Enum.MessageType.danger.ToString();
-                    ViewBag.DisplayAD = "display:block";
-                    ViewBag.DisplayOnline = "display:none";
+                    ViewBag.DisplayAD = "";
+                    ViewBag.DisplayOnline = "d-none";
                     break;
                 default:
                     break;
@@ -123,8 +135,8 @@ namespace COE.Survey.Web
 
             if (model.UserType == ((int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory).ToString())
             {
-                ViewBag.DisplayAD = "display:block";
-                ViewBag.DisplayOnline = "display:none";
+                ViewBag.DisplayAD = "";
+                ViewBag.DisplayOnline = "d-none";
                 bool isUserExist = false;
                 try
                 {
@@ -165,12 +177,12 @@ namespace COE.Survey.Web
                 UnitOfWork.Save();
 
                 Session["Message"] = SecurityResources.UserCreatedWithAddRoleNotification;
-                return RedirectToAction("Users", "Security", new { UserType = model.UserType, uid = newID });
+                return RedirectToAction("Index", "Users", new { UserType = model.UserType, uid = newID });
             }
             else
             {
-                ViewBag.DisplayOnline = "display:block";
-                ViewBag.DisplayAD = "display:none";
+                ViewBag.DisplayOnline = "";
+                ViewBag.DisplayAD = "d-none";
 
                 ModelState.Remove("AccountViewModelActiveDirectory.FullName");
                 ModelState.Remove("AccountViewModelActiveDirectory.UserName");
@@ -248,18 +260,18 @@ namespace COE.Survey.Web
 
                     Session["Message"] = SecurityResources.UserCreatedWithAddRoleNotification;
                     //redirect to search page with created id
-                    return RedirectToAction("Users", "Security", new { UserType = model.UserType, uid = newID });
+                    return RedirectToAction("Index", "Users", new { UserType = model.UserType, uid = newID });
 
                 }
                 catch (TransactionAbortedException)
                 {
                     this.Header.ShowError(SharedResources.UnexpectedError, true);
                 }
-                return RedirectToAction("Users", "Security", new { UserType = model.UserType, uid = newID });
+                return RedirectToAction("Index", "Users", new { UserType = model.UserType, uid = newID });
             }
         }
 
-        [ModuleAuthorize("Security", "User", ActionName = "Update")]
+        //[ModuleAuthorize("Security", "User", ActionName = "Update")]
         [HttpGet]
         public ActionResult Edit(Guid? id, int? type, int? success)
         {
@@ -280,13 +292,13 @@ namespace COE.Survey.Web
             ViewBag.SuccessMessage = successMessage;
 
             //get Type
-            var usd = UnitOfWork.UserDisplay.GetByQuery(x => x.ID == id).FirstOrDefault();
+            var usd = UnitOfWork.UserDisplay.GetByQuery(x => x.AspNetUserID == id).FirstOrDefault();
             if (usd.AspNetUserID != null)
             {
                 var aspUser = UnitOfWork.AspNetUsers.GetByQuery(x => x.Id == usd.AspNetUserID).FirstOrDefault();
 
-                ViewBag.DisplayOnline = "display:block";
-                ViewBag.DisplayAD = "display:none";
+                ViewBag.DisplayOnline = "";
+                ViewBag.DisplayAD = "d-none";
 
                 var UserDisplay = UnitOfWork.UserDisplay.GetByQuery(x => x.ID == id).FirstOrDefault();
 
@@ -303,8 +315,8 @@ namespace COE.Survey.Web
             }
             else
             {
-                ViewBag.DisplayAD = "display:block";
-                ViewBag.DisplayOnline = "display:none";
+                ViewBag.DisplayAD = "";
+                ViewBag.DisplayOnline = "d-none";
 
                 var UserDisplay = UnitOfWork.UserDisplay.GetByQuery(x => x.ID == id).FirstOrDefault();
 
@@ -327,7 +339,7 @@ namespace COE.Survey.Web
         {
             try
             {
-                var userDisplay = UnitOfWork.UserDisplay.GetByQuery(x => x.ID == id).FirstOrDefault();
+                var userDisplay = UnitOfWork.UserDisplay.GetByQuery(x => x.AspNetUserID == id).FirstOrDefault();
                 var aspID = userDisplay.AspNetUserID;
 
                 // is online user
@@ -336,8 +348,8 @@ namespace COE.Survey.Web
                     var user = UsersFacade.FindById(aspID.Value);
                     if (user != null)
                     {
-                        ViewBag.DisplayOnline = "display:block";
-                        ViewBag.DisplayAD = "display:none";
+                        ViewBag.DisplayOnline = "";
+                        ViewBag.DisplayAD = "d-none";
 
                         ModelState.Remove("AccountViewModelActiveDirectory.FullName");
                         ModelState.Remove("AccountViewModelActiveDirectory.UserName");
@@ -402,5 +414,184 @@ namespace COE.Survey.Web
                 return View(model);
             }
         }
+
+
+        //[ModuleAuthorize("Security", "User", ActionName = "UserRole")]
+        public ActionResult UserRole(Guid? id, int? type)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("users");
+            }
+
+            TempData["type"] = type;
+
+            // Get All Roles
+
+            var allowedRoles = UnitOfWork.AspNetRoles.GetAllowedRoleForUser(User.Identity.Name, Guid.Parse(Helpers.LookupValues.AspNetRoles.Values.SystemAdmin));
+            var data = UnitOfWork.AspNetRoles.GetByQuery(q => allowedRoles.Contains(q.Id)).ToList();
+
+            //get user roles
+
+            var userRole = UnitOfWork.UserDisplay.GetByQuery(a => a.AspNetUserID == id).FirstOrDefault().AspNetRoles.ToList();
+            //var userRole = UnitOfWork.UserDisplay.GetById(id).AspNetRoles.ToList();
+            var currentUserRoleIds = userRole.Select(x => x.Id);
+
+            foreach (var item in data)
+            {
+                foreach (var userId in currentUserRoleIds)
+                {
+                    if (item.Id == userId)
+                    {
+                        item.IsSelected = true;
+                    }
+                }
+            }
+            return View(data.OrderBy(o => o.Priority.Value).ToList());
+        }
+
+
+        [HttpPost]
+        public ActionResult UserRole(Guid? id, List<AspNetRoles> model)
+        {
+            Guid uid = id.Value;
+            string type = TempData.Peek("type").ToString();
+
+            //get all selected Roles
+            var selectedRoles = model.Where(x => x.IsSelected == true).ToList();
+            var selectedUser = UnitOfWork.UserDisplay.GetByQuery(a=> a.AspNetUserID == uid).FirstOrDefault();
+
+            //delete all user roles
+            var userRole = UnitOfWork.UserDisplay.GetByQuery(a => a.AspNetUserID == uid).FirstOrDefault().AspNetRoles.ToList();
+            if (userRole.Count > 0)
+            {
+                foreach (var item in userRole)
+                {
+                    selectedUser.AspNetRoles.Remove(item);
+                }
+                //commit delete
+                UnitOfWork.Save();
+            }
+
+            using (var ctx = new Common.DAL.COEEntities())
+            {
+                var user = ctx.UserDisplay.FirstOrDefault(x => x.AspNetUserID == uid);
+
+                foreach (var item in selectedRoles)
+                {
+                    var role = ctx.AspNetRoles.Find(item.Id);
+                    role.CreatedBy = UserName;
+                    role.UpdatedBy = UserName;
+                    role.UpdatedOn = DateTime.Now;
+                    role.UserDisplay.Add(user);
+                }
+
+                try
+                {
+                    ctx.SaveChanges();
+                    TempData["SuccessMessage"] = SecurityResources.RoleSavedSuccessMessage;
+                    return RedirectToAction("UserRole", "Users", new { @type = type });
+                }
+                catch (Exception)
+                {
+                    TempData["SuccessMessage"] = SecurityResources.ErrorOccured;
+                    return RedirectToAction("UserRole", "Users", new { @type = type });
+                }
+            }
+
+        }
+
+        [HttpPost]
+        public JsonResult CheckUserExist(string userName, string userId, int userType, string email, string controller, string action)
+        {
+            //Check if USer Exist
+            UserDisplay user = new UserDisplay();
+            if (userType == (int)COE.Common.Model.Enums.Enum.UserType.Online)
+            {
+                if (!string.IsNullOrEmpty(userId))
+                {
+                    user = UnitOfWork.UserDisplay.GetByQuery(x => x.AspNetUserID == new Guid(userId) && x.IsActive == true).FirstOrDefault();
+                }
+
+                if (user == null)
+                {
+
+                    Guid AspUser = new Guid(userId);
+                    user = UnitOfWork.UserDisplay.Add(new UserDisplay
+
+                    { LoginName = userName, DisplayName = userName, ID = Guid.NewGuid(), AspNetUserID = AspUser, CreatedBy = userName, UpdatedOn = DateTime.Now, UpdatedBy = userName, IsActive = true });
+
+
+                    UnitOfWork.Save();
+                }
+            }
+            else
+            {
+                Guid AdUserID = new Guid(userId);
+                user.ID = AdUserID;
+            }
+            if (user.ID != null)
+            {
+                TempData["uid"] = user.ID;
+            }
+            return Json(new { success = "Success", Result = Url.Action(action, controller, new { id = user.ID, type = userType }), ErrorMessage = string.Empty }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ActiveDeActiveUser(bool stateParam, Guid? userId)
+        {
+            try
+            {
+                //AD Users
+                var aspUser = UnitOfWork.AspNetUsers.GetById(userId);
+                if (aspUser == null)
+                {
+
+                    var userdisplay = UnitOfWork.UserDisplay.GetById(userId);
+                    userdisplay.IsActive = stateParam;
+                    UnitOfWork.UserDisplay.Update(userdisplay);
+                    UnitOfWork.Save();
+                    return Json(new
+                    {
+                        success = true,
+                        Result = "",
+                        ResultMessage = "",
+                        ErrorMessage = string.Empty
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
+                //Online Users
+                else
+                {
+
+                    var onlineUser = UnitOfWork.AspNetUsers.GetById(userId);
+                    onlineUser.IsActive = stateParam;
+                    onlineUser.UserDisplay.FirstOrDefault().IsActive = stateParam;
+                    UnitOfWork.AspNetUsers.Update(onlineUser);
+                    UnitOfWork.Save();
+
+                    return Json(new
+                    {
+                        success = true,
+                        Result = "",
+                        ResultMessage = "",
+                        ErrorMessage = string.Empty
+                    }, JsonRequestBehavior.AllowGet);
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    Result = Common.Model.Enums.Enum.SaveStaus.ItemError,
+                    ErrorMessage = SecurityResources.ErrorOccured
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
     }
 }

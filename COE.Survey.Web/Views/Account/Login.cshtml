@@ -68,6 +68,8 @@
                 <div class="d-flex flex-column">
                     <h1 class="login__title">@UsersMgmtResources.EnterCredentials</h1>
 
+                    @Html.Partial("_Header")
+
                     <div class="login__input">
                         <label class="form-label">@UsersMgmtResources.UserName</label>
                         <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="name@example.com" name="UserName" />

@@ -12,9 +12,11 @@ namespace COE.Common.Model.ViewModels
 {
     public class AspNetUsersSearchModel
     {
-        [Display(Name = "UserName", ResourceType = typeof(SecurityResources))]
+        
         //public string UserName { get; set; }
         private string _userName;
+        
+        [Display(Name = "UserName", ResourceType = typeof(SecurityResources))]
         public string UserName
         {
             get
@@ -34,8 +36,10 @@ namespace COE.Common.Model.ViewModels
         [Display(Name = "UserType", ResourceType = typeof(SecurityResources))]
         public string UserType { get; set; }
 
-        [Display(Name = "Email", ResourceType = typeof(SecurityResources))]
+        
         private string _email;
+
+        [Display(Name = "Email", ResourceType = typeof(SecurityResources))]
         public string Email
         {
             get
@@ -70,6 +74,8 @@ namespace COE.Common.Model.ViewModels
         public List<AllUsersModel> AllUsersList { get; set; }
 
         public StaticPagedList<AllUsersModel> AllUsers { get; set; }
+
+        public StaticPagedList<AccountViewModel> Items { get; set; }
 
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; }
