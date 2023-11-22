@@ -21,6 +21,8 @@
         {
             @Html.AntiForgeryToken()
 
+            @Html.Partial("_Header")
+
             <div class="row">
                 <div class="col-md-12">
                     @if (ViewBag.SuccessMessage != null && !string.IsNullOrEmpty(ViewBag.SuccessMessage))
@@ -85,7 +87,7 @@
                 </div>
 
             </div>
-            
+
 
 
             <!-- Action btn -->

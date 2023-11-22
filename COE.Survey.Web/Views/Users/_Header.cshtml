@@ -1,0 +1,39 @@
+﻿@using COE.Common.Helper
+
+@{
+    var messages = (HttpContext.Current.Items["HeaderMessages"] as List<MessageItem>) ?? new List<MessageItem>();
+    //MessageItem item = new MessageItem();
+    //item.Message = "testc";
+    //item.AlertCssClass = AlertClasses.Success;
+
+    //List<MessageItem> messages = new List<MessageItem>();
+    //messages.Add(item);
+
+    if (messages.Any())
+    {
+        @*<hr/>*@
+    }
+
+    <br />
+    foreach (var message in messages)
+    {
+        // string urllink = "";
+        <div id="layoutAlertMessage" class="alert @message.AlertCssClass @(message.Dismissable ? "alert-dismissable" : null)">
+            @if (message.Dismissable)
+            {
+                @*<img alt="" src="/Content/images/ar/@alert.AlertIcon"/>*@
+
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            }
+            @if (message.UrlLink != null)
+            {
+                @Html.Raw(message.Message)
+                <a title="@message.UrlLinkTitle" href="@message.UrlLink"> @message.UrlTitle </a>
+            }
+            else
+            {
+                @Html.Raw(message.Message)
+            }
+        </div>
+    }
+}

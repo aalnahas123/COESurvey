@@ -131,7 +131,7 @@ namespace COE.Common.Model.ViewModels
         /// <summary>
         ///     Gets or sets the full name.
         /// </summary>
-        [Required(ErrorMessageResourceType = typeof(SharedResources), ErrorMessageResourceName = "RequiredField")]
+        //[Required(ErrorMessageResourceType = typeof(SharedResources), ErrorMessageResourceName = "RequiredField")]
         [Display(Name = "DisplayName", ResourceType = typeof(SecurityResources))]
         [StringLength(150, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(SharedResources))]
         [DisableScripts]
@@ -139,7 +139,7 @@ namespace COE.Common.Model.ViewModels
 
         public Guid Id { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(SharedResources), ErrorMessageResourceName = "RequiredField")]
+        //[Required(ErrorMessageResourceType = typeof(SharedResources), ErrorMessageResourceName = "RequiredField")]
         [DataType(DataType.Text)]
         [Display(Name = "UserName", ResourceType = typeof(SecurityResources))]
         public string UserName { get; set; }

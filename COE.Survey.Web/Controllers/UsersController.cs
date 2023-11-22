@@ -21,7 +21,7 @@ using Commons.Framework.Data;
 namespace COE.Survey.Web
 {
     [Authorize]
-    //[ModuleAuthorize("Security", "User")]
+    [ModuleAuthorize("Survey", "SurveyModule")]
     public class UsersController : BaseController<COEUoW>
     {
         public ActionResult Index(AspNetUsersSearchModel model, int? success)
@@ -30,6 +30,39 @@ namespace COE.Survey.Web
 
 
             var usersQuery = UnitOfWork.UserDisplay.GetAll();
+
+            if (!string.IsNullOrEmpty(model.NationalId))
+            {
+                usersQuery = usersQuery.Where(x => x.AspNetUserID != null && x.AspNetUsers.NationalId.Contains(model.NationalId));
+            }
+
+            if (!string.IsNullOrEmpty(model.UserName))
+            {
+                usersQuery = usersQuery.Where(x => x.LoginName.ToLower().Contains(model.UserName.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(model.UserNameOnline))
+            {
+                usersQuery = usersQuery.Where(x => x.AspNetUserID != null && x.AspNetUsers.UserName.ToLower().Contains(model.UserNameOnline.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(model.Email))
+            {
+                usersQuery = usersQuery.Where(x => x.AspNetUserID != null && x.AspNetUsers.Email.ToLower().Contains(model.Email.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(model.UserType))
+            {
+                if (model.UserType == "1")
+                {
+                    usersQuery = usersQuery.Where(x => x.AspNetUserID == null);
+                }
+                else if (model.UserType == "2")
+                {
+                    usersQuery = usersQuery.Where(x => x.AspNetUserID != null);
+                }
+
+            }
 
             //var aspNetUsers = UnitOfWork.AspNetUsers.GetAll().Where(u => u.UserDisplay.Any());
             var users = usersQuery
@@ -43,19 +76,7 @@ namespace COE.Survey.Web
                 Id = x.AspNetUsers.Id,
                 IsActive = x.IsActive,
                 Type = x.AspNetUsers != null ? ((int)COE.Common.Model.Enums.Enum.UserType.Online) : ((int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory)
-            }).ToList();
-
-            if (!string.IsNullOrEmpty(model.NationalId))
-            {
-                users = users.Where(x => x.NationalId.Contains(model.NationalId)).ToList();
-            }
-            if (!string.IsNullOrEmpty(model.UserName))
-            {
-                users = users.Where(x => x.FullName.ToLower().Contains(model.UserName.ToLower())).ToList();
-            }
-
-
-
+            });
 
 
             if (model != null)
@@ -83,7 +104,7 @@ namespace COE.Survey.Web
         // GET: Show view
         //[ModuleAuthorize("Training", "Centers",ActionName ="AddCenter")]
 
-        //[ModuleAuthorize("Security", "User", ActionName = "New")]
+        //[ModuleAuthorize("Survey", "User", ActionName = "New")]
         [HttpGet]
         public ActionResult Add(AccountViewModel model, int? success, string userType)
         {
@@ -271,7 +292,7 @@ namespace COE.Survey.Web
             }
         }
 
-        //[ModuleAuthorize("Security", "User", ActionName = "Update")]
+        [ModuleAuthorize("Survey", "SurveyModule", ActionName = "Update")]
         [HttpGet]
         public ActionResult Edit(Guid? id, int? type, int? success)
         {
@@ -292,15 +313,15 @@ namespace COE.Survey.Web
             ViewBag.SuccessMessage = successMessage;
 
             //get Type
-            var usd = UnitOfWork.UserDisplay.GetByQuery(x => x.AspNetUserID == id).FirstOrDefault();
-            if (usd.AspNetUserID != null)
+            var usd = UnitOfWork.UserDisplay.GetById(id);
+            if (usd.AspNetUsers != null)
             {
-                var aspUser = UnitOfWork.AspNetUsers.GetByQuery(x => x.Id == usd.AspNetUserID).FirstOrDefault();
+                var aspUser = usd.AspNetUsers;
 
                 ViewBag.DisplayOnline = "";
                 ViewBag.DisplayAD = "d-none";
 
-                var UserDisplay = UnitOfWork.UserDisplay.GetByQuery(x => x.ID == id).FirstOrDefault();
+                //var UserDisplay = UnitOfWork.UserDisplay.GetByQuery(x => x.ID == id).FirstOrDefault();
 
                 AccountViewModelEdit model = new AccountViewModelEdit();
 
@@ -318,7 +339,7 @@ namespace COE.Survey.Web
                 ViewBag.DisplayAD = "";
                 ViewBag.DisplayOnline = "d-none";
 
-                var UserDisplay = UnitOfWork.UserDisplay.GetByQuery(x => x.ID == id).FirstOrDefault();
+                var UserDisplay = UnitOfWork.UserDisplay.GetById(id);
 
                 AccountViewModelEdit model = new AccountViewModelEdit();
                 AccountViewModelActiveDirectory ad = new AccountViewModelActiveDirectory();
@@ -339,7 +360,7 @@ namespace COE.Survey.Web
         {
             try
             {
-                var userDisplay = UnitOfWork.UserDisplay.GetByQuery(x => x.AspNetUserID == id).FirstOrDefault();
+                var userDisplay = UnitOfWork.UserDisplay.GetById(id);
                 var aspID = userDisplay.AspNetUserID;
 
                 // is online user
@@ -391,7 +412,7 @@ namespace COE.Survey.Web
                         UnitOfWork.UserDisplay.Update(userDisplay);
                         UnitOfWork.Save();
 
-
+                        TempData["SuccessMessage"] = SecurityResources.UserSavedSuccessMessage;
                         return RedirectToAction("Edit", new { type = TempData["type"], success = (int)Common.Model.Enums.Enum.SaveStaus.Updated });
                     }
                 }
@@ -403,6 +424,8 @@ namespace COE.Survey.Web
 
                     UnitOfWork.UserDisplay.Update(userDisplay);
                     UnitOfWork.Save();
+
+                    TempData["SuccessMessage"] = SecurityResources.UserSavedSuccessMessage;
                     return RedirectToAction("Edit", new { type = TempData["type"], success = (int)Common.Model.Enums.Enum.SaveStaus.Updated });
 
                 }
@@ -416,7 +439,7 @@ namespace COE.Survey.Web
         }
 
 
-        //[ModuleAuthorize("Security", "User", ActionName = "UserRole")]
+        [ModuleAuthorize("Survey", "SurveyModule", ActionName = "UserRole")]
         public ActionResult UserRole(Guid? id, int? type)
         {
             if (id == null)
@@ -459,7 +482,20 @@ namespace COE.Survey.Web
 
             //get all selected Roles
             var selectedRoles = model.Where(x => x.IsSelected == true).ToList();
-            var selectedUser = UnitOfWork.UserDisplay.GetByQuery(a=> a.AspNetUserID == uid).FirstOrDefault();
+
+            if (selectedRoles == null || selectedRoles.Count == 0)
+            {
+                TempData["SuccessMessage"] = SecurityResources.OneRoleMustBeSelected;
+                return RedirectToAction("UserRole", "Users", new { @type = type });
+            }
+
+
+
+            var selectedUser = UnitOfWork.UserDisplay.GetByQuery(a => a.AspNetUserID == uid).FirstOrDefault();
+
+
+
+
 
             //delete all user roles
             var userRole = UnitOfWork.UserDisplay.GetByQuery(a => a.AspNetUserID == uid).FirstOrDefault().AspNetRoles.ToList();

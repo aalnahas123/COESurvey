@@ -1,6 +1,5 @@
 ﻿@using COE.Common.Localization.Security
 @using COE.Common.Localization
-@using COE.Survey.Web.Controllers
 
 @*@using COE.Security.Web.Helpers
     @using COE.Security.Model.LookupValues;*@
@@ -13,6 +12,8 @@
 
     bool isTest = true;
 
+
+    bool isAdmin = COE.Survey.Web.Helpers.LookupsHelper.IsCurrentUserAdmin();
     bool userRole = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("UserRole");
     bool userCollege = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("userCollege");
     bool userDetails = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("Details");
@@ -34,12 +35,12 @@
             <div class="col-md-6 mt-3">
                 <div class="mt-radio-inline">
                     <label class="mt-radio">
-                        @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory, new { @name = "uType", @onchange = "changeView(1)" })
+                        @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory, new { id = "choiceAD", @name = "uType", @onchange = "changeView(1)" })
                         @SecurityResources.ActiveDirectoryUser
                         <span></span>
                     </label>
                     <label class="mt-radio">
-                        @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.Online, new { @name = "uType", @onchange = "changeView(2)" })
+                        @Html.RadioButtonFor(model => model.UserType, (int)COE.Common.Model.Enums.Enum.UserType.Online, new { id = "choiceOnline", @name = "uType", @onchange = "changeView(2)" })
                         @SecurityResources.OnlineUser
                         <span></span>
                     </label>
@@ -51,7 +52,7 @@
 
         <div class="row justify-content-between">
             <div class="col-md-6 mt-3">
-                <div class="ADView @ViewBag.DisplayAD" >
+                <div class="ADView @ViewBag.DisplayAD">
                     <div class="form-group">
                         @Html.LabelFor(model => model.UserName, new { @class = "form-label" })
                         @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
@@ -76,12 +77,12 @@
                 </div>
 
                 <!-- Second Inner Column -->
-                <div class="col-md-6 d-flex flex-column mt-3">
+                @*<div class="col-md-6 d-flex flex-column mt-3">
 
                     @Html.LabelFor(model => model.NationalId, new { @class = "form-label" })
                     @Html.TextBoxFor(model => model.NationalId, new { @class = "form-control" })
 
-                </div>
+                </div>*@
                 <div class="col-md-6 d-flex flex-column mt-3">
 
                     @Html.LabelFor(model => model.UserName, new { @class = "form-label" })
@@ -133,7 +134,7 @@
                         <thead>
                             <tr>
                                 <th>@SecurityResources.UserName</th>
-                                <th>@SecurityResources.NationalId</th>
+                                @*<th>@SecurityResources.NationalId</th>*@
                                 <th>@SecurityResources.Email</th>
                                 <th>@SecurityResources.Phone</th>
                                 <th class="col-xs-10"> @SecurityResources.Actions </th>
@@ -148,7 +149,7 @@
                             {
                                 <tr>
                                     <td>@item.UserName</td>
-                                    <td>@item.NationalId</td>
+                                    @*<td>@item.NationalId</td>*@
                                     <td>@item.Email</td>
                                     <td>@item.PhoneNumber</td>
 
@@ -168,12 +169,12 @@
                                             </button>
                                         }
 
-                                        @if (Activate)
+                                        @if (Activate && item.UserName != COE.Survey.Web.Helpers.LookupsHelper.UserName)
                                         {
                                             if (item.IsActive)
                                             {
                                                 <button type="button"
-                                                        class="btn btn-success deactivate btnUser"
+                                                        class="btn deactivate btnUser"
                                                         style="color:red !important"
                                                         data-uid="@item.Id"
                                                         id="btn_@index"
@@ -186,12 +187,12 @@
                                             else
                                             {
                                                 <button type="button"
-                                                        class="btn btn-success activate btnUser" style="color:forestgreen !important"
+                                                        class="btn activate btnUser" style="color:ActiveBorder !important"
                                                         data-uid="@item.Id"
                                                         id="btn_@index"
                                                         title="Activate"
                                                         data-state="1">
-                                                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                                                    <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
 
                                                 </button>
                                             }
@@ -248,22 +249,7 @@
        success: function (result) {
 
            if (result.success) {
-               if (datastate == 0) {
-                   $('#' + elementId).html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>');
-                   $('#' + elementId).attr('title', 'Activate');
-                   $('#' + elementId).attr('data-original-title', 'Activate');
-                   $('#' + elementId).attr('style', 'color:forestgreen !important');
-                   $('#' + elementId).attr('data-state', '1');
-                   toastr.success('@SecurityResources.DeactivateSuccess');
-               }
-               else {
-                   $('#' + elementId).html('<i class="fa fa-ban" aria-hidden="true"></i>');
-                   $('#' + elementId).attr('title', 'Deactivate');
-                   $('#' + elementId).attr('data-original-title', 'Deactivate');
-                   $('#' + elementId).attr('style', 'color:red !important');
-                   $('#' + elementId).attr('data-state', '0');
-                   toastr.success('@SharedResources.ActivateSuccess');
-               }
+               window.location.href = '@Url.Action("Index", "Users")';
            }
            else {
                toastr.error('@SharedResources.UnexpectedError');
@@ -275,7 +261,7 @@
    });
 
          } else {
-            
+
          }
 
 
@@ -309,7 +295,17 @@
 
 
     $(document).ready(function () {
-        changeView(2);
+
+        var currentType = '@Model.UserType';
+
+        if (currentType == "2") {
+            $("#choiceOnline").prop("checked", true);
+            changeView("2");
+        }
+        else {
+            $("#choiceAD").prop("checked", true);
+            changeView("1");
+        }
     });
 
 </script>

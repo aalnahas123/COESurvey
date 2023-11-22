@@ -368,6 +368,7 @@
     <Content Include="Views\Surveys\Dashboard.cshtml" />
     <Content Include="Views\Users\UserRole.cshtml" />
     <Content Include="Views\Account\_Header.cshtml" />
+    <Content Include="Views\Users\_Header.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1015,6 +1015,15 @@ namespace COE.Common.Localization.Security {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The user should have at least one role..
+        /// </summary>
+        public static string OneRoleMustBeSelected {
+            get {
+                return ResourceManager.GetString("OneRoleMustBeSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Online.
         /// </summary>
         public static string OnlineUser {

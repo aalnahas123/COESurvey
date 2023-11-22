@@ -576,4 +576,7 @@
   <data name="PleaseAddCollegesToUser" xml:space="preserve">
     <value>Please add colleges to user</value>
   </data>
+  <data name="OneRoleMustBeSelected" xml:space="preserve">
+    <value>The user should have at least one role.</value>
+  </data>
 </root>

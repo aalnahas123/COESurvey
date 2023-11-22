@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace COE.Survey.Web.Helpers
+namespace COE.Survey.BLL.Helpers
 {
     #region
 

@@ -263,5 +263,18 @@ namespace COE.Survey.Web.Helpers
 
             }
         }
+
+        public static bool IsCurrentUserAdmin()
+        {
+            try
+            {
+                return GetCurrentUserRoles(System.Web.HttpContext.Current.User.Identity.Name).Contains(Guid.Parse(Helpers.LookupValues.AspNetRoles.Values.SystemAdmin));
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
     }
 }

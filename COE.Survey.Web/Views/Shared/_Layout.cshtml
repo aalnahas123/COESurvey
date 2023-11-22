@@ -1,6 +1,10 @@
 ﻿@using COE.Common.Localization
 @using Commons.Framework.Globalization
 
+@{
+    bool isAdmin = COE.Survey.Web.Helpers.LookupsHelper.IsCurrentUserAdmin();
+}
+
 <!DOCTYPE html>
 <html lang="@CultureHelper.CurrentLanguage" dir="@CultureHelper.CurrentDirection">
 
@@ -65,13 +69,17 @@
                                 <a class="dropdown-item" href="#" id="english">English</a>
                                 <a class="dropdown-item" href="#" id="arabic">العربية</a>
                                 <div class="dropdown-divider"></div>
+                                @if (isAdmin)
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("Index","Users")">@UsersMgmtResources.UsersManagment</a>
+                                }
                                 <a class="dropdown-item" href="@Url.Action("Login","Account")">@SurveysResources.Logout</a>
                             </ul>
                         </div>
                     }
 
 
-                    
+
                 </div>
             </div>
         </nav>
