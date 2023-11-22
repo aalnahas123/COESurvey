@@ -64,16 +64,18 @@ namespace COE.Survey.Web
 
             }
 
-            //var aspNetUsers = UnitOfWork.AspNetUsers.GetAll().Where(u => u.UserDisplay.Any());
+            var aspNetUsers = UnitOfWork.AspNetUsers.GetAll().Where(u => u.UserDisplay.Any());
+
+
             var users = usersQuery
             .ToList().Select(x => new AccountViewModel
             {
-                NationalId = x.AspNetUsers.NationalId ?? SecurityResources.EmptyValue,
-                Email = x.AspNetUsers.Email ?? SecurityResources.EmptyValue,
-                FullName = x.AspNetUsers.FullName ?? SecurityResources.EmptyValue,
-                UserName = x.AspNetUsers.UserName ?? SecurityResources.EmptyValue,
-                PhoneNumber = x.AspNetUsers.PhoneNumber ?? SecurityResources.EmptyValue,
-                Id = x.AspNetUsers.Id,
+                NationalId = x.AspNetUsers?.NationalId ?? SecurityResources.EmptyValue,
+                Email = x.AspNetUsers != null ? x.AspNetUsers.Email : x.LoginName.Replace("coe\\", "") + ".coe.com.sa",
+                FullName = x.AspNetUsers != null ? x.AspNetUsers.FullName : x.DisplayName,
+                UserName = x.AspNetUsers != null ? x.AspNetUsers.UserName : x.LoginName.Replace("coe\\", ""),
+                PhoneNumber = x.AspNetUsers?.PhoneNumber ?? SecurityResources.EmptyValue,
+                Id = x.ID,
                 IsActive = x.IsActive,
                 Type = x.AspNetUsers != null ? ((int)COE.Common.Model.Enums.Enum.UserType.Online) : ((int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory)
             });
@@ -168,18 +170,30 @@ namespace COE.Survey.Web
                         var user = UnitOfWork.UserDisplay.GetByQuery(x => x.LoginName.ToLower() == "coe\\" + model.AccountViewModelActiveDirectory.UserName.ToLower());
                         if (user.Count() > 0)
                         {
-                            return RedirectToAction("Add", new { success = (int)Common.Model.Enums.Enum.SaveStaus.AlreadyExist, userType = "1" });
+                            return RedirectToAction("Add", new
+                            {
+                                success = (int)Common.Model.Enums.Enum.SaveStaus.AlreadyExist,
+                                userType = "1"
+                            });
                         }
 
                     }
                     else
                     {
-                        return RedirectToAction("Add", new { success = (int)Common.Model.Enums.Enum.SaveStaus.NotExist, userType = "1" });
+                        return RedirectToAction("Add", new
+                        {
+                            success = (int)Common.Model.Enums.Enum.SaveStaus.NotExist,
+                            userType = "1"
+                        });
                     }
                 }
                 catch (Exception ex)
                 {
-                    return RedirectToAction("Add", new { success = (int)Common.Model.Enums.Enum.SaveStaus.NotExist, userType = "1" });
+                    return RedirectToAction("Add", new
+                    {
+                        success = (int)Common.Model.Enums.Enum.SaveStaus.NotExist,
+                        userType = "1"
+                    });
                 }
 
                 var userdisplay = new UserDisplay
@@ -198,7 +212,11 @@ namespace COE.Survey.Web
                 UnitOfWork.Save();
 
                 Session["Message"] = SecurityResources.UserCreatedWithAddRoleNotification;
-                return RedirectToAction("Index", "Users", new { UserType = model.UserType, uid = newID });
+                return RedirectToAction("Index", "Users", new
+                {
+                    UserType = model.UserType,
+                    uid = newID
+                });
             }
             else
             {
@@ -281,14 +299,22 @@ namespace COE.Survey.Web
 
                     Session["Message"] = SecurityResources.UserCreatedWithAddRoleNotification;
                     //redirect to search page with created id
-                    return RedirectToAction("Index", "Users", new { UserType = model.UserType, uid = newID });
+                    return RedirectToAction("Index", "Users", new
+                    {
+                        UserType = model.UserType,
+                        uid = newID
+                    });
 
                 }
                 catch (TransactionAbortedException)
                 {
                     this.Header.ShowError(SharedResources.UnexpectedError, true);
                 }
-                return RedirectToAction("Index", "Users", new { UserType = model.UserType, uid = newID });
+                return RedirectToAction("Index", "Users", new
+                {
+                    UserType = model.UserType,
+                    uid = newID
+                });
             }
         }
 
@@ -296,7 +322,8 @@ namespace COE.Survey.Web
         [HttpGet]
         public ActionResult Edit(Guid? id, int? type, int? success)
         {
-            if (id == null) return RedirectToAction("Index");
+            if (id == null)
+                return RedirectToAction("Index");
             TempData["type"] = type;
             string successMessage = string.Empty;
             switch (success)
@@ -413,7 +440,11 @@ namespace COE.Survey.Web
                         UnitOfWork.Save();
 
                         TempData["SuccessMessage"] = SecurityResources.UserSavedSuccessMessage;
-                        return RedirectToAction("Edit", new { type = TempData["type"], success = (int)Common.Model.Enums.Enum.SaveStaus.Updated });
+                        return RedirectToAction("Edit", new
+                        {
+                            type = TempData["type"],
+                            success = (int)Common.Model.Enums.Enum.SaveStaus.Updated
+                        });
                     }
                 }
                 else
@@ -426,7 +457,11 @@ namespace COE.Survey.Web
                     UnitOfWork.Save();
 
                     TempData["SuccessMessage"] = SecurityResources.UserSavedSuccessMessage;
-                    return RedirectToAction("Edit", new { type = TempData["type"], success = (int)Common.Model.Enums.Enum.SaveStaus.Updated });
+                    return RedirectToAction("Edit", new
+                    {
+                        type = TempData["type"],
+                        success = (int)Common.Model.Enums.Enum.SaveStaus.Updated
+                    });
 
                 }
                 return View(model);
@@ -456,7 +491,7 @@ namespace COE.Survey.Web
 
             //get user roles
 
-            var userRole = UnitOfWork.UserDisplay.GetByQuery(a => a.AspNetUserID == id).FirstOrDefault().AspNetRoles.ToList();
+            var userRole = UnitOfWork.UserDisplay.GetByQuery(a => a.ID == id).FirstOrDefault().AspNetRoles.ToList();
             //var userRole = UnitOfWork.UserDisplay.GetById(id).AspNetRoles.ToList();
             var currentUserRoleIds = userRole.Select(x => x.Id);
 
@@ -486,19 +521,22 @@ namespace COE.Survey.Web
             if (selectedRoles == null || selectedRoles.Count == 0)
             {
                 TempData["SuccessMessage"] = SecurityResources.OneRoleMustBeSelected;
-                return RedirectToAction("UserRole", "Users", new { @type = type });
+                return RedirectToAction("UserRole", "Users", new
+                {
+                    @type = type
+                });
             }
 
 
 
-            var selectedUser = UnitOfWork.UserDisplay.GetByQuery(a => a.AspNetUserID == uid).FirstOrDefault();
+            var selectedUser = UnitOfWork.UserDisplay.GetByQuery(a => a.ID == uid).FirstOrDefault();
 
 
 
 
 
             //delete all user roles
-            var userRole = UnitOfWork.UserDisplay.GetByQuery(a => a.AspNetUserID == uid).FirstOrDefault().AspNetRoles.ToList();
+            var userRole = UnitOfWork.UserDisplay.GetByQuery(a => a.ID == uid).FirstOrDefault().AspNetRoles.ToList();
             if (userRole.Count > 0)
             {
                 foreach (var item in userRole)
@@ -511,7 +549,7 @@ namespace COE.Survey.Web
 
             using (var ctx = new Common.DAL.COEEntities())
             {
-                var user = ctx.UserDisplay.FirstOrDefault(x => x.AspNetUserID == uid);
+                var user = ctx.UserDisplay.FirstOrDefault(x => x.ID == uid);
 
                 foreach (var item in selectedRoles)
                 {
@@ -526,12 +564,18 @@ namespace COE.Survey.Web
                 {
                     ctx.SaveChanges();
                     TempData["SuccessMessage"] = SecurityResources.RoleSavedSuccessMessage;
-                    return RedirectToAction("UserRole", "Users", new { @type = type });
+                    return RedirectToAction("UserRole", "Users", new
+                    {
+                        @type = type
+                    });
                 }
                 catch (Exception)
                 {
                     TempData["SuccessMessage"] = SecurityResources.ErrorOccured;
-                    return RedirectToAction("UserRole", "Users", new { @type = type });
+                    return RedirectToAction("UserRole", "Users", new
+                    {
+                        @type = type
+                    });
                 }
             }
 
@@ -555,7 +599,16 @@ namespace COE.Survey.Web
                     Guid AspUser = new Guid(userId);
                     user = UnitOfWork.UserDisplay.Add(new UserDisplay
 
-                    { LoginName = userName, DisplayName = userName, ID = Guid.NewGuid(), AspNetUserID = AspUser, CreatedBy = userName, UpdatedOn = DateTime.Now, UpdatedBy = userName, IsActive = true });
+                    {
+                        LoginName = userName,
+                        DisplayName = userName,
+                        ID = Guid.NewGuid(),
+                        AspNetUserID = AspUser,
+                        CreatedBy = userName,
+                        UpdatedOn = DateTime.Now,
+                        UpdatedBy = userName,
+                        IsActive = true
+                    });
 
 
                     UnitOfWork.Save();
@@ -570,7 +623,16 @@ namespace COE.Survey.Web
             {
                 TempData["uid"] = user.ID;
             }
-            return Json(new { success = "Success", Result = Url.Action(action, controller, new { id = user.ID, type = userType }), ErrorMessage = string.Empty }, JsonRequestBehavior.AllowGet);
+            return Json(new
+            {
+                success = "Success",
+                Result = Url.Action(action, controller, new
+                {
+                    id = user.ID,
+                    type = userType
+                }),
+                ErrorMessage = string.Empty
+            }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
