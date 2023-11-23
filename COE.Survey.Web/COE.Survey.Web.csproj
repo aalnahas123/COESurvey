@@ -285,6 +285,7 @@
     <Content Include="Content\images\copy.svg" />
     <Content Include="Content\images\default300.png" />
     <Content Include="Content\images\element-3.svg" />
+    <Content Include="Content\images\england.svg" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\folder-2.svg" />
     <Content Include="Content\images\Frame.png" />
@@ -300,6 +301,7 @@
     <Content Include="Content\images\more.svg" />
     <Content Include="Content\images\surveys-logo.png" />
     <Content Include="Content\images\test.jpeg" />
+    <Content Include="Content\images\us.svg" />
     <Content Include="Content\js\main.js" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />

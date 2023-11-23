@@ -62,7 +62,16 @@
                                     type="button" id="dropdownMenuButton"
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                <img src="~/Content/images/Group.svg" alt="lang-flag" />
+                                @if (@CultureHelper.CurrentLanguage == "ar")
+                                {
+                                    <img src="~/Content/images/Group.svg" width="32px" alt="lang-flag" />
+                                }
+                                else
+                                {
+                                    <img src="~/Content/images/us.svg" width="26px" alt="lang-flag" />
+                                }
+
+
                                 @string.Format("{0}", CultureHelper.IsArabic ? "العربية" : "English")
                             </button>
                             <ul class="dropdown-menu">
