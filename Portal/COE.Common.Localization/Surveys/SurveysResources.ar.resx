@@ -261,6 +261,9 @@
   <data name="Surveys" xml:space="preserve">
     <value>الإستبيانات</value>
   </data>
+  <data name="SurveysForUser" xml:space="preserve">
+    <value>يوجد إستبيانات مرتبطة بهذا المستخدم</value>
+  </data>
   <data name="SurveysResults" xml:space="preserve">
     <value>نتائج الإستبيان</value>
   </data>

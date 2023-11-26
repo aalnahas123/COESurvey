@@ -9,7 +9,7 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 // <author>Usama Nada (usama.nada@gmail.com)</author>
-// <modifiedOn>2023-10-23T20:32:50.5738341+03:00</modifiedOn>
+// <modifiedOn>2023-11-26T10:44:52.8936962+03:00</modifiedOn>
 //------------------------------------------------------------------------------
 // ReSharper disable CheckNamespace
 namespace COE.Survey.BLL.Repositories

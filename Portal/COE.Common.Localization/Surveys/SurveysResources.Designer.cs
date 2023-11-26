@@ -493,6 +493,15 @@ namespace COE.Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are surveys associated to this user.
+        /// </summary>
+        public static string SurveysForUser {
+            get {
+                return ResourceManager.GetString("SurveysForUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Survey Results.
         /// </summary>
         public static string SurveysResults {

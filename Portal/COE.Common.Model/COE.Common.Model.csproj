@@ -176,9 +176,9 @@
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DataCollectionEntities.cs">
-      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DisabilityLevel_GetDisabilityLevels_Result.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>

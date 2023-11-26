@@ -261,6 +261,9 @@
   <data name="Surveys" xml:space="preserve">
     <value>Surveys</value>
   </data>
+  <data name="SurveysForUser" xml:space="preserve">
+    <value>There are surveys associated to this user</value>
+  </data>
   <data name="SurveysResults" xml:space="preserve">
     <value>Survey Results</value>
   </data>

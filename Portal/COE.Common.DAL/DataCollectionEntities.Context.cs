@@ -2686,5 +2686,14 @@ namespace COE.Common.DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetExamBookingPaymentInvoice_Result>("GetExamBookingPaymentInvoice", examBookingIdParameter, isCreditNoteParameter);
         }
+    
+        public virtual int DeleteUser(Nullable<System.Guid> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteUser", userIdParameter);
+        }
     }
 }
