@@ -428,3 +428,15 @@ body {
         color: white !important;
     }
 
+
+
+.survey-back-btn {
+    border-radius: 8px;
+    border: 1px solid #35489b;
+    background: #fff;
+    padding: 8px;
+    color: #35489b;
+    font-size: 16px;
+    font-weight: 400;
+    width: calc((100% - 24px) / 4);
+}
