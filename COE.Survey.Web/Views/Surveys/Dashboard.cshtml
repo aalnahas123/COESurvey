@@ -48,11 +48,19 @@
 
     var selectedLang = getLanguage();
 
+      var surveyAsJson = '@Model.ContentJson';
+  var surveyJson = surveyAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "").replace(/&#39;/g, "'").replace(/[\0-\x1F\x7F-\x9F]/g, "");
 
-    var surveyJson = '@Model.ContentJson'.replace(/&quot;/g, '"');
-    var json2 = '@Model.AnswerItems'.replace(/&quot;/g, '"');
+  var answerAsJson = '@Model.AnswerItems';
+  var answerJson = answerAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "").replace(/&#39;/g, "'").replace(/[\0-\x1F\x7F-\x9F]/g, "");
 
-    var surveyResults = JSON.parse(json2);
+    var dataFromServer = JSON.parse(answerJson);
+
+
+
+   
+
+    var surveyResults = JSON.parse(answerJson);
 
 
 

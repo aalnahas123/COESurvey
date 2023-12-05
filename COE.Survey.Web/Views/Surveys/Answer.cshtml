@@ -63,7 +63,7 @@
     var doAnimation = true;
 
     var surveyAsJson = '@Model.SurveyText';
-    json = surveyAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "").replace(/&#39;/g, "'");;
+    json = surveyAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "").replace(/&#39;/g, "'");
 
     var surveyJson = JSON.parse(json);
 
