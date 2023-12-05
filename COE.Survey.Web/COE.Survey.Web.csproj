@@ -279,7 +279,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap-datepicker.min.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\tabulator.min.css" />
     <Content Include="Content\images\book-saved.svg" />
     <Content Include="Content\images\coe-logo.svg" />
     <Content Include="Content\images\copy.svg" />
@@ -308,9 +312,17 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\bootstrap-datepicker.min.js" />
+    <Content Include="scripts\bootstrap.bundle.min.js" />
+    <Content Include="scripts\Chart.bundle.min.js" />
+    <Content Include="scripts\Chart.min.js" />
     <Content Include="scripts\custom.js" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="scripts\jquery.min.js" />
+    <Content Include="scripts\jspdf.min.js" />
+    <Content Include="scripts\jspdf.plugin.autotable.min.js" />
     <Content Include="scripts\sweetalert-2.1.2.min.js" />
+    <Content Include="scripts\tabulator.min.js" />
     <Content Include="Views\Surveys\Add.cshtml" />
     <Content Include="Views\Surveys\Answer.cshtml" />
     <Content Include="Views\Surveys\Approve.cshtml" />
