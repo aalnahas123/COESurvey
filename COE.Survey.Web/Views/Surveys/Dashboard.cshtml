@@ -37,6 +37,13 @@
 
         <div id="surveyVizPanel"></div>
     </div>
+
+    <!-- Action btn -->
+    <div class="d-flex survey-approve__actions">
+        <button class="survey-back-btn ms-auto" type="button" onclick="return goback()">
+            @SharedResources.Back
+        </button>
+    </div>
 </section>
 
 
@@ -46,25 +53,25 @@
 
 <script type="text/javascript">
 
-    var selectedLang = getLanguage();
+     var selectedLang = getLanguage();
 
-      var surveyAsJson = '@Model.ContentJson';
-  var surveyJson = surveyAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "").replace(/&#39;/g, "'").replace(/[\0-\x1F\x7F-\x9F]/g, "");
+    var surveyAsJson = '@Model.ContentJson';
+var surveyJson = surveyAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "").replace(/&#39;/g, "'").replace(/[\0-\x1F\x7F-\x9F]/g, "");
 
-  var answerAsJson = '@Model.AnswerItems';
-  var answerJson = answerAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "").replace(/&#39;/g, "'").replace(/[\0-\x1F\x7F-\x9F]/g, "");
+var answerAsJson = '@Model.AnswerItems';
+var answerJson = answerAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "").replace(/&#39;/g, "'").replace(/[\0-\x1F\x7F-\x9F]/g, "");
 
-    var dataFromServer = JSON.parse(answerJson);
-
-
-
-   
-
-    var surveyResults = JSON.parse(answerJson);
+  var dataFromServer = JSON.parse(answerJson);
 
 
 
-    const survey = new Survey.Model(surveyJson);
+
+
+  var surveyResults = JSON.parse(answerJson);
+
+
+
+  const survey = new Survey.Model(surveyJson);
 
 
 
@@ -93,7 +100,10 @@
 
 
 
-
+    function goback() {
+    window.location.href = '@Url.Action("Index", "Surveys")';
+    return false;
+}
 
 
 </script>

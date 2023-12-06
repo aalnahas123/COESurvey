@@ -37,6 +37,16 @@
 
         <div id="surveyDashboardContainer"></div>
     </div>
+
+
+
+    <!-- Action btn -->
+    <div class="d-flex survey-approve__actions">
+        <button class="survey-back-btn ms-auto" type="button" onclick="return goback()">
+            @SharedResources.Back
+        </button>
+    </div>
+
 </section>
 
 
@@ -75,6 +85,9 @@
     vizPanel.render("surveyDashboardContainer");
 
 
-
+    function goback() {
+    window.location.href = '@Url.Action("Index", "Surveys")';
+    return false;
+}
 
 </script>

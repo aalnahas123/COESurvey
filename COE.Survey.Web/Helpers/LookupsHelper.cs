@@ -37,7 +37,7 @@ namespace COE.Survey.Web.Helpers
         public static Guid UserId => System.Web.HttpContext.Current.User.Identity.GetUserId().To<Guid>();
         public static string UserName => System.Web.HttpContext.Current.User.Identity.GetUserName().To<string>();
 
-       
+
         public static List<SelectListItem> GetUserTypes()
         {
             using (var uow = new COEUoW())
@@ -72,7 +72,7 @@ namespace COE.Survey.Web.Helpers
                      }).ToList();
             }
         }
-        
+
         public static List<SelectListItem> GetLevels()
         {
             using (var uow = new COEUoW())
@@ -268,7 +268,18 @@ namespace COE.Survey.Web.Helpers
         {
             try
             {
-                return GetCurrentUserRoles(System.Web.HttpContext.Current.User.Identity.Name).Contains(Guid.Parse(Helpers.LookupValues.AspNetRoles.Values.SystemAdmin));
+                if (string.IsNullOrEmpty(System.Web.HttpContext.Current.User.Identity.Name))
+                {
+                    return false;
+                }
+
+                var roles = GetCurrentUserRoles(System.Web.HttpContext.Current.User.Identity.Name);
+                if (roles == null || !roles.Any())
+                {
+                    return false;
+                }
+
+                return roles.Contains(Guid.Parse(Helpers.LookupValues.AspNetRoles.Values.SystemAdmin));
             }
             catch (Exception ex)
             {
