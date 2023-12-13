@@ -130,7 +130,7 @@
           <Property Name="Value" Type="nvarchar" MaxLength="4000" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'survey2.common.TempNotificationQueue' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TempNotificationQueue">
           <Key>
             <PropertyRef Name="Id" />
@@ -618,6 +618,14 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="SurveyImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImgContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="SurveyModules">
           <Key>
             <PropertyRef Name="ID" />
@@ -640,7 +648,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <Property Name="IsRequired" Type="bit" />
           <Property Name="JsonContent" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Alert__AlertType__2E70E1FD">
+        <Association Name="FK__Alert__AlertType__5AB9788F">
           <End Role="AlertType" Type="Self.AlertType" Multiplicity="1" />
           <End Role="Alert" Type="Self.Alert" Multiplicity="*" />
           <ReferentialConstraint>
@@ -652,7 +660,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Alert__StageID__2F650636">
+        <Association Name="FK__Alert__StageID__5BAD9CC8">
           <End Role="Stage" Type="Self.Stage" Multiplicity="1" />
           <End Role="Alert" Type="Self.Alert" Multiplicity="*" />
           <ReferentialConstraint>
@@ -664,7 +672,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AspNetUse__UserI__38EE7070">
+        <Association Name="FK__AspNetUse__UserI__05A3D694">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
           <ReferentialConstraint>
@@ -676,7 +684,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AspNetUse__UserI__3AD6B8E2">
+        <Association Name="FK__AspNetUse__UserI__078C1F06">
           <End Role="UserDisplay" Type="Self.UserDisplay" Multiplicity="1" />
           <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
           <ReferentialConstraint>
@@ -688,7 +696,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__JobTy__4183B671">
+        <Association Name="FK__CollegeSt__JobTy__6442E2C9">
           <End Role="JobType" Type="Self.JobType" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -700,7 +708,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__Leave__4277DAAA">
+        <Association Name="FK__CollegeSt__Leave__65370702">
           <End Role="LeaveReason" Type="Self.LeaveReason" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -712,7 +720,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__Level__436BFEE3">
+        <Association Name="FK__CollegeSt__Level__662B2B3B">
           <End Role="StaffLevel" Type="Self.StaffLevel" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -724,7 +732,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__Quali__45544755">
+        <Association Name="FK__CollegeSt__Quali__671F4F74">
           <End Role="StaffQualification" Type="Self.StaffQualification" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -736,7 +744,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__Spesi__46486B8E">
+        <Association Name="FK__CollegeSt__Spesi__681373AD">
           <End Role="StaffSpecialization" Type="Self.StaffSpecialization" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -748,7 +756,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__TypeI__473C8FC7">
+        <Association Name="FK__CollegeSt__TypeI__690797E6">
           <End Role="StaffType" Type="Self.StaffType" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -760,7 +768,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__VisaT__4830B400">
+        <Association Name="FK__CollegeSt__VisaT__69FBBC1F">
           <End Role="VisaType" Type="Self.VisaType" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -808,7 +816,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ModuleRol__RoleI__4DE98D56">
+        <Association Name="FK__ModuleRol__RoleI__6EC0713C">
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
           <End Role="ModuleRole" Type="Self.ModuleRole" Multiplicity="*" />
           <ReferentialConstraint>
@@ -820,7 +828,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuestionA__Optio__5E1FF51F">
+        <Association Name="FK__QuestionA__Optio__7D0E9093">
           <End Role="QuestionOption" Type="Self.QuestionOption" Multiplicity="0..1" />
           <End Role="QuestionAnswer" Type="Self.QuestionAnswer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -844,7 +852,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuestionA__Surve__60083D91">
+        <Association Name="FK__QuestionA__Surve__7E02B4CC">
           <End Role="SurveyAnswer" Type="Self.SurveyAnswer" Multiplicity="1" />
           <End Role="QuestionAnswer" Type="Self.QuestionAnswer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -928,7 +936,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserActiv__Stage__361203C5">
+        <Association Name="FK__UserActiv__Stage__625A9A57">
           <End Role="Stage" Type="Self.Stage" Multiplicity="1" />
           <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="*" />
           <ReferentialConstraint>
@@ -940,7 +948,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserActiv__UserA__370627FE">
+        <Association Name="FK__UserActiv__UserA__634EBE90">
           <End Role="UserActivityType" Type="Self.UserActivityType" Multiplicity="1" />
           <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="*" />
           <ReferentialConstraint>
@@ -952,7 +960,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserColle__UserD__51BA1E3A">
+        <Association Name="FK__UserColle__UserD__72910220">
           <End Role="UserDisplay" Type="Self.UserDisplay" Multiplicity="1" />
           <End Role="UserCollege" Type="Self.UserCollege" Multiplicity="*" />
           <ReferentialConstraint>
@@ -976,7 +984,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserPermi__UserD__5772F790">
+        <Association Name="FK__UserPermi__UserD__76619304">
           <End Role="UserDisplay" Type="Self.UserDisplay" Multiplicity="1" />
           <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -988,7 +996,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserPermi__Visib__58671BC9">
+        <Association Name="FK__UserPermi__Visib__7755B73D">
           <End Role="VisibitlyRule" Type="Self.VisibitlyRule" Multiplicity="1" />
           <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1000,7 +1008,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserSpeci__UserD__595B4002">
+        <Association Name="FK__UserSpeci__UserD__793DFFAF">
           <End Role="UserDisplay" Type="Self.UserDisplay" Multiplicity="1" />
           <End Role="UserSpecialization" Type="Self.UserSpecialization" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1012,7 +1020,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Visibilty__Field__5B438874">
+        <Association Name="FK__Visibilty__Field__7C1A6C5A">
           <End Role="FieldVisibilty" Type="Self.FieldVisibilty" Multiplicity="1" />
           <End Role="VisibiltyRuleField" Type="Self.VisibiltyRuleField" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1024,7 +1032,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Visibilty__Modul__5C37ACAD">
+        <Association Name="FK__Visibilty__Modul__7A3223E8">
           <End Role="ModuleField" Type="Self.ModuleField" Multiplicity="1" />
           <End Role="VisibiltyRuleField" Type="Self.VisibiltyRuleField" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1036,7 +1044,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Visibilty__Visib__5D2BD0E6">
+        <Association Name="FK__Visibilty__Visib__7B264821">
           <End Role="VisibitlyRule" Type="Self.VisibitlyRule" Multiplicity="1" />
           <End Role="VisibiltyRuleField" Type="Self.VisibiltyRuleField" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1274,6 +1282,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <EntitySet Name="QuestionType" EntityType="Self.QuestionType" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="Survey" EntityType="Self.Survey" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyAnswer" EntityType="Self.SurveyAnswer" Schema="Surveys" store:Type="Tables" />
+          <EntitySet Name="SurveyImage" EntityType="Self.SurveyImage" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyModules" EntityType="Self.SurveyModules" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyQuestion" EntityType="Self.SurveyQuestion" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="TempNotificationQueue" EntityType="Self.TempNotificationQueue" store:Type="Tables" store:Schema="common">
@@ -1294,47 +1303,47 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
     [TempNotificationQueue].[UpdatedOn] AS [UpdatedOn]
     FROM [common].[TempNotificationQueue] AS [TempNotificationQueue]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Alert__AlertType__2E70E1FD" Association="Self.FK__Alert__AlertType__2E70E1FD">
+          <AssociationSet Name="FK__Alert__AlertType__5AB9788F" Association="Self.FK__Alert__AlertType__5AB9788F">
             <End Role="AlertType" EntitySet="AlertType" />
             <End Role="Alert" EntitySet="Alert" />
           </AssociationSet>
-          <AssociationSet Name="FK__Alert__StageID__2F650636" Association="Self.FK__Alert__StageID__2F650636">
+          <AssociationSet Name="FK__Alert__StageID__5BAD9CC8" Association="Self.FK__Alert__StageID__5BAD9CC8">
             <End Role="Stage" EntitySet="Stage" />
             <End Role="Alert" EntitySet="Alert" />
           </AssociationSet>
-          <AssociationSet Name="FK__AspNetUse__UserI__38EE7070" Association="Self.FK__AspNetUse__UserI__38EE7070">
+          <AssociationSet Name="FK__AspNetUse__UserI__05A3D694" Association="Self.FK__AspNetUse__UserI__05A3D694">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
           </AssociationSet>
-          <AssociationSet Name="FK__AspNetUse__UserI__3AD6B8E2" Association="Self.FK__AspNetUse__UserI__3AD6B8E2">
+          <AssociationSet Name="FK__AspNetUse__UserI__078C1F06" Association="Self.FK__AspNetUse__UserI__078C1F06">
             <End Role="UserDisplay" EntitySet="UserDisplay" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__JobTy__4183B671" Association="Self.FK__CollegeSt__JobTy__4183B671">
+          <AssociationSet Name="FK__CollegeSt__JobTy__6442E2C9" Association="Self.FK__CollegeSt__JobTy__6442E2C9">
             <End Role="JobType" EntitySet="JobType" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__Leave__4277DAAA" Association="Self.FK__CollegeSt__Leave__4277DAAA">
+          <AssociationSet Name="FK__CollegeSt__Leave__65370702" Association="Self.FK__CollegeSt__Leave__65370702">
             <End Role="LeaveReason" EntitySet="LeaveReason" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__Level__436BFEE3" Association="Self.FK__CollegeSt__Level__436BFEE3">
+          <AssociationSet Name="FK__CollegeSt__Level__662B2B3B" Association="Self.FK__CollegeSt__Level__662B2B3B">
             <End Role="StaffLevel" EntitySet="StaffLevel" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__Quali__45544755" Association="Self.FK__CollegeSt__Quali__45544755">
+          <AssociationSet Name="FK__CollegeSt__Quali__671F4F74" Association="Self.FK__CollegeSt__Quali__671F4F74">
             <End Role="StaffQualification" EntitySet="StaffQualification" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__Spesi__46486B8E" Association="Self.FK__CollegeSt__Spesi__46486B8E">
+          <AssociationSet Name="FK__CollegeSt__Spesi__681373AD" Association="Self.FK__CollegeSt__Spesi__681373AD">
             <End Role="StaffSpecialization" EntitySet="StaffSpecialization" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__TypeI__473C8FC7" Association="Self.FK__CollegeSt__TypeI__473C8FC7">
+          <AssociationSet Name="FK__CollegeSt__TypeI__690797E6" Association="Self.FK__CollegeSt__TypeI__690797E6">
             <End Role="StaffType" EntitySet="StaffType" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__VisaT__4830B400" Association="Self.FK__CollegeSt__VisaT__4830B400">
+          <AssociationSet Name="FK__CollegeSt__VisaT__69FBBC1F" Association="Self.FK__CollegeSt__VisaT__69FBBC1F">
             <End Role="VisaType" EntitySet="VisaType" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
@@ -1350,11 +1359,11 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             <End Role="Module" EntitySet="Module" />
             <End Role="ModuleRole" EntitySet="ModuleRole" />
           </AssociationSet>
-          <AssociationSet Name="FK__ModuleRol__RoleI__4DE98D56" Association="Self.FK__ModuleRol__RoleI__4DE98D56">
+          <AssociationSet Name="FK__ModuleRol__RoleI__6EC0713C" Association="Self.FK__ModuleRol__RoleI__6EC0713C">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="ModuleRole" EntitySet="ModuleRole" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuestionA__Optio__5E1FF51F" Association="Self.FK__QuestionA__Optio__5E1FF51F">
+          <AssociationSet Name="FK__QuestionA__Optio__7D0E9093" Association="Self.FK__QuestionA__Optio__7D0E9093">
             <End Role="QuestionOption" EntitySet="QuestionOption" />
             <End Role="QuestionAnswer" EntitySet="QuestionAnswer" />
           </AssociationSet>
@@ -1362,7 +1371,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             <End Role="SurveyQuestion" EntitySet="SurveyQuestion" />
             <End Role="QuestionAnswer" EntitySet="QuestionAnswer" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuestionA__Surve__60083D91" Association="Self.FK__QuestionA__Surve__60083D91">
+          <AssociationSet Name="FK__QuestionA__Surve__7E02B4CC" Association="Self.FK__QuestionA__Surve__7E02B4CC">
             <End Role="SurveyAnswer" EntitySet="SurveyAnswer" />
             <End Role="QuestionAnswer" EntitySet="QuestionAnswer" />
           </AssociationSet>
@@ -1390,15 +1399,15 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             <End Role="QuestionType" EntitySet="QuestionType" />
             <End Role="SurveyQuestion" EntitySet="SurveyQuestion" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserActiv__Stage__361203C5" Association="Self.FK__UserActiv__Stage__361203C5">
+          <AssociationSet Name="FK__UserActiv__Stage__625A9A57" Association="Self.FK__UserActiv__Stage__625A9A57">
             <End Role="Stage" EntitySet="Stage" />
             <End Role="UserActivity" EntitySet="UserActivity" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserActiv__UserA__370627FE" Association="Self.FK__UserActiv__UserA__370627FE">
+          <AssociationSet Name="FK__UserActiv__UserA__634EBE90" Association="Self.FK__UserActiv__UserA__634EBE90">
             <End Role="UserActivityType" EntitySet="UserActivityType" />
             <End Role="UserActivity" EntitySet="UserActivity" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserColle__UserD__51BA1E3A" Association="Self.FK__UserColle__UserD__51BA1E3A">
+          <AssociationSet Name="FK__UserColle__UserD__72910220" Association="Self.FK__UserColle__UserD__72910220">
             <End Role="UserDisplay" EntitySet="UserDisplay" />
             <End Role="UserCollege" EntitySet="UserCollege" />
           </AssociationSet>
@@ -1406,27 +1415,27 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             <End Role="ModuleAction" EntitySet="ModuleAction" />
             <End Role="UserPermission" EntitySet="UserPermission" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserPermi__UserD__5772F790" Association="Self.FK__UserPermi__UserD__5772F790">
+          <AssociationSet Name="FK__UserPermi__UserD__76619304" Association="Self.FK__UserPermi__UserD__76619304">
             <End Role="UserDisplay" EntitySet="UserDisplay" />
             <End Role="UserPermission" EntitySet="UserPermission" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserPermi__Visib__58671BC9" Association="Self.FK__UserPermi__Visib__58671BC9">
+          <AssociationSet Name="FK__UserPermi__Visib__7755B73D" Association="Self.FK__UserPermi__Visib__7755B73D">
             <End Role="VisibitlyRule" EntitySet="VisibitlyRule" />
             <End Role="UserPermission" EntitySet="UserPermission" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserSpeci__UserD__595B4002" Association="Self.FK__UserSpeci__UserD__595B4002">
+          <AssociationSet Name="FK__UserSpeci__UserD__793DFFAF" Association="Self.FK__UserSpeci__UserD__793DFFAF">
             <End Role="UserDisplay" EntitySet="UserDisplay" />
             <End Role="UserSpecialization" EntitySet="UserSpecialization" />
           </AssociationSet>
-          <AssociationSet Name="FK__Visibilty__Field__5B438874" Association="Self.FK__Visibilty__Field__5B438874">
+          <AssociationSet Name="FK__Visibilty__Field__7C1A6C5A" Association="Self.FK__Visibilty__Field__7C1A6C5A">
             <End Role="FieldVisibilty" EntitySet="FieldVisibilty" />
             <End Role="VisibiltyRuleField" EntitySet="VisibiltyRuleField" />
           </AssociationSet>
-          <AssociationSet Name="FK__Visibilty__Modul__5C37ACAD" Association="Self.FK__Visibilty__Modul__5C37ACAD">
+          <AssociationSet Name="FK__Visibilty__Modul__7A3223E8" Association="Self.FK__Visibilty__Modul__7A3223E8">
             <End Role="ModuleField" EntitySet="ModuleField" />
             <End Role="VisibiltyRuleField" EntitySet="VisibiltyRuleField" />
           </AssociationSet>
-          <AssociationSet Name="FK__Visibilty__Visib__5D2BD0E6" Association="Self.FK__Visibilty__Visib__5D2BD0E6">
+          <AssociationSet Name="FK__Visibilty__Visib__7B264821" Association="Self.FK__Visibilty__Visib__7B264821">
             <End Role="VisibitlyRule" EntitySet="VisibitlyRule" />
             <End Role="VisibiltyRuleField" EntitySet="VisibiltyRuleField" />
           </AssociationSet>
@@ -2479,6 +2488,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <FunctionImport Name="DeleteUser">
           <Parameter Name="UserId" Mode="In" Type="Guid" />
           </FunctionImport>
+          <EntitySet Name="SurveyImage" EntityType="COE.Common.Model.SurveyImage" />
           </EntityContainer>
         <ComplexType Name="AspNetUsers_SelectUserIdByCollegeIdAndNationalIdAndTermId_Result">
           <Property Type="Guid" Name="StudentID" Nullable="false" />
@@ -4787,6 +4797,14 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <End Type="COE.Common.Model.UserDisplay" Role="UserDisplay" Multiplicity="*" />
           <End Type="COE.Common.Model.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
         </Association>
+        <EntityType Name="SurveyImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ImgContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5484,6 +5502,15 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
             </EndProperty>
           </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="DeleteUser" FunctionName="COE.Common.Model.Store.DeleteUser" />
+          <EntitySetMapping Name="SurveyImage">
+            <EntityTypeMapping TypeName="COE.Common.Model.SurveyImage">
+              <MappingFragment StoreEntitySet="SurveyImage">
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="ImgContent" ColumnName="ImgContent" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

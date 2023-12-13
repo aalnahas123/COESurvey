@@ -24,6 +24,7 @@ using COE.Survey.Web.Helpers.LookupValues;
 using COE.Survey.Web.Helpers;
 using Commons.Framework.Globalization;
 using COE.Common.Localization;
+using DevExpress.XtraPrinting.Native;
 
 namespace COE.Survey.Web
 {
@@ -142,7 +143,7 @@ namespace COE.Survey.Web
                 string surveyText = data.SurveyText; string title = data.SurveyTitle;
                 if (string.IsNullOrEmpty(surveyText))
                 {
-                    return Json(new { success = false,  errorMessage = SurveysResources.PleaseFillAllRequiredFields });
+                    return Json(new { success = false, errorMessage = SurveysResources.PleaseFillAllRequiredFields });
                 }
 
                 if (string.IsNullOrEmpty(title))
@@ -411,8 +412,18 @@ namespace COE.Survey.Web
 
         private string HandleLogo(JObject jObj)
         {
-            var logoBase64Str = JsonHelper.GetAttributeFromJson("logo", jObj);
-            return CustomFileUploader.UploadFile(logoBase64Str);
+            try
+            {
+                var logoBase64Str = JsonHelper.GetAttributeFromJson("logo", jObj);
+                Guid newImgId = Guid.NewGuid();
+                UnitOfWork.SurveyImage.Add(new SurveyImage { ID = newImgId, ImgContent = logoBase64Str, Created = DateTime.Now });
+                UnitOfWork.Save();
+                return Url.Action("Image", "Surveys", new { id = newImgId });
+            }
+            catch (Exception ex)
+            {
+                return string.Empty;
+            }
         }
 
 
@@ -1025,7 +1036,7 @@ namespace COE.Survey.Web
         public List<LookupViewModel> GetSurveyStatus()
         {
             List<LookupViewModel> allStatus = new List<LookupViewModel>();
-            allStatus.Add(new LookupViewModel { Value = 0, Text = CultureHelper.IsArabic ? "مسودة": "Draft" });
+            allStatus.Add(new LookupViewModel { Value = 0, Text = CultureHelper.IsArabic ? "مسودة" : "Draft" });
             allStatus.Add(new LookupViewModel { Value = 1, Text = CultureHelper.IsArabic ? "تم النشر" : "Published" });
             allStatus.Add(new LookupViewModel { Value = 2, Text = CultureHelper.IsArabic ? "تمت الموافقة" : "Approved" });
             return allStatus;
@@ -1268,6 +1279,22 @@ namespace COE.Survey.Web
             HttpContext.Session["lang"] = value ?? "";
             return new EmptyResult();
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Image(Guid id)
+        {
+            var img = UnitOfWork.SurveyImage.GetById(id);
+            if (img == null)
+            {
+                return null;
+            }
+
+            var file = CustomFileUploader.ConvertBase64StringToByteArray(img.ImgContent);
+
+            return File(file, "image/jpeg");
+        }
+
     }
 
     public class SurvyJsonObject

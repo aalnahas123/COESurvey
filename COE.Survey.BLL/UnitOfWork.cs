@@ -85,6 +85,7 @@ namespace COE.Survey.BLL
             this.SurveyModules = new SurveyModulesRepository(this.context);
             this.SurveyQuestion = new SurveyQuestionsRepository(this.context);
             this.TempNotificationQueue = new TempNotificationQueuesRepository(this.context);
+            this.SurveyImage = new SurveyImagesRepository(this.context);
         }
     
     	private readonly  DbContext context;
@@ -144,6 +145,7 @@ namespace COE.Survey.BLL
         public SurveyModulesRepository SurveyModules { get; set; }
         public SurveyQuestionsRepository SurveyQuestion { get; set; }
         public TempNotificationQueuesRepository TempNotificationQueue { get; set; }
+        public SurveyImagesRepository SurveyImage { get; set; }
     
     	/// <summary>
         /// Calling SaveChanges does create a DB transaction so

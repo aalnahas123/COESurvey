@@ -44,7 +44,7 @@ namespace COE.Survey.Web.Helpers
             return _rdm.Next(MinRandomNumber, MaxRandomNumber);
         }
 
-        private static byte[] ConvertBase64StringToByteArray(string base64String)
+        public static byte[] ConvertBase64StringToByteArray(string base64String)
         {
             if (string.IsNullOrEmpty(base64String))
             {

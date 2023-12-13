@@ -418,6 +418,9 @@
     <Compile Include="SurveyAnswer.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="SurveyImage.cs">
+      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="SurveyModules.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
