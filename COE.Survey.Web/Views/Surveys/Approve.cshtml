@@ -126,6 +126,15 @@
     var Surveyjson = text.replace(/&#39;/g, '\'').replace(/&quot;/g, '\\"').replace(/\\/g, "");
     Survey.StylesManager.applyTheme("bootstrap");
     Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+
+        var selectedLang = getLanguage();
+    if ('@Model.IsRTL' == 'true' || '@Model.IsRTL' == 'True') {
+        selectedLang = 'ar';
+}
+
+    survey.locale = selectedLang;
+
+
     window.survey = new Survey.Model(Surveyjson);
     survey.mode = "display";
     $("#surveyElement").Survey({ model: survey });

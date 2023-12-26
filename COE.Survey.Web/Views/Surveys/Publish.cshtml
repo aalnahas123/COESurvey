@@ -21,7 +21,7 @@
 
 
 
- 
+
 <section class="d-flex landing__content flex-column container">
     <div class="landing__container survey-approve d-flex flex-column">
         <h1>@SurveysResources.PublishSurvey : @Model.SurveyTitle</h1>
@@ -135,7 +135,12 @@
     var surveyJson = JSON.parse(text);
 
     const survey = new Survey.Model(surveyJson);
+
     var selectedLang = getLanguage();
+    if ('@Model.IsRTL' == 'true' || '@Model.IsRTL' == 'True') {
+        selectedLang = 'ar';
+    }
+
     survey.locale = selectedLang;
     survey.mode = "display";
 

@@ -71,10 +71,15 @@
     survey.focusFirstQuestionAutomatic = false;
     Survey.surveyLocalization.supportedLocales = ["en", "ar"];
 
-    var selectedLang = getLanguage();
+        var selectedLang = getLanguage();
+
+    if ('@Model.IsRTL' == 'true' || '@Model.IsRTL' == 'True') {
+        selectedLang = 'ar';
+    }
+
     survey.locale = selectedLang;
 
-    
+
     survey.completedHtml = "<div class=\"d-flex flex-column align-items-center justify-content-center\"><img src=\"/Content/images/Frame.png\" alt=\"success-img\" /><h3 style=\"font-family: 'Cairo', sans-serif !important;\">@SurveysResources.SurveyThankYou</h3></div>";
 
     function submitResults(sender) {
@@ -89,7 +94,7 @@
                 dataType: 'json',
                 success: function (data) {
 
-                    
+
                     if (data.success == true) {
                         //window.location.href = "/";
                     }
@@ -97,7 +102,7 @@
 
                 },
                 error: function (data) {
-                    
+
                 }
             });
 

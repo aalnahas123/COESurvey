@@ -14,10 +14,9 @@
 
 <style>
 
-    .sv_q_title
-    {
-        font-size:1.4em !important;
-        color:#0b79b8;
+    .sv_q_title {
+        font-size: 1.4em !important;
+        color: #0b79b8;
     }
 
     .msgText {
@@ -120,7 +119,7 @@
                     if (wantsToContinue) {
                         window.location.href = "http://eportal.coe.com.sa/Surveys/Surveys/Answer/28";
                     }
-                  
+
 
                     if (data.AlreadyApplied == "1") {
                         $('h3').html('لقد قمت بالتسجيل من قبل')
@@ -134,7 +133,12 @@
 
 
 
+        var selectedLang = getLanguage();
+        if ('@Model.IsRTL' == 'true' || '@Model.IsRTL' == 'True') {
+            selectedLang = 'ar';
+    }
 
+    survey.locale = selectedLang;
 
     $("#surveyElement").Survey({ model: survey, onValueChanged: surveyValueChanged });
 

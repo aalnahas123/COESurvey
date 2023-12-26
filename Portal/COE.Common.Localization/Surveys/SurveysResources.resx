@@ -144,6 +144,9 @@
   <data name="Clone" xml:space="preserve">
     <value>Clone</value>
   </data>
+  <data name="ConfirmDeleteAnswers" xml:space="preserve">
+    <value>To set the survey as draft, all survey answers must be deleted first. Are you sure you wish to continue?</value>
+  </data>
   <data name="CopyLink" xml:space="preserve">
     <value>Copy Link</value>
   </data>
@@ -230,6 +233,9 @@
   </data>
   <data name="Results" xml:space="preserve">
     <value>Results</value>
+  </data>
+  <data name="RevertToDraft" xml:space="preserve">
+    <value>Revert To Draft</value>
   </data>
   <data name="SelectLanguage" xml:space="preserve">
     <value>Select Language</value>

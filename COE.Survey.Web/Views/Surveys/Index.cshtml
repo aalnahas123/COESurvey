@@ -10,6 +10,7 @@
     List<LookupViewModel> modules = ViewBag.Modules;
     List<LookupViewModel> AllStatus = ViewBag.AllStatus;
 
+    bool isAdmin = COE.Survey.Web.Helpers.LookupsHelper.IsCurrentUserAdmin();
     bool canCreate = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("CreateSurvey");
     bool canPublish = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("PublishSurvey");
     bool canApprove = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("ApproveSurvey");
@@ -164,6 +165,16 @@
                                             <span>@SurveysResources.Dashboard</span>
                                         </a>
                                     </li>
+
+                                    if (isAdmin)
+                                    {
+                                        <li>
+                                            <button class="d-flex" onclick="RevertToDraft($(this));" id="@item.ID">
+                                                <img src="~/Content/images/copy.svg" alt="menu-icon" />
+                                                <span>@SurveysResources.RevertToDraft</span>
+                                            </button>
+                                        </li>
+                                    }
                                 }
 
                                 @if (canCreate)
@@ -379,6 +390,60 @@
                // alert('Error Occured');
             }
         });
+
+    return false;
+    }
+
+    function RevertToDraft(item) {
+
+        var id = $(item).prop('id');
+
+        $.ajax({
+        url: '@Url.Action("CheckIfHasAnswer", "Surveys")' + '?id=' + id,
+        type: 'POST',
+        dataType: 'JSON',
+        success: function (data) {
+            if (data.success == true) { // has answers
+                var deleteConfirmed = confirm(data.errorMessage);
+                if (deleteConfirmed) {
+                    RevertToDraftConfirmed(id);
+                }
+            }
+            else if (data.success == false) { // has no answers
+                    RevertToDraftConfirmed(id);
+            }
+            else {
+                //alert('Error Occured');
+            }
+        },
+        error: function (data) {
+           // alert('Error Occured');
+        }
+    });
+
+        return false;
+    }
+
+    function RevertToDraftConfirmed(id) {
+
+
+
+    $.ajax({
+        url: '@Url.Action("RevertToDraftConfirmed", "Surveys")' + '?id=' + id,
+        type: 'POST',
+        dataType: 'JSON',
+        success: function (data) {
+            if (data.success == true) {
+                window.location.href = '@Url.Action("Index", "Surveys")';
+            }
+            else {
+                //alert('Error Occured');
+            }
+        },
+        error: function (data) {
+           // alert('Error Occured');
+        }
+    });
 
     return false;
     }

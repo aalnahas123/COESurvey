@@ -25,6 +25,8 @@ using COE.Survey.Web.Helpers;
 using Commons.Framework.Globalization;
 using COE.Common.Localization;
 using DevExpress.XtraPrinting.Native;
+using System.Text.RegularExpressions;
+using DevExpress.ClipboardSource.SpreadsheetML;
 
 namespace COE.Survey.Web
 {
@@ -415,6 +417,12 @@ namespace COE.Survey.Web
             try
             {
                 var logoBase64Str = JsonHelper.GetAttributeFromJson("logo", jObj);
+
+                if (IsSurveyImagePathFormat(logoBase64Str))
+                {
+                    return logoBase64Str;
+                }
+
                 Guid newImgId = Guid.NewGuid();
                 UnitOfWork.SurveyImage.Add(new SurveyImage { ID = newImgId, ImgContent = logoBase64Str, Created = DateTime.Now });
                 UnitOfWork.Save();
@@ -424,6 +432,17 @@ namespace COE.Survey.Web
             {
                 return string.Empty;
             }
+        }
+
+        public static bool IsSurveyImagePathFormat(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return false;
+            }
+
+            string pattern = @"^/Surveys/Image/[^/]+$";
+            return Regex.IsMatch(input, pattern);
         }
 
 
@@ -1284,17 +1303,74 @@ namespace COE.Survey.Web
         [HttpGet]
         public ActionResult Image(Guid id)
         {
-            var img = UnitOfWork.SurveyImage.GetById(id);
-            if (img == null)
-            {
-                return null;
-            }
+            byte[] file;
 
-            var file = CustomFileUploader.ConvertBase64StringToByteArray(img.ImgContent);
+            try
+            {
+                var img = UnitOfWork.SurveyImage.GetById(id);
+                if (img != null)
+                {
+                    file = CustomFileUploader.ConvertBase64StringToByteArray(img.ImgContent);
+                }
+                else
+                {
+                    file = System.IO.File.ReadAllBytes(Server.MapPath("~/Content/images/test.jpeg"));
+                }
+            }
+            catch (Exception ex)
+            {
+                file = System.IO.File.ReadAllBytes(Server.MapPath("~/Content/images/test.jpeg"));
+            }
 
             return File(file, "image/jpeg");
         }
 
+
+        [HttpPost]
+        public JsonResult CheckIfHasAnswer(int id)
+        {
+            try
+            {
+                var hasAnswer = UnitOfWork.SurveyAnswer.GetByQuery(a => a.SurveyId == id).Any();
+                if (hasAnswer)
+                {
+                    return Json(new { success = hasAnswer, errorMessage = SurveysResources.ConfirmDeleteAnswers });
+                }
+
+                return Json(new { success = hasAnswer, errorMessage = "" });
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return Json(new { success = false, errorMessage = "" });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult RevertToDraftConfirmed(int id)
+        {
+            try
+            {
+                var survey = UnitOfWork.Survey.GetById(id);
+                if (survey == null)
+                {
+                    return Json(new { success = false, errorMessage = SurveysResources.InvalidSurvey });
+                }
+
+                HandleSurveyAnswers(survey, survey.ID);
+
+                survey.StatusId = (byte)(int)SurveyStatusEnum.Draft;
+
+                int rows = UnitOfWork.Save();
+
+                return Json(new { success = rows > 0 });
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return Json(new { success = false, errorMessage = "" });
+            }
+        }
     }
 
     public class SurvyJsonObject
