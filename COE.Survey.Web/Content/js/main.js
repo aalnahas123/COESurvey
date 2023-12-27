@@ -11,16 +11,7 @@ function hideLoading() {
     loadingOverlay.classList.add("d-none");
 }
 
-function getLanguage(isar) {
 
-    var isar = '@CultureHelper.IsArabic';
-
-    if (isar == 'True') {
-        return 'ar';
-    }
-
-    return 'en';
-};
 
 
 

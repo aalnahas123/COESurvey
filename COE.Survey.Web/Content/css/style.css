@@ -167,7 +167,13 @@ body {
 }
 
 .landing .landing__data-container .landing__data-approved {
-    background-color: #ecfdf3;
+    background-color: #d3f3e0;/*#ecfdf3;*/
+    color: #067647;
+    border: 1px solid #abefc6;
+}
+
+.landing .landing__data-container .landing__data-published {
+    background-color: #f8fffb;
     color: #067647;
     border: 1px solid #abefc6;
 }
