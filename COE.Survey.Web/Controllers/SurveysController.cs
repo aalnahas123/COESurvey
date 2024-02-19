@@ -66,9 +66,20 @@ namespace COE.Survey.Web
 
             foreach (var item in surveys)
             {
-                var jObj = JObject.Parse(item.SurveyText);
-                var imgurl = JsonHelper.GetAttributeFromJson("logo", jObj);
-                item.ImageUrl = imgurl;
+
+                // No need for it 
+                //try
+                //{
+                //    var jObj = JObject.Parse(item.SurveyText);
+                //    var imgurl = JsonHelper.GetAttributeFromJson("logo", jObj);
+                //    item.ImageUrl = imgurl;
+                //}
+                //catch
+                //{
+
+
+                //}
+
 
                 item.ModuleText = CultureHelper.IsArabic ? item.SurveyModules?.ModuleTitleAr : item.SurveyModules?.ModuleTitleEn;
                 item.SurveyLink = Url.Action("Answer", "Surveys", new { id = item.ID });
