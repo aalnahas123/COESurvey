@@ -27,6 +27,7 @@ using COE.Common.Localization;
 using DevExpress.XtraPrinting.Native;
 using System.Text.RegularExpressions;
 using DevExpress.ClipboardSource.SpreadsheetML;
+using DevExpress.Xpo;
 
 namespace COE.Survey.Web
 {
@@ -48,6 +49,8 @@ namespace COE.Survey.Web
             ViewBag.AllStatus = GetSurveyStatus();
 
 
+
+            var userSurveysToApprove = UnitOfWork.SurveyApprover.GetByQuery(a => a.ApproverUsername == this.UserName).Select(a => a.SurveyId).ToArray();
             var query = UnitOfWork.Survey.GetAll();
 
             if (moduleId.HasValue)
@@ -55,14 +58,12 @@ namespace COE.Survey.Web
                 query = query.Where(a => a.ModuleId == moduleId.Value);
             }
 
-
             if (isSurveyCreator)
             {
-                query = query.Where(a => a.CreatedBy == this.UserName);
+                query = query.Where(a => a.CreatedBy == this.UserName || userSurveysToApprove.Contains(a.ID));
             }
 
             var surveys = query.OrderByDescending(a => a.CreatedOn).ToList();
-
 
             foreach (var item in surveys)
             {
@@ -176,8 +177,7 @@ namespace COE.Survey.Web
 
                 var lang = JsonHelper.GetAttributeFromJson("locale", jObj);
 
-
-                UnitOfWork.Survey.Add(new Common.Model.Survey
+                var newSurvey = new Common.Model.Survey
                 {
                     SurveyTitle = title.Trim(),
                     StatusId = (int)SurveyStatusEnum.Draft,
@@ -189,9 +189,16 @@ namespace COE.Survey.Web
                     UpdatedBy = UserName,
                     CreatedOn = DateTime.Now,
                     UpdatedOn = DateTime.Now
-                });
+                };
 
+                UnitOfWork.Survey.Add(newSurvey);
                 int rows = UnitOfWork.Save();
+
+                if (newSurvey.ID > 0)
+                {
+                    var added = SurveyApproversHelper.UpdateUserApprovers(UnitOfWork, newSurvey.ID, this.UserName);
+                }
+
                 return Json(new { success = rows > 0 });
             }
             catch (Exception ex)
@@ -200,6 +207,8 @@ namespace COE.Survey.Web
                 return Json(new { success = false, errorMessage = "" });
             }
         }
+
+      
 
         [HttpPost]
         public JsonResult PublishSurvey(string[] surveyItems)
@@ -1314,26 +1323,35 @@ namespace COE.Survey.Web
         [HttpGet]
         public ActionResult Image(Guid id)
         {
-            byte[] file;
-
             try
             {
-                var img = UnitOfWork.SurveyImage.GetById(id);
-                if (img != null)
+                byte[] file;
+
+                try
                 {
-                    file = CustomFileUploader.ConvertBase64StringToByteArray(img.ImgContent);
+                    var img = UnitOfWork.SurveyImage.GetById(id);
+                    if (img != null)
+                    {
+                        file = CustomFileUploader.ConvertBase64StringToByteArray(img.ImgContent);
+                    }
+                    else
+                    {
+                        file = System.IO.File.ReadAllBytes(Server.MapPath("~/Content/images/test.jpeg"));
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
                     file = System.IO.File.ReadAllBytes(Server.MapPath("~/Content/images/test.jpeg"));
                 }
+
+                return File(file, "image/jpeg");
             }
             catch (Exception ex)
             {
-                file = System.IO.File.ReadAllBytes(Server.MapPath("~/Content/images/test.jpeg"));
+                return null;
+
             }
 
-            return File(file, "image/jpeg");
         }
 
 

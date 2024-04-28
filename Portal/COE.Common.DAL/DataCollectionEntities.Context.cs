@@ -79,6 +79,7 @@ namespace COE.Common.DAL
         public virtual DbSet<Model.SurveyQuestion> SurveyQuestion { get; set; }
         public virtual DbSet<Model.TempNotificationQueue> TempNotificationQueue { get; set; }
         public virtual DbSet<Model.SurveyImage> SurveyImage { get; set; }
+        public virtual DbSet<Model.SurveyApprover> SurveyApprover { get; set; }
     
         public virtual int TempInsertIntoCollegeSpecialization()
         {

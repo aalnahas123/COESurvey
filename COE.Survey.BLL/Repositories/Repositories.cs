@@ -9,7 +9,7 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 // <author>Usama Nada (usama.nada@gmail.com)</author>
-// <modifiedOn>2023-12-13T10:38:42.1569712+03:00</modifiedOn>
+// <modifiedOn>2024-04-28T19:32:54.0675623+03:00</modifiedOn>
 //------------------------------------------------------------------------------
 // ReSharper disable CheckNamespace
 namespace COE.Survey.BLL.Repositories
@@ -421,6 +421,14 @@ namespace COE.Survey.BLL.Repositories
 	public partial class SurveyImagesRepository : RepositoryBase<SurveyImage>
 	{
 		public SurveyImagesRepository(DbContext context)
+			: base(context)
+		{
+		}     
+	}
+	
+	public partial class SurveyApproversRepository : RepositoryBase<SurveyApprover>
+	{
+		public SurveyApproversRepository(DbContext context)
 			: base(context)
 		{
 		}     
