@@ -64,16 +64,18 @@ namespace COE.Survey.Web
 
             }
 
-            //var aspNetUsers = UnitOfWork.AspNetUsers.GetAll().Where(u => u.UserDisplay.Any());
+            var aspNetUsers = UnitOfWork.AspNetUsers.GetAll().Where(u => u.UserDisplay.Any());
+
+
             var users = usersQuery
             .ToList().Select(x => new AccountViewModel
             {
-                NationalId = x.AspNetUsers.NationalId ?? SecurityResources.EmptyValue,
-                Email = x.AspNetUsers.Email ?? SecurityResources.EmptyValue,
-                FullName = x.AspNetUsers.FullName ?? SecurityResources.EmptyValue,
-                UserName = x.AspNetUsers.UserName ?? SecurityResources.EmptyValue,
-                PhoneNumber = x.AspNetUsers.PhoneNumber ?? SecurityResources.EmptyValue,
-                Id = x.AspNetUsers.Id,
+                NationalId = x.AspNetUsers?.NationalId ?? SecurityResources.EmptyValue,
+                Email = x.AspNetUsers != null ? x.AspNetUsers.Email : x.LoginName.Replace("coe\\","") + ".coe.com.sa",
+                FullName = x.AspNetUsers != null ? x.AspNetUsers.FullName : x.DisplayName,
+                UserName = x.AspNetUsers != null ? x.AspNetUsers.UserName : x.LoginName.Replace("coe\\", ""),
+                PhoneNumber = x.AspNetUsers?.PhoneNumber ?? SecurityResources.EmptyValue,
+                Id = x.ID,
                 IsActive = x.IsActive,
                 Type = x.AspNetUsers != null ? ((int)COE.Common.Model.Enums.Enum.UserType.Online) : ((int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory)
             });
@@ -456,7 +458,7 @@ namespace COE.Survey.Web
 
             //get user roles
 
-            var userRole = UnitOfWork.UserDisplay.GetByQuery(a => a.AspNetUserID == id).FirstOrDefault().AspNetRoles.ToList();
+            var userRole = UnitOfWork.UserDisplay.GetByQuery(a => a.ID == id).FirstOrDefault().AspNetRoles.ToList();
             //var userRole = UnitOfWork.UserDisplay.GetById(id).AspNetRoles.ToList();
             var currentUserRoleIds = userRole.Select(x => x.Id);
 
@@ -491,14 +493,14 @@ namespace COE.Survey.Web
 
 
 
-            var selectedUser = UnitOfWork.UserDisplay.GetByQuery(a => a.AspNetUserID == uid).FirstOrDefault();
+            var selectedUser = UnitOfWork.UserDisplay.GetByQuery(a => a.ID == uid).FirstOrDefault();
 
 
 
 
 
             //delete all user roles
-            var userRole = UnitOfWork.UserDisplay.GetByQuery(a => a.AspNetUserID == uid).FirstOrDefault().AspNetRoles.ToList();
+            var userRole = UnitOfWork.UserDisplay.GetByQuery(a => a.ID == uid).FirstOrDefault().AspNetRoles.ToList();
             if (userRole.Count > 0)
             {
                 foreach (var item in userRole)
@@ -511,7 +513,7 @@ namespace COE.Survey.Web
 
             using (var ctx = new Common.DAL.COEEntities())
             {
-                var user = ctx.UserDisplay.FirstOrDefault(x => x.AspNetUserID == uid);
+                var user = ctx.UserDisplay.FirstOrDefault(x => x.ID == uid);
 
                 foreach (var item in selectedRoles)
                 {
