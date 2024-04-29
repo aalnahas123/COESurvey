@@ -10,6 +10,7 @@
     List<LookupViewModel> modules = ViewBag.Modules;
     List<LookupViewModel> AllStatus = ViewBag.AllStatus;
 
+    bool isAdmin = COE.Survey.Web.Helpers.LookupsHelper.IsCurrentUserAdmin();
     bool canCreate = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("CreateSurvey");
     bool canPublish = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("PublishSurvey");
     bool canApprove = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("ApproveSurvey");
@@ -164,6 +165,16 @@
                                             <span>@SurveysResources.Dashboard</span>
                                         </a>
                                     </li>
+
+                                    if (isAdmin)
+                                    {
+                                        <li>
+                                            <button class="d-flex" onclick="RevertToDraft($(this));" id="@item.ID">
+                                                <img src="~/Content/images/copy.svg" alt="menu-icon" />
+                                                <span>@SurveysResources.RevertToDraft</span>
+                                            </button>
+                                        </li>
+                                    }
                                 }
 
                                 @if (canCreate)
@@ -246,8 +257,9 @@
             case SurveyStatusEnum.Draft:
                 return "landing__data-waiting";
             case SurveyStatusEnum.Approved:
-            case SurveyStatusEnum.Published:
                 return "landing__data-approved";
+            case SurveyStatusEnum.Published:
+                return "landing__data-published";
             case SurveyStatusEnum.Rejected:
             case SurveyStatusEnum.Deactivated:
                 return "landing__data-declined";
@@ -271,24 +283,50 @@
         UpdateSurveyStatus();
     })
 
+    //function CopyTextToClipboard(element, surveyUrl) {
+
+
+
+    //    var textArea = document.createElement("textarea");
+    //    textArea.value = window.location.origin + surveyUrl;
+    //    document.body.appendChild(textArea);
+    //    textArea.focus();
+    //    textArea.select();
+
+    //    try {
+    //        var successful = document.execCommand('copy');
+
+    //    }
+    //    catch (err) {
+    //        alert("Error Occured");
+    //    }
+
+    //    document.body.removeChild(textArea);
+    //}
+
+
     function CopyTextToClipboard(element, surveyUrl) {
-
-
-
         var textArea = document.createElement("textarea");
+
+        textArea.style.position = 'fixed';
+        textArea.style.top = '0';
+        textArea.style.left = '0';
+        textArea.style.width = '2em';
+        textArea.style.height = '2em';
+        textArea.style.padding = '0';
+        textArea.style.border = 'none';
+        textArea.style.outline = 'none';
+        textArea.style.boxShadow = 'none';
+        textArea.style.background = 'transparent';
+
         textArea.value = window.location.origin + surveyUrl;
         document.body.appendChild(textArea);
-        textArea.focus();
+
         textArea.select();
 
         try {
             var successful = document.execCommand('copy');
-            if (successful) {
-                $(element).children().first().removeClass().addClass('fa fa-clipboard');
-            }
-            else {
-                alert("Error Occured");
-            }
+
         }
         catch (err) {
             alert("Error Occured");
@@ -296,6 +334,7 @@
 
         document.body.removeChild(textArea);
     }
+
 
 
     function UpdateSurveyStatus(item) {
@@ -352,6 +391,60 @@
                // alert('Error Occured');
             }
         });
+
+    return false;
+    }
+
+    function RevertToDraft(item) {
+
+        var id = $(item).prop('id');
+
+        $.ajax({
+        url: '@Url.Action("CheckIfHasAnswer", "Surveys")' + '?id=' + id,
+        type: 'POST',
+        dataType: 'JSON',
+        success: function (data) {
+            if (data.success == true) { // has answers
+                var deleteConfirmed = confirm(data.errorMessage);
+                if (deleteConfirmed) {
+                    RevertToDraftConfirmed(id);
+                }
+            }
+            else if (data.success == false) { // has no answers
+                    RevertToDraftConfirmed(id);
+            }
+            else {
+                //alert('Error Occured');
+            }
+        },
+        error: function (data) {
+           // alert('Error Occured');
+        }
+    });
+
+        return false;
+    }
+
+    function RevertToDraftConfirmed(id) {
+
+
+
+    $.ajax({
+        url: '@Url.Action("RevertToDraftConfirmed", "Surveys")' + '?id=' + id,
+        type: 'POST',
+        dataType: 'JSON',
+        success: function (data) {
+            if (data.success == true) {
+                window.location.href = '@Url.Action("Index", "Surveys")';
+            }
+            else {
+                //alert('Error Occured');
+            }
+        },
+        error: function (data) {
+           // alert('Error Occured');
+        }
+    });
 
     return false;
     }

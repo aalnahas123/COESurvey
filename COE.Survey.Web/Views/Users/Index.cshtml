@@ -79,10 +79,10 @@
                 <!-- Second Inner Column -->
                 @*<div class="col-md-6 d-flex flex-column mt-3">
 
-                    @Html.LabelFor(model => model.NationalId, new { @class = "form-label" })
-                    @Html.TextBoxFor(model => model.NationalId, new { @class = "form-control" })
+                        @Html.LabelFor(model => model.NationalId, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.NationalId, new { @class = "form-control" })
 
-                </div>*@
+                    </div>*@
                 <div class="col-md-6 d-flex flex-column mt-3">
 
                     @Html.LabelFor(model => model.UserName, new { @class = "form-label" })
@@ -196,6 +196,15 @@
 
                                                 </button>
                                             }
+
+
+                                            <button type="button"
+                                                    class="btn btndeleteUser"
+                                                    data-uid="@item.Id"
+                                                    id="btndelete_@index"
+                                                    title="Delete">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
                                         }
                                     </td>
                                 </tr>
@@ -307,5 +316,44 @@
             changeView("1");
         }
     });
+
+
+    $('.btndeleteUser').click(function () {
+      var elementId = $(this).attr("id");
+      var confirmMessage = '@SharedResources.DeleteConfirmationMsg';
+      var _userId = $(this).attr("data-uid");
+
+
+      if (confirm(confirmMessage)) {
+
+             $.ajax({
+    url: '@Url.Action("DeleteUser", "Users")',
+    type: "POST",
+    dataType: "JSON",
+    data: { userID: _userId },
+    success: function (result) {
+
+        if (result.success) {
+            window.location.href = '@Url.Action("Index", "Users")';
+        }
+        else {
+            alert(result.ErrorMessage);
+        }
+    },
+    error: function (data) {
+        alert('@SharedResources.UnexpectedError');
+    }
+});
+
+      } else {
+
+      }
+
+
+
+
+
+
+  });
 
 </script>

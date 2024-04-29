@@ -9,17 +9,17 @@ namespace COE.Survey.Web.Helpers
         private static readonly Random _rdm = new Random();
         private const int MinRandomNumber = 1000;
         private const int MaxRandomNumber = 9999;
-        private const string baseDirectory = "D://";
+        private const string baseDirectory = "c://";
 
         public static string UploadFile(string bytesString)
         {
-            const string baseUrl = "https://sapi-v2.com/imgp/";
+            const string baseUrl = "https://survey.coe.com.sa/";
 
             try
             {
                 var currentDateTime = DateTime.Now;
                 var fileName = $"Survey_{currentDateTime.Day}_{currentDateTime.Month}_{GenerateRandomNo()}.jpg";
-                var folderName = Path.Combine("Splansh", "Media", "Posts");
+                var folderName = "UploadImage";
                 var newUrl = $"{baseUrl}{fileName}";
 
                 var file = ConvertBase64StringToByteArray(bytesString);
@@ -44,7 +44,7 @@ namespace COE.Survey.Web.Helpers
             return _rdm.Next(MinRandomNumber, MaxRandomNumber);
         }
 
-        private static byte[] ConvertBase64StringToByteArray(string base64String)
+        public static byte[] ConvertBase64StringToByteArray(string base64String)
         {
             if (string.IsNullOrEmpty(base64String))
             {

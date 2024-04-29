@@ -18,9 +18,17 @@
 
         <div id="surveyCreator" style="height: 100vh;"></div>
     </div>
+
+    <!-- Action btn -->
+    <div class="d-flex survey-approve__actions">
+        <button class="survey-back-btn ms-auto" type="button" onclick="return goback()">
+            @SharedResources.Back
+        </button>
+    </div>
+
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/scripts/jquery.min.js"></script>
 <script src="https://unpkg.com/knockout/build/output/knockout-latest.js"></script>
 
 <!-- SurveyJS resources -->
@@ -176,7 +184,10 @@
     //};
 
 
-
+    function goback() {
+        window.location.href = '@Url.Action("Index", "Surveys")';
+        return false;
+    }
 
 
 </script>

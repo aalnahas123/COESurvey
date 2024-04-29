@@ -144,6 +144,9 @@
   <data name="Clone" xml:space="preserve">
     <value>استنساخ</value>
   </data>
+  <data name="ConfirmDeleteAnswers" xml:space="preserve">
+    <value>لتعيين الاستبيان كمسودة، يجب حذف جميع إجابات الاستبيان أولاً. هل أنت متأكد أنك تريد المتابعة؟</value>
+  </data>
   <data name="CopyLink" xml:space="preserve">
     <value>نسخ الرابط</value>
   </data>
@@ -231,6 +234,9 @@
   <data name="Results" xml:space="preserve">
     <value>النتائج</value>
   </data>
+  <data name="RevertToDraft" xml:space="preserve">
+    <value>إعادة للمسودة</value>
+  </data>
   <data name="SelectLanguage" xml:space="preserve">
     <value>إختر اللغة</value>
   </data>
@@ -260,6 +266,9 @@
   </data>
   <data name="Surveys" xml:space="preserve">
     <value>الإستبيانات</value>
+  </data>
+  <data name="SurveysForUser" xml:space="preserve">
+    <value>يوجد إستبيانات مرتبطة بهذا المستخدم</value>
   </data>
   <data name="SurveysResults" xml:space="preserve">
     <value>نتائج الإستبيان</value>

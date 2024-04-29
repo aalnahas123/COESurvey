@@ -142,6 +142,15 @@ namespace COE.Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To set the survey as draft, all survey answers must be deleted first. Are you sure you wish to continue?.
+        /// </summary>
+        public static string ConfirmDeleteAnswers {
+            get {
+                return ResourceManager.GetString("ConfirmDeleteAnswers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy Link.
         /// </summary>
         public static string CopyLink {
@@ -403,6 +412,15 @@ namespace COE.Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Revert To Draft.
+        /// </summary>
+        public static string RevertToDraft {
+            get {
+                return ResourceManager.GetString("RevertToDraft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Language.
         /// </summary>
         public static string SelectLanguage {
@@ -489,6 +507,15 @@ namespace COE.Common.Localization {
         public static string Surveys {
             get {
                 return ResourceManager.GetString("Surveys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are surveys associated to this user.
+        /// </summary>
+        public static string SurveysForUser {
+            get {
+                return ResourceManager.GetString("SurveysForUser", resourceCulture);
             }
         }
         

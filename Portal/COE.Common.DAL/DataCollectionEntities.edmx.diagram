@@ -105,6 +105,8 @@
         <AssociationConnector Association="COE.Common.Model.FK__SurveyAns__Surve__7BC631F6" />
         <AssociationConnector Association="COE.Common.Model.FK__SurveyQue__Surve__7DAE7A68" />
         <AssociationConnector Association="COE.Common.Model.AspNetUserRoles" />
+        <EntityTypeShape EntityType="COE.Common.Model.SurveyImage" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.SurveyApprover" Width="1.5" PointX="3.375" PointY="3.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

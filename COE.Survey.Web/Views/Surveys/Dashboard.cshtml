@@ -8,15 +8,15 @@
 <script type="text/javascript" src="https://unpkg.com/knockout/build/output/knockout-latest.js"></script>
 <script src="https://unpkg.com/survey-core@1.9.106/survey.core.min.js"></script>
 <script src="https://unpkg.com/survey-core@1.9.106/survey.i18n.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.7.2/js/tabulator.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.0.10/jspdf.plugin.autotable.min.js"></script>
+<script src="~/scripts/tabulator.min.js"></script>
+<script src="~/scripts/jspdf.min.js"></script>
+<script src="~/scripts/jspdf.plugin.autotable.min.js"></script>
 <script src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <script src="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.tabulator.min.js"></script>
 <script src="https://unpkg.com/wordcloud@1.1.0/src/wordcloud2.js"></script>
 <script src="https://unpkg.com/plotly.js-dist-min/plotly.min.js"></script>
 <script src="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.7.2/css/tabulator.min.css" />
+<link rel="stylesheet" href="~/Content/css/tabulator.min.css" />
 <link rel="stylesheet" href="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.tabulator.css" />
 
 
@@ -37,6 +37,13 @@
 
         <div id="surveyVizPanel"></div>
     </div>
+
+    <!-- Action btn -->
+    <div class="d-flex survey-approve__actions">
+        <button class="survey-back-btn ms-auto" type="button" onclick="return goback()">
+            @SharedResources.Back
+        </button>
+    </div>
 </section>
 
 
@@ -46,17 +53,25 @@
 
 <script type="text/javascript">
 
-    var selectedLang = getLanguage();
+     var selectedLang = getLanguage();
+
+    var surveyAsJson = '@Model.ContentJson';
+var surveyJson = surveyAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "").replace(/&#39;/g, "'").replace(/[\0-\x1F\x7F-\x9F]/g, "");
+
+var answerAsJson = '@Model.AnswerItems';
+var answerJson = answerAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "").replace(/&#39;/g, "'").replace(/[\0-\x1F\x7F-\x9F]/g, "");
+
+  var dataFromServer = JSON.parse(answerJson);
 
 
-    var surveyJson = '@Model.ContentJson'.replace(/&quot;/g, '"');
-    var json2 = '@Model.AnswerItems'.replace(/&quot;/g, '"');
-
-    var surveyResults = JSON.parse(json2);
 
 
 
-    const survey = new Survey.Model(surveyJson);
+  var surveyResults = JSON.parse(answerJson);
+
+
+
+  const survey = new Survey.Model(surveyJson);
 
 
 
@@ -85,7 +100,10 @@
 
 
 
-
+    function goback() {
+    window.location.href = '@Url.Action("Index", "Surveys")';
+    return false;
+}
 
 
 </script>

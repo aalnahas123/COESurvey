@@ -17,6 +17,7 @@ using WebGrease.Css.Extensions;
 using System.Transactions;
 using PagedList;
 using Commons.Framework.Data;
+using System.Linq.Dynamic;
 
 namespace COE.Survey.Web
 {
@@ -170,18 +171,30 @@ namespace COE.Survey.Web
                         var user = UnitOfWork.UserDisplay.GetByQuery(x => x.LoginName.ToLower() == "coe\\" + model.AccountViewModelActiveDirectory.UserName.ToLower());
                         if (user.Count() > 0)
                         {
-                            return RedirectToAction("Add", new { success = (int)Common.Model.Enums.Enum.SaveStaus.AlreadyExist, userType = "1" });
+                            return RedirectToAction("Add", new
+                            {
+                                success = (int)Common.Model.Enums.Enum.SaveStaus.AlreadyExist,
+                                userType = "1"
+                            });
                         }
 
                     }
                     else
                     {
-                        return RedirectToAction("Add", new { success = (int)Common.Model.Enums.Enum.SaveStaus.NotExist, userType = "1" });
+                        return RedirectToAction("Add", new
+                        {
+                            success = (int)Common.Model.Enums.Enum.SaveStaus.NotExist,
+                            userType = "1"
+                        });
                     }
                 }
                 catch (Exception ex)
                 {
-                    return RedirectToAction("Add", new { success = (int)Common.Model.Enums.Enum.SaveStaus.NotExist, userType = "1" });
+                    return RedirectToAction("Add", new
+                    {
+                        success = (int)Common.Model.Enums.Enum.SaveStaus.NotExist,
+                        userType = "1"
+                    });
                 }
 
                 var userdisplay = new UserDisplay
@@ -200,7 +213,11 @@ namespace COE.Survey.Web
                 UnitOfWork.Save();
 
                 Session["Message"] = SecurityResources.UserCreatedWithAddRoleNotification;
-                return RedirectToAction("Index", "Users", new { UserType = model.UserType, uid = newID });
+                return RedirectToAction("Index", "Users", new
+                {
+                    UserType = model.UserType,
+                    uid = newID
+                });
             }
             else
             {
@@ -283,14 +300,22 @@ namespace COE.Survey.Web
 
                     Session["Message"] = SecurityResources.UserCreatedWithAddRoleNotification;
                     //redirect to search page with created id
-                    return RedirectToAction("Index", "Users", new { UserType = model.UserType, uid = newID });
+                    return RedirectToAction("Index", "Users", new
+                    {
+                        UserType = model.UserType,
+                        uid = newID
+                    });
 
                 }
                 catch (TransactionAbortedException)
                 {
                     this.Header.ShowError(SharedResources.UnexpectedError, true);
                 }
-                return RedirectToAction("Index", "Users", new { UserType = model.UserType, uid = newID });
+                return RedirectToAction("Index", "Users", new
+                {
+                    UserType = model.UserType,
+                    uid = newID
+                });
             }
         }
 
@@ -298,7 +323,8 @@ namespace COE.Survey.Web
         [HttpGet]
         public ActionResult Edit(Guid? id, int? type, int? success)
         {
-            if (id == null) return RedirectToAction("Index");
+            if (id == null)
+                return RedirectToAction("Index");
             TempData["type"] = type;
             string successMessage = string.Empty;
             switch (success)
@@ -415,7 +441,11 @@ namespace COE.Survey.Web
                         UnitOfWork.Save();
 
                         TempData["SuccessMessage"] = SecurityResources.UserSavedSuccessMessage;
-                        return RedirectToAction("Edit", new { type = TempData["type"], success = (int)Common.Model.Enums.Enum.SaveStaus.Updated });
+                        return RedirectToAction("Edit", new
+                        {
+                            type = TempData["type"],
+                            success = (int)Common.Model.Enums.Enum.SaveStaus.Updated
+                        });
                     }
                 }
                 else
@@ -428,7 +458,11 @@ namespace COE.Survey.Web
                     UnitOfWork.Save();
 
                     TempData["SuccessMessage"] = SecurityResources.UserSavedSuccessMessage;
-                    return RedirectToAction("Edit", new { type = TempData["type"], success = (int)Common.Model.Enums.Enum.SaveStaus.Updated });
+                    return RedirectToAction("Edit", new
+                    {
+                        type = TempData["type"],
+                        success = (int)Common.Model.Enums.Enum.SaveStaus.Updated
+                    });
 
                 }
                 return View(model);
@@ -488,7 +522,10 @@ namespace COE.Survey.Web
             if (selectedRoles == null || selectedRoles.Count == 0)
             {
                 TempData["SuccessMessage"] = SecurityResources.OneRoleMustBeSelected;
-                return RedirectToAction("UserRole", "Users", new { @type = type });
+                return RedirectToAction("UserRole", "Users", new
+                {
+                    @type = type
+                });
             }
 
 
@@ -528,12 +565,18 @@ namespace COE.Survey.Web
                 {
                     ctx.SaveChanges();
                     TempData["SuccessMessage"] = SecurityResources.RoleSavedSuccessMessage;
-                    return RedirectToAction("UserRole", "Users", new { @type = type });
+                    return RedirectToAction("UserRole", "Users", new
+                    {
+                        @type = type
+                    });
                 }
                 catch (Exception)
                 {
                     TempData["SuccessMessage"] = SecurityResources.ErrorOccured;
-                    return RedirectToAction("UserRole", "Users", new { @type = type });
+                    return RedirectToAction("UserRole", "Users", new
+                    {
+                        @type = type
+                    });
                 }
             }
 
@@ -548,7 +591,7 @@ namespace COE.Survey.Web
             {
                 if (!string.IsNullOrEmpty(userId))
                 {
-                    user = UnitOfWork.UserDisplay.GetByQuery(x => x.AspNetUserID == new Guid(userId) && x.IsActive == true).FirstOrDefault();
+                    user = UnitOfWork.UserDisplay.GetByQuery(x => x.ID == new Guid(userId) && x.IsActive == true).FirstOrDefault();
                 }
 
                 if (user == null)
@@ -557,7 +600,16 @@ namespace COE.Survey.Web
                     Guid AspUser = new Guid(userId);
                     user = UnitOfWork.UserDisplay.Add(new UserDisplay
 
-                    { LoginName = userName, DisplayName = userName, ID = Guid.NewGuid(), AspNetUserID = AspUser, CreatedBy = userName, UpdatedOn = DateTime.Now, UpdatedBy = userName, IsActive = true });
+                    {
+                        LoginName = userName,
+                        DisplayName = userName,
+                        ID = Guid.NewGuid(),
+                        AspNetUserID = AspUser,
+                        CreatedBy = userName,
+                        UpdatedOn = DateTime.Now,
+                        UpdatedBy = userName,
+                        IsActive = true
+                    });
 
 
                     UnitOfWork.Save();
@@ -572,7 +624,16 @@ namespace COE.Survey.Web
             {
                 TempData["uid"] = user.ID;
             }
-            return Json(new { success = "Success", Result = Url.Action(action, controller, new { id = user.ID, type = userType }), ErrorMessage = string.Empty }, JsonRequestBehavior.AllowGet);
+            return Json(new
+            {
+                success = "Success",
+                Result = Url.Action(action, controller, new
+                {
+                    id = user.ID,
+                    type = userType
+                }),
+                ErrorMessage = string.Empty
+            }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -580,8 +641,13 @@ namespace COE.Survey.Web
         {
             try
             {
+
+                var userDisplay = UnitOfWork.UserDisplay.GetById(userId);
+
+
                 //AD Users
-                var aspUser = UnitOfWork.AspNetUsers.GetById(userId);
+
+                var aspUser = userDisplay.AspNetUsers;
                 if (aspUser == null)
                 {
 
@@ -601,8 +667,7 @@ namespace COE.Survey.Web
                 //Online Users
                 else
                 {
-
-                    var onlineUser = UnitOfWork.AspNetUsers.GetById(userId);
+                    var onlineUser = UnitOfWork.AspNetUsers.GetById(aspUser.Id);
                     onlineUser.IsActive = stateParam;
                     onlineUser.UserDisplay.FirstOrDefault().IsActive = stateParam;
                     UnitOfWork.AspNetUsers.Update(onlineUser);
@@ -619,6 +684,49 @@ namespace COE.Survey.Web
 
                 }
 
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    Result = Common.Model.Enums.Enum.SaveStaus.ItemError,
+                    ErrorMessage = SecurityResources.ErrorOccured
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult DeleteUser(Guid? userId)
+        {
+            try
+            {
+
+                var userDisplay = UnitOfWork.UserDisplay.GetById(userId);
+
+                if (UnitOfWork.Survey.GetByQuery(a => a.CreatedBy == userDisplay.LoginName).Any())
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        Result = Common.Model.Enums.Enum.SaveStaus.ItemError,
+                        ErrorMessage = SurveysResources.SurveysForUser,
+                        ResultMessage = "",
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
+                using (var ctx = new Common.DAL.COEEntities())
+                {
+                    ctx.DeleteUser(userId);
+                    ctx.SaveChanges();
+                    return Json(new
+                    {
+                        success = true,
+                        Result = "",
+                        ResultMessage = "",
+                        ErrorMessage = string.Empty
+                    }, JsonRequestBehavior.AllowGet);
+                }
             }
             catch (Exception ex)
             {

@@ -24,7 +24,7 @@
 <script src="https://unpkg.com/survey-core/survey.i18n.min.js"></script>
 <script src="https://unpkg.com/survey-creator-core/survey-creator-core.i18n.min.js"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="~/scripts/jquery.min.js"></script>
 
 <style>
     .sv_q_matrix {
@@ -93,6 +93,13 @@
     <div class="landing__container survey d-flex flex-column">
         <h1 class="m-0">@SurveysResources.EditSurvey : @Model.SurveyTitle</h1>
         <div id="surveyCreator" style="height: 100vh;"></div>
+    </div>
+
+    <!-- Action btn -->
+    <div class="d-flex survey-approve__actions">
+        <button class="survey-back-btn ms-auto" type="button" onclick="return goback()">
+            @SharedResources.Back
+        </button>
     </div>
 </section>
 
@@ -260,6 +267,10 @@
     //};
 
 
+    function goback() {
+    window.location.href = '@Url.Action("Index", "Surveys")';
+    return false;
+}
 
 
 

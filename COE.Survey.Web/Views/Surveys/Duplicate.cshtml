@@ -26,95 +26,23 @@
 <script src="https://unpkg.com/survey-core/survey.i18n.min.js"></script>
 <script src="https://unpkg.com/survey-creator-core/survey-creator-core.i18n.min.js"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="~/scripts/jquery.min.js"></script>
 
-<style>
-    .sv_q_matrix {
-        width: 100% !important;
-    }
-
-
-    .container {
-        width: 95% !important;
-    }
-
-    .svd_container.sv_default_css #surveyjs .sv_row .svd_question {
-        margin-top: 0px !important;
-    }
-
-    .svd_container.sv_default_css .svd_properties {
-        width: 25% !important;
-    }
-
-    .svd_container.sv_default_css .svd_editors {
-        width: 60% !important;
-    }
-
-    #divUpload {
-        text-align: right;
-        margin-top: 15px;
-    }
-
-        #divUpload button {
-            height: 45px;
-        }
-
-    .svd_container .svd_content {
-        padding-bottom: 70px;
-        padding-top: 10px;
-    }
-
-    .svd_container .svd_content {
-        padding: 0px;
-    }
-
-    .svd_container .svd_properties {
-        margin-top: 18px;
-    }
-
-    .svd_q_selected .svda-add-new-rating-item {
-        display: none !important;
-    }
-
-    .modal-dialog {
-        left: auto !important;
-    }
-
-    .sv_body {
-        padding: 25px;
-    }
-</style>
-
-
-
-
-
-<div class="container mt-4">
-    <div class="form-body">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="isRTL">Select Language</label>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="isRTL">
-                        <label class="form-check-label" for="isRTL">Is Arabic</label>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="d-flex landing__content flex-column container">
+    <div class="landing__container survey d-flex flex-column">
+        <h1 class="m-0">@SurveysResources.CreateNewSurvey</h1>
 
         <div id="surveyCreator" style="height: 100vh;"></div>
     </div>
-</div>
 
+    <!-- Action btn -->
+    <div class="d-flex survey-approve__actions">
+        <button class="survey-back-btn ms-auto" type="button" onclick="return goback()">
+            @SharedResources.Back
+        </button>
+    </div>
 
-
-@*<script type="text/javascript" src="./index.js"></script>*@
-
-
-<span tabindex="0" class="svd_action" id="svd-upload" style="display:none;"><button type="button" class="btn btn-primary" onclick="return UploadTemplate()"><span>Update</span></button></span>
-
-
+</section>
 
 <script type="text/javascript">
 
@@ -271,7 +199,10 @@
     //};
 
 
-
+     function goback() {
+     window.location.href = '@Url.Action("Index", "Surveys")';
+     return false;
+ }
 
 
 </script>

@@ -62,14 +62,14 @@
 
                 <div>
                     <label class="mt-checkbox">
-                        <input type="checkbox" id="cBoxAnon" disabled /> @SurveysResources.Allowanonymoususerstoparticipate
+                        <input type="checkbox" id="cBoxAnon" disabled @(Model.AllowAnonymous.Value ? "checked='checked'" : "") /> @SurveysResources.Allowanonymoususerstoparticipate
                         <span></span>
                     </label>
                 </div>
 
                 <div>
                     <label class="mt-checkbox">
-                        <input type="checkbox" id="cBoxMult" disabled /> @SurveysResources.Allowmultipleanswersforeachuser
+                        <input type="checkbox" id="cBoxMult" disabled @(Model.AllowMultiple.Value ? "checked='checked'" : "") /> @SurveysResources.Allowmultipleanswersforeachuser
                         <span></span>
                     </label>
                 </div>
@@ -82,9 +82,7 @@
                 <!-- Description input -->
                 <div>
                     <label class="form-label"> @SurveysResources.Description </label>
-                    <textarea class="form-control-plaintext fw-bold" id="txtDesc" disabled
-                              
-                              rows="4"></textarea>
+                    <textarea class="form-control-plaintext fw-bold" id="txtDesc" disabled rows="4">@Model.Description</textarea>
                 </div>
 
                 <!-- Action btn -->
@@ -119,15 +117,23 @@
 
 <script type="text/javascript">
 
+    Survey.StylesManager.applyTheme("bootstrap");
+    Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+
+
+    var selectedLang = getLanguage();
+
     var text = '@Model.SurveyText';
     text = text.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "");
     text = text.replace(/&amp;amp;#39;/g, '\\\\\'').replace(/\\/g, "");
     text = text.replace(/&#39;/g, '\\\\\'').replace(/\\/g, "");
-    var Surveyjson = text.replace(/&#39;/g, '\'').replace(/&quot;/g, '\\"').replace(/\\/g, "");
-    Survey.StylesManager.applyTheme("bootstrap");
-    Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
-    window.survey = new Survey.Model(Surveyjson);
+    var surveyJson = text.replace(/&#39;/g, '\'').replace(/&quot;/g, '\\"').replace(/\\/g, "");
+
+    const survey = new Survey.Model(surveyJson);
+    survey.locale = selectedLang;
     survey.mode = "display";
+
+
     $("#surveyElement").Survey({ model: survey });
 
     $(window).on('load', function () {

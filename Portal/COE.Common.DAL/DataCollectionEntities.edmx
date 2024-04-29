@@ -587,12 +587,6 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TypeText" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="sections_questions">
-          <Property Name="sections" Type="nvarchar" MaxLength="1000" />
-          <Property Name="question" Type="nvarchar" MaxLength="1000" />
-        </EntityType>-->
         <EntityType Name="Survey">
           <Key>
             <PropertyRef Name="ID" />
@@ -624,6 +618,24 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="SurveyApprover">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SurveyId" Type="int" Nullable="false" />
+          <Property Name="ApproverUsername" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SurveyImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImgContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="SurveyModules">
           <Key>
             <PropertyRef Name="ID" />
@@ -646,7 +658,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
           <Property Name="IsRequired" Type="bit" />
           <Property Name="JsonContent" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Alert__AlertType__2E70E1FD">
+        <Association Name="FK__Alert__AlertType__59C55456">
           <End Role="AlertType" Type="Self.AlertType" Multiplicity="1" />
           <End Role="Alert" Type="Self.Alert" Multiplicity="*" />
           <ReferentialConstraint>
@@ -658,7 +670,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Alert__StageID__2F650636">
+        <Association Name="FK__Alert__StageID__5AB9788F">
           <End Role="Stage" Type="Self.Stage" Multiplicity="1" />
           <End Role="Alert" Type="Self.Alert" Multiplicity="*" />
           <ReferentialConstraint>
@@ -670,7 +682,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AspNetUse__UserI__38EE7070">
+        <Association Name="FK__AspNetUse__UserI__6442E2C9">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
           <ReferentialConstraint>
@@ -682,7 +694,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AspNetUse__UserI__3AD6B8E2">
+        <Association Name="FK__AspNetUse__UserI__662B2B3B">
           <End Role="UserDisplay" Type="Self.UserDisplay" Multiplicity="1" />
           <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
           <ReferentialConstraint>
@@ -694,7 +706,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__JobTy__4183B671">
+        <Association Name="FK__CollegeSt__JobTy__69FBBC1F">
           <End Role="JobType" Type="Self.JobType" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -706,7 +718,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__Leave__4277DAAA">
+        <Association Name="FK__CollegeSt__Leave__6AEFE058">
           <End Role="LeaveReason" Type="Self.LeaveReason" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -718,7 +730,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__Level__436BFEE3">
+        <Association Name="FK__CollegeSt__Level__6BE40491">
           <End Role="StaffLevel" Type="Self.StaffLevel" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -730,7 +742,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__Quali__45544755">
+        <Association Name="FK__CollegeSt__Quali__6CD828CA">
           <End Role="StaffQualification" Type="Self.StaffQualification" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -742,7 +754,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__Spesi__46486B8E">
+        <Association Name="FK__CollegeSt__Spesi__6DCC4D03">
           <End Role="StaffSpecialization" Type="Self.StaffSpecialization" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -754,7 +766,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__TypeI__473C8FC7">
+        <Association Name="FK__CollegeSt__TypeI__6EC0713C">
           <End Role="StaffType" Type="Self.StaffType" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -766,7 +778,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CollegeSt__VisaT__4830B400">
+        <Association Name="FK__CollegeSt__VisaT__6FB49575">
           <End Role="VisaType" Type="Self.VisaType" Multiplicity="0..1" />
           <End Role="CollegeStaff" Type="Self.CollegeStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -814,7 +826,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ModuleRol__RoleI__4DE98D56">
+        <Association Name="FK__ModuleRol__RoleI__756D6ECB">
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
           <End Role="ModuleRole" Type="Self.ModuleRole" Multiplicity="*" />
           <ReferentialConstraint>
@@ -826,7 +838,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuestionA__Optio__5E1FF51F">
+        <Association Name="FK__QuestionA__Optio__02C769E9">
           <End Role="QuestionOption" Type="Self.QuestionOption" Multiplicity="0..1" />
           <End Role="QuestionAnswer" Type="Self.QuestionAnswer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -850,7 +862,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuestionA__Surve__60083D91">
+        <Association Name="FK__QuestionA__Surve__04AFB25B">
           <End Role="SurveyAnswer" Type="Self.SurveyAnswer" Multiplicity="1" />
           <End Role="QuestionAnswer" Type="Self.QuestionAnswer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -934,7 +946,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserActiv__Stage__361203C5">
+        <Association Name="FK__UserActiv__Stage__6166761E">
           <End Role="Stage" Type="Self.Stage" Multiplicity="1" />
           <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="*" />
           <ReferentialConstraint>
@@ -946,7 +958,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserActiv__UserA__370627FE">
+        <Association Name="FK__UserActiv__UserA__625A9A57">
           <End Role="UserActivityType" Type="Self.UserActivityType" Multiplicity="1" />
           <End Role="UserActivity" Type="Self.UserActivity" Multiplicity="*" />
           <ReferentialConstraint>
@@ -958,7 +970,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserColle__UserD__51BA1E3A">
+        <Association Name="FK__UserColle__UserD__7849DB76">
           <End Role="UserDisplay" Type="Self.UserDisplay" Multiplicity="1" />
           <End Role="UserCollege" Type="Self.UserCollege" Multiplicity="*" />
           <ReferentialConstraint>
@@ -982,7 +994,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserPermi__UserD__5772F790">
+        <Association Name="FK__UserPermi__UserD__7D0E9093">
           <End Role="UserDisplay" Type="Self.UserDisplay" Multiplicity="1" />
           <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -994,7 +1006,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserPermi__Visib__58671BC9">
+        <Association Name="FK__UserPermi__Visib__7E02B4CC">
           <End Role="VisibitlyRule" Type="Self.VisibitlyRule" Multiplicity="1" />
           <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1006,7 +1018,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserSpeci__UserD__595B4002">
+        <Association Name="FK__UserSpeci__UserD__7EF6D905">
           <End Role="UserDisplay" Type="Self.UserDisplay" Multiplicity="1" />
           <End Role="UserSpecialization" Type="Self.UserSpecialization" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1018,7 +1030,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Visibilty__Field__5B438874">
+        <Association Name="FK__Visibilty__Field__7FEAFD3E">
           <End Role="FieldVisibilty" Type="Self.FieldVisibilty" Multiplicity="1" />
           <End Role="VisibiltyRuleField" Type="Self.VisibiltyRuleField" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1030,7 +1042,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Visibilty__Modul__5C37ACAD">
+        <Association Name="FK__Visibilty__Modul__00DF2177">
           <End Role="ModuleField" Type="Self.ModuleField" Multiplicity="1" />
           <End Role="VisibiltyRuleField" Type="Self.VisibiltyRuleField" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1042,7 +1054,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Visibilty__Visib__5D2BD0E6">
+        <Association Name="FK__Visibilty__Visib__01D345B0">
           <End Role="VisibitlyRule" Type="Self.VisibitlyRule" Multiplicity="1" />
           <End Role="VisibiltyRuleField" Type="Self.VisibiltyRuleField" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1222,6 +1234,9 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Security">
+          <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="GetModuleActionsByUserNameAndCategoryAndModuleAndAction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Security">
           <Parameter Name="LoginName" Type="nvarchar" Mode="In" />
           <Parameter Name="ModuleCategoryName" Type="nvarchar" Mode="In" />
@@ -1277,6 +1292,8 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
           <EntitySet Name="QuestionType" EntityType="Self.QuestionType" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="Survey" EntityType="Self.Survey" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyAnswer" EntityType="Self.SurveyAnswer" Schema="Surveys" store:Type="Tables" />
+          <EntitySet Name="SurveyApprover" EntityType="Self.SurveyApprover" Schema="Surveys" store:Type="Tables" />
+          <EntitySet Name="SurveyImage" EntityType="Self.SurveyImage" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyModules" EntityType="Self.SurveyModules" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyQuestion" EntityType="Self.SurveyQuestion" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="TempNotificationQueue" EntityType="Self.TempNotificationQueue" store:Type="Tables" store:Schema="common">
@@ -1297,47 +1314,47 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
     [TempNotificationQueue].[UpdatedOn] AS [UpdatedOn]
     FROM [common].[TempNotificationQueue] AS [TempNotificationQueue]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Alert__AlertType__2E70E1FD" Association="Self.FK__Alert__AlertType__2E70E1FD">
+          <AssociationSet Name="FK__Alert__AlertType__59C55456" Association="Self.FK__Alert__AlertType__59C55456">
             <End Role="AlertType" EntitySet="AlertType" />
             <End Role="Alert" EntitySet="Alert" />
           </AssociationSet>
-          <AssociationSet Name="FK__Alert__StageID__2F650636" Association="Self.FK__Alert__StageID__2F650636">
+          <AssociationSet Name="FK__Alert__StageID__5AB9788F" Association="Self.FK__Alert__StageID__5AB9788F">
             <End Role="Stage" EntitySet="Stage" />
             <End Role="Alert" EntitySet="Alert" />
           </AssociationSet>
-          <AssociationSet Name="FK__AspNetUse__UserI__38EE7070" Association="Self.FK__AspNetUse__UserI__38EE7070">
+          <AssociationSet Name="FK__AspNetUse__UserI__6442E2C9" Association="Self.FK__AspNetUse__UserI__6442E2C9">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
           </AssociationSet>
-          <AssociationSet Name="FK__AspNetUse__UserI__3AD6B8E2" Association="Self.FK__AspNetUse__UserI__3AD6B8E2">
+          <AssociationSet Name="FK__AspNetUse__UserI__662B2B3B" Association="Self.FK__AspNetUse__UserI__662B2B3B">
             <End Role="UserDisplay" EntitySet="UserDisplay" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__JobTy__4183B671" Association="Self.FK__CollegeSt__JobTy__4183B671">
+          <AssociationSet Name="FK__CollegeSt__JobTy__69FBBC1F" Association="Self.FK__CollegeSt__JobTy__69FBBC1F">
             <End Role="JobType" EntitySet="JobType" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__Leave__4277DAAA" Association="Self.FK__CollegeSt__Leave__4277DAAA">
+          <AssociationSet Name="FK__CollegeSt__Leave__6AEFE058" Association="Self.FK__CollegeSt__Leave__6AEFE058">
             <End Role="LeaveReason" EntitySet="LeaveReason" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__Level__436BFEE3" Association="Self.FK__CollegeSt__Level__436BFEE3">
+          <AssociationSet Name="FK__CollegeSt__Level__6BE40491" Association="Self.FK__CollegeSt__Level__6BE40491">
             <End Role="StaffLevel" EntitySet="StaffLevel" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__Quali__45544755" Association="Self.FK__CollegeSt__Quali__45544755">
+          <AssociationSet Name="FK__CollegeSt__Quali__6CD828CA" Association="Self.FK__CollegeSt__Quali__6CD828CA">
             <End Role="StaffQualification" EntitySet="StaffQualification" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__Spesi__46486B8E" Association="Self.FK__CollegeSt__Spesi__46486B8E">
+          <AssociationSet Name="FK__CollegeSt__Spesi__6DCC4D03" Association="Self.FK__CollegeSt__Spesi__6DCC4D03">
             <End Role="StaffSpecialization" EntitySet="StaffSpecialization" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__TypeI__473C8FC7" Association="Self.FK__CollegeSt__TypeI__473C8FC7">
+          <AssociationSet Name="FK__CollegeSt__TypeI__6EC0713C" Association="Self.FK__CollegeSt__TypeI__6EC0713C">
             <End Role="StaffType" EntitySet="StaffType" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__CollegeSt__VisaT__4830B400" Association="Self.FK__CollegeSt__VisaT__4830B400">
+          <AssociationSet Name="FK__CollegeSt__VisaT__6FB49575" Association="Self.FK__CollegeSt__VisaT__6FB49575">
             <End Role="VisaType" EntitySet="VisaType" />
             <End Role="CollegeStaff" EntitySet="CollegeStaff" />
           </AssociationSet>
@@ -1353,11 +1370,11 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             <End Role="Module" EntitySet="Module" />
             <End Role="ModuleRole" EntitySet="ModuleRole" />
           </AssociationSet>
-          <AssociationSet Name="FK__ModuleRol__RoleI__4DE98D56" Association="Self.FK__ModuleRol__RoleI__4DE98D56">
+          <AssociationSet Name="FK__ModuleRol__RoleI__756D6ECB" Association="Self.FK__ModuleRol__RoleI__756D6ECB">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="ModuleRole" EntitySet="ModuleRole" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuestionA__Optio__5E1FF51F" Association="Self.FK__QuestionA__Optio__5E1FF51F">
+          <AssociationSet Name="FK__QuestionA__Optio__02C769E9" Association="Self.FK__QuestionA__Optio__02C769E9">
             <End Role="QuestionOption" EntitySet="QuestionOption" />
             <End Role="QuestionAnswer" EntitySet="QuestionAnswer" />
           </AssociationSet>
@@ -1365,7 +1382,7 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             <End Role="SurveyQuestion" EntitySet="SurveyQuestion" />
             <End Role="QuestionAnswer" EntitySet="QuestionAnswer" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuestionA__Surve__60083D91" Association="Self.FK__QuestionA__Surve__60083D91">
+          <AssociationSet Name="FK__QuestionA__Surve__04AFB25B" Association="Self.FK__QuestionA__Surve__04AFB25B">
             <End Role="SurveyAnswer" EntitySet="SurveyAnswer" />
             <End Role="QuestionAnswer" EntitySet="QuestionAnswer" />
           </AssociationSet>
@@ -1393,15 +1410,15 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             <End Role="QuestionType" EntitySet="QuestionType" />
             <End Role="SurveyQuestion" EntitySet="SurveyQuestion" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserActiv__Stage__361203C5" Association="Self.FK__UserActiv__Stage__361203C5">
+          <AssociationSet Name="FK__UserActiv__Stage__6166761E" Association="Self.FK__UserActiv__Stage__6166761E">
             <End Role="Stage" EntitySet="Stage" />
             <End Role="UserActivity" EntitySet="UserActivity" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserActiv__UserA__370627FE" Association="Self.FK__UserActiv__UserA__370627FE">
+          <AssociationSet Name="FK__UserActiv__UserA__625A9A57" Association="Self.FK__UserActiv__UserA__625A9A57">
             <End Role="UserActivityType" EntitySet="UserActivityType" />
             <End Role="UserActivity" EntitySet="UserActivity" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserColle__UserD__51BA1E3A" Association="Self.FK__UserColle__UserD__51BA1E3A">
+          <AssociationSet Name="FK__UserColle__UserD__7849DB76" Association="Self.FK__UserColle__UserD__7849DB76">
             <End Role="UserDisplay" EntitySet="UserDisplay" />
             <End Role="UserCollege" EntitySet="UserCollege" />
           </AssociationSet>
@@ -1409,27 +1426,27 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             <End Role="ModuleAction" EntitySet="ModuleAction" />
             <End Role="UserPermission" EntitySet="UserPermission" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserPermi__UserD__5772F790" Association="Self.FK__UserPermi__UserD__5772F790">
+          <AssociationSet Name="FK__UserPermi__UserD__7D0E9093" Association="Self.FK__UserPermi__UserD__7D0E9093">
             <End Role="UserDisplay" EntitySet="UserDisplay" />
             <End Role="UserPermission" EntitySet="UserPermission" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserPermi__Visib__58671BC9" Association="Self.FK__UserPermi__Visib__58671BC9">
+          <AssociationSet Name="FK__UserPermi__Visib__7E02B4CC" Association="Self.FK__UserPermi__Visib__7E02B4CC">
             <End Role="VisibitlyRule" EntitySet="VisibitlyRule" />
             <End Role="UserPermission" EntitySet="UserPermission" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserSpeci__UserD__595B4002" Association="Self.FK__UserSpeci__UserD__595B4002">
+          <AssociationSet Name="FK__UserSpeci__UserD__7EF6D905" Association="Self.FK__UserSpeci__UserD__7EF6D905">
             <End Role="UserDisplay" EntitySet="UserDisplay" />
             <End Role="UserSpecialization" EntitySet="UserSpecialization" />
           </AssociationSet>
-          <AssociationSet Name="FK__Visibilty__Field__5B438874" Association="Self.FK__Visibilty__Field__5B438874">
+          <AssociationSet Name="FK__Visibilty__Field__7FEAFD3E" Association="Self.FK__Visibilty__Field__7FEAFD3E">
             <End Role="FieldVisibilty" EntitySet="FieldVisibilty" />
             <End Role="VisibiltyRuleField" EntitySet="VisibiltyRuleField" />
           </AssociationSet>
-          <AssociationSet Name="FK__Visibilty__Modul__5C37ACAD" Association="Self.FK__Visibilty__Modul__5C37ACAD">
+          <AssociationSet Name="FK__Visibilty__Modul__00DF2177" Association="Self.FK__Visibilty__Modul__00DF2177">
             <End Role="ModuleField" EntitySet="ModuleField" />
             <End Role="VisibiltyRuleField" EntitySet="VisibiltyRuleField" />
           </AssociationSet>
-          <AssociationSet Name="FK__Visibilty__Visib__5D2BD0E6" Association="Self.FK__Visibilty__Visib__5D2BD0E6">
+          <AssociationSet Name="FK__Visibilty__Visib__01D345B0" Association="Self.FK__Visibilty__Visib__01D345B0">
             <End Role="VisibitlyRule" EntitySet="VisibitlyRule" />
             <End Role="VisibiltyRuleField" EntitySet="VisibiltyRuleField" />
           </AssociationSet>
@@ -2479,6 +2496,11 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
             <End Role="UserDisplay" EntitySet="UserDisplay" />
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
           </AssociationSet>
+          <FunctionImport Name="DeleteUser">
+          <Parameter Name="UserId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="SurveyImage" EntityType="COE.Common.Model.SurveyImage" />
+          <EntitySet Name="SurveyApprover" EntityType="COE.Common.Model.SurveyApprover" />
           </EntityContainer>
         <ComplexType Name="AspNetUsers_SelectUserIdByCollegeIdAndNationalIdAndTermId_Result">
           <Property Type="Guid" Name="StudentID" Nullable="false" />
@@ -4787,6 +4809,24 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
           <End Type="COE.Common.Model.UserDisplay" Role="UserDisplay" Multiplicity="*" />
           <End Type="COE.Common.Model.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
         </Association>
+        <EntityType Name="SurveyImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ImgContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SurveyApprover">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SurveyId" Type="Int32" Nullable="false" />
+          <Property Name="ApproverUsername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5483,6 +5523,27 @@ warning 6013: The table/view 'COESurveyDB.Surveys.sections_questions' does not h
               <ScalarProperty Name="ID" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteUser" FunctionName="COE.Common.Model.Store.DeleteUser" />
+          <EntitySetMapping Name="SurveyImage">
+            <EntityTypeMapping TypeName="COE.Common.Model.SurveyImage">
+              <MappingFragment StoreEntitySet="SurveyImage">
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="ImgContent" ColumnName="ImgContent" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SurveyApprover">
+            <EntityTypeMapping TypeName="COE.Common.Model.SurveyApprover">
+              <MappingFragment StoreEntitySet="SurveyApprover">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ApproverUsername" ColumnName="ApproverUsername" />
+                <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

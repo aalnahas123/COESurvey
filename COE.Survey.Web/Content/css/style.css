@@ -167,7 +167,13 @@ body {
 }
 
 .landing .landing__data-container .landing__data-approved {
-    background-color: #ecfdf3;
+    background-color: #d3f3e0;/*#ecfdf3;*/
+    color: #067647;
+    border: 1px solid #abefc6;
+}
+
+.landing .landing__data-container .landing__data-published {
+    background-color: #f8fffb;
     color: #067647;
     border: 1px solid #abefc6;
 }
@@ -428,3 +434,15 @@ body {
         color: white !important;
     }
 
+
+
+.survey-back-btn {
+    border-radius: 8px;
+    border: 1px solid #35489b;
+    background: #fff;
+    padding: 8px;
+    color: #35489b;
+    font-size: 16px;
+    font-weight: 400;
+    width: calc((100% - 24px) / 4);
+}

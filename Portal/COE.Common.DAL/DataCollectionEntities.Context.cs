@@ -78,6 +78,8 @@ namespace COE.Common.DAL
         public virtual DbSet<Model.SurveyModules> SurveyModules { get; set; }
         public virtual DbSet<Model.SurveyQuestion> SurveyQuestion { get; set; }
         public virtual DbSet<Model.TempNotificationQueue> TempNotificationQueue { get; set; }
+        public virtual DbSet<Model.SurveyImage> SurveyImage { get; set; }
+        public virtual DbSet<Model.SurveyApprover> SurveyApprover { get; set; }
     
         public virtual int TempInsertIntoCollegeSpecialization()
         {
@@ -2685,6 +2687,15 @@ namespace COE.Common.DAL
                 new ObjectParameter("IsCreditNote", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetExamBookingPaymentInvoice_Result>("GetExamBookingPaymentInvoice", examBookingIdParameter, isCreditNoteParameter);
+        }
+    
+        public virtual int DeleteUser(Nullable<System.Guid> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteUser", userIdParameter);
         }
     }
 }
