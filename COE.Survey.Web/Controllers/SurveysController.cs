@@ -18,7 +18,6 @@ using System.Net;
 using Commons.Framework.Data;
 using PagedList;
 using System.IO;
-using CsvHelper;
 using System.Text;
 using COE.Survey.Web.Helpers.LookupValues;
 using COE.Survey.Web.Helpers;
@@ -28,6 +27,7 @@ using DevExpress.XtraPrinting.Native;
 using System.Text.RegularExpressions;
 using DevExpress.ClipboardSource.SpreadsheetML;
 using DevExpress.Xpo;
+using Microsoft.Practices.Unity.ObjectBuilder;
 
 namespace COE.Survey.Web
 {
@@ -43,11 +43,13 @@ namespace COE.Survey.Web
 
 
             LoadAuthorizationModuleActions("Survey", "SurveyModule");
+            
+            var isSurveyAdmin = IsUserSurveyAdmin();
 
-            var isSurveyCreator = IsUserSurveyCreator();
             ViewBag.Modules = GetAllModules();
             ViewBag.AllStatus = GetSurveyStatus();
 
+            //var test = SurveyApproversHelper.UpdateUserApprovers(UnitOfWork, 28, this.UserName);
 
 
             var userSurveysToApprove = UnitOfWork.SurveyApprover.GetByQuery(a => a.ApproverUsername == this.UserName).Select(a => a.SurveyId).ToArray();
@@ -58,9 +60,16 @@ namespace COE.Survey.Web
                 query = query.Where(a => a.ModuleId == moduleId.Value);
             }
 
-            if (isSurveyCreator)
+            if (!isSurveyAdmin)
             {
-                query = query.Where(a => a.CreatedBy == this.UserName || userSurveysToApprove.Contains(a.ID));
+                var isSurveyPublisher = IsUserSurveyPublisher();
+                var isSurveyCreator = IsUserSurveyCreator();
+                var isSurveyApproval = IsUserSurveyApproval();
+
+                if (isSurveyCreator || isSurveyApproval || isSurveyPublisher)
+                {
+                    query = query.Where(a => a.CreatedBy == this.UserName || userSurveysToApprove.Contains(a.ID));
+                }
             }
 
             var surveys = query.OrderByDescending(a => a.CreatedOn).ToList();
@@ -136,9 +145,60 @@ namespace COE.Survey.Web
 
         private bool IsUserSurveyCreator()
         {
-            return UserManager.IsCurrentUserInRole(RolesNames.SurveyCreator)
-                && !UserManager.IsCurrentUserInRole(RolesNames.SurveyApprover)
-                && !UserManager.IsCurrentUserInRole(RolesNames.SurveyPublisher);
+            var ADuser = UnitOfWork.UserDisplay.GetByQuery(ex => ex.LoginName == UserName).ToList();
+            if (ADuser == null)
+            {
+                return UserManager.IsCurrentUserInRole(RolesNames.SurveyCreator)
+                 && !UserManager.IsCurrentUserInRole(RolesNames.SurveyApprover)
+                 && !UserManager.IsCurrentUserInRole(RolesNames.SurveyPublisher);
+            }
+            else
+            {
+               return ADuser[0].AspNetRoles.Where(ex => ex.Name == RolesNames.SurveyCreator).Count() > 0 ;
+            }
+          
+        }
+
+        private bool IsUserSurveyApproval()
+        {
+            var ADuser = UnitOfWork.UserDisplay.GetByQuery(ex => ex.LoginName == UserName).ToList();
+            if (ADuser == null)
+            {
+                return UserManager.IsCurrentUserInRole(RolesNames.SurveyApprover);                 
+            }
+            else
+            {
+                return ADuser[0].AspNetRoles.Where(ex => ex.Name == RolesNames.SurveyApprover).Count() > 0;
+            }
+
+        }
+
+        private bool IsUserSurveyPublisher()
+        {
+            var ADuser = UnitOfWork.UserDisplay.GetByQuery(ex => ex.LoginName == UserName).ToList();
+            if (ADuser == null)
+            {
+                return UserManager.IsCurrentUserInRole(RolesNames.SurveyPublisher);
+            }
+            else
+            {
+                return ADuser[0].AspNetRoles.Where(ex => ex.Name == RolesNames.SurveyPublisher).Count() > 0;
+            }
+
+        }
+
+        private bool IsUserSurveyAdmin()
+        {
+            var ADuser = UnitOfWork.UserDisplay.GetByQuery(ex => ex.LoginName == UserName).ToList();
+            if (ADuser == null)
+            {
+                return UserManager.IsCurrentUserInRole(RolesNames.SurveyAdmin);
+            }
+            else
+            {
+                return ADuser[0].AspNetRoles.Where(ex => ex.Name == RolesNames.SurveyAdmin).Count() > 0;
+            }
+
         }
 
         [ModuleAuthorize("Survey", "SurveyModule", ActionName = "CreateSurvey")]
@@ -401,6 +461,11 @@ namespace COE.Survey.Web
                 survey.ImageUrl = logoUrl;
 
                 int rows = UnitOfWork.Save();
+                bool isOldSurvey = UnitOfWork.SurveyApprover.GetByQuery(ex => ex.SurveyId == data.SurveyId).Count() == 0;
+                if (rows > 0 && isOldSurvey)
+                {
+                    var added = SurveyApproversHelper.UpdateUserApprovers(UnitOfWork, data.SurveyId, this.UserName);
+                }
                 return Json(new { success = rows > 0 });
             }
             catch (Exception ex)

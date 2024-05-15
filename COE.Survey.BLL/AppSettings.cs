@@ -52,6 +52,17 @@ namespace COE.Survey.BLL
         public static readonly int CacheDurationInMinutes =
             ConfigurationManager.AppSettings["NOR:CacheDurationInMinutes"].To(10);
 
+
+        public static string ActiveDirectoryFullPath => SystemSettingsHelper.Get<string>("ActiveDirectoryFullPath", "UsersMgmt");
+
+        public static string ActiveDirectoryDomain => SystemSettingsHelper.Get<string>("ActiveDirectoryDomain", "UsersMgmt");
+
+        public static string ActiveDirectoryUser => SystemSettingsHelper.Get<string>("ActiveDirectoryUser", "UsersMgmt");
+
+        public static string ActiveDirectoryPassword => SystemSettingsHelper.Get<string>("ActiveDirectoryPassword", "UsersMgmt");
+
+        public static string ActiveDirectoryOU => SystemSettingsHelper.Get<string>("ActiveDirectoryOU", "UsersMgmt");
+
         /// <summary>
         /// The application url.
         /// </summary>

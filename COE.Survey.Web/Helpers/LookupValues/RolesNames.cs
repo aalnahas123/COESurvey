@@ -14,6 +14,7 @@ namespace COE.Survey.Web.Helpers.LookupValues
         /// <summary>
         /// Defines the SurveyCreator
         /// </summary>
+        public const string SurveyAdmin = "System Admin";
         public const string SurveyCreator = "Survey Creator";
         public const string SurveyApprover = "Survey Approver";
         public const string SurveyPublisher = "Survey Publisher";
