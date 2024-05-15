@@ -18,30 +18,31 @@ namespace COE.Survey.Web
 
         private static readonly string AdAdminPassword = AppSettings.ActiveDirectoryPassword;
 
-        public static string GetManagerUser(string sUserName)
+        public static string GetManagerUser(COEUoW unitOfWork, string sUserName)
         {
             try
             {
                 DirectoryEntry root = new DirectoryEntry(ActiveDirectoryFullPath, AdAdminUser, AdAdminPassword);
                 DirectorySearcher searcher = new DirectorySearcher(root);
                 var user = sUserName.Replace("coe\\", "");
-                searcher.Filter = "(&(objectClass=User)(mailNickname=" + user + "))";
+                searcher.Filter = "(&(objectClass=User)(mailNickname=" + "kalmutlaq" + "))";
 
                 string approvaluser = string.Empty;
-
+                string approvalADusername = string.Empty;
                 foreach (SearchResult sResultSet in searcher.FindAll())
                 {
                     
                     //fortest = GetProperty(sResultSet, "mobile");
                     approvaluser = GetProperty(sResultSet, "manager");
-                    approvaluser = approvaluser.Replace("CN=", "COE\\");
+                    approvaluser = approvaluser.Replace("CN=", "");
                     approvaluser = string.Concat(approvaluser.TakeWhile((c) => c != ','));
-                    if(string.IsNullOrEmpty(approvaluser))
+                    approvalADusername = unitOfWork.UserDisplay.GetByQuery(ex => ex.DisplayName == approvaluser).FirstOrDefault()?.LoginName;
+                    if (string.IsNullOrEmpty(approvalADusername))
                     {
                         approvaluser = "coe\\coeuser1";
                     }
                 }
-                return approvaluser;
+                return approvalADusername;
             }
             catch
             {
@@ -64,7 +65,7 @@ namespace COE.Survey.Web
 
         public static bool UpdateUserApprovers(COEUoW unitOfWork, int surveyId, string surveyCreator)
         {
-            string managerApproval = GetManagerUser(surveyCreator);
+            string managerApproval = GetManagerUser(unitOfWork,surveyCreator);
 
             unitOfWork.SurveyApprover.Add(
                 new Common.Model.SurveyApprover
