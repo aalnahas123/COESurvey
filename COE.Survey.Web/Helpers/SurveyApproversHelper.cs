@@ -25,7 +25,7 @@ namespace COE.Survey.Web
                 DirectoryEntry root = new DirectoryEntry(ActiveDirectoryFullPath, AdAdminUser, AdAdminPassword);
                 DirectorySearcher searcher = new DirectorySearcher(root);
                 var user = sUserName.Replace("coe\\", "");
-                searcher.Filter = "(&(objectClass=User)(mailNickname=" + "kalmutlaq" + "))";
+                searcher.Filter = "(&(objectClass=User)(mailNickname=" + user + "))";
 
                 string approvaluser = string.Empty;
                 string approvalADusername = string.Empty;
