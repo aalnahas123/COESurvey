@@ -170,31 +170,6 @@ namespace COE.Survey.Web
             }
         }
 
-        public ActionResult Edit(int? id)
-        {
-
-
-            if (!id.HasValue)
-            {
-                return RedirectToAction("Index", "Surveys");
-            }
-
-            var survey = UnitOfWork.Survey.GetById(id);
-
-            if (survey.StatusId.HasValue && (SurveyStatusEnum)survey.StatusId != SurveyStatusEnum.Draft)
-            {
-                return RedirectToAction("Index", "Surveys");
-            }
-
-            //if (survey.SurveyAnswer.Any())
-            //{
-            //    return RedirectToAction("Index", "Surveys");
-            //}
-
-            survey.SurveyText = survey.SurveyText.Replace("\r\n", "").Replace("\n", "");
-            return View(survey);
-        }
-
         public ActionResult Duplicate(int? id)
         {
 

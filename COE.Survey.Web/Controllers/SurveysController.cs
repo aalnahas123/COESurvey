@@ -24,6 +24,7 @@ using System.Web.Mvc;
 using COE.Survey.Web.ViewModels;
 using static DevExpress.XtraPrinting.Native.ExportOptionsPropertiesNames;
 using Microsoft.AspNet.Identity;
+using DevExpress.Xpo.DB.Helpers;
 
 namespace COE.Survey.Web
 {
@@ -34,7 +35,7 @@ namespace COE.Survey.Web
 
         [ModuleAuthorize("Survey", "SurveyModule")]
         [HttpGet]
-        public ActionResult Index(int? moduleId)
+        public ActionResult Index(int? moduleId, string msg)
         {
             LoadAuthorizationModuleActions("Survey", "SurveyModule");
 
@@ -47,6 +48,7 @@ namespace COE.Survey.Web
 
 
             var userSurveysToApprove = UnitOfWork.SurveyApprover.GetByQuery(a => a.ApproverUsername == this.UserName).Select(a => a.SurveyId).ToArray();
+            var userSurveysToView = UnitOfWork.SurveyViewer.GetByQuery(a => a.ViewerUsername == this.UserName).Select(a => a.SurveyId).ToArray();
             var query = UnitOfWork.Survey.GetAll();
 
             if (moduleId.HasValue)
@@ -56,13 +58,9 @@ namespace COE.Survey.Web
 
             if (!isSurveyAdmin)
             {
-                var isSurveyPublisher = IsUserSurveyPublisher();
-                var isSurveyCreator = IsUserSurveyCreator();
-                var isSurveyApproval = IsUserSurveyApproval();
-
-                if (isSurveyCreator || isSurveyApproval || isSurveyPublisher)
+                if (IsUserSurveyCreator() || IsUserSurveyApproval() || IsUserSurveyPublisher())
                 {
-                    query = query.Where(a => a.CreatedBy == this.UserName || userSurveysToApprove.Contains(a.ID));
+                    query = query.Where(a => a.CreatedBy == this.UserName || userSurveysToApprove.Contains(a.ID) || userSurveysToView.Contains(a.ID));
                 }
             }
 
@@ -90,7 +88,7 @@ namespace COE.Survey.Web
                 item.IsActive = item.StatusId != (int)SurveyStatusEnum.Deactivated;
             }
 
-            SurveysViewModel allItems = new SurveysViewModel { SurviesList = surveys };
+            SurveysViewModel allItems = new SurveysViewModel { SurviesList = surveys, ErrorMsg = msg };
             return View(allItems);
         }
 
@@ -135,6 +133,47 @@ namespace COE.Survey.Web
             SurveysViewModel allItems = new SurveysViewModel { SurviesList = surveyList };
             return View(allItems);
         }
+
+
+        [ModuleAuthorize("Survey", "SurveyModule")]
+        public ActionResult Edit(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("Index", "Surveys");
+            }
+
+            var survey = UnitOfWork.Survey.GetById(id);
+            survey.SurveyText = survey.SurveyText.Replace("\r\n", "").Replace("\n", "");
+
+
+            if (survey.StatusId.HasValue && (SurveyStatusEnum)survey.StatusId != SurveyStatusEnum.Draft)
+            {
+                return RedirectToAction("Index", "Surveys");
+            }
+
+            var isSurveyAdmin = IsUserSurveyAdmin();
+            if (isSurveyAdmin)
+            {
+                return View(survey);
+            }
+
+
+            if (IsUserSurveyCreator() || IsUserSurveyApproval() || IsUserSurveyPublisher())
+            {
+                var isViewerWithEdit = UnitOfWork.SurveyViewer.GetByQuery(a => a.SurveyId == id && a.ViewerUsername == this.UserName && a.CanEdit == true).Any();
+                if (!isViewerWithEdit)
+                {
+                    return RedirectToAction("Index", "Surveys", new { msg = SharedResources.UnauthorizedAccess });
+                }
+
+                return View(survey);
+            }
+
+            return RedirectToAction("Index", "Surveys", new { msg = SharedResources.UnauthorizedAccess });
+        }
+
+
 
         [ModuleAuthorize("Survey", "SurveyModule", ActionName = "CreateSurvey")]
         public ActionResult Add()

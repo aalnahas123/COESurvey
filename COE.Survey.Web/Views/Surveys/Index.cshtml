@@ -14,6 +14,8 @@
     bool canCreate = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("CreateSurvey");
     bool canPublish = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("PublishSurvey");
     bool canApprove = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("ApproveSurvey");
+
+    string message = Model.ErrorMsg;
 }
 
 @*<link href="~/Content/theme/assets/global/plugins/bootstrap-toggle-master/css/bootstrap-toggle.min.css" rel="stylesheet" />
@@ -27,6 +29,16 @@
 
 
 <section class="d-flex landing__content flex-column container">
+
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <div id="layoutAlertMessage" class="alert alert-danger">
+            @*<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>*@
+            @Html.Raw(message)
+        </div>
+    }
+
+
     <!-- Search section -->
     @using (Html.BeginForm("Index", "Surveys", FormMethod.Post, new { @class = "landing__container landing__search", role = "form" }))
     {
@@ -119,6 +131,7 @@
                                     if (canCreate)
                                     {
                                         <li><a href="@Url.Action("edit", "Surveys", new { Id = @item.ID })" class="d-flex" title="Edit"><img src="~/Content/images/copy.svg" alt="menu-icon" /> <span>@SurveysResources.Edit</span></a></li>
+                                        <li><a href="@Url.Action("SurveyUsers", "Surveys", new { Id = @item.ID })" class="d-flex" title="Edit"><img src="~/Content/images/copy.svg" alt="menu-icon" /> <span>Add Viewer</span></a></li>
 
 
                                     }
