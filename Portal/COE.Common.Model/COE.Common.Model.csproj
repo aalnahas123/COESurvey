@@ -430,6 +430,9 @@
     <Compile Include="SurveyQuestion.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="SurveyViewer.cs">
+      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="SystemSettings.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>

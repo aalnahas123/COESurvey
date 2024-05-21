@@ -1,0 +1,325 @@
+﻿@using COE.Common.Localization.Security
+@using COE.Common.Localization
+
+<style>
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 34px;
+    }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(26px);
+    }
+</style>
+
+@model  COE.Survey.Web.ViewModels.SurveyUsersViewModel
+
+@{
+    ViewBag.Title = SecurityResources.Users;
+    ViewBag.ModuleTitle = SecurityResources.Users;
+
+    bool isTest = true;
+
+
+    bool isAdmin = COE.Survey.Web.Helpers.LookupsHelper.IsCurrentUserAdmin();
+    bool userRole = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("UserRole");
+    bool userCollege = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("userCollege");
+    bool userDetails = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("Details");
+    bool userUpdate = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("Update");
+    bool Activate = isTest || ((UsersController)this.ViewContext.Controller).IsActionAvailable("Activate/Deactivate");
+}
+
+@using (Html.BeginForm("SurveyUsers", "Surveys", FormMethod.Post, new { @class = "landing__container landing__search", role = "form" }))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="SelectedUserName" id="hiddenUserName" value="" />
+    <input type="hidden" name="SelectedUserCanEdit" id="hiddenCanEdit" value="" />
+    <input type="hidden" name="action" id="hiddenAction" value="edit" />
+ 
+
+
+
+    <section class="d-flex landing__content flex-column container">
+        <div class="row">
+            <div class="col-md-1 d-flex flex-column">
+                <figure class="d-flex justify-content-center align-items-center">
+                    <img style="width:100px;" src="@(string.IsNullOrEmpty(Model.currentSurvey.ImageUrl) ? "~/Content/Images/test.jpeg" : Model.currentSurvey.ImageUrl)" class="img-fluid" alt="Survey Image">
+                </figure>
+            </div>
+
+            <div class="col-md-6 survey-approve__container d-flex flex-column">
+                <div>
+                    <label class="form-label"></label>
+                    <input class="form-control-plaintext fw-bold" placeholder="@SurveysResources.Title" disabled id="sTitle" value="@Model.currentSurvey.SurveyTitle" />
+                </div>
+            </div>
+        </div>
+
+        <div class="landing__container">
+            <div class="d-flex justify-content-between mb-4 align-items-center">
+                <h2 class="mb-0">@SurveysResources.SurveyUsers</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>@SecurityResources.UserName</th>
+                                    <th>Can Edit</th>
+                                    <th class="col-xs-10">@SecurityResources.Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.currentSurvetyUsers != null)
+                                {
+                                    foreach (var item in Model.currentSurvetyUsers)
+                                    {
+                                        <tr>
+                                            <td>@item.ViewerUsername</td>
+                                            <td>
+                                                <label class="switch">
+                                                    <input type="checkbox" class="toggleCanEdit" id="checkCanEdit_@item.ID" data-uid="@item.ID" data-uname="@item.ViewerUsername" @(item.CanEdit ? "checked" : "")>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                @if (item.ViewerUsername != COE.Survey.Web.Helpers.LookupsHelper.UserName)
+                                                {
+                                                    <button type="submit" class="btn btn-danger btnUser" data-uid="@item.ID" data-uname="@item.ViewerUsername" id="btnDelete_@item.ID" name="action" value="delete" title="Delete">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    </button>
+                                                    <button type="submit" style="display:none;" class="btn btn-info btnUser" data-uid="@item.ViewerUsername" id="btnEdit_@item.ID" name="action" value="edit" title="Edit">
+                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                    </button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="mb-3">@SurveysResources.ShareSurvey</h1>
+        <div class="row justify-content-between">
+            <div class="col-md-6 mt-3">
+                <div class="mt-radio-inline">
+                    <label class="mt-radio">
+                        @Html.RadioButtonFor(model => model.users.UserType, (int)COE.Common.Model.Enums.Enum.UserType.ActiveDirectory, new { id = "choiceAD", @name = "uType", @onchange = "changeView(1)" })
+                        @SecurityResources.ActiveDirectoryUser
+                        <span></span>
+                    </label>
+                    <label class="mt-radio">
+                        @Html.RadioButtonFor(model => model.users.UserType, (int)COE.Common.Model.Enums.Enum.UserType.Online, new { id = "choiceOnline", @name = "uType", @onchange = "changeView(2)" })
+                        @SecurityResources.OnlineUser
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-between">
+            <div class="col-md-6 mt-3">
+                <div class="ADView @ViewBag.DisplayAD">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.users.UserName, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.users.UserName, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="OnlineView @ViewBag.DisplayOnline">
+            <div class="row">
+                <div class="col-md-6 d-flex flex-column mt-3">
+                    @Html.LabelFor(model => model.users.Email, new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.users.Email, new { @class = "form-control" })
+                </div>
+                <div class="col-md-6 d-flex flex-column mt-3">
+                    @Html.LabelFor(model => model.users.Phone, new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.users.Phone, new { @class = "form-control" })
+                </div>
+                <div class="col-md-6 d-flex flex-column mt-3">
+                    @Html.LabelFor(model => model.users.UserName, new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.users.UserNameOnline, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-between">
+            <div class="col-md-12 mt-3">
+                @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+                {
+                    <div class="alert alert-@ViewBag.MessageType alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="text-decoration:none;">
+                            <i class="fa fa-times" style="color:darkred;"></i>
+                        </a>
+                        <strong>@ViewBag.SuccessMessage</strong>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <button type="submit" class="mt-3 landing__btn" name="action" value="search">@SharedResources.Search</button>
+
+        <div class="landing__container">
+            <div class="d-flex justify-content-between mb-4 align-items-center">
+                <h2 class="mb-0">@SecurityResources.Users</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>@SecurityResources.UserName</th>
+                                    <th>@SecurityResources.Email</th>
+                                    <th>Can Edit</th>
+                                    <th class="col-xs-10">@SecurityResources.Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.users.Items)
+                                {
+                                    <tr>
+                                        <td>@item.UserName</td>
+                                        <td>@item.Email</td>
+                                        <td>
+                                            <input type="checkbox" id="AddCanEdit_@item.Id" data-uid="@item.UserName" />
+                                        </td>
+                                        <td>
+                                            @if (Activate && item.UserName != COE.Survey.Web.Helpers.LookupsHelper.UserName)
+                                            {
+                                                <button type="submit" class="btn activate btnUser" data-uname="@item.UserName" data-uid="@item.Id" id="btn_@item.Id" name="action" value="add" title="Activate" data-state="1">
+                                                    <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i>
+                                                </button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+<script>
+    function changeView(type) {
+        if (type == 1) {
+            $('.ADView').show();
+            $('.OnlineView').hide();
+        } else {
+            $('.ADView').hide();
+            $('.OnlineView').show();
+        }
+    }
+
+    $(document).ready(function () {
+        var currentType = '@Model.users.UserType';
+
+        if (currentType == "2") {
+            $("#choiceOnline").prop("checked", true);
+            changeView(2);
+        } else {
+            $("#choiceAD").prop("checked", true);
+            changeView(1);
+        }
+
+        $('.btnUser').click(function () {
+            var id = $(this).data('uid');
+            var selectedUserName = $(this).data('uname');
+            var action = $(this).val();
+
+            $('#hiddenUserName').val(selectedUserName);
+
+            if (action === 'add') {
+
+
+                debugger;
+                $('#hiddenAction').val('add');
+                var addCanEdit = $('#AddCanEdit_' + id).is(':checked');
+                $('#hiddenCanEdit').val(addCanEdit);
+            } else if (action === 'delete') {
+                if (!confirm('Are you sure you want to delete this user?')) {
+                    return false;
+                }
+            }
+
+
+            $('#hiddenAction').val(action);
+            $(this).closest('form').submit();
+        });
+
+        $('.toggleCanEdit').change(function () {
+
+            debugger;
+
+            var id = $(this).data('uid');
+            var userName = $(this).data('uname');
+            var canEdit = $(this).is(':checked');
+
+            $('#hiddenUserName').val(userName);
+            $('#hiddenCanEdit').val(canEdit);
+            $('#hiddenAction').val('edit');
+
+            var form = $(this).closest('form');
+            var originalAction = form.attr('action');
+            form.attr('action', originalAction + '?action=edit');
+            form.submit();
+        });
+    });
+</script>
+

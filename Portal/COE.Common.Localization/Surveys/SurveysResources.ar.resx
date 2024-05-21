@@ -243,6 +243,9 @@
   <data name="SelectModule" xml:space="preserve">
     <value>اختر تصنيف</value>
   </data>
+  <data name="ShareSurvey" xml:space="preserve">
+    <value>مشاركة الإستبيان مع مستخدم</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>الحالة</value>
   </data>
@@ -278,6 +281,9 @@
   </data>
   <data name="SurveyThankYou" xml:space="preserve">
     <value>نشكركم على مشاركتكم في هذا الإستبيان</value>
+  </data>
+  <data name="SurveyUsers" xml:space="preserve">
+    <value>مستخدمي الإستبيان</value>
   </data>
   <data name="Table" xml:space="preserve">
     <value>جدول</value>

@@ -658,6 +658,19 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <Property Name="IsRequired" Type="bit" />
           <Property Name="JsonContent" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="SurveyViewer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SurveyId" Type="int" Nullable="false" />
+          <Property Name="ViewerUsername" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CanEdit" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedBy" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifiedOn" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Alert__AlertType__59C55456">
           <End Role="AlertType" Type="Self.AlertType" Multiplicity="1" />
           <End Role="Alert" Type="Self.Alert" Multiplicity="*" />
@@ -1296,6 +1309,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <EntitySet Name="SurveyImage" EntityType="Self.SurveyImage" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyModules" EntityType="Self.SurveyModules" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyQuestion" EntityType="Self.SurveyQuestion" Schema="Surveys" store:Type="Tables" />
+          <EntitySet Name="SurveyViewer" EntityType="Self.SurveyViewer" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="TempNotificationQueue" EntityType="Self.TempNotificationQueue" store:Type="Tables" store:Schema="common">
             <DefiningQuery>SELECT 
     [TempNotificationQueue].[Id] AS [Id], 
@@ -2501,6 +2515,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           </FunctionImport>
           <EntitySet Name="SurveyImage" EntityType="COE.Common.Model.SurveyImage" />
           <EntitySet Name="SurveyApprover" EntityType="COE.Common.Model.SurveyApprover" />
+          <EntitySet Name="SurveyViewer" EntityType="COE.Common.Model.SurveyViewer" />
           </EntityContainer>
         <ComplexType Name="AspNetUsers_SelectUserIdByCollegeIdAndNationalIdAndTermId_Result">
           <Property Type="Guid" Name="StudentID" Nullable="false" />
@@ -4827,6 +4842,19 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="SurveyViewer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SurveyId" Type="Int32" Nullable="false" />
+          <Property Name="ViewerUsername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CanEdit" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ModifiedOn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5539,6 +5567,20 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="ApproverUsername" ColumnName="ApproverUsername" />
+                <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SurveyViewer">
+            <EntityTypeMapping TypeName="COE.Common.Model.SurveyViewer">
+              <MappingFragment StoreEntitySet="SurveyViewer">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+                <ScalarProperty Name="ViewerUsername" ColumnName="ViewerUsername" />
                 <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

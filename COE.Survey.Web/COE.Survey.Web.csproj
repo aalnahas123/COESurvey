@@ -415,6 +415,8 @@
     <Content Include="Views\Users\UserRole.cshtml" />
     <Content Include="Views\Account\_Header.cshtml" />
     <Content Include="Views\Users\_Header.cshtml" />
+    <Content Include="Views\Surveys\AddSurveyViewer.cshtml" />
+    <Content Include="Views\Surveys\SurveyUsers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -455,6 +457,8 @@
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\SurveysController.Methods.cs" />
+    <Compile Include="Controllers\SurveysController.Helper.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Filters\ModuleAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -466,6 +470,7 @@
     <Compile Include="Helpers\LookupValues\AspNetRoles.cs" />
     <Compile Include="Helpers\LookupValues\Menu.cs" />
     <Compile Include="Helpers\LookupValues\RolesNames.cs" />
+    <Compile Include="Helpers\SurveyViewersHelper.cs" />
     <Compile Include="Helpers\SurveyApproversHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\SurveysController.cs" />
@@ -479,6 +484,7 @@
     <Compile Include="ViewModels\Entities.cs" />
     <Compile Include="ViewModels\SurveyAllAnswers.cs" />
     <Compile Include="ViewModels\SurveysViewModel.cs" />
+    <Compile Include="ViewModels\SurveyUsersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\assets\" />

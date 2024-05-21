@@ -20,7 +20,7 @@ namespace COE.Survey.Web.Controllers
 {
     [Authorize]
     [ModuleAuthorize("Security", "Staff")]
-    public class StaffController : BaseController<COEUoW>
+    public partial class StaffController : BaseController<COEUoW>
     {
         [ModuleAuthorize("Security", "Staff", ActionName = "Search")]
         public ActionResult Index(StaffSearchViewModel model, int? success)

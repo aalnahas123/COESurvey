@@ -439,6 +439,15 @@ namespace COE.Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Share Survey With User.
+        /// </summary>
+        public static string ShareSurvey {
+            get {
+                return ResourceManager.GetString("ShareSurvey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Status.
         /// </summary>
         public static string Status {
@@ -543,6 +552,15 @@ namespace COE.Common.Localization {
         public static string SurveyThankYou {
             get {
                 return ResourceManager.GetString("SurveyThankYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Survey Users.
+        /// </summary>
+        public static string SurveyUsers {
+            get {
+                return ResourceManager.GetString("SurveyUsers", resourceCulture);
             }
         }
         

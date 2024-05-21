@@ -243,6 +243,9 @@
   <data name="SelectModule" xml:space="preserve">
     <value>Select Module</value>
   </data>
+  <data name="ShareSurvey" xml:space="preserve">
+    <value>Share Survey With User</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
@@ -278,6 +281,9 @@
   </data>
   <data name="SurveyThankYou" xml:space="preserve">
     <value>Thank you for participating in this survey</value>
+  </data>
+  <data name="SurveyUsers" xml:space="preserve">
+    <value>Survey Users</value>
   </data>
   <data name="Table" xml:space="preserve">
     <value>Table</value>
