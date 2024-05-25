@@ -39,7 +39,7 @@ namespace COE.Survey.Web
                     approvalADusername = unitOfWork.UserDisplay.GetByQuery(ex => ex.DisplayName == approvaluser).FirstOrDefault()?.LoginName;
                     if (string.IsNullOrEmpty(approvalADusername))
                     {
-                        approvaluser = "coe\\coeuser1";
+                        approvalADusername = "coe\\coeuser1";
                     }
                 }
                 return approvalADusername;

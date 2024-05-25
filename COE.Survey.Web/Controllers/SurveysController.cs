@@ -48,7 +48,7 @@ namespace COE.Survey.Web
 
 
             var userSurveysToApprove = UnitOfWork.SurveyApprover.GetByQuery(a => a.ApproverUsername == this.UserName).Select(a => a.SurveyId).ToArray();
-            var userSurveysToView = UnitOfWork.SurveyViewer.GetByQuery(a => a.ViewerUsername == this.UserName).Select(a => a.SurveyId).ToArray();
+            var userSurveysToView = UnitOfWork.SurveyViewer.GetByQuery(a => a.ViewerUsername == this.UserName.Replace("coe\\", "")).Select(a => a.SurveyId).ToArray();
             var query = UnitOfWork.Survey.GetAll();
 
             if (moduleId.HasValue)
@@ -252,7 +252,7 @@ namespace COE.Survey.Web
 
             string currentSurveyCreator = IsUserSurveyAdmin() ? survey.CreatedBy.Replace("coe\\", "") : UserName; // in case admin is editing 
 
-            survey.ModuleText = CultureHelper.IsArabic ? survey.SurveyModules.ModuleTitleAr : survey.SurveyModules.ModuleTitleEn;
+            survey.ModuleText = CultureHelper.IsArabic ? survey.SurveyModules?.ModuleTitleAr : survey.SurveyModules?.ModuleTitleEn;
             model.currentSurvey = survey;
 
             switch (action)
