@@ -44,11 +44,13 @@ namespace COE.Survey.Web
             ViewBag.Modules = GetAllModules();
             ViewBag.AllStatus = GetSurveyStatus();
 
-            //var test = SurveyApproversHelper.UpdateUserApprovers(UnitOfWork, 28, this.UserName);
-
-
             var userSurveysToApprove = UnitOfWork.SurveyApprover.GetByQuery(a => a.ApproverUsername == this.UserName).Select(a => a.SurveyId).ToArray();
-            var userSurveysToView = UnitOfWork.SurveyViewer.GetByQuery(a => a.ViewerUsername == this.UserName.Replace("coe\\", "")).Select(a => a.SurveyId).ToArray();
+            var userSurveyViewers = UnitOfWork.SurveyViewer.GetByQuery(a => a.ViewerUsername == this.UserName.Replace("coe\\", "")).ToList();
+
+            var userSurveysToView = userSurveyViewers.Select(a => a.SurveyId).ToArray();
+            var userSurveysToEdit = userSurveyViewers.Where(a => a.CanEdit == true).Select(a => a.SurveyId).ToArray();
+
+
             var query = UnitOfWork.Survey.GetAll();
 
             if (moduleId.HasValue)
@@ -68,24 +70,10 @@ namespace COE.Survey.Web
 
             foreach (var item in surveys)
             {
-
-                // No need for it 
-                //try
-                //{
-                //    var jObj = JObject.Parse(item.SurveyText);
-                //    var imgurl = JsonHelper.GetAttributeFromJson("logo", jObj);
-                //    item.ImageUrl = imgurl;
-                //}
-                //catch
-                //{
-
-
-                //}
-
-
                 item.ModuleText = CultureHelper.IsArabic ? item.SurveyModules?.ModuleTitleAr : item.SurveyModules?.ModuleTitleEn;
                 item.SurveyLink = Url.Action("Answer", "Surveys", new { id = item.ID });
                 item.IsActive = item.StatusId != (int)SurveyStatusEnum.Deactivated;
+                item.CanEdit = item.CreatedBy == this.UserName || userSurveysToEdit.Contains(item.ID);
             }
 
             SurveysViewModel allItems = new SurveysViewModel { SurviesList = surveys, ErrorMsg = msg };

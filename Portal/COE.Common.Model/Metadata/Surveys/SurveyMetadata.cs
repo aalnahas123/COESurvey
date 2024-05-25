@@ -13,6 +13,7 @@ namespace COE.Common.Model
         public string SurveyLink { get; set; }
 
         public bool IsActive { get; set; }
+        public bool CanEdit { get; set; }
 
         public string SurveyDirection { get; set; }
 
