@@ -10,6 +10,7 @@
     List<LookupViewModel> modules = ViewBag.Modules;
     List<LookupViewModel> AllStatus = ViewBag.AllStatus;
 
+    string username = COE.Survey.Web.Helpers.LookupsHelper.UserName;
     bool isAdmin = COE.Survey.Web.Helpers.LookupsHelper.IsCurrentUserAdmin();
     bool canCreate = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("CreateSurvey");
     bool canPublish = ((SurveysController)this.ViewContext.Controller).IsActionAvailable("PublishSurvey");
@@ -128,17 +129,16 @@
 
                                 @if (item.StatusId == (int)SurveyStatusEnum.Draft)
                                 {
-                                    if (canCreate)
+
+                                    if (item.CanEdit)
                                     {
-                                        if (item.CanEdit)
-                                        {
-                                            <li><a href="@Url.Action("edit", "Surveys", new { Id = @item.ID })" class="d-flex" title="Edit"><img src="~/Content/images/copy.svg" alt="menu-icon" /> <span>@SurveysResources.Edit</span></a></li>
-                                        }
+                                        <li><a href="@Url.Action("edit", "Surveys", new { Id = @item.ID })" class="d-flex" title="Edit"><img src="~/Content/images/copy.svg" alt="menu-icon" /> <span>@SurveysResources.Edit</span></a></li>
+                                    }
 
 
+                                    if (item.CreatedBy == username)
+                                    {
                                         <li><a href="@Url.Action("SurveyUsers", "Surveys", new { Id = @item.ID })" class="d-flex" title="Edit"><img src="~/Content/images/copy.svg" alt="menu-icon" /> <span>Add Viewer</span></a></li>
-
-
                                     }
 
                                     if (canPublish)
