@@ -24,6 +24,17 @@ namespace COE.Survey.Web
             return Regex.IsMatch(input, pattern);
         }
 
+        public static bool IsSurveyFilePathFormat(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return false;
+            }
+
+            string pattern = @"^/Surveys/SurveyFile/[^/]+$";
+            return Regex.IsMatch(input, pattern);
+        }
+
         private bool IsUserSurveyCreator()
         {
             var ADuser = UnitOfWork.UserDisplay.GetByQuery(ex => ex.LoginName == UserName).ToList();
@@ -123,6 +134,8 @@ namespace COE.Survey.Web
                 return string.Empty;
             }
         }
+
+        
 
         private Dictionary<string, string> GetChoices(string JsonContent, QuestionTypeEnum questionType)
         {

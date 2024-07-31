@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -456,7 +457,7 @@ namespace COE.Survey.Web
                 return Json(new { success = false });
             }
         }
-        
+
 
         public ActionResult Result(int? id, int? PageNumber, string sqid = null)
         {
@@ -678,7 +679,7 @@ namespace COE.Survey.Web
         }
 
 
-        
+
 
         public List<LookupViewModel> GetAllModules()
         {
@@ -949,6 +950,59 @@ namespace COE.Survey.Web
 
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult SurveyFile(Guid id)
+        {
+            try
+            {
+                byte[] file;
+
+                var surveyAttachement = UnitOfWork.SurveyAttachement.GetById(id);
+                if (surveyAttachement != null)
+                {
+                    file = Convert.FromBase64String(surveyAttachement.FileContent);
+                    return File(file, GetFileTypeFromFileName(surveyAttachement.FileName), surveyAttachement.FileName);
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+
+            }
+        }
+
+
+        private string GetFileTypeFromFileName(string fileName)
+        {
+            string fileExtension = Path.GetExtension(fileName).ToLower();
+
+            switch (fileExtension)
+            {
+                case ".png":
+                    return "image/png";
+                case ".pdf":
+                    return "application/pdf";
+                case ".jpg":
+                case ".jpeg":
+                    return "image/jpeg";
+                case ".xlsx":
+                    return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                case ".docx":
+                    return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                case ".pptx":
+                    return "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+                case ".csv":
+                    return "text/csv";
+                case ".doc":
+                    return "application/msword";
+                default:
+                    return "application/octet-stream";
+            }
+        }
+
 
         [HttpPost]
         public JsonResult CheckIfHasAnswer(int id)
@@ -1076,9 +1130,134 @@ namespace COE.Survey.Web
         }
 
 
-       
+        public ActionResult Fix(int? id)
+        {
+            try
+            {
+                var survey = UnitOfWork.Survey.GetById(id);
+                if (survey == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                var answerItemsQuery = UnitOfWork.SurveyAnswer
+                    .GetByQuery(m => m.SurveyId == id)
+                    .OrderByDescending(a => a.ID);
+
+                if (answerItemsQuery != null && answerItemsQuery.Any())
+                {
+                    foreach (var answerItem in answerItemsQuery)
+                    {
+                        var parsedAnswer = JObject.Parse(answerItem.AnswerText);
+                        var parsedAnswerId = answerItem.ID.ToString();
+
+                        ProcessQuestion(parsedAnswer, "question9", parsedAnswerId);
+                        ProcessQuestion(parsedAnswer, "question15", parsedAnswerId);
+                        ProcessQuestion(parsedAnswer, "question14", parsedAnswerId);
+
+                        // Update the answer text with the modified JSON
+                        answerItem.AnswerText = parsedAnswer.ToString();
+                        UnitOfWork.SurveyAnswer.Update(answerItem);
+
+                        // Simulating a time-consuming operation
+                        System.Threading.Thread.Sleep(100); // Adjust the delay as needed
+                    }
+
+                    int rows = UnitOfWork.Save();
+                    return View(answerItemsQuery.ToList()); // Or whatever you need to return
+                }
+
+                return View(survey);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return View();
+            }
+        }
+
+        private void ProcessQuestion(JObject parsedAnswer, string questionKey, string parsedAnswerId)
+        {
+            if (parsedAnswer[questionKey] != null)
+            {
+                JArray questionArray = (JArray)parsedAnswer[questionKey];
+                for (int i = 0; i < questionArray.Count; i++)
+                {
+                    var item = questionArray[i];
+                    var content = item["content"]?.ToString();
+                    var fileName = item["name"]?.ToString();
+                    var fileType = item["type"]?.ToString();
+
+                    if (content != null && fileName != null && fileType != null)
+                    {
+                        var base64Data = content.Split(',')[1];
+                        var fileData = Convert.FromBase64String(base64Data);
+                        var fileExtension = string.Empty;
+
+                        if (fileType.Contains("png"))
+                        {
+                            fileExtension = "png";
+                        }
+                        else if (fileType.Contains("pdf"))
+                        {
+                            fileExtension = "pdf";
+                        }
+                        else if (fileType.Contains("jpg") || fileType.Contains("jpeg"))
+                        {
+                            fileExtension = "jpg";
+                        }
+                        else if (fileName.Contains("xlsx"))
+                        {
+                            fileExtension = "xlsx";
+                        }
+                        else if (fileName.Contains("docx"))
+                        {
+                            fileExtension = "docx";
+                        }
+                        else if (fileName.Contains("pptx"))
+                        {
+                            fileExtension = "pptx";
+                        }
+                        else if (fileName.Contains("csv"))
+                        {
+                            fileExtension = "csv";
+                        }
+                        else if (fileName.Contains("doc"))
+                        {
+                            fileExtension = "doc";
+                        }
+                        else
+                        {
+
+                        }
+
+
+                        if (!string.IsNullOrEmpty(fileExtension))
+                        {
+                            var uniqueFileName = $"{parsedAnswerId}_{questionKey}_{fileName}";
+                            // Save the file to the database
+                            Guid newImgId = Guid.NewGuid();
+                            UnitOfWork.SurveyAttachement.Add(new SurveyAttachement
+                            {
+                                ID = newImgId,
+                                FileContent = base64Data,
+                                Created = DateTime.Now,
+                                FileName = uniqueFileName
+                            });
+
+                            var fileUrl = $"/Surveys/SurveyFile/{newImgId}";
+                            questionArray[i]["content"] = fileUrl;
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
 
     }
 
-   
+
 }

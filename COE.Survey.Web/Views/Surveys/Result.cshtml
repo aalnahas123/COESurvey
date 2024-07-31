@@ -5,24 +5,31 @@
 }
 
 
+<script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/survey-jquery@1.11.7/survey.jquery.min.js"></script>
+<script src="https://unpkg.com/survey-jquery@1.11.7/themes/index.min.js"></script>
+
+@*3 New Files Must Be Downloaded Again*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.7.2/js/tabulator.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.0.10/jspdf.plugin.autotable.min.js"></script>
 
 
-
-
-
-<script src="https://unpkg.com/survey-core@1.9.106/survey.core.min.js"></script>
-<script src="https://unpkg.com/survey-core@1.9.106/survey.i18n.min.js"></script>
-<script src="~/scripts/tabulator.min.js"></script>
-<script src="~/scripts/jspdf.min.js"></script>
-<script src="~/scripts/jspdf.plugin.autotable.min.js"></script>
 <script src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
-<script src="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.tabulator.min.js"></script>
+<script src="https://unpkg.com/survey-analytics@1.11.7/survey.analytics.tabulator.min.js"></script>
 <script src="https://unpkg.com/wordcloud@1.1.0/src/wordcloud2.js"></script>
 <script src="https://unpkg.com/plotly.js-dist-min/plotly.min.js"></script>
-<script src="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.min.js"></script>
+<script src="https://unpkg.com/survey-analytics@1.11.7/survey.analytics.min.js"></script>
+
+
 <link rel="stylesheet" href="~/Content/css/tabulator.min.css" />
 <link rel="stylesheet" href="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.tabulator.css" />
 
+<style>
+    a {
+        margin-left: 10px !important;
+    }
+</style>
 
 <section class="d-flex landing__content flex-column container">
     <div class="landing__container survey-results d-flex flex-column">
@@ -56,15 +63,24 @@
 
 <script type="text/javascript">
 
+    window.jsPDF = jsPDF;
+    window.XLSX = XLSX;
+
+
+    SurveyAnalyticsTabulator.defaultOptions.downloadButtons = ['pdf', 'xlsx', 'csv', 'html']
+
+
+    SurveyAnalyticsTabulator.defaultDownloadOptions.csv = {
+        encoding: 'utf-8',
+        delimiter: ',',
+        bom: true // Byte Order Mark to ensure UTF-8 encoding in some editors
+    };
+
     Survey.setLicenseKey(
         "ZDdhYjZhM2YtYTZjZi00MTI1LWFmYjMtMWI5M2RkYjQ0NDgwOzE9MjAyNC0wOC0zMSwyPTIwMjQtMDgtMzEsND0yMDI0LTA4LTMx"
     );
 
-
     var selectedLang = getLanguage();
-
-    debugger;
-
 
     var surveyAsJson = '@Model.ContentJson';
     var surveyJson = surveyAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "").replace(/&#39;/g, "'").replace(/[\0-\x1F\x7F-\x9F]/g, "");
@@ -82,12 +98,38 @@
 
     SurveyAnalyticsTabulator.localization.currentLocale = selectedLang;
 
+
     vizPanel.render("surveyDashboardContainer");
 
 
     function goback() {
-    window.location.href = '@Url.Action("Index", "Surveys")';
-    return false;
-}
+        window.location.href = '@Url.Action("Index", "Surveys")';
+        return false;
+    }
+
+
+    $(document).ready(function () {
+        // Find the button with the text 'htmlDownloadCaption' and change its text to 'html only'
+        $('.sa-tabulator__downloads-bar .sa-table__btn').each(function () {
+            if ($(this).text().trim() === 'htmlDownloadCaption') {
+                $(this).text('Html');
+            }
+        });
+    });
+
 
 </script>
+
+
+
+@*OLD References*@
+@*<script src="https://unpkg.com/survey-core@1.9.106/survey.core.min.js"></script>
+    <script src="https://unpkg.com/survey-core@1.9.106/survey.i18n.min.js"></script>
+    <script src="~/scripts/tabulator.min.js"></script>
+    <script src="~/scripts/jspdf.min.js"></script>
+    <script src="~/scripts/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.tabulator.min.js"></script>
+    <script src="https://unpkg.com/wordcloud@1.1.0/src/wordcloud2.js"></script>
+    <script src="https://unpkg.com/plotly.js-dist-min/plotly.min.js"></script>
+    <script src="https://unpkg.com/survey-analytics@1.9.106/survey.analytics.min.js"></script>*@

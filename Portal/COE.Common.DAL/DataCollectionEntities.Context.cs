@@ -81,6 +81,7 @@ namespace COE.Common.DAL
         public virtual DbSet<Model.SurveyImage> SurveyImage { get; set; }
         public virtual DbSet<Model.SurveyApprover> SurveyApprover { get; set; }
         public virtual DbSet<Model.SurveyViewer> SurveyViewer { get; set; }
+        public virtual DbSet<Model.SurveyAttachement> SurveyAttachement { get; set; }
     
         public virtual int TempInsertIntoCollegeSpecialization()
         {

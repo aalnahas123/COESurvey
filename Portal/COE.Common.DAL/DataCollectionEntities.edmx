@@ -628,6 +628,16 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="SurveyAttachement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SurveyAnswerID" Type="int" Nullable="false" />
+          <Property Name="FileContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="SurveyImage">
           <Key>
             <PropertyRef Name="ID" />
@@ -1306,6 +1316,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <EntitySet Name="Survey" EntityType="Self.Survey" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyAnswer" EntityType="Self.SurveyAnswer" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyApprover" EntityType="Self.SurveyApprover" Schema="Surveys" store:Type="Tables" />
+          <EntitySet Name="SurveyAttachement" EntityType="Self.SurveyAttachement" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyImage" EntityType="Self.SurveyImage" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyModules" EntityType="Self.SurveyModules" Schema="Surveys" store:Type="Tables" />
           <EntitySet Name="SurveyQuestion" EntityType="Self.SurveyQuestion" Schema="Surveys" store:Type="Tables" />
@@ -2516,6 +2527,7 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <EntitySet Name="SurveyImage" EntityType="COE.Common.Model.SurveyImage" />
           <EntitySet Name="SurveyApprover" EntityType="COE.Common.Model.SurveyApprover" />
           <EntitySet Name="SurveyViewer" EntityType="COE.Common.Model.SurveyViewer" />
+          <EntitySet Name="SurveyAttachement" EntityType="COE.Common.Model.SurveyAttachement" />
           </EntityContainer>
         <ComplexType Name="AspNetUsers_SelectUserIdByCollegeIdAndNationalIdAndTermId_Result">
           <Property Type="Guid" Name="StudentID" Nullable="false" />
@@ -4855,6 +4867,16 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
           <Property Name="ModifiedBy" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="ModifiedOn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="SurveyAttachement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="SurveyAnswerID" Type="Int32" Nullable="false" />
+          <Property Name="FileContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5582,6 +5604,17 @@ warning 6002: The table/view 'COESurveyDB.common.TempNotificationQueue' does not
                 <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
                 <ScalarProperty Name="ViewerUsername" ColumnName="ViewerUsername" />
                 <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SurveyAttachement">
+            <EntityTypeMapping TypeName="COE.Common.Model.SurveyAttachement">
+              <MappingFragment StoreEntitySet="SurveyAttachement">
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="SurveyAnswerID" ColumnName="SurveyAnswerID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
