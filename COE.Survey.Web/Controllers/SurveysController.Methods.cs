@@ -439,17 +439,30 @@ namespace COE.Survey.Web
                     }
                 }
 
-                UnitOfWork.SurveyAnswer.Add(new SurveyAnswer
+
+                var answerToBeUploaded = new SurveyAnswer
                 {
                     AnswerText = AnswerText,
                     QuestionAnswer = null,
                     CreatedOn = DateTime.Now,
                     SurveyId = id,
                     CreatedBy = createdBy
-                });
+                };
 
+
+                UnitOfWork.SurveyAnswer.Add(answerToBeUploaded);
                 int rows = UnitOfWork.Save();
-                return Json(new { success = rows > 0 });
+
+                if (rows > 0)
+                {
+                    if (id == 231)
+                    {
+                        FixUploadedAnswer(answerToBeUploaded);
+                    }
+                    return Json(new { success = true });
+                }
+
+                return Json(new { success = false });
             }
             catch (Exception ex)
             {
@@ -458,6 +471,26 @@ namespace COE.Survey.Web
             }
         }
 
+        public void FixUploadedAnswer(SurveyAnswer answer)
+        {
+            try
+            {
+                var parsedAnswer = JObject.Parse(answer.AnswerText);
+                var parsedAnswerId = answer.ID;
+
+                ProcessQuestion(parsedAnswer, "question9", parsedAnswerId);
+                ProcessQuestion(parsedAnswer, "question15", parsedAnswerId);
+                ProcessQuestion(parsedAnswer, "question14", parsedAnswerId);
+
+                answer.AnswerText = parsedAnswer.ToString();
+                UnitOfWork.SurveyAnswer.Update(answer);
+                UnitOfWork.Save();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+            }
+        }
 
         public ActionResult Result(int? id, int? PageNumber, string sqid = null)
         {
@@ -1149,7 +1182,7 @@ namespace COE.Survey.Web
                     foreach (var answerItem in answerItemsQuery)
                     {
                         var parsedAnswer = JObject.Parse(answerItem.AnswerText);
-                        var parsedAnswerId = answerItem.ID.ToString();
+                        var parsedAnswerId = answerItem.ID;
 
                         ProcessQuestion(parsedAnswer, "question9", parsedAnswerId);
                         ProcessQuestion(parsedAnswer, "question15", parsedAnswerId);
@@ -1176,7 +1209,7 @@ namespace COE.Survey.Web
             }
         }
 
-        private void ProcessQuestion(JObject parsedAnswer, string questionKey, string parsedAnswerId)
+        private void ProcessQuestion(JObject parsedAnswer, string questionKey, int parsedAnswerId)
         {
             if (parsedAnswer[questionKey] != null)
             {
@@ -1239,6 +1272,7 @@ namespace COE.Survey.Web
                             Guid newImgId = Guid.NewGuid();
                             UnitOfWork.SurveyAttachement.Add(new SurveyAttachement
                             {
+                                SurveyAnswerID = parsedAnswerId,
                                 ID = newImgId,
                                 FileContent = base64Data,
                                 Created = DateTime.Now,

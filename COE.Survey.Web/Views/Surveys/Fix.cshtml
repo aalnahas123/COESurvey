@@ -1,14 +1,4 @@
-﻿@using COE.Common.Model
-
-@model Survey
-
-@{
-    //ViewBag.HideCustomButton = true;
-    //ViewBag.Title = @SurveysResources.SurveyParticipation + " | " + Model.SurveyTitle;
-    var dir = Model.IsRTL ? "right" : "left";
-    var completeBtnPos = Model.IsRTL ? "left" : "right";
-}
-
+﻿
 <script type="text/javascript" src="~/scripts/jquery.min.js"></script>
 <link href="https://unpkg.com/survey-jquery/defaultV2.min.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
@@ -50,132 +40,9 @@
     <div class="landing__container survey-answer d-flex flex-column">
         <h1>@SurveysResources.SurveyParticipation</h1>
 
-        <h2>@Model.SurveyTitle</h2>
+        <h2>Survey Fix Done Successfully</h2>
 
        
     </div>
 </section>
 
-
-<script type="text/javascript">
-
-    var isAnimationEnabled = true;
-    var doAnimation = true;
-
-    var surveyAsJson = '@Model.SurveyText';
-    json = surveyAsJson.replace(/\\&quot;/g, '\\\'').replace(/\\/g, "").replace(/&quot;/g, '"').replace(/\\/g, "").replace(/&#39;/g, "'");
-
-    var surveyJson = JSON.parse(json);
-
-    const survey = new Survey.Model(surveyJson);
-    survey.focusFirstQuestionAutomatic = false;
-    Survey.surveyLocalization.supportedLocales = ["en", "ar"];
-
-        var selectedLang = getLanguage();
-
-    if ('@Model.IsRTL' == 'true' || '@Model.IsRTL' == 'True') {
-        selectedLang = 'ar';
-    }
-
-    survey.locale = selectedLang;
-
-
-    survey.completedHtml = "<div class=\"d-flex flex-column align-items-center justify-content-center\"><img src=\"/Content/images/Frame.png\" alt=\"success-img\" /><h3 style=\"font-family: 'Cairo', sans-serif !important;\">@SurveysResources.SurveyThankYou</h3></div>";
-
-    function submitResults(sender) {
-
-            $.ajax({
-                url: '@Url.Action("UploadAnswer","Surveys")',
-                data: {
-                    id: "@Model.ID",
-                    AnswerText: JSON.stringify(sender.data)
-                },
-                type: 'post',
-                dataType: 'json',
-                success: function (data) {
-
-
-                    if (data.success == true) {
-                        //window.location.href = "/";
-                    }
-
-
-                },
-                error: function (data) {
-
-                }
-            });
-
-        animate(true);
-        //alert(results);
-    }
-
-    survey.onComplete.add(submitResults);
-
-    if (isAnimationEnabled) {
-        applyAnimation();
-    }
-
-    $(function () {
-        $("#surveyContainer").Survey({ model: survey });
-    });
-
-    Survey.setLicenseKey(
-        "ZDdhYjZhM2YtYTZjZi00MTI1LWFmYjMtMWI5M2RkYjQ0NDgwOzE9MjAyNC0wOC0zMSwyPTIwMjQtMDgtMzEsND0yMDI0LTA4LTMx"
-    );
-
-
-
-
-
-    /*Animation Part*/
-
-
-
-
-    function animate(isShowing) {
-        const element = document.getElementById("surveyContainer");
-        if (!!element) {
-            const classes = element.classList;
-            if (!classes.contains("hidden")) {
-                classes.add("hidden");
-            }
-            isShowing ? classes.add("visible") : classes.remove("visible");
-        }
-    }
-
-    function showAnimated() { animate(true); }
-    function hideAnimated() { animate(false); }
-
-
-    function applyAnimation() {
-
-        survey.onAfterRenderSurvey.add(showAnimated);
-        survey.onCurrentPageChanging.add(function (_, options) {
-            if (!doAnimation) return;
-            options.allow = false;
-            setTimeout(function () {
-                doAnimation = false;
-                survey.currentPage = options.newCurrentPage;
-                doAnimation = true;
-            }, 700);
-            hideAnimated();
-        });
-        survey.onCurrentPageChanged.add(showAnimated);
-        survey.onCompleting.add(function (_, options) {
-            if (!doAnimation) return;
-            options.allow = false;
-            setTimeout(function () {
-                doAnimation = false;
-                survey.doComplete();
-                doAnimation = true;
-            }, 700);
-            hideAnimated();
-        });
-
-    }
-
-
-
-
-</script>
