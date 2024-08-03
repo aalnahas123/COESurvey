@@ -1173,14 +1173,14 @@ namespace COE.Survey.Web
                     return RedirectToAction("Index", "Home");
                 }
 
-                var answerItemsQuery = UnitOfWork.SurveyAnswer
-                    .GetByQuery(m => m.SurveyId == id)
-                    .OrderByDescending(a => a.ID);
+                var answerIdsList = UnitOfWork.SurveyAnswer
+                    .GetByQuery(m => m.SurveyId == id).Select(a => a.ID).ToArray();
 
-                if (answerItemsQuery != null && answerItemsQuery.Any())
+                if (answerIdsList != null && answerIdsList.Any())
                 {
-                    foreach (var answerItem in answerItemsQuery)
+                    for (int i = 0; i < answerIdsList.Length; i++)
                     {
+                        var answerItem = UnitOfWork.SurveyAnswer.GetById(answerIdsList[i]);
                         var parsedAnswer = JObject.Parse(answerItem.AnswerText);
                         var parsedAnswerId = answerItem.ID;
 
@@ -1191,13 +1191,10 @@ namespace COE.Survey.Web
                         // Update the answer text with the modified JSON
                         answerItem.AnswerText = parsedAnswer.ToString();
                         UnitOfWork.SurveyAnswer.Update(answerItem);
-
-                        // Simulating a time-consuming operation
-                        System.Threading.Thread.Sleep(100); // Adjust the delay as needed
+                        UnitOfWork.Save();
                     }
-
-                    int rows = UnitOfWork.Save();
-                    return View(answerItemsQuery.ToList()); // Or whatever you need to return
+                    
+                    return View(); 
                 }
 
                 return View(survey);
