@@ -149,13 +149,13 @@ namespace COE.Survey.Web
 
             if (IsUserSurveyCreator() || IsUserSurveyApproval() || IsUserSurveyPublisher())
             {
-                var isViewerWithEdit = UnitOfWork.SurveyViewer.GetByQuery(a => a.SurveyId == id && a.ViewerUsername == this.UserName && a.CanEdit == true).Any();
-                if (!isViewerWithEdit)
-                {
-                    return RedirectToAction("Index", "Surveys", new { msg = SharedResources.UnauthorizedAccess });
-                }
-
                 return View(survey);
+            }
+
+            var isViewerWithEdit = UnitOfWork.SurveyViewer.GetByQuery(a => a.SurveyId == id && a.ViewerUsername == this.UserName.Replace("coe\\", "") && a.CanEdit == true).Any();
+            if (!isViewerWithEdit)
+            {
+                return RedirectToAction("Index", "Surveys", new { msg = SharedResources.UnauthorizedAccess });
             }
 
             return RedirectToAction("Index", "Surveys", new { msg = SharedResources.UnauthorizedAccess });

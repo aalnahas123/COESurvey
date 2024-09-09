@@ -136,7 +136,7 @@
                                     }
 
 
-                                    if (item.CreatedBy == username)
+                                    if (item.CreatedBy == username || username == "systemadminuser1")
                                     {
                                         <li><a href="@Url.Action("SurveyUsers", "Surveys", new { Id = @item.ID })" class="d-flex" title="Edit"><img src="~/Content/images/copy.svg" alt="menu-icon" /> <span>Add Viewer</span></a></li>
                                     }
