@@ -16,10 +16,12 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace COE.Survey.Web
@@ -438,17 +440,30 @@ namespace COE.Survey.Web
                     }
                 }
 
-                UnitOfWork.SurveyAnswer.Add(new SurveyAnswer
+
+                var answerToBeUploaded = new SurveyAnswer
                 {
                     AnswerText = AnswerText,
                     QuestionAnswer = null,
                     CreatedOn = DateTime.Now,
                     SurveyId = id,
                     CreatedBy = createdBy
-                });
+                };
 
+
+                UnitOfWork.SurveyAnswer.Add(answerToBeUploaded);
                 int rows = UnitOfWork.Save();
-                return Json(new { success = rows > 0 });
+
+                if (rows > 0)
+                {
+                    if (id == 231)
+                    {
+                        FixUploadedAnswer(answerToBeUploaded);
+                    }
+                    return Json(new { success = true });
+                }
+
+                return Json(new { success = false });
             }
             catch (Exception ex)
             {
@@ -456,7 +471,32 @@ namespace COE.Survey.Web
                 return Json(new { success = false });
             }
         }
-        
+
+        public void FixUploadedAnswer(SurveyAnswer answer)
+        {
+            try
+            {
+                string baseUrl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" +
+                                             System.Web.HttpContext.Current.Request.Url.Host +
+                                            (System.Web.HttpContext.Current.Request.Url.IsDefaultPort ? "" : ":" + System.Web.HttpContext.Current.Request.Url.Port);
+
+
+                var parsedAnswer = JObject.Parse(answer.AnswerText);
+                var parsedAnswerId = answer.ID;
+
+                ProcessQuestion(parsedAnswer, "question9", parsedAnswerId, baseUrl);
+                ProcessQuestion(parsedAnswer, "question15", parsedAnswerId, baseUrl);
+                ProcessQuestion(parsedAnswer, "question14", parsedAnswerId, baseUrl);
+
+                answer.AnswerText = parsedAnswer.ToString();
+                UnitOfWork.SurveyAnswer.Update(answer);
+                UnitOfWork.Save();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+            }
+        }
 
         public ActionResult Result(int? id, int? PageNumber, string sqid = null)
         {
@@ -489,6 +529,19 @@ namespace COE.Survey.Web
                     var answerItems = UnitOfWork.SurveyAnswer.GetByQuery(m => m.SurveyId == id).ToList().Select(a => JObject.Parse(a.AnswerText));
                     if (answerItems != null)
                     {
+                        if (id == 231)
+                        {
+                            // Get domain dynamically
+                            string baseUrl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" +
+                                             System.Web.HttpContext.Current.Request.Url.Host +
+                                            (System.Web.HttpContext.Current.Request.Url.IsDefaultPort ? "" : ":" + System.Web.HttpContext.Current.Request.Url.Port);
+
+                            // Get domain
+                            //string baseUrl = "https://" + System.Web.HttpContext.Current.Request.Url.Host; 
+                            var updated = UpdateRelativePaths(answerItems.ToList(), baseUrl);
+                            answerItems = updated.AsEnumerable();
+                        }
+
                         var json = JsonConvert.SerializeObject(new
                         {
                             data = answerItems
@@ -516,6 +569,50 @@ namespace COE.Survey.Web
                 return View(new SurveyAllAnswers { Id = 0 });
             }
         }
+
+
+        public static List<JObject> UpdateRelativePaths(List<JObject> jsonObjects, string baseUrl)
+        {
+            for (int i = 0; i < jsonObjects.Count; i++)
+            {
+                jsonObjects[i] = UpdateRelativePaths(jsonObjects[0], baseUrl);
+            }
+
+            return jsonObjects;
+        }
+
+
+        public static JObject UpdateRelativePaths(JObject json, string baseUrl)
+        {
+            foreach (var property in json.Properties())
+            {
+                if (property.Value.Type == JTokenType.Object)
+                {
+                    UpdateRelativePaths((JObject)property.Value, baseUrl);
+                }
+                else if (property.Value.Type == JTokenType.Array)
+                {
+                    foreach (var item in property.Value as JArray)
+                    {
+                        if (item.Type == JTokenType.Object)
+                        {
+                            UpdateRelativePaths((JObject)item, baseUrl);
+                        }
+                    }
+                }
+                else if (property.Name == "content")
+                {
+                    string content = property.Value.ToString();
+                    if (content.StartsWith("/"))
+                    {
+                        property.Value = baseUrl + content;
+                    }
+                }
+            }
+
+            return json;
+        }
+
 
         public ActionResult Dashboard(int? id, int? PageNumber, string sqid = null)
         {
@@ -678,7 +775,7 @@ namespace COE.Survey.Web
         }
 
 
-        
+
 
         public List<LookupViewModel> GetAllModules()
         {
@@ -949,6 +1046,59 @@ namespace COE.Survey.Web
 
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult SurveyFile(Guid id)
+        {
+            try
+            {
+                byte[] file;
+
+                var surveyAttachement = UnitOfWork.SurveyAttachement.GetById(id);
+                if (surveyAttachement != null)
+                {
+                    file = Convert.FromBase64String(surveyAttachement.FileContent);
+                    return File(file, GetFileTypeFromFileName(surveyAttachement.FileName), surveyAttachement.FileName);
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+
+            }
+        }
+
+
+        private string GetFileTypeFromFileName(string fileName)
+        {
+            string fileExtension = Path.GetExtension(fileName).ToLower();
+
+            switch (fileExtension)
+            {
+                case ".png":
+                    return "image/png";
+                case ".pdf":
+                    return "application/pdf";
+                case ".jpg":
+                case ".jpeg":
+                    return "image/jpeg";
+                case ".xlsx":
+                    return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                case ".docx":
+                    return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                case ".pptx":
+                    return "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+                case ".csv":
+                    return "text/csv";
+                case ".doc":
+                    return "application/msword";
+                default:
+                    return "application/octet-stream";
+            }
+        }
+
 
         [HttpPost]
         public JsonResult CheckIfHasAnswer(int id)
@@ -1076,9 +1226,136 @@ namespace COE.Survey.Web
         }
 
 
-       
+        public ActionResult Fix(int? id)
+        {
+            try
+            {
+                string baseUrl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" +
+                                             System.Web.HttpContext.Current.Request.Url.Host +
+                                            (System.Web.HttpContext.Current.Request.Url.IsDefaultPort ? "" : ":" + System.Web.HttpContext.Current.Request.Url.Port);
+
+                var survey = UnitOfWork.Survey.GetById(id);
+                if (survey == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                var answerIdsList = UnitOfWork.SurveyAnswer
+                    .GetByQuery(m => m.SurveyId == id).Select(a => a.ID).ToArray();
+
+                if (answerIdsList != null && answerIdsList.Any())
+                {
+                    for (int i = 0; i < answerIdsList.Length; i++)
+                    {
+                        var answerItem = UnitOfWork.SurveyAnswer.GetById(answerIdsList[i]);
+                        var parsedAnswer = JObject.Parse(answerItem.AnswerText);
+                        var parsedAnswerId = answerItem.ID;
+
+                        ProcessQuestion(parsedAnswer, "question9", parsedAnswerId, baseUrl);
+                        ProcessQuestion(parsedAnswer, "question15", parsedAnswerId, baseUrl);
+                        ProcessQuestion(parsedAnswer, "question14", parsedAnswerId, baseUrl);
+
+                        // Update the answer text with the modified JSON
+                        answerItem.AnswerText = parsedAnswer.ToString();
+                        UnitOfWork.SurveyAnswer.Update(answerItem);
+                        UnitOfWork.Save();
+                    }
+
+                    return View();
+                }
+
+                return View(survey);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return View();
+            }
+        }
+
+        private void ProcessQuestion(JObject parsedAnswer, string questionKey, int parsedAnswerId, string baseUrl)
+        {
+            if (parsedAnswer[questionKey] != null)
+            {
+                JArray questionArray = (JArray)parsedAnswer[questionKey];
+                for (int i = 0; i < questionArray.Count; i++)
+                {
+                    var item = questionArray[i];
+                    var content = item["content"]?.ToString();
+                    var fileName = item["name"]?.ToString();
+                    var fileType = item["type"]?.ToString();
+
+                    if (content != null && fileName != null && fileType != null)
+                    {
+                        var base64Data = content.Split(',')[1];
+                        var fileData = Convert.FromBase64String(base64Data);
+                        var fileExtension = string.Empty;
+
+                        if (fileType.Contains("png"))
+                        {
+                            fileExtension = "png";
+                        }
+                        else if (fileType.Contains("pdf"))
+                        {
+                            fileExtension = "pdf";
+                        }
+                        else if (fileType.Contains("jpg") || fileType.Contains("jpeg"))
+                        {
+                            fileExtension = "jpg";
+                        }
+                        else if (fileName.Contains("xlsx"))
+                        {
+                            fileExtension = "xlsx";
+                        }
+                        else if (fileName.Contains("docx"))
+                        {
+                            fileExtension = "docx";
+                        }
+                        else if (fileName.Contains("pptx"))
+                        {
+                            fileExtension = "pptx";
+                        }
+                        else if (fileName.Contains("csv"))
+                        {
+                            fileExtension = "csv";
+                        }
+                        else if (fileName.Contains("doc"))
+                        {
+                            fileExtension = "doc";
+                        }
+                        else
+                        {
+
+                        }
+
+
+                        if (!string.IsNullOrEmpty(fileExtension))
+                        {
+                            var uniqueFileName = $"{parsedAnswerId}_{questionKey}_{fileName}";
+                            // Save the file to the database
+                            Guid newImgId = Guid.NewGuid();
+                            UnitOfWork.SurveyAttachement.Add(new SurveyAttachement
+                            {
+                                SurveyAnswerID = parsedAnswerId,
+                                ID = newImgId,
+                                FileContent = base64Data,
+                                Created = DateTime.Now,
+                                FileName = uniqueFileName
+                            });
+
+                            var fileUrl = $"{baseUrl}/Surveys/SurveyFile/{newImgId}";
+                            questionArray[i]["content"] = fileUrl;
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
 
     }
 
-   
+
 }

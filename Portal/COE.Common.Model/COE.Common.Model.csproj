@@ -421,6 +421,9 @@
     <Compile Include="SurveyApprover.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="SurveyAttachement.cs">
+      <DependentUpon>DataCollectionEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="SurveyImage.cs">
       <DependentUpon>DataCollectionEntities.tt</DependentUpon>
     </Compile>

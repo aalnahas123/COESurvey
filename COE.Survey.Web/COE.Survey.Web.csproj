@@ -417,6 +417,7 @@
     <Content Include="Views\Users\_Header.cshtml" />
     <Content Include="Views\Surveys\AddSurveyViewer.cshtml" />
     <Content Include="Views\Surveys\SurveyUsers.cshtml" />
+    <Content Include="Views\Surveys\Fix.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

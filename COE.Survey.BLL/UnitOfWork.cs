@@ -88,6 +88,7 @@ namespace COE.Survey.BLL
             this.SurveyImage = new SurveyImagesRepository(this.context);
             this.SurveyApprover = new SurveyApproversRepository(this.context);
             this.SurveyViewer = new SurveyViewersRepository(this.context);
+            this.SurveyAttachement = new SurveyAttachementsRepository(this.context);
         }
     
     	private readonly  DbContext context;
@@ -150,6 +151,7 @@ namespace COE.Survey.BLL
         public SurveyImagesRepository SurveyImage { get; set; }
         public SurveyApproversRepository SurveyApprover { get; set; }
         public SurveyViewersRepository SurveyViewer { get; set; }
+        public SurveyAttachementsRepository SurveyAttachement { get; set; }
     
     	/// <summary>
         /// Calling SaveChanges does create a DB transaction so

@@ -108,6 +108,7 @@
         <EntityTypeShape EntityType="COE.Common.Model.SurveyImage" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="COE.Common.Model.SurveyApprover" Width="1.5" PointX="3.375" PointY="3.75" />
         <EntityTypeShape EntityType="COE.Common.Model.SurveyViewer" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="COE.Common.Model.SurveyAttachement" Width="1.5" PointX="5.375" PointY="4.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
