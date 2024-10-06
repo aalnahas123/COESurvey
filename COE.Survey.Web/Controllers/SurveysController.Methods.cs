@@ -456,10 +456,10 @@ namespace COE.Survey.Web
 
                 if (rows > 0)
                 {
-                    if (id == 231)
-                    {
+                    //if (id == 231)
+                    //{
                         FixUploadedAnswer(answerToBeUploaded);
-                    }
+                    //}
                     return Json(new { success = true });
                 }
 
@@ -484,9 +484,15 @@ namespace COE.Survey.Web
                 var parsedAnswer = JObject.Parse(answer.AnswerText);
                 var parsedAnswerId = answer.ID;
 
-                ProcessQuestion(parsedAnswer, "question9", parsedAnswerId, baseUrl);
-                ProcessQuestion(parsedAnswer, "question15", parsedAnswerId, baseUrl);
-                ProcessQuestion(parsedAnswer, "question14", parsedAnswerId, baseUrl);
+                var filesQuestions = GetFileTypeKeys(parsedAnswer);
+                foreach (var fileQuestion in filesQuestions)
+                {
+                    ProcessQuestion(parsedAnswer, fileQuestion, parsedAnswerId, baseUrl);
+                }
+
+                //ProcessQuestion(parsedAnswer, "question9", parsedAnswerId, baseUrl);
+                //ProcessQuestion(parsedAnswer, "question15", parsedAnswerId, baseUrl);
+                //ProcessQuestion(parsedAnswer, "question14", parsedAnswerId, baseUrl);
 
                 answer.AnswerText = parsedAnswer.ToString();
                 UnitOfWork.SurveyAnswer.Update(answer);
@@ -526,21 +532,25 @@ namespace COE.Survey.Web
                     }
 
 
-                    var answerItems = UnitOfWork.SurveyAnswer.GetByQuery(m => m.SurveyId == id).ToList().Select(a => JObject.Parse(a.AnswerText));
+                    var answerItems = UnitOfWork.SurveyAnswer.GetByQuery(m => m.SurveyId == id).ToList()
+                                        .Select(a => TryParseJObject(a.AnswerText))
+                                        .Where(jObject => jObject != null);  // Filter out nulls (failed parses)
+
+
                     if (answerItems != null)
                     {
-                        if (id == 231)
-                        {
+                        //if (id == 231)
+                        //{
                             // Get domain dynamically
-                            string baseUrl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" +
-                                             System.Web.HttpContext.Current.Request.Url.Host +
-                                            (System.Web.HttpContext.Current.Request.Url.IsDefaultPort ? "" : ":" + System.Web.HttpContext.Current.Request.Url.Port);
+                            //string baseUrl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" +
+                            //                 System.Web.HttpContext.Current.Request.Url.Host +
+                            //                (System.Web.HttpContext.Current.Request.Url.IsDefaultPort ? "" : ":" + System.Web.HttpContext.Current.Request.Url.Port);
 
-                            // Get domain
-                            //string baseUrl = "https://" + System.Web.HttpContext.Current.Request.Url.Host; 
-                            var updated = UpdateRelativePaths(answerItems.ToList(), baseUrl);
-                            answerItems = updated.AsEnumerable();
-                        }
+                            //// Get domain
+                            ////string baseUrl = "https://" + System.Web.HttpContext.Current.Request.Url.Host; 
+                            //var updated = UpdateRelativePaths(answerItems.ToList(), baseUrl);
+                            //answerItems = updated.AsEnumerable();
+                        //}
 
                         var json = JsonConvert.SerializeObject(new
                         {
@@ -570,12 +580,23 @@ namespace COE.Survey.Web
             }
         }
 
-
+        public JObject TryParseJObject(string json)
+        {
+            try
+            {
+                return JObject.Parse(json);
+            }
+            catch (JsonReaderException)
+            {
+                // Log exception if needed, or handle failure
+                return null;
+            }
+        }
         public static List<JObject> UpdateRelativePaths(List<JObject> jsonObjects, string baseUrl)
         {
             for (int i = 0; i < jsonObjects.Count; i++)
             {
-                jsonObjects[i] = UpdateRelativePaths(jsonObjects[0], baseUrl);
+                jsonObjects[i] = UpdateRelativePaths(jsonObjects[i], baseUrl);
             }
 
             return jsonObjects;
@@ -1247,18 +1268,33 @@ namespace COE.Survey.Web
                 {
                     for (int i = 0; i < answerIdsList.Length; i++)
                     {
-                        var answerItem = UnitOfWork.SurveyAnswer.GetById(answerIdsList[i]);
-                        var parsedAnswer = JObject.Parse(answerItem.AnswerText);
-                        var parsedAnswerId = answerItem.ID;
+                        try
+                        {
+                            var answerItem = UnitOfWork.SurveyAnswer.GetById(answerIdsList[i]);
+                            var parsedAnswer = JObject.Parse(answerItem.AnswerText);
+                            var parsedAnswerId = answerItem.ID;
 
-                        ProcessQuestion(parsedAnswer, "question9", parsedAnswerId, baseUrl);
-                        ProcessQuestion(parsedAnswer, "question15", parsedAnswerId, baseUrl);
-                        ProcessQuestion(parsedAnswer, "question14", parsedAnswerId, baseUrl);
+                            var filesQuestions = GetFileTypeKeys(parsedAnswer);
+                            foreach (var fileQuestion in filesQuestions)
+                            {
+                                ProcessQuestion(parsedAnswer, fileQuestion, parsedAnswerId, baseUrl);
+                            }
 
-                        // Update the answer text with the modified JSON
-                        answerItem.AnswerText = parsedAnswer.ToString();
-                        UnitOfWork.SurveyAnswer.Update(answerItem);
-                        UnitOfWork.Save();
+                            //ProcessQuestion(parsedAnswer, "question15", parsedAnswerId, baseUrl);
+                            //ProcessQuestion(parsedAnswer, "question14", parsedAnswerId, baseUrl);
+
+                            // Update the answer text with the modified JSON
+                            answerItem.AnswerText = parsedAnswer.ToString();
+                            UnitOfWork.SurveyAnswer.Update(answerItem);
+                            UnitOfWork.Save();
+                        }
+                        catch (Exception ex)
+                        {
+
+
+
+                        }
+
                     }
 
                     return View();
@@ -1271,6 +1307,31 @@ namespace COE.Survey.Web
                 Logger.Error(ex);
                 return View();
             }
+        }
+
+
+        private List<string> GetFileTypeKeys(JObject obj)
+        {
+            // Initialize the list of keys where type starts with "application/"
+            List<string> fileKeys = new List<string>();
+
+            // Iterate through the properties
+            foreach (var property in obj.Properties())
+            {
+                // Check if the property value is an array
+                if (property.Value.Type == JTokenType.Array)
+                {
+                    JArray array = (JArray)property.Value;
+
+                    // Check if any item in the array is an object with a "type" field starting with "application/"
+                    if (array.Children<JObject>().Any(item => item["type"] != null && item["type"].ToString().StartsWith("application/")))
+                    {
+                        fileKeys.Add(property.Name);
+                    }
+                }
+            }
+
+            return fileKeys;
         }
 
         private void ProcessQuestion(JObject parsedAnswer, string questionKey, int parsedAnswerId, string baseUrl)
@@ -1350,6 +1411,10 @@ namespace COE.Survey.Web
                 }
             }
         }
+
+
+
+
 
 
 
