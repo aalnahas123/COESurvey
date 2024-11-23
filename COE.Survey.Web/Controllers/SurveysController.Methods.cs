@@ -458,7 +458,7 @@ namespace COE.Survey.Web
                 {
                     //if (id == 231)
                     //{
-                        FixUploadedAnswer(answerToBeUploaded);
+                    FixUploadedAnswer(answerToBeUploaded);
                     //}
                     return Json(new { success = true });
                 }
@@ -541,15 +541,15 @@ namespace COE.Survey.Web
                     {
                         //if (id == 231)
                         //{
-                            // Get domain dynamically
-                            //string baseUrl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" +
-                            //                 System.Web.HttpContext.Current.Request.Url.Host +
-                            //                (System.Web.HttpContext.Current.Request.Url.IsDefaultPort ? "" : ":" + System.Web.HttpContext.Current.Request.Url.Port);
+                        // Get domain dynamically
+                        //string baseUrl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" +
+                        //                 System.Web.HttpContext.Current.Request.Url.Host +
+                        //                (System.Web.HttpContext.Current.Request.Url.IsDefaultPort ? "" : ":" + System.Web.HttpContext.Current.Request.Url.Port);
 
-                            //// Get domain
-                            ////string baseUrl = "https://" + System.Web.HttpContext.Current.Request.Url.Host; 
-                            //var updated = UpdateRelativePaths(answerItems.ToList(), baseUrl);
-                            //answerItems = updated.AsEnumerable();
+                        //// Get domain
+                        ////string baseUrl = "https://" + System.Web.HttpContext.Current.Request.Url.Host; 
+                        //var updated = UpdateRelativePaths(answerItems.ToList(), baseUrl);
+                        //answerItems = updated.AsEnumerable();
                         //}
 
                         var json = JsonConvert.SerializeObject(new
@@ -1324,7 +1324,11 @@ namespace COE.Survey.Web
                     JArray array = (JArray)property.Value;
 
                     // Check if any item in the array is an object with a "type" field starting with "application/"
-                    if (array.Children<JObject>().Any(item => item["type"] != null && item["type"].ToString().StartsWith("application/")))
+                    if (array.Children<JObject>().Any(item => item["type"] != null
+
+                    && (item["type"].ToString().StartsWith("application/") || IsFileType(item["type"].ToString()))
+
+                    ))
                     {
                         fileKeys.Add(property.Name);
                     }
@@ -1332,6 +1336,36 @@ namespace COE.Survey.Web
             }
 
             return fileKeys;
+        }
+
+        private readonly string[] validExtensions =
+    {
+        "png",
+        "pdf",
+        "jpg",
+        "jpeg",
+        "xlsx",
+        "docx",
+        "pptx",
+        "csv",
+        "doc"
+    };
+        private bool IsFileType(string fileType)
+        {
+            if (string.IsNullOrEmpty(fileType) || validExtensions == null || validExtensions.Length == 0)
+            {
+                return false; // Return false for invalid inputs
+            }
+
+            foreach (var extension in validExtensions)
+            {
+                if (fileType.Equals(extension, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true; // File type matches one of the valid extensions
+                }
+            }
+
+            return false; // No match found
         }
 
         private void ProcessQuestion(JObject parsedAnswer, string questionKey, int parsedAnswerId, string baseUrl)
