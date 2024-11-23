@@ -1380,8 +1380,15 @@ namespace COE.Survey.Web
                     var fileName = item["name"]?.ToString();
                     var fileType = item["type"]?.ToString();
 
+
+
                     if (content != null && fileName != null && fileType != null)
                     {
+                        if (content.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                        {
+                            continue;
+                        }
+
                         var base64Data = content.Split(',')[1];
                         var fileData = Convert.FromBase64String(base64Data);
                         var fileExtension = string.Empty;
