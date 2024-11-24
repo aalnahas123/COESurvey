@@ -1102,6 +1102,8 @@ namespace COE.Survey.Web
                     return "image/png";
                 case ".pdf":
                     return "application/pdf";
+                case ".pages":
+                    return "application/x-iwork-pages-sffpages";
                 case ".jpg":
                 case ".jpeg":
                     return "image/jpeg";
@@ -1348,24 +1350,32 @@ namespace COE.Survey.Web
         "docx",
         "pptx",
         "csv",
-        "doc"
+        "doc",
+        "pages"
     };
         private bool IsFileType(string fileType)
         {
-            if (string.IsNullOrEmpty(fileType) || validExtensions == null || validExtensions.Length == 0)
+            try
             {
-                return false; // Return false for invalid inputs
-            }
-
-            foreach (var extension in validExtensions)
-            {
-                if (fileType.Equals(extension, StringComparison.OrdinalIgnoreCase))
+                if (string.IsNullOrEmpty(fileType) || validExtensions == null || validExtensions.Length == 0)
                 {
-                    return true; // File type matches one of the valid extensions
+                    return false; // Return false for invalid inputs
                 }
-            }
 
-            return false; // No match found
+                foreach (var extension in validExtensions)
+                {
+                    if (fileType.ToLower().Contains(extension.ToLower()))
+                    {
+                        return true; // File type matches one of the valid extensions
+                    }
+                }
+
+                return false; // No match found
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         private void ProcessQuestion(JObject parsedAnswer, string questionKey, int parsedAnswerId, string baseUrl)
@@ -1424,6 +1434,10 @@ namespace COE.Survey.Web
                         else if (fileName.Contains("doc"))
                         {
                             fileExtension = "doc";
+                        }
+                        else if (fileName.Contains("pages"))
+                        {
+                            fileExtension = "pages";
                         }
                         else
                         {
