@@ -21,6 +21,7 @@ using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace COE.Survey.Web
@@ -455,10 +456,10 @@ namespace COE.Survey.Web
 
                 if (rows > 0)
                 {
-                    if (id == 231)
-                    {
-                        FixUploadedAnswer(answerToBeUploaded);
-                    }
+                    //if (id == 231)
+                    //{
+                    FixUploadedAnswer(answerToBeUploaded);
+                    //}
                     return Json(new { success = true });
                 }
 
@@ -475,12 +476,23 @@ namespace COE.Survey.Web
         {
             try
             {
+                string baseUrl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" +
+                                             System.Web.HttpContext.Current.Request.Url.Host +
+                                            (System.Web.HttpContext.Current.Request.Url.IsDefaultPort ? "" : ":" + System.Web.HttpContext.Current.Request.Url.Port);
+
+
                 var parsedAnswer = JObject.Parse(answer.AnswerText);
                 var parsedAnswerId = answer.ID;
 
-                ProcessQuestion(parsedAnswer, "question9", parsedAnswerId);
-                ProcessQuestion(parsedAnswer, "question15", parsedAnswerId);
-                ProcessQuestion(parsedAnswer, "question14", parsedAnswerId);
+                var filesQuestions = GetFileTypeKeys(parsedAnswer);
+                foreach (var fileQuestion in filesQuestions)
+                {
+                    ProcessQuestion(parsedAnswer, fileQuestion, parsedAnswerId, baseUrl);
+                }
+
+                //ProcessQuestion(parsedAnswer, "question9", parsedAnswerId, baseUrl);
+                //ProcessQuestion(parsedAnswer, "question15", parsedAnswerId, baseUrl);
+                //ProcessQuestion(parsedAnswer, "question14", parsedAnswerId, baseUrl);
 
                 answer.AnswerText = parsedAnswer.ToString();
                 UnitOfWork.SurveyAnswer.Update(answer);
@@ -520,9 +532,26 @@ namespace COE.Survey.Web
                     }
 
 
-                    var answerItems = UnitOfWork.SurveyAnswer.GetByQuery(m => m.SurveyId == id).ToList().Select(a => JObject.Parse(a.AnswerText));
+                    var answerItems = UnitOfWork.SurveyAnswer.GetByQuery(m => m.SurveyId == id).ToList()
+                                        .Select(a => TryParseJObject(a.AnswerText))
+                                        .Where(jObject => jObject != null);  // Filter out nulls (failed parses)
+
+
                     if (answerItems != null)
                     {
+                        //if (id == 231)
+                        //{
+                        // Get domain dynamically
+                        //string baseUrl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" +
+                        //                 System.Web.HttpContext.Current.Request.Url.Host +
+                        //                (System.Web.HttpContext.Current.Request.Url.IsDefaultPort ? "" : ":" + System.Web.HttpContext.Current.Request.Url.Port);
+
+                        //// Get domain
+                        ////string baseUrl = "https://" + System.Web.HttpContext.Current.Request.Url.Host; 
+                        //var updated = UpdateRelativePaths(answerItems.ToList(), baseUrl);
+                        //answerItems = updated.AsEnumerable();
+                        //}
+
                         var json = JsonConvert.SerializeObject(new
                         {
                             data = answerItems
@@ -550,6 +579,61 @@ namespace COE.Survey.Web
                 return View(new SurveyAllAnswers { Id = 0 });
             }
         }
+
+        public JObject TryParseJObject(string json)
+        {
+            try
+            {
+                return JObject.Parse(json);
+            }
+            catch (JsonReaderException)
+            {
+                // Log exception if needed, or handle failure
+                return null;
+            }
+        }
+        public static List<JObject> UpdateRelativePaths(List<JObject> jsonObjects, string baseUrl)
+        {
+            for (int i = 0; i < jsonObjects.Count; i++)
+            {
+                jsonObjects[i] = UpdateRelativePaths(jsonObjects[i], baseUrl);
+            }
+
+            return jsonObjects;
+        }
+
+
+        public static JObject UpdateRelativePaths(JObject json, string baseUrl)
+        {
+            foreach (var property in json.Properties())
+            {
+                if (property.Value.Type == JTokenType.Object)
+                {
+                    UpdateRelativePaths((JObject)property.Value, baseUrl);
+                }
+                else if (property.Value.Type == JTokenType.Array)
+                {
+                    foreach (var item in property.Value as JArray)
+                    {
+                        if (item.Type == JTokenType.Object)
+                        {
+                            UpdateRelativePaths((JObject)item, baseUrl);
+                        }
+                    }
+                }
+                else if (property.Name == "content")
+                {
+                    string content = property.Value.ToString();
+                    if (content.StartsWith("/"))
+                    {
+                        property.Value = baseUrl + content;
+                    }
+                }
+            }
+
+            return json;
+        }
+
 
         public ActionResult Dashboard(int? id, int? PageNumber, string sqid = null)
         {
@@ -1018,6 +1102,8 @@ namespace COE.Survey.Web
                     return "image/png";
                 case ".pdf":
                     return "application/pdf";
+                case ".pages":
+                    return "application/x-iwork-pages-sffpages";
                 case ".jpg":
                 case ".jpeg":
                     return "image/jpeg";
@@ -1167,6 +1253,10 @@ namespace COE.Survey.Web
         {
             try
             {
+                string baseUrl = System.Web.HttpContext.Current.Request.Url.Scheme + "://" +
+                                             System.Web.HttpContext.Current.Request.Url.Host +
+                                            (System.Web.HttpContext.Current.Request.Url.IsDefaultPort ? "" : ":" + System.Web.HttpContext.Current.Request.Url.Port);
+
                 var survey = UnitOfWork.Survey.GetById(id);
                 if (survey == null)
                 {
@@ -1180,21 +1270,36 @@ namespace COE.Survey.Web
                 {
                     for (int i = 0; i < answerIdsList.Length; i++)
                     {
-                        var answerItem = UnitOfWork.SurveyAnswer.GetById(answerIdsList[i]);
-                        var parsedAnswer = JObject.Parse(answerItem.AnswerText);
-                        var parsedAnswerId = answerItem.ID;
+                        try
+                        {
+                            var answerItem = UnitOfWork.SurveyAnswer.GetById(answerIdsList[i]);
+                            var parsedAnswer = JObject.Parse(answerItem.AnswerText);
+                            var parsedAnswerId = answerItem.ID;
 
-                        ProcessQuestion(parsedAnswer, "question9", parsedAnswerId);
-                        ProcessQuestion(parsedAnswer, "question15", parsedAnswerId);
-                        ProcessQuestion(parsedAnswer, "question14", parsedAnswerId);
+                            var filesQuestions = GetFileTypeKeys(parsedAnswer);
+                            foreach (var fileQuestion in filesQuestions)
+                            {
+                                ProcessQuestion(parsedAnswer, fileQuestion, parsedAnswerId, baseUrl);
+                            }
 
-                        // Update the answer text with the modified JSON
-                        answerItem.AnswerText = parsedAnswer.ToString();
-                        UnitOfWork.SurveyAnswer.Update(answerItem);
-                        UnitOfWork.Save();
+                            //ProcessQuestion(parsedAnswer, "question15", parsedAnswerId, baseUrl);
+                            //ProcessQuestion(parsedAnswer, "question14", parsedAnswerId, baseUrl);
+
+                            // Update the answer text with the modified JSON
+                            answerItem.AnswerText = parsedAnswer.ToString();
+                            UnitOfWork.SurveyAnswer.Update(answerItem);
+                            UnitOfWork.Save();
+                        }
+                        catch (Exception ex)
+                        {
+
+
+
+                        }
+
                     }
-                    
-                    return View(); 
+
+                    return View();
                 }
 
                 return View(survey);
@@ -1206,7 +1311,74 @@ namespace COE.Survey.Web
             }
         }
 
-        private void ProcessQuestion(JObject parsedAnswer, string questionKey, int parsedAnswerId)
+
+        private List<string> GetFileTypeKeys(JObject obj)
+        {
+            // Initialize the list of keys where type starts with "application/"
+            List<string> fileKeys = new List<string>();
+
+            // Iterate through the properties
+            foreach (var property in obj.Properties())
+            {
+                // Check if the property value is an array
+                if (property.Value.Type == JTokenType.Array)
+                {
+                    JArray array = (JArray)property.Value;
+
+                    // Check if any item in the array is an object with a "type" field starting with "application/"
+                    if (array.Children<JObject>().Any(item => item["type"] != null
+
+                    && (item["type"].ToString().StartsWith("application/") || IsFileType(item["type"].ToString()))
+
+                    ))
+                    {
+                        fileKeys.Add(property.Name);
+                    }
+                }
+            }
+
+            return fileKeys;
+        }
+
+        private readonly string[] validExtensions =
+    {
+        "png",
+        "pdf",
+        "jpg",
+        "jpeg",
+        "xlsx",
+        "docx",
+        "pptx",
+        "csv",
+        "doc",
+        "pages"
+    };
+        private bool IsFileType(string fileType)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(fileType) || validExtensions == null || validExtensions.Length == 0)
+                {
+                    return false; // Return false for invalid inputs
+                }
+
+                foreach (var extension in validExtensions)
+                {
+                    if (fileType.ToLower().Contains(extension.ToLower()))
+                    {
+                        return true; // File type matches one of the valid extensions
+                    }
+                }
+
+                return false; // No match found
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        private void ProcessQuestion(JObject parsedAnswer, string questionKey, int parsedAnswerId, string baseUrl)
         {
             if (parsedAnswer[questionKey] != null)
             {
@@ -1218,8 +1390,15 @@ namespace COE.Survey.Web
                     var fileName = item["name"]?.ToString();
                     var fileType = item["type"]?.ToString();
 
+
+
                     if (content != null && fileName != null && fileType != null)
                     {
+                        if (content.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                        {
+                            continue;
+                        }
+
                         var base64Data = content.Split(',')[1];
                         var fileData = Convert.FromBase64String(base64Data);
                         var fileExtension = string.Empty;
@@ -1256,6 +1435,10 @@ namespace COE.Survey.Web
                         {
                             fileExtension = "doc";
                         }
+                        else if (fileName.Contains("pages"))
+                        {
+                            fileExtension = "pages";
+                        }
                         else
                         {
 
@@ -1276,13 +1459,17 @@ namespace COE.Survey.Web
                                 FileName = uniqueFileName
                             });
 
-                            var fileUrl = $"/Surveys/SurveyFile/{newImgId}";
+                            var fileUrl = $"{baseUrl}/Surveys/SurveyFile/{newImgId}";
                             questionArray[i]["content"] = fileUrl;
                         }
                     }
                 }
             }
         }
+
+
+
+
 
 
 

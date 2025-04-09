@@ -297,5 +297,8 @@ namespace COE.Survey.Web
             return isLinkLocalAddress;
         }
 
+
+        
+
     }
 }
